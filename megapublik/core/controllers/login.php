@@ -11,13 +11,13 @@ class Login extends Controller {
 	{
 		if ((!$this->input->post('username')) OR (!$this->input->post('password')))
 		{
-			redirect('main/error/6');
+			redirect('error/6');
 		}
 		else
 		{
 			if($this->user->is_checked())
 			{
-				exit(redirect('ingame'));
+				exit(redirect('/'));
 			}
 
 			$query	= $this->db->get_where('users', array('username' => $this->input->post('username')), '1');
@@ -30,7 +30,7 @@ class Login extends Controller {
 				}
 				if ($user->password		!= sha1($this->input->post('password')))
 				{
-					redirect('main/error/2');
+					redirect('error/2');
 				}
 				else
 				{
@@ -52,7 +52,6 @@ class Login extends Controller {
 						'value'		=> $value,
 						'expire'	=> $expire,
 						'domain'	=> 'private.megapublik.com',
-						'path'		=> '/'
 					);
 
 					set_cookie($cookie);
@@ -64,7 +63,7 @@ class Login extends Controller {
 			}
 			else
 			{
-				redirect('main/error/1');
+				redirect('error/1');
 			}
 		}
 	}

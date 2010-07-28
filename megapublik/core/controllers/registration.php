@@ -14,7 +14,7 @@ class Registration extends Controller {
 	{
 		if($this->user->is_checked())
 		{
-			exit(redirect('ingame'));
+			exit(redirect('/'));
 		}
 
 		$this->lang->load('registration');
@@ -34,7 +34,7 @@ class Registration extends Controller {
 	{
 		if($this->user->is_checked())
 		{
-			exit(redirect('ingame'));
+			exit(redirect('/'));
 		}
 
 		$this->lang->load('registration');
@@ -46,15 +46,15 @@ class Registration extends Controller {
 			(!$this->input->post('email'))		OR
 			(!$this->input->post('country'))	)
 		{
-			redirect('main/error/6');
+			redirect('error/6');
 		}
 		elseif ($this->input->post('password') != $this->input->post('passconf'))
 		{
-			redirect('main/error/7');
+			redirect('error/7');
 		}
 		elseif (!valid_email($this->input->post('email')))
 		{
-			redirect('main/error/8');
+			redirect('error/8');
 		}
 		else
 		{
@@ -67,12 +67,12 @@ class Registration extends Controller {
 			$query			= $this->db->get_where('users', array('username' => $this->input->post('username')));
 			if ($query->num_rows() > 0)
 	 		{
-	 			redirect('main/error/3');
+	 			redirect('error/3');
 	 		}
 			$query			= $this->db->get_where('users', array('email' => $this->input->post('email')));
 			if ($query->num_rows() > 0)
 	 		{
-	 			redirect('main/error/4');
+	 			redirect('error/4');
 	 		}
 	 		$this->load->helper('string');
 	 		for ($i = 1; $i != 0;)
@@ -132,7 +132,7 @@ class Registration extends Controller {
 		
 		if ($query->num_rows() === 0)
  		{
- 			redirect('main/error/9');
+ 			redirect('error/9');
  		}
  		else
  		{

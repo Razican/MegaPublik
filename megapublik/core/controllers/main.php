@@ -11,25 +11,17 @@ class Main extends Controller {
 	{
 		if($this->user->is_checked())
 		{
-			exit(redirect('ingame'));
-		}
-		
-		$this->lang->load('login');
-		$this->load->view('login');
-	}
-	
-	function error($error = 0)
-	{
-		if (($error == 0) OR (!is_numeric($error)) OR ($error > 9))
-		{
-			redirect('/');
+			$this->lang->load('ingame');
+			$user_id			= $this->user->id();
+			$data['user']		= $this->user->data($user_id);
+			$data['country']	= $this->user->data($data['user']->location, 'countries');
+			$this->load->view('ingame', $data);
 		}
 		else
 		{
-			$this->lang->load('errors');
-			show_error(lang('errors.error'), lang('errors.'.$error), 400);
+			$this->lang->load('login');
+			$this->load->view('login');	
 		}
-
 	}
 }
 
