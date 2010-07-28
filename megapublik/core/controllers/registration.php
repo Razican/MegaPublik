@@ -101,7 +101,6 @@ class Registration extends Controller {
 			$this->load->library('email');
 			
 			$config['protocol']	= 'sendmail';
-			$config['charset']	= 'iso-8859-1';
 			$config['mailtype']	= 'html';
 
 			$this->email->initialize($config);
@@ -116,6 +115,7 @@ class Registration extends Controller {
 			$this->email->message(preg_replace($pattern, $replacement, lang('reg.message')));
 			$this->email->set_alt_message(preg_replace($pattern, $replacement, lang('reg.alt_message')));
 			
+            //mail desde view
 			$this->email->send();
 
 			$this->load->view('registration');

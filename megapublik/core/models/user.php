@@ -44,7 +44,7 @@ Class User extends Model
 	
 	function data($ID, $table = 'users')
 	{
-		$query			= $this->db->get_where($table, array('ID' => $ID), '1');
+		$query			= $this->db->get_where($table, array('id' => $ID), '1');
 		
 		foreach ($query->result() as $result)
 		{
