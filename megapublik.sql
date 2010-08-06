@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 28-07-2010 a las 20:50:13
+-- Tiempo de generación: 06-08-2010 a las 14:03:10
 -- Versión del servidor: 5.1.41
 -- Versión de PHP: 5.3.1
 
@@ -24,8 +24,8 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 -- Estructura de tabla para la tabla `alerts`
 --
--- Creación: 28-07-2010 a las 19:33:12
--- Última actualización: 28-07-2010 a las 19:33:12
+-- Creación: 06-08-2010 a las 13:07:39
+-- Última actualización: 06-08-2010 a las 13:07:39
 --
 
 DROP TABLE IF EXISTS `alerts`;
@@ -41,22 +41,17 @@ CREATE TABLE IF NOT EXISTS `alerts` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
--- RELACIONES PARA LA TABLA `alerts`:
---   `company_id`
---       `companies` -> `id`
---   `friend_id`
---       `users` -> `id`
---   `user_id`
---       `users` -> `id`
+-- Volcar la base de datos para la tabla `alerts`
 --
+
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `articles`
 --
--- Creación: 28-07-2010 a las 19:37:42
--- Última actualización: 28-07-2010 a las 19:37:42
+-- Creación: 06-08-2010 a las 13:07:39
+-- Última actualización: 06-08-2010 a las 13:07:39
 --
 
 DROP TABLE IF EXISTS `articles`;
@@ -71,20 +66,17 @@ CREATE TABLE IF NOT EXISTS `articles` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
--- RELACIONES PARA LA TABLA `articles`:
---   `newspaper_id`
---       `newspapers` -> `ID`
---   `owner_id`
---       `users` -> `id`
+-- Volcar la base de datos para la tabla `articles`
 --
+
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `article_comments`
 --
--- Creación: 28-07-2010 a las 19:49:03
--- Última actualización: 28-07-2010 a las 19:49:03
+-- Creación: 06-08-2010 a las 13:07:39
+-- Última actualización: 06-08-2010 a las 13:07:39
 --
 
 DROP TABLE IF EXISTS `article_comments`;
@@ -98,20 +90,17 @@ CREATE TABLE IF NOT EXISTS `article_comments` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
--- RELACIONES PARA LA TABLA `article_comments`:
---   `article_id`
---       `articles` -> `id`
---   `user_id`
---       `users` -> `id`
+-- Volcar la base de datos para la tabla `article_comments`
 --
+
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `article_votes`
 --
--- Creación: 28-07-2010 a las 19:50:21
--- Última actualización: 28-07-2010 a las 19:50:21
+-- Creación: 06-08-2010 a las 13:07:39
+-- Última actualización: 06-08-2010 a las 13:07:39
 --
 
 DROP TABLE IF EXISTS `article_votes`;
@@ -123,20 +112,17 @@ CREATE TABLE IF NOT EXISTS `article_votes` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
--- RELACIONES PARA LA TABLA `article_votes`:
---   `article_id`
---       `articles` -> `id`
---   `user_id`
---       `users` -> `id`
+-- Volcar la base de datos para la tabla `article_votes`
 --
+
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `borders`
 --
--- Creación: 28-07-2010 a las 19:51:12
--- Última actualización: 28-07-2010 a las 19:51:12
+-- Creación: 06-08-2010 a las 13:07:39
+-- Última actualización: 06-08-2010 a las 13:07:39
 --
 
 DROP TABLE IF EXISTS `borders`;
@@ -148,20 +134,17 @@ CREATE TABLE IF NOT EXISTS `borders` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
--- RELACIONES PARA LA TABLA `borders`:
---   `state_1_id`
---       `countries` -> `id`
---   `state_2_id`
---       `countries` -> `id`
+-- Volcar la base de datos para la tabla `borders`
 --
+
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `companies`
 --
--- Creación: 28-07-2010 a las 20:10:43
--- Última actualización: 28-07-2010 a las 20:10:43
+-- Creación: 06-08-2010 a las 13:07:39
+-- Última actualización: 06-08-2010 a las 13:07:39
 --
 
 DROP TABLE IF EXISTS `companies`;
@@ -240,25 +223,24 @@ CREATE TABLE IF NOT EXISTS `companies` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
--- RELACIONES PARA LA TABLA `companies`:
---   `owner_id`
---       `users` -> `id`
+-- Volcar la base de datos para la tabla `companies`
 --
+
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `countries`
 --
--- Creación: 28-07-2010 a las 20:30:25
--- Última actualización: 28-07-2010 a las 20:30:25
+-- Creación: 06-08-2010 a las 14:00:01
+-- Última actualización: 06-08-2010 a las 14:00:46
 --
 
 DROP TABLE IF EXISTS `countries`;
 CREATE TABLE IF NOT EXISTS `countries` (
   `id` int(9) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(20) CHARACTER SET utf8 NOT NULL,
-  `currency` smallint(5) unsigned NOT NULL,
+  `currency` tinyint(3) unsigned NOT NULL,
   `president_id` int(9) unsigned NOT NULL,
   `food_income_tax` tinyint(3) unsigned NOT NULL DEFAULT '1',
   `food_import_tax` tinyint(3) unsigned NOT NULL DEFAULT '1',
@@ -291,7 +273,7 @@ CREATE TABLE IF NOT EXISTS `countries` (
   `defense_system_income_tax` tinyint(3) unsigned NOT NULL DEFAULT '1',
   `defense_system_import_tax` tinyint(3) unsigned NOT NULL DEFAULT '1',
   `defense_system_vat_tax` tinyint(3) unsigned NOT NULL DEFAULT '1',
-  `money_mp` bigint(20) NOT NULL DEFAULT '1000000',
+  `money_mp` bigint(20) unsigned NOT NULL DEFAULT '1000000',
   `ARS` bigint(20) unsigned NOT NULL DEFAULT '0',
   `ATS` bigint(20) unsigned NOT NULL DEFAULT '0',
   `AUD` bigint(20) unsigned NOT NULL DEFAULT '0',
@@ -356,18 +338,20 @@ CREATE TABLE IF NOT EXISTS `countries` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- RELACIONES PARA LA TABLA `countries`:
---   `president_id`
---       `users` -> `id`
+-- Volcar la base de datos para la tabla `countries`
 --
+
+INSERT INTO `countries` (`id`, `name`, `currency`, `president_id`, `food_income_tax`, `food_import_tax`, `food_vat_tax`, `gift_income_tax`, `gift_import_tax`, `gift_vat_tax`, `weapon_income_tax`, `weapon_import_tax`, `weapon_vat_tax`, `tickets_income_tax`, `tickets_import_tax`, `tickets_vat_tax`, `grain_income_tax`, `grain_import_tax`, `diamonds_income_tax`, `diamonds_import_tax`, `iron_income_tax`, `iron_import_tax`, `oil_income_tax`, `oil_import_tax`, `wood_income_tax`, `wood_import_tax`, `house_income_tax`, `house_import_tax`, `house_vat_tax`, `hospital_income_tax`, `hospital_import_tax`, `hospital_vat_tax`, `defense_system_income_tax`, `defense_system_import_tax`, `defense_system_vat_tax`, `money_mp`, `ARS`, `ATS`, `AUD`, `BAM`, `BEF`, `BGN`, `BOB`, `BRL`, `CAD`, `CHF`, `CLP`, `CNY`, `COP`, `CZK`, `DEM`, `DKK`, `EEK`, `ESP`, `FIM`, `FRF`, `GBP`, `GRD`, `HRK`, `HUF`, `IDR`, `IEP`, `INR`, `IRR`, `ITL`, `JPY`, `KPW`, `KRW`, `LTL`, `LVL`, `MDL`, `MXN`, `MYR`, `NIS`, `NLG`, `NOK`, `PEN`, `PHP`, `PKR`, `PLN`, `PTE`, `PYG`, `RON`, `RSD`, `RUB`, `SEK`, `SGD`, `SIT`, `SKK`, `THB`, `TRY`, `UAH`, `USD`, `UYU`, `VEB`, `ZAR`) VALUES
+(1, 'MegaPublik 1', 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(2, 'MegaPublik 2', 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `decisions`
 --
--- Creación: 28-07-2010 a las 19:26:00
--- Última actualización: 28-07-2010 a las 19:26:00
+-- Creación: 06-08-2010 a las 13:07:39
+-- Última actualización: 06-08-2010 a las 13:07:39
 --
 
 DROP TABLE IF EXISTS `decisions`;
@@ -386,22 +370,17 @@ CREATE TABLE IF NOT EXISTS `decisions` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
--- RELACIONES PARA LA TABLA `decisions`:
---   `country_id`
---       `countries` -> `id`
---   `country_involved`
---       `countries` -> `id`
---   `money_to`
---       `users` -> `id`
+-- Volcar la base de datos para la tabla `decisions`
 --
+
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `friendships`
 --
--- Creación: 28-07-2010 a las 19:26:00
--- Última actualización: 28-07-2010 a las 19:26:00
+-- Creación: 06-08-2010 a las 13:07:39
+-- Última actualización: 06-08-2010 a las 13:07:39
 --
 
 DROP TABLE IF EXISTS `friendships`;
@@ -414,20 +393,17 @@ CREATE TABLE IF NOT EXISTS `friendships` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
--- RELACIONES PARA LA TABLA `friendships`:
---   `user_1_id`
---       `users` -> `id`
---   `user_2_id`
---       `users` -> `id`
+-- Volcar la base de datos para la tabla `friendships`
 --
+
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `inventories`
 --
--- Creación: 28-07-2010 a las 19:26:00
--- Última actualización: 28-07-2010 a las 19:26:00
+-- Creación: 06-08-2010 a las 13:07:39
+-- Última actualización: 06-08-2010 a las 13:07:39
 --
 
 DROP TABLE IF EXISTS `inventories`;
@@ -496,13 +472,18 @@ CREATE TABLE IF NOT EXISTS `inventories` (
   PRIMARY KEY (`ID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `inventories`
+--
+
+
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `market`
 --
--- Creación: 28-07-2010 a las 19:26:00
--- Última actualización: 28-07-2010 a las 19:26:00
+-- Creación: 06-08-2010 a las 13:07:39
+-- Última actualización: 06-08-2010 a las 13:07:39
 --
 
 DROP TABLE IF EXISTS `market`;
@@ -518,18 +499,17 @@ CREATE TABLE IF NOT EXISTS `market` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
--- RELACIONES PARA LA TABLA `market`:
---   `company_id`
---       `companies` -> `id`
+-- Volcar la base de datos para la tabla `market`
 --
+
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `messages`
 --
--- Creación: 28-07-2010 a las 19:26:00
--- Última actualización: 28-07-2010 a las 19:26:00
+-- Creación: 06-08-2010 a las 13:07:39
+-- Última actualización: 06-08-2010 a las 13:07:39
 --
 
 DROP TABLE IF EXISTS `messages`;
@@ -545,20 +525,17 @@ CREATE TABLE IF NOT EXISTS `messages` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
--- RELACIONES PARA LA TABLA `messages`:
---   `from_id`
---       `users` -> `id`
---   `to_id`
---       `users` -> `id`
+-- Volcar la base de datos para la tabla `messages`
 --
+
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `newspapers`
 --
--- Creación: 28-07-2010 a las 19:26:00
--- Última actualización: 28-07-2010 a las 19:26:00
+-- Creación: 06-08-2010 a las 13:07:39
+-- Última actualización: 06-08-2010 a las 13:07:39
 --
 
 DROP TABLE IF EXISTS `newspapers`;
@@ -571,20 +548,17 @@ CREATE TABLE IF NOT EXISTS `newspapers` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
--- RELACIONES PARA LA TABLA `newspapers`:
---   `founder_id`
---       `users` -> `id`
---   `localization`
---       `countries` -> `id`
+-- Volcar la base de datos para la tabla `newspapers`
 --
+
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `parties`
 --
--- Creación: 28-07-2010 a las 19:26:00
--- Última actualización: 28-07-2010 a las 19:26:00
+-- Creación: 06-08-2010 a las 13:07:39
+-- Última actualización: 06-08-2010 a las 13:07:39
 --
 
 DROP TABLE IF EXISTS `parties`;
@@ -660,22 +634,17 @@ CREATE TABLE IF NOT EXISTS `parties` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
--- RELACIONES PARA LA TABLA `parties`:
---   `country_id`
---       `countries` -> `id`
---   `founder_id`
---       `users` -> `id`
---   `president_id`
---       `users` -> `id`
+-- Volcar la base de datos para la tabla `parties`
 --
+
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `shouts`
 --
--- Creación: 28-07-2010 a las 19:26:00
--- Última actualización: 28-07-2010 a las 19:26:00
+-- Creación: 06-08-2010 a las 13:07:39
+-- Última actualización: 06-08-2010 a las 13:07:39
 --
 
 DROP TABLE IF EXISTS `shouts`;
@@ -688,18 +657,17 @@ CREATE TABLE IF NOT EXISTS `shouts` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
--- RELACIONES PARA LA TABLA `shouts`:
---   `user_id`
---       `users` -> `id`
+-- Volcar la base de datos para la tabla `shouts`
 --
+
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `states`
 --
--- Creación: 28-07-2010 a las 19:26:00
--- Última actualización: 28-07-2010 a las 19:26:00
+-- Creación: 06-08-2010 a las 13:07:39
+-- Última actualización: 06-08-2010 a las 13:07:39
 --
 
 DROP TABLE IF EXISTS `states`;
@@ -717,18 +685,17 @@ CREATE TABLE IF NOT EXISTS `states` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
--- RELACIONES PARA LA TABLA `states`:
---   `country_id`
---       `countries` -> `id`
+-- Volcar la base de datos para la tabla `states`
 --
+
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `suscriptions`
 --
--- Creación: 28-07-2010 a las 20:32:16
--- Última actualización: 28-07-2010 a las 20:32:16
+-- Creación: 06-08-2010 a las 13:07:39
+-- Última actualización: 06-08-2010 a las 13:07:39
 --
 
 DROP TABLE IF EXISTS `suscriptions`;
@@ -740,20 +707,17 @@ CREATE TABLE IF NOT EXISTS `suscriptions` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
--- RELACIONES PARA LA TABLA `suscriptions`:
---   `newspaper_id`
---       `newspapers` -> `ID`
---   `user_id`
---       `users` -> `id`
+-- Volcar la base de datos para la tabla `suscriptions`
 --
+
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `users`
 --
--- Creación: 28-07-2010 a las 20:31:33
--- Última actualización: 28-07-2010 a las 20:31:33
+-- Creación: 06-08-2010 a las 13:07:39
+-- Última actualización: 06-08-2010 a las 13:07:39
 --
 
 DROP TABLE IF EXISTS `users`;
@@ -864,16 +828,9 @@ CREATE TABLE IF NOT EXISTS `users` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=44 ;
 
 --
--- RELACIONES PARA LA TABLA `users`:
---   `citizenship`
---       `countries` -> `id`
---   `company_id`
---       `companies` -> `id`
---   `location`
---       `countries` -> `id`
---   `ref_id`
---       `users` -> `id`
+-- Volcar la base de datos para la tabla `users`
 --
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

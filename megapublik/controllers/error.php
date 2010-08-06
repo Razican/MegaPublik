@@ -16,7 +16,7 @@ class Error extends Controller {
 		else
 		{
 			$this->lang->load('errors');
-			show_error(lang('errors.error'), lang('errors.'.$error), 400);
+			show_error(lang('errors.'.$error), 400, lang('errors.error'));
 		}
 	}
 }
