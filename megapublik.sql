@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 06-08-2010 a las 14:03:10
+-- Tiempo de generación: 06-08-2010 a las 14:46:15
 -- Versión del servidor: 5.1.41
 -- Versión de PHP: 5.3.1
 
@@ -50,18 +50,18 @@ CREATE TABLE IF NOT EXISTS `alerts` (
 --
 -- Estructura de tabla para la tabla `articles`
 --
--- Creación: 06-08-2010 a las 13:07:39
--- Última actualización: 06-08-2010 a las 13:07:39
+-- Creación: 06-08-2010 a las 14:34:49
+-- Última actualización: 06-08-2010 a las 14:34:49
 --
 
 DROP TABLE IF EXISTS `articles`;
 CREATE TABLE IF NOT EXISTS `articles` (
   `id` int(9) unsigned NOT NULL AUTO_INCREMENT,
-  `title` text CHARACTER SET utf8 NOT NULL,
-  `content` longtext CHARACTER SET utf8 NOT NULL,
+  `title` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `content` text CHARACTER SET utf8 NOT NULL,
   `newspaper_id` int(9) unsigned NOT NULL,
   `owner_id` int(9) unsigned NOT NULL,
-  `time` int(11) NOT NULL,
+  `time` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -75,8 +75,8 @@ CREATE TABLE IF NOT EXISTS `articles` (
 --
 -- Estructura de tabla para la tabla `article_comments`
 --
--- Creación: 06-08-2010 a las 13:07:39
--- Última actualización: 06-08-2010 a las 13:07:39
+-- Creación: 06-08-2010 a las 14:33:42
+-- Última actualización: 06-08-2010 a las 14:33:42
 --
 
 DROP TABLE IF EXISTS `article_comments`;
@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `article_comments` (
   `id` int(9) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(9) unsigned NOT NULL,
   `article_id` int(9) unsigned NOT NULL,
-  `content` longtext CHARACTER SET utf8 NOT NULL,
+  `content` text CHARACTER SET utf8 NOT NULL,
   `time` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -143,18 +143,18 @@ CREATE TABLE IF NOT EXISTS `borders` (
 --
 -- Estructura de tabla para la tabla `companies`
 --
--- Creación: 06-08-2010 a las 13:07:39
--- Última actualización: 06-08-2010 a las 13:07:39
+-- Creación: 06-08-2010 a las 14:32:22
+-- Última actualización: 06-08-2010 a las 14:32:22
 --
 
 DROP TABLE IF EXISTS `companies`;
 CREATE TABLE IF NOT EXISTS `companies` (
   `id` int(9) unsigned NOT NULL AUTO_INCREMENT,
-  `name` text CHARACTER SET utf8 NOT NULL,
+  `name` varchar(50) CHARACTER SET utf8 NOT NULL,
   `owner_id` int(9) unsigned NOT NULL,
-  `type` tinyint(2) unsigned NOT NULL,
-  `non_stock` int(11) NOT NULL DEFAULT '0',
-  `stock` int(11) NOT NULL DEFAULT '0',
+  `type` tinyint(3) unsigned NOT NULL,
+  `non_stock` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `stock` bigint(20) unsigned NOT NULL DEFAULT '0',
   `raw_materials` bigint(20) unsigned NOT NULL DEFAULT '0',
   `quality` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `localization` int(9) unsigned NOT NULL,
@@ -350,23 +350,23 @@ INSERT INTO `countries` (`id`, `name`, `currency`, `president_id`, `food_income_
 --
 -- Estructura de tabla para la tabla `decisions`
 --
--- Creación: 06-08-2010 a las 13:07:39
--- Última actualización: 06-08-2010 a las 13:07:39
+-- Creación: 06-08-2010 a las 14:28:59
+-- Última actualización: 06-08-2010 a las 14:28:59
 --
 
 DROP TABLE IF EXISTS `decisions`;
 CREATE TABLE IF NOT EXISTS `decisions` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `type` int(11) NOT NULL,
-  `country_id` int(11) NOT NULL,
-  `country_involved` int(11) DEFAULT NULL,
-  `money_to` int(11) DEFAULT NULL,
-  `how_much_money` int(11) DEFAULT NULL,
-  `object_type` int(11) DEFAULT NULL,
-  `new_income_tax` int(11) DEFAULT NULL,
-  `new_import_tax` int(11) DEFAULT NULL,
-  `new_vat_tax` int(11) DEFAULT NULL,
-  PRIMARY KEY (`ID`)
+  `id` int(9) unsigned NOT NULL AUTO_INCREMENT,
+  `type` tinyint(3) unsigned NOT NULL,
+  `country_id` int(9) unsigned NOT NULL,
+  `country_involved` int(9) unsigned DEFAULT NULL,
+  `money_to` int(9) unsigned DEFAULT NULL,
+  `how_much_money` int(11) unsigned DEFAULT NULL,
+  `object_type` tinyint(3) unsigned DEFAULT NULL,
+  `new_income_tax` tinyint(3) unsigned DEFAULT NULL,
+  `new_import_tax` tinyint(3) unsigned DEFAULT NULL,
+  `new_vat_tax` tinyint(3) unsigned DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
@@ -379,17 +379,17 @@ CREATE TABLE IF NOT EXISTS `decisions` (
 --
 -- Estructura de tabla para la tabla `friendships`
 --
--- Creación: 06-08-2010 a las 13:07:39
--- Última actualización: 06-08-2010 a las 13:07:39
+-- Creación: 06-08-2010 a las 14:26:35
+-- Última actualización: 06-08-2010 a las 14:26:35
 --
 
 DROP TABLE IF EXISTS `friendships`;
 CREATE TABLE IF NOT EXISTS `friendships` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `user_1_id` int(11) NOT NULL,
-  `user_2_id` int(11) NOT NULL,
-  `acepted` int(11) NOT NULL,
-  PRIMARY KEY (`ID`)
+  `id` int(9) unsigned NOT NULL AUTO_INCREMENT,
+  `user_1_id` int(9) unsigned NOT NULL,
+  `user_2_id` int(9) unsigned NOT NULL,
+  `acepted` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
@@ -402,74 +402,74 @@ CREATE TABLE IF NOT EXISTS `friendships` (
 --
 -- Estructura de tabla para la tabla `inventories`
 --
--- Creación: 06-08-2010 a las 13:07:39
--- Última actualización: 06-08-2010 a las 13:07:39
+-- Creación: 06-08-2010 a las 14:41:20
+-- Última actualización: 06-08-2010 a las 14:41:20
 --
 
 DROP TABLE IF EXISTS `inventories`;
 CREATE TABLE IF NOT EXISTS `inventories` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `food_1_amount` int(11) NOT NULL DEFAULT '0',
-  `food_2_amount` int(11) NOT NULL DEFAULT '0',
-  `food_3_amount` int(11) NOT NULL DEFAULT '0',
-  `food_4_amount` int(11) NOT NULL DEFAULT '0',
-  `food_5_amount` int(11) NOT NULL DEFAULT '0',
-  `gift_1_amount` int(11) NOT NULL DEFAULT '0',
-  `gift_2_amount` int(11) NOT NULL DEFAULT '0',
-  `gift_3_amount` int(11) NOT NULL DEFAULT '0',
-  `gift_4_amount` int(11) NOT NULL DEFAULT '0',
-  `gift_5_amount` int(11) NOT NULL DEFAULT '0',
-  `weapon_1_amount` int(11) NOT NULL DEFAULT '0',
-  `weapon_2_amount` int(11) NOT NULL DEFAULT '0',
-  `weapon_3_amount` int(11) NOT NULL DEFAULT '0',
-  `weapon_4_amount` int(11) NOT NULL DEFAULT '0',
-  `weapon_5_amount` int(11) NOT NULL DEFAULT '0',
-  `tickets_1_amount` int(11) NOT NULL DEFAULT '0',
-  `tickets_2_amount` int(11) NOT NULL DEFAULT '0',
-  `tickets_3_amount` int(11) NOT NULL DEFAULT '0',
-  `tickets_4_amount` int(11) NOT NULL DEFAULT '0',
-  `tickets_5_amount` int(11) NOT NULL DEFAULT '0',
-  `grain_1_amount` int(11) NOT NULL DEFAULT '0',
-  `grain_2_amount` int(11) NOT NULL DEFAULT '0',
-  `grain_3_amount` int(11) NOT NULL DEFAULT '0',
-  `grain_4_amount` int(11) NOT NULL DEFAULT '0',
-  `grain_5_amount` int(11) NOT NULL DEFAULT '0',
-  `diamonds_1_amount` int(11) NOT NULL DEFAULT '0',
-  `diamonds_2_amount` int(11) NOT NULL DEFAULT '0',
-  `diamonds_3_amount` int(11) NOT NULL DEFAULT '0',
-  `diamonds_4_amount` int(11) NOT NULL DEFAULT '0',
-  `diamonds_5_amount` int(11) NOT NULL DEFAULT '0',
-  `iron_1_amount` int(11) NOT NULL DEFAULT '0',
-  `iron_2_amount` int(11) NOT NULL DEFAULT '0',
-  `iron_3_amount` int(11) NOT NULL DEFAULT '0',
-  `iron_4_amount` int(11) NOT NULL DEFAULT '0',
-  `iron_5_amount` int(11) NOT NULL DEFAULT '0',
-  `oil_1_amount` int(11) NOT NULL DEFAULT '0',
-  `oil_2_amount` int(11) NOT NULL DEFAULT '0',
-  `oil_3_amount` int(11) NOT NULL DEFAULT '0',
-  `oil_4_amount` int(11) NOT NULL DEFAULT '0',
-  `oil_5_amount` int(11) NOT NULL DEFAULT '0',
-  `wood_1_amount` int(11) NOT NULL DEFAULT '0',
-  `wood_2_amount` int(11) NOT NULL DEFAULT '0',
-  `wood_3_amount` int(11) NOT NULL DEFAULT '0',
-  `wood_4_amount` int(11) NOT NULL DEFAULT '0',
-  `wood_5_amount` int(11) NOT NULL DEFAULT '0',
-  `house_1_amount` int(11) NOT NULL DEFAULT '0',
-  `house_2_amount` int(11) NOT NULL DEFAULT '0',
-  `house_3_amount` int(11) NOT NULL DEFAULT '0',
-  `house_4_amount` int(11) NOT NULL DEFAULT '0',
-  `house_5_amount` int(11) NOT NULL DEFAULT '0',
-  `hospital_1_amount` int(11) NOT NULL DEFAULT '0',
-  `hospital_2_amount` int(11) NOT NULL DEFAULT '0',
-  `hospital_3_amount` int(11) NOT NULL DEFAULT '0',
-  `hospital_4_amount` int(11) NOT NULL DEFAULT '0',
-  `hospital_5_amount` int(11) NOT NULL DEFAULT '0',
-  `defense_system_1_amount` int(11) NOT NULL DEFAULT '0',
-  `defense_system_2_amount` int(11) NOT NULL DEFAULT '0',
-  `defense_system_3_amount` int(11) NOT NULL DEFAULT '0',
-  `defense_system_4_amount` int(11) NOT NULL DEFAULT '0',
-  `defense_system_5_amount` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`ID`)
+  `id` int(9) unsigned NOT NULL AUTO_INCREMENT,
+  `food_1_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `food_2_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `food_3_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `food_4_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `food_5_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `gift_1_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `gift_2_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `gift_3_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `gift_4_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `gift_5_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `weapon_1_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `weapon_2_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `weapon_3_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `weapon_4_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `weapon_5_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `tickets_1_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `tickets_2_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `tickets_3_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `tickets_4_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `tickets_5_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `grain_1_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `grain_2_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `grain_3_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `grain_4_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `grain_5_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `diamonds_1_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `diamonds_2_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `diamonds_3_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `diamonds_4_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `diamonds_5_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `iron_1_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `iron_2_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `iron_3_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `iron_4_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `iron_5_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `oil_1_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `oil_2_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `oil_3_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `oil_4_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `oil_5_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `wood_1_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `wood_2_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `wood_3_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `wood_4_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `wood_5_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `house_1_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `house_2_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `house_3_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `house_4_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `house_5_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `hospital_1_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `hospital_2_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `hospital_3_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `hospital_4_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `hospital_5_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `defense_system_1_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `defense_system_2_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `defense_system_3_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `defense_system_4_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `defense_system_5_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
@@ -482,20 +482,20 @@ CREATE TABLE IF NOT EXISTS `inventories` (
 --
 -- Estructura de tabla para la tabla `market`
 --
--- Creación: 06-08-2010 a las 13:07:39
--- Última actualización: 06-08-2010 a las 13:07:39
+-- Creación: 06-08-2010 a las 14:35:41
+-- Última actualización: 06-08-2010 a las 14:35:41
 --
 
 DROP TABLE IF EXISTS `market`;
 CREATE TABLE IF NOT EXISTS `market` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `amount` int(11) NOT NULL,
-  `price` int(11) NOT NULL,
-  `type` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `currency` int(11) NOT NULL,
-  `country` int(11) NOT NULL,
-  PRIMARY KEY (`ID`)
+  `id` int(9) unsigned NOT NULL AUTO_INCREMENT,
+  `amount` bigint(20) unsigned NOT NULL,
+  `price` bigint(20) unsigned NOT NULL,
+  `type` tinyint(3) unsigned NOT NULL,
+  `company_id` int(9) unsigned NOT NULL,
+  `currency` tinyint(3) unsigned NOT NULL,
+  `country` int(9) unsigned NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
@@ -508,20 +508,20 @@ CREATE TABLE IF NOT EXISTS `market` (
 --
 -- Estructura de tabla para la tabla `messages`
 --
--- Creación: 06-08-2010 a las 13:07:39
--- Última actualización: 06-08-2010 a las 13:07:39
+-- Creación: 06-08-2010 a las 14:30:40
+-- Última actualización: 06-08-2010 a las 14:30:40
 --
 
 DROP TABLE IF EXISTS `messages`;
 CREATE TABLE IF NOT EXISTS `messages` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `from_id` int(11) NOT NULL,
-  `to_id` int(11) NOT NULL,
-  `subject` text CHARACTER SET ucs2 COLLATE ucs2_spanish_ci NOT NULL,
+  `id` int(9) unsigned NOT NULL AUTO_INCREMENT,
+  `from_id` int(9) unsigned NOT NULL,
+  `to_id` int(9) unsigned NOT NULL,
+  `subject` varchar(50) CHARACTER SET utf8 NOT NULL,
   `content` text CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `received` int(11) NOT NULL DEFAULT '0',
-  `sent_time` int(11) NOT NULL,
-  PRIMARY KEY (`ID`)
+  `received` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `sent_time` int(11) unsigned NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
@@ -534,17 +534,17 @@ CREATE TABLE IF NOT EXISTS `messages` (
 --
 -- Estructura de tabla para la tabla `newspapers`
 --
--- Creación: 06-08-2010 a las 13:07:39
--- Última actualización: 06-08-2010 a las 13:07:39
+-- Creación: 06-08-2010 a las 14:13:49
+-- Última actualización: 06-08-2010 a las 14:13:49
 --
 
 DROP TABLE IF EXISTS `newspapers`;
 CREATE TABLE IF NOT EXISTS `newspapers` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `name` text CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `founder_id` int(11) NOT NULL,
-  `localization` int(11) NOT NULL,
-  PRIMARY KEY (`ID`)
+  `id` int(9) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `founder_id` int(9) unsigned NOT NULL,
+  `localization` int(9) unsigned NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
@@ -557,19 +557,19 @@ CREATE TABLE IF NOT EXISTS `newspapers` (
 --
 -- Estructura de tabla para la tabla `parties`
 --
--- Creación: 06-08-2010 a las 13:07:39
--- Última actualización: 06-08-2010 a las 13:07:39
+-- Creación: 06-08-2010 a las 14:16:27
+-- Última actualización: 06-08-2010 a las 14:16:27
 --
 
 DROP TABLE IF EXISTS `parties`;
 CREATE TABLE IF NOT EXISTS `parties` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `name` text CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `founder_id` int(11) NOT NULL,
-  `president_id` int(11) NOT NULL,
-  `country_id` int(11) NOT NULL,
-  `orientation` int(11) NOT NULL,
-  `Gold` int(11) NOT NULL DEFAULT '0',
+  `id` int(9) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `founder_id` int(9) unsigned NOT NULL,
+  `president_id` int(9) unsigned NOT NULL,
+  `country_id` int(9) unsigned NOT NULL,
+  `orientation` varchar(25) CHARACTER SET utf8 NOT NULL,
+  `money_mp` bigint(20) unsigned NOT NULL DEFAULT '0',
   `ARS` bigint(20) unsigned NOT NULL DEFAULT '0',
   `ATS` bigint(20) unsigned NOT NULL DEFAULT '0',
   `AUD` bigint(20) unsigned NOT NULL DEFAULT '0',
@@ -630,7 +630,7 @@ CREATE TABLE IF NOT EXISTS `parties` (
   `UYU` bigint(20) unsigned NOT NULL DEFAULT '0',
   `VEB` bigint(20) unsigned NOT NULL DEFAULT '0',
   `ZAR` bigint(20) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`ID`)
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
@@ -643,17 +643,17 @@ CREATE TABLE IF NOT EXISTS `parties` (
 --
 -- Estructura de tabla para la tabla `shouts`
 --
--- Creación: 06-08-2010 a las 13:07:39
--- Última actualización: 06-08-2010 a las 13:07:39
+-- Creación: 06-08-2010 a las 14:21:46
+-- Última actualización: 06-08-2010 a las 14:21:46
 --
 
 DROP TABLE IF EXISTS `shouts`;
 CREATE TABLE IF NOT EXISTS `shouts` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
-  `time` int(11) NOT NULL,
-  `content` text CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  PRIMARY KEY (`ID`)
+  `id` int(9) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(9) unsigned NOT NULL,
+  `time` int(11) unsigned NOT NULL,
+  `content` varchar(200) CHARACTER SET utf8 NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
@@ -666,22 +666,22 @@ CREATE TABLE IF NOT EXISTS `shouts` (
 --
 -- Estructura de tabla para la tabla `states`
 --
--- Creación: 06-08-2010 a las 13:07:39
--- Última actualización: 06-08-2010 a las 13:07:39
+-- Creación: 06-08-2010 a las 14:44:37
+-- Última actualización: 06-08-2010 a las 14:44:37
 --
 
 DROP TABLE IF EXISTS `states`;
 CREATE TABLE IF NOT EXISTS `states` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `name` text CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `country_id` int(11) NOT NULL,
+  `id` int(9) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) CHARACTER SET utf8 NOT NULL,
+  `country_id` int(9) unsigned NOT NULL,
   `defense_sistem` int(11) NOT NULL DEFAULT '0',
-  `hospital` int(11) NOT NULL DEFAULT '0',
-  `hierro_production` int(11) NOT NULL DEFAULT '0',
-  `grano_production` int(11) NOT NULL DEFAULT '0',
+  `hospital` int(11) unsigned NOT NULL DEFAULT '0',
+  `iron_production` int(11) NOT NULL DEFAULT '0',
+  `grain_production` int(11) unsigned NOT NULL DEFAULT '0',
   `diamonds_production` int(11) NOT NULL DEFAULT '0',
-  `petroleo_production` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`ID`)
+  `oil_production` int(11) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
@@ -694,15 +694,15 @@ CREATE TABLE IF NOT EXISTS `states` (
 --
 -- Estructura de tabla para la tabla `suscriptions`
 --
--- Creación: 06-08-2010 a las 13:07:39
--- Última actualización: 06-08-2010 a las 13:07:39
+-- Creación: 06-08-2010 a las 14:44:57
+-- Última actualización: 06-08-2010 a las 14:44:57
 --
 
 DROP TABLE IF EXISTS `suscriptions`;
 CREATE TABLE IF NOT EXISTS `suscriptions` (
   `id` int(9) unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
-  `newspaper_id` int(11) NOT NULL,
+  `user_id` int(9) unsigned NOT NULL,
+  `newspaper_id` int(9) unsigned NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 

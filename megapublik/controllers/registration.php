@@ -24,7 +24,7 @@ class Registration extends Controller {
 		$data['countries']		= '';
 		foreach ($query->result() as $country)
 		{
-			$data['countries']	.= '<option value="'. $country->ID .'">'. $country->name .'</option>';
+			$data['countries']	.= '<option value="'. $country->id .'">'. $country->name .'</option>';
 		}
 		
 		$this->load->view('register', $data);
