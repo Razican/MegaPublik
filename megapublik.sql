@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 3.2.4
+-- version 3.3.2deb1
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 06-08-2010 a las 14:46:15
+-- Tiempo de generación: 13-08-2010 a las 21:39:34
 -- Versión del servidor: 5.1.41
--- Versión de PHP: 5.3.1
+-- Versión de PHP: 5.3.2-1ubuntu4.2
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -24,21 +24,20 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 -- Estructura de tabla para la tabla `alerts`
 --
--- Creación: 06-08-2010 a las 13:07:39
--- Última actualización: 06-08-2010 a las 13:07:39
+-- Creación: 13-08-2010 a las 21:25:05
 --
 
 DROP TABLE IF EXISTS `alerts`;
 CREATE TABLE IF NOT EXISTS `alerts` (
-  `id` int(9) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `alert_type` tinyint(1) unsigned NOT NULL,
-  `user_id` int(9) unsigned NOT NULL,
+  `user_id` int(11) unsigned NOT NULL,
   `received` tinyint(1) NOT NULL DEFAULT '0',
-  `friend_id` int(9) unsigned DEFAULT NULL,
+  `friend_id` int(11) unsigned DEFAULT NULL,
   `new_level` tinyint(3) unsigned DEFAULT NULL,
-  `company_id` int(9) unsigned DEFAULT NULL,
+  `company_id` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Volcar la base de datos para la tabla `alerts`
@@ -50,20 +49,19 @@ CREATE TABLE IF NOT EXISTS `alerts` (
 --
 -- Estructura de tabla para la tabla `articles`
 --
--- Creación: 06-08-2010 a las 14:34:49
--- Última actualización: 06-08-2010 a las 14:34:49
+-- Creación: 13-08-2010 a las 21:25:22
 --
 
 DROP TABLE IF EXISTS `articles`;
 CREATE TABLE IF NOT EXISTS `articles` (
-  `id` int(9) unsigned NOT NULL AUTO_INCREMENT,
-  `title` varchar(50) CHARACTER SET utf8 NOT NULL,
-  `content` text CHARACTER SET utf8 NOT NULL,
-  `newspaper_id` int(9) unsigned NOT NULL,
-  `owner_id` int(9) unsigned NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) NOT NULL,
+  `content` text NOT NULL,
+  `newspaper_id` int(11) unsigned NOT NULL,
+  `owner_id` int(11) unsigned NOT NULL,
   `time` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Volcar la base de datos para la tabla `articles`
@@ -75,19 +73,18 @@ CREATE TABLE IF NOT EXISTS `articles` (
 --
 -- Estructura de tabla para la tabla `article_comments`
 --
--- Creación: 06-08-2010 a las 14:33:42
--- Última actualización: 06-08-2010 a las 14:33:42
+-- Creación: 13-08-2010 a las 21:26:19
 --
 
 DROP TABLE IF EXISTS `article_comments`;
 CREATE TABLE IF NOT EXISTS `article_comments` (
-  `id` int(9) unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` int(9) unsigned NOT NULL,
-  `article_id` int(9) unsigned NOT NULL,
-  `content` text CHARACTER SET utf8 NOT NULL,
-  `time` int(11) NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) unsigned NOT NULL,
+  `article_id` int(11) unsigned NOT NULL,
+  `content` text NOT NULL,
+  `time` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Volcar la base de datos para la tabla `article_comments`
@@ -99,17 +96,16 @@ CREATE TABLE IF NOT EXISTS `article_comments` (
 --
 -- Estructura de tabla para la tabla `article_votes`
 --
--- Creación: 06-08-2010 a las 13:07:39
--- Última actualización: 06-08-2010 a las 13:07:39
+-- Creación: 13-08-2010 a las 21:26:33
 --
 
 DROP TABLE IF EXISTS `article_votes`;
 CREATE TABLE IF NOT EXISTS `article_votes` (
-  `id` int(9) unsigned NOT NULL AUTO_INCREMENT,
-  `article_id` int(9) unsigned NOT NULL,
-  `user_id` int(9) unsigned NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `article_id` int(11) unsigned NOT NULL,
+  `user_id` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Volcar la base de datos para la tabla `article_votes`
@@ -121,17 +117,16 @@ CREATE TABLE IF NOT EXISTS `article_votes` (
 --
 -- Estructura de tabla para la tabla `borders`
 --
--- Creación: 06-08-2010 a las 13:07:39
--- Última actualización: 06-08-2010 a las 13:07:39
+-- Creación: 13-08-2010 a las 21:26:55
 --
 
 DROP TABLE IF EXISTS `borders`;
 CREATE TABLE IF NOT EXISTS `borders` (
-  `id` int(9) unsigned NOT NULL AUTO_INCREMENT,
-  `state_1_id` int(9) unsigned NOT NULL,
-  `state_2_id` int(9) unsigned NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `state_1_id` int(11) unsigned NOT NULL,
+  `state_2_id` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Volcar la base de datos para la tabla `borders`
@@ -143,21 +138,20 @@ CREATE TABLE IF NOT EXISTS `borders` (
 --
 -- Estructura de tabla para la tabla `companies`
 --
--- Creación: 06-08-2010 a las 14:32:22
--- Última actualización: 06-08-2010 a las 14:32:22
+-- Creación: 13-08-2010 a las 21:27:16
 --
 
 DROP TABLE IF EXISTS `companies`;
 CREATE TABLE IF NOT EXISTS `companies` (
-  `id` int(9) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) CHARACTER SET utf8 NOT NULL,
-  `owner_id` int(9) unsigned NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `owner_id` int(11) unsigned NOT NULL,
   `type` tinyint(3) unsigned NOT NULL,
   `non_stock` bigint(20) unsigned NOT NULL DEFAULT '0',
   `stock` bigint(20) unsigned NOT NULL DEFAULT '0',
   `raw_materials` bigint(20) unsigned NOT NULL DEFAULT '0',
   `quality` tinyint(1) unsigned NOT NULL DEFAULT '1',
-  `localization` int(9) unsigned NOT NULL,
+  `localization` int(11) unsigned NOT NULL,
   `money_mp` bigint(20) unsigned NOT NULL DEFAULT '0',
   `ARS` bigint(20) unsigned NOT NULL DEFAULT '0',
   `ATS` bigint(20) unsigned NOT NULL DEFAULT '0',
@@ -220,7 +214,7 @@ CREATE TABLE IF NOT EXISTS `companies` (
   `VEB` bigint(20) unsigned NOT NULL DEFAULT '0',
   `ZAR` bigint(20) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Volcar la base de datos para la tabla `companies`
@@ -232,16 +226,15 @@ CREATE TABLE IF NOT EXISTS `companies` (
 --
 -- Estructura de tabla para la tabla `countries`
 --
--- Creación: 06-08-2010 a las 14:00:01
--- Última actualización: 06-08-2010 a las 14:00:46
+-- Creación: 13-08-2010 a las 21:27:34
 --
 
 DROP TABLE IF EXISTS `countries`;
 CREATE TABLE IF NOT EXISTS `countries` (
-  `id` int(9) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(20) CHARACTER SET utf8 NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) NOT NULL,
   `currency` tinyint(3) unsigned NOT NULL,
-  `president_id` int(9) unsigned NOT NULL,
+  `president_id` int(11) unsigned NOT NULL,
   `food_income_tax` tinyint(3) unsigned NOT NULL DEFAULT '1',
   `food_import_tax` tinyint(3) unsigned NOT NULL DEFAULT '1',
   `food_vat_tax` tinyint(3) unsigned NOT NULL DEFAULT '1',
@@ -335,7 +328,7 @@ CREATE TABLE IF NOT EXISTS `countries` (
   `VEB` bigint(20) unsigned NOT NULL DEFAULT '0',
   `ZAR` bigint(20) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Volcar la base de datos para la tabla `countries`
@@ -350,24 +343,23 @@ INSERT INTO `countries` (`id`, `name`, `currency`, `president_id`, `food_income_
 --
 -- Estructura de tabla para la tabla `decisions`
 --
--- Creación: 06-08-2010 a las 14:28:59
--- Última actualización: 06-08-2010 a las 14:28:59
+-- Creación: 13-08-2010 a las 21:30:25
 --
 
 DROP TABLE IF EXISTS `decisions`;
 CREATE TABLE IF NOT EXISTS `decisions` (
-  `id` int(9) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `type` tinyint(3) unsigned NOT NULL,
-  `country_id` int(9) unsigned NOT NULL,
-  `country_involved` int(9) unsigned DEFAULT NULL,
-  `money_to` int(9) unsigned DEFAULT NULL,
-  `how_much_money` int(11) unsigned DEFAULT NULL,
+  `country_id` int(11) unsigned NOT NULL,
+  `country_involved` int(11) unsigned DEFAULT NULL,
+  `money_to` int(11) unsigned DEFAULT NULL,
+  `how_much_money` bigint(20) unsigned DEFAULT NULL,
   `object_type` tinyint(3) unsigned DEFAULT NULL,
   `new_income_tax` tinyint(3) unsigned DEFAULT NULL,
   `new_import_tax` tinyint(3) unsigned DEFAULT NULL,
   `new_vat_tax` tinyint(3) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Volcar la base de datos para la tabla `decisions`
@@ -379,18 +371,17 @@ CREATE TABLE IF NOT EXISTS `decisions` (
 --
 -- Estructura de tabla para la tabla `friendships`
 --
--- Creación: 06-08-2010 a las 14:26:35
--- Última actualización: 06-08-2010 a las 14:26:35
+-- Creación: 13-08-2010 a las 21:33:28
 --
 
 DROP TABLE IF EXISTS `friendships`;
 CREATE TABLE IF NOT EXISTS `friendships` (
-  `id` int(9) unsigned NOT NULL AUTO_INCREMENT,
-  `user_1_id` int(9) unsigned NOT NULL,
-  `user_2_id` int(9) unsigned NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `user_1_id` int(11) unsigned NOT NULL,
+  `user_2_id` int(11) unsigned NOT NULL,
   `acepted` tinyint(1) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Volcar la base de datos para la tabla `friendships`
@@ -402,13 +393,12 @@ CREATE TABLE IF NOT EXISTS `friendships` (
 --
 -- Estructura de tabla para la tabla `inventories`
 --
--- Creación: 06-08-2010 a las 14:41:20
--- Última actualización: 06-08-2010 a las 14:41:20
+-- Creación: 13-08-2010 a las 21:35:19
 --
 
 DROP TABLE IF EXISTS `inventories`;
 CREATE TABLE IF NOT EXISTS `inventories` (
-  `id` int(9) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `food_1_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `food_2_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `food_3_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
@@ -470,7 +460,7 @@ CREATE TABLE IF NOT EXISTS `inventories` (
   `defense_system_4_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `defense_system_5_amount` tinyint(1) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Volcar la base de datos para la tabla `inventories`
@@ -482,21 +472,20 @@ CREATE TABLE IF NOT EXISTS `inventories` (
 --
 -- Estructura de tabla para la tabla `market`
 --
--- Creación: 06-08-2010 a las 14:35:41
--- Última actualización: 06-08-2010 a las 14:35:41
+-- Creación: 13-08-2010 a las 21:35:31
 --
 
 DROP TABLE IF EXISTS `market`;
 CREATE TABLE IF NOT EXISTS `market` (
-  `id` int(9) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `amount` bigint(20) unsigned NOT NULL,
   `price` bigint(20) unsigned NOT NULL,
   `type` tinyint(3) unsigned NOT NULL,
-  `company_id` int(9) unsigned NOT NULL,
+  `company_id` int(11) unsigned NOT NULL,
   `currency` tinyint(3) unsigned NOT NULL,
-  `country` int(9) unsigned NOT NULL,
+  `country` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Volcar la base de datos para la tabla `market`
@@ -508,21 +497,20 @@ CREATE TABLE IF NOT EXISTS `market` (
 --
 -- Estructura de tabla para la tabla `messages`
 --
--- Creación: 06-08-2010 a las 14:30:40
--- Última actualización: 06-08-2010 a las 14:30:40
+-- Creación: 13-08-2010 a las 21:35:45
 --
 
 DROP TABLE IF EXISTS `messages`;
 CREATE TABLE IF NOT EXISTS `messages` (
-  `id` int(9) unsigned NOT NULL AUTO_INCREMENT,
-  `from_id` int(9) unsigned NOT NULL,
-  `to_id` int(9) unsigned NOT NULL,
-  `subject` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `from_id` int(11) unsigned NOT NULL,
+  `to_id` int(11) unsigned NOT NULL,
+  `subject` varchar(50) NOT NULL,
   `content` text CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `received` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `sent_time` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Volcar la base de datos para la tabla `messages`
@@ -534,18 +522,17 @@ CREATE TABLE IF NOT EXISTS `messages` (
 --
 -- Estructura de tabla para la tabla `newspapers`
 --
--- Creación: 06-08-2010 a las 14:13:49
--- Última actualización: 06-08-2010 a las 14:13:49
+-- Creación: 13-08-2010 a las 21:36:37
 --
 
 DROP TABLE IF EXISTS `newspapers`;
 CREATE TABLE IF NOT EXISTS `newspapers` (
-  `id` int(9) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) CHARACTER SET utf8 NOT NULL,
-  `founder_id` int(9) unsigned NOT NULL,
-  `localization` int(9) unsigned NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `founder_id` int(11) unsigned NOT NULL,
+  `localization` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Volcar la base de datos para la tabla `newspapers`
@@ -557,18 +544,17 @@ CREATE TABLE IF NOT EXISTS `newspapers` (
 --
 -- Estructura de tabla para la tabla `parties`
 --
--- Creación: 06-08-2010 a las 14:16:27
--- Última actualización: 06-08-2010 a las 14:16:27
+-- Creación: 13-08-2010 a las 21:36:53
 --
 
 DROP TABLE IF EXISTS `parties`;
 CREATE TABLE IF NOT EXISTS `parties` (
-  `id` int(9) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) CHARACTER SET utf8 NOT NULL,
-  `founder_id` int(9) unsigned NOT NULL,
-  `president_id` int(9) unsigned NOT NULL,
-  `country_id` int(9) unsigned NOT NULL,
-  `orientation` varchar(25) CHARACTER SET utf8 NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `founder_id` int(11) unsigned NOT NULL,
+  `president_id` int(11) unsigned NOT NULL,
+  `country_id` int(11) unsigned NOT NULL,
+  `orientation` varchar(25) NOT NULL,
   `money_mp` bigint(20) unsigned NOT NULL DEFAULT '0',
   `ARS` bigint(20) unsigned NOT NULL DEFAULT '0',
   `ATS` bigint(20) unsigned NOT NULL DEFAULT '0',
@@ -631,7 +617,7 @@ CREATE TABLE IF NOT EXISTS `parties` (
   `VEB` bigint(20) unsigned NOT NULL DEFAULT '0',
   `ZAR` bigint(20) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Volcar la base de datos para la tabla `parties`
@@ -643,18 +629,17 @@ CREATE TABLE IF NOT EXISTS `parties` (
 --
 -- Estructura de tabla para la tabla `shouts`
 --
--- Creación: 06-08-2010 a las 14:21:46
--- Última actualización: 06-08-2010 a las 14:21:46
+-- Creación: 13-08-2010 a las 21:37:04
 --
 
 DROP TABLE IF EXISTS `shouts`;
 CREATE TABLE IF NOT EXISTS `shouts` (
-  `id` int(9) unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` int(9) unsigned NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) unsigned NOT NULL,
   `time` int(11) unsigned NOT NULL,
-  `content` varchar(200) CHARACTER SET utf8 NOT NULL,
+  `content` varchar(200) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Volcar la base de datos para la tabla `shouts`
@@ -666,23 +651,22 @@ CREATE TABLE IF NOT EXISTS `shouts` (
 --
 -- Estructura de tabla para la tabla `states`
 --
--- Creación: 06-08-2010 a las 14:44:37
--- Última actualización: 06-08-2010 a las 14:44:37
+-- Creación: 13-08-2010 a las 21:37:42
 --
 
 DROP TABLE IF EXISTS `states`;
 CREATE TABLE IF NOT EXISTS `states` (
-  `id` int(9) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(20) CHARACTER SET utf8 NOT NULL,
-  `country_id` int(9) unsigned NOT NULL,
-  `defense_sistem` int(11) NOT NULL DEFAULT '0',
-  `hospital` int(11) unsigned NOT NULL DEFAULT '0',
-  `iron_production` int(11) NOT NULL DEFAULT '0',
-  `grain_production` int(11) unsigned NOT NULL DEFAULT '0',
-  `diamonds_production` int(11) NOT NULL DEFAULT '0',
-  `oil_production` int(11) unsigned NOT NULL DEFAULT '0',
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) NOT NULL,
+  `country_id` int(11) unsigned NOT NULL,
+  `defense_sistem` tinyint(2) unsigned NOT NULL DEFAULT '0',
+  `hospital` tinyint(2) unsigned NOT NULL DEFAULT '0',
+  `iron_production` tinyint(2) unsigned NOT NULL DEFAULT '0',
+  `grain_production` tinyint(2) unsigned NOT NULL DEFAULT '0',
+  `diamonds_production` tinyint(2) unsigned NOT NULL DEFAULT '0',
+  `oil_production` tinyint(2) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Volcar la base de datos para la tabla `states`
@@ -694,17 +678,16 @@ CREATE TABLE IF NOT EXISTS `states` (
 --
 -- Estructura de tabla para la tabla `suscriptions`
 --
--- Creación: 06-08-2010 a las 14:44:57
--- Última actualización: 06-08-2010 a las 14:44:57
+-- Creación: 13-08-2010 a las 21:37:52
 --
 
 DROP TABLE IF EXISTS `suscriptions`;
 CREATE TABLE IF NOT EXISTS `suscriptions` (
-  `id` int(9) unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` int(9) unsigned NOT NULL,
-  `newspaper_id` int(9) unsigned NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) unsigned NOT NULL,
+  `newspaper_id` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Volcar la base de datos para la tabla `suscriptions`
@@ -716,52 +699,50 @@ CREATE TABLE IF NOT EXISTS `suscriptions` (
 --
 -- Estructura de tabla para la tabla `users`
 --
--- Creación: 06-08-2010 a las 13:07:39
--- Última actualización: 06-08-2010 a las 13:07:39
+-- Creación: 13-08-2010 a las 21:38:04
 --
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(9) unsigned NOT NULL AUTO_INCREMENT,
-  `username` varchar(15) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `password` char(40) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `email` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `reg_IP` varchar(15) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(15) NOT NULL,
+  `password` char(40) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `reg_IP` varchar(15) NOT NULL,
   `last_IP` varchar(15) NOT NULL,
-  `location` int(9) NOT NULL,
-  `ref_id` int(9) unsigned DEFAULT NULL,
-  `validated` tinyint(1) NOT NULL DEFAULT '0',
-  `validation_str` char(15) CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL,
-  `hard_worker` int(11) NOT NULL DEFAULT '0',
-  `worked_days` int(11) NOT NULL DEFAULT '0',
-  `congress_member` int(11) NOT NULL DEFAULT '0',
-  `country_president` int(11) NOT NULL DEFAULT '0',
-  `media_mogul` int(11) NOT NULL DEFAULT '0',
-  `battle_hero` int(11) NOT NULL DEFAULT '0',
-  `resistance_hero` int(11) NOT NULL DEFAULT '0',
-  `super_soldier` int(11) NOT NULL DEFAULT '0',
-  `society_builder` int(11) NOT NULL DEFAULT '0',
-  `invited_people` int(11) NOT NULL DEFAULT '0',
-  `company_id` int(11) DEFAULT NULL,
-  `company_internal_level` int(11) DEFAULT '0',
-  `party_id` int(11) DEFAULT NULL,
-  `party_internal_level` int(11) DEFAULT '0',
-  `fights` int(11) NOT NULL DEFAULT '0',
-  `total_damage` int(11) NOT NULL DEFAULT '0',
-  `militar_rank` int(11) NOT NULL DEFAULT '1',
-  `wellness` int(11) NOT NULL DEFAULT '50',
-  `experience` int(11) NOT NULL DEFAULT '0',
-  `level` int(11) NOT NULL DEFAULT '1',
-  `manufacturing` int(11) NOT NULL DEFAULT '0',
-  `land` int(11) NOT NULL DEFAULT '0',
-  `constructions` int(11) NOT NULL DEFAULT '0',
-  `strength` int(11) NOT NULL DEFAULT '0',
-  `birthday` int(11) NOT NULL,
-  `forfeit_points` int(11) NOT NULL DEFAULT '0',
-  `congress_nr` int(11) NOT NULL DEFAULT '0',
-  `congress_country_id` int(11) NOT NULL,
-  `citizenship` int(11) NOT NULL,
-  `salary_amount` int(11) NOT NULL DEFAULT '0',
+  `location` int(11) unsigned NOT NULL,
+  `ref_id` int(11) unsigned DEFAULT NULL,
+  `validated` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `validation_str` char(15) NOT NULL,
+  `hard_worker` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `worked_days` tinyint(2) NOT NULL DEFAULT '0',
+  `congress_member` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `country_president` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `media_mogul` smallint(3) unsigned NOT NULL DEFAULT '0',
+  `battle_hero` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `resistance_hero` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `super_soldier` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `society_builder` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `invited_people` int(11) unsigned NOT NULL DEFAULT '0',
+  `company_id` int(11) unsigned DEFAULT NULL,
+  `company_internal_level` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `party_id` int(11) unsigned DEFAULT NULL,
+  `party_internal_level` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `fights` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `total_damage` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `militar_rank` tinyint(3) unsigned NOT NULL DEFAULT '1',
+  `wellness` tinyint(3) unsigned NOT NULL DEFAULT '50',
+  `experience` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `level` tinyint(3) unsigned NOT NULL DEFAULT '1',
+  `manufacturing` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `land` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `constructions` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `strength` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `birthday` int(11) unsigned NOT NULL,
+  `forfeit_points` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `congress_nr` tinyint(2) unsigned NOT NULL DEFAULT '0',
+  `citizenship` int(11) unsigned NOT NULL,
+  `salary_amount` bigint(20) unsigned NOT NULL DEFAULT '0',
   `salary_currency` tinyint(3) unsigned NOT NULL,
   `money_mp` bigint(20) unsigned NOT NULL DEFAULT '50000',
   `ARS` bigint(20) unsigned NOT NULL DEFAULT '0',
@@ -825,13 +806,9 @@ CREATE TABLE IF NOT EXISTS `users` (
   `VEB` bigint(20) unsigned NOT NULL DEFAULT '0',
   `ZAR` bigint(20) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=44 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Volcar la base de datos para la tabla `users`
 --
 
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
