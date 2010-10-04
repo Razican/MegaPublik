@@ -51,8 +51,6 @@ class Login extends Controller {
 						'name'		=> 'MegaPublik',
 						'value'		=> $value,
 						'expire'	=> $expire,
-						'domain'	=> 'localhost',
-                        'path'  	=> '/megapublik'
 					);
 
 					set_cookie($cookie);

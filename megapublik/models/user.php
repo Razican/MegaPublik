@@ -42,9 +42,9 @@ Class User extends CI_Model
 		}
 	}
 	
-	function data($ID, $table = 'users')
+	function data($id, $table = 'users')
 	{
-		$query			= $this->db->get_where($table, array('id' => $ID), '1');
+		$query			= $this->db->get_where($table, array('id' => $id), '1');
 		
 		foreach ($query->result() as $result)
 		{
@@ -69,7 +69,7 @@ Class User extends CI_Model
 			$return	=& $result;
 		}
 		
-		return $return->ID;
+		return $return->id;
 	}
 }
 

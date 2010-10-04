@@ -100,7 +100,10 @@ class Registration extends Controller {
 
 			$this->load->library('email');
 			
-			$config['protocol']	= 'sendmail';
+			$config['protocol']	= 'smtp';
+			$config['smtp_host']	= 'smtp.gmail.com';
+			$config['smtp_user']	= 'admin@megapublik.com';
+			$config['smtp_pass']	= 'verysecretpass';
 			$config['mailtype']	= 'html';
 
 			$this->email->initialize($config);
@@ -110,7 +113,7 @@ class Registration extends Controller {
 			$this->email->subject('Registro en MegaPublik');
 
 			$pattern			= array('%username%', '%password%', '%link%', '%url%');
-			$replacement		= array($this->input->post('username'), $this->input->post('password'), anchor('registration/validate/'. $validation_str, 'aquí'), site_url('registration/validate/'. $validation_str));
+			$replacement		= array($this->input->post('username'), $this->input->post('password'), anchor('registration/validate/'. $validation_str, lang('reg.here')), site_url('registration/validate/'. $validation_str));
 
 			$this->email->message(preg_replace($pattern, $replacement, lang('reg.message')));
 			$this->email->set_alt_message(preg_replace($pattern, $replacement, lang('reg.alt_message')));
@@ -141,7 +144,7 @@ class Registration extends Controller {
 			{
 				$user			=& $result;
 			}
-			$this->db->update('users', array('validated' => '1'), "ID = ". $user->ID);
+			$this->db->update('users', array('validated' => '1'), "id = ". $user->id);
 			$this->load->view('validation');
  		}
 	}
