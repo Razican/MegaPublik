@@ -1,6 +1,7 @@
 <html>
 	<head>
 		<title>MegaPublik</title>
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 	</head>
 	<body>
 		<?php echo form_open('registration/register'); ?>

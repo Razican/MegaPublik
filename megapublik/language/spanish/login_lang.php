@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 $lang['login.username']		= 'Usuario';
-$lang['login.password']		= 'Contraseña';
+$lang['login.password']		= 'ContraseÃ±a';
 $lang['login.remember']		= 'Recordarme';
 $lang['login.submit']		= 'Entrar';
 

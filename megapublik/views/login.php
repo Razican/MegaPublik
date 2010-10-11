@@ -1,6 +1,7 @@
 <html>
 	<head>
 		<title>MegaPublik</title>
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 	</head>
 	<body>
 		<?php echo form_open('login'); ?>
@@ -10,6 +11,6 @@
 			<?php echo lang('login.remember'); ?>: <input type="checkbox" name="remember" />
 			<input type="submit" value="<?php echo lang('login.submit'); ?>" name="submit" />
 		</form><?php echo br(2); ?>
-		<?php echo anchor('registration', 'Regístrate'); ?>
+		<?php echo anchor('registration', 'RegÃ­strate'); ?>
 	</body>
 </html>
