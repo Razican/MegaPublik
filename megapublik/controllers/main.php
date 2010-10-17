@@ -12,6 +12,9 @@ class Main extends Controller {
 		if($this->user->is_checked())
 		{
 			$this->lang->load('ingame');
+			define ('INGAME', TRUE);
+			$head['help']		= lang('ingame.help');
+			$data['head']		= $this->load->view('head', $head, TRUE);
 			$user_id			= $this->user->id();
 			$data['user']		= $this->user->data($user_id);
 			$data['country']	= $this->user->data($data['user']->location, 'countries');
@@ -19,8 +22,10 @@ class Main extends Controller {
 		}
 		else
 		{
+			$data['head']		= $this->load->view('head', '', TRUE);
+			$data['footer']		= $this->load->view('footer', '', TRUE);
 			$this->lang->load('login');
-			$this->load->view('login');	
+			$this->load->view('login', $data);	
 		}
 	}
 }

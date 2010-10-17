@@ -1,9 +1,4 @@
-<html>
-	<head>
-		<title>MegaPublik</title>
-		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-	</head>
-	<body>
+<?php echo $head; ?>
 		<?php echo form_open('login'); ?>
 			Login: <br />
 			<?php echo lang('login.username'); ?>: <input type="text" name="username" /><br />
@@ -12,5 +7,4 @@
 			<input type="submit" value="<?php echo lang('login.submit'); ?>" name="submit" />
 		</form><?php echo br(2); ?>
 		<?php echo anchor('registration', 'Regístrate'); ?>
-	</body>
-</html>
+<?php echo $footer; ?>

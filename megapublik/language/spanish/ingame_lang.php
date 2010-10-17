@@ -7,6 +7,7 @@ $lang['ingame.location']	= 'Ahora mismo vives en este país';
 $lang['ingame.money']		= 'Actualmente dispones de estos MPs (dinero)';
 $lang['ingame.currency']	= 'Esta es la ID de la moneda oficial de tu país';
 $lang['ingame.logout']		= 'Salir';
+$lang['ingame.help']		= 'Esta es la barra de ayuda.';
 
 /* End of file ingame_lang.php */
 /* Location: ./system/application/language/spanish/ingame_lang.php */

@@ -1,0 +1,10 @@
+body {
+	background: url("../images/background.jpg") no-repeat top right;
+
+}
+img {
+	border-width:0;
+}
+.footer {
+	text-align: center;
+}

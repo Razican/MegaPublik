@@ -1,9 +1,4 @@
-<html>
-	<head>
-		<title>MegaPublik</title>
-		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-	</head>
-	<body>
+<?php echo $head; ?>
 		<?php echo form_open('registration/register'); ?>
 			<?php echo lang('reg.username'); ?>: <input type="text" name="username" /><?php echo br(2); ?>
 			<?php echo lang('reg.password'); ?>: <input type="password" name="password" /><?php echo br(2); ?>

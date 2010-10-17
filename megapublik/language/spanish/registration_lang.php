@@ -1,6 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-$lang['reg.title']			= 'Registro';
 $lang['reg.subject']		= 'Registro en MegaPublik';
 $lang['reg.message']		= 'Hola username. Te has registrado en MegaPublik, para validar tu cuenta, por favor, haz clic {unwrap}link{/unwrap}.<br />Tus datos son los siguientes: <br /><br />Usuario: username<br />Contraseña: password<br /><br /><u>Nota:</u> La contraseña se guarda encriptada en la base de datos, así que guárdala bien, porque no se podrá recuperar.';
 $lang['reg.alt_message']	= 'Hola username. Te has registrado en MegaPublik, para validar tu cuenta, por favor, copia y pega esta dirección en tu navegador {unwrap}url{/unwrap}.\nTus datos son los siguientes: \n\nUsuario: username\nContraseña: password\n\nNota: La contraseña se guarda encriptada en la base de datos, así que guárdala bien, porque no se podrá recuperar.';

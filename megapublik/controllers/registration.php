@@ -18,15 +18,13 @@ class Registration extends Controller {
 		}
 
 		$this->lang->load('registration');
-		
 		$query					= $this->db->get('countries');
-		
 		$data['countries']		= '';
 		foreach ($query->result() as $country)
 		{
 			$data['countries']	.= '<option value="'. $country->id .'">'. $country->name .'</option>';
 		}
-		
+		$data['head']		= $this->load->view('head', '', TRUE);
 		$this->load->view('register', $data);
 	}
 	
