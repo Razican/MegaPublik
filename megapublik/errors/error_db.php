@@ -31,11 +31,15 @@ h1 {
 font-weight:		normal;
 font-size:			14px;
 color:				#990000;
-margin: 			0 0 4px 0;
+margin:				0 0 4px 0;
 }
 </style>
 </head>
 <body>
+	<div class="head">
+		<div class="logo"><img alt="MegaPublik Logo" src="<?php echo site_url("images/logo.png"); ?>" /></div>
+		<?php if (defined('INGAME')) : ?><div class="help"><?php echo $help; ?></div><?php endif; ?>
+	</div>
 	<div id="content">
 		<h1><?php echo $heading; ?></h1>
 		<?php echo $message; ?>

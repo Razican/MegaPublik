@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 3.3.2deb1
+-- version 3.2.4
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 13-08-2010 a las 21:39:34
+-- Tiempo de generación: 23-10-2010 a las 16:20:52
 -- Versión del servidor: 5.1.41
--- Versión de PHP: 5.3.2-1ubuntu4.2
+-- Versión de PHP: 5.3.1
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -24,7 +24,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 -- Estructura de tabla para la tabla `alerts`
 --
--- Creación: 13-08-2010 a las 21:25:05
+-- Creación: 15-08-2010 a las 17:40:18
 --
 
 DROP TABLE IF EXISTS `alerts`;
@@ -39,17 +39,12 @@ CREATE TABLE IF NOT EXISTS `alerts` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `alerts`
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `articles`
 --
--- Creación: 13-08-2010 a las 21:25:22
+-- Creación: 15-08-2010 a las 17:40:18
 --
 
 DROP TABLE IF EXISTS `articles`;
@@ -63,17 +58,12 @@ CREATE TABLE IF NOT EXISTS `articles` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `articles`
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `article_comments`
 --
--- Creación: 13-08-2010 a las 21:26:19
+-- Creación: 15-08-2010 a las 17:40:18
 --
 
 DROP TABLE IF EXISTS `article_comments`;
@@ -86,17 +76,12 @@ CREATE TABLE IF NOT EXISTS `article_comments` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `article_comments`
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `article_votes`
 --
--- Creación: 13-08-2010 a las 21:26:33
+-- Creación: 15-08-2010 a las 17:40:18
 --
 
 DROP TABLE IF EXISTS `article_votes`;
@@ -107,17 +92,12 @@ CREATE TABLE IF NOT EXISTS `article_votes` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `article_votes`
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `borders`
 --
--- Creación: 13-08-2010 a las 21:26:55
+-- Creación: 15-08-2010 a las 17:40:18
 --
 
 DROP TABLE IF EXISTS `borders`;
@@ -128,17 +108,12 @@ CREATE TABLE IF NOT EXISTS `borders` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `borders`
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `companies`
 --
--- Creación: 13-08-2010 a las 21:27:16
+-- Creación: 15-08-2010 a las 17:40:18
 --
 
 DROP TABLE IF EXISTS `companies`;
@@ -216,17 +191,12 @@ CREATE TABLE IF NOT EXISTS `companies` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `companies`
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `countries`
 --
--- Creación: 13-08-2010 a las 21:27:34
+-- Creación: 15-08-2010 a las 17:40:18
 --
 
 DROP TABLE IF EXISTS `countries`;
@@ -330,9 +300,9 @@ CREATE TABLE IF NOT EXISTS `countries` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
---
--- Volcar la base de datos para la tabla `countries`
---
+---
+--- Volcar la base de datos para la tabla `countries`
+---
 
 INSERT INTO `countries` (`id`, `name`, `currency`, `president_id`, `food_income_tax`, `food_import_tax`, `food_vat_tax`, `gift_income_tax`, `gift_import_tax`, `gift_vat_tax`, `weapon_income_tax`, `weapon_import_tax`, `weapon_vat_tax`, `tickets_income_tax`, `tickets_import_tax`, `tickets_vat_tax`, `grain_income_tax`, `grain_import_tax`, `diamonds_income_tax`, `diamonds_import_tax`, `iron_income_tax`, `iron_import_tax`, `oil_income_tax`, `oil_import_tax`, `wood_income_tax`, `wood_import_tax`, `house_income_tax`, `house_import_tax`, `house_vat_tax`, `hospital_income_tax`, `hospital_import_tax`, `hospital_vat_tax`, `defense_system_income_tax`, `defense_system_import_tax`, `defense_system_vat_tax`, `money_mp`, `ARS`, `ATS`, `AUD`, `BAM`, `BEF`, `BGN`, `BOB`, `BRL`, `CAD`, `CHF`, `CLP`, `CNY`, `COP`, `CZK`, `DEM`, `DKK`, `EEK`, `ESP`, `FIM`, `FRF`, `GBP`, `GRD`, `HRK`, `HUF`, `IDR`, `IEP`, `INR`, `IRR`, `ITL`, `JPY`, `KPW`, `KRW`, `LTL`, `LVL`, `MDL`, `MXN`, `MYR`, `NIS`, `NLG`, `NOK`, `PEN`, `PHP`, `PKR`, `PLN`, `PTE`, `PYG`, `RON`, `RSD`, `RUB`, `SEK`, `SGD`, `SIT`, `SKK`, `THB`, `TRY`, `UAH`, `USD`, `UYU`, `VEB`, `ZAR`) VALUES
 (1, 'MegaPublik 1', 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
@@ -343,7 +313,7 @@ INSERT INTO `countries` (`id`, `name`, `currency`, `president_id`, `food_income_
 --
 -- Estructura de tabla para la tabla `decisions`
 --
--- Creación: 13-08-2010 a las 21:30:25
+-- Creación: 15-08-2010 a las 17:40:18
 --
 
 DROP TABLE IF EXISTS `decisions`;
@@ -361,17 +331,12 @@ CREATE TABLE IF NOT EXISTS `decisions` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `decisions`
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `friendships`
 --
--- Creación: 13-08-2010 a las 21:33:28
+-- Creación: 15-08-2010 a las 17:40:19
 --
 
 DROP TABLE IF EXISTS `friendships`;
@@ -383,17 +348,12 @@ CREATE TABLE IF NOT EXISTS `friendships` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `friendships`
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `inventories`
 --
--- Creación: 13-08-2010 a las 21:35:19
+-- Creación: 15-08-2010 a las 17:40:19
 --
 
 DROP TABLE IF EXISTS `inventories`;
@@ -462,17 +422,12 @@ CREATE TABLE IF NOT EXISTS `inventories` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `inventories`
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `market`
 --
--- Creación: 13-08-2010 a las 21:35:31
+-- Creación: 15-08-2010 a las 17:40:19
 --
 
 DROP TABLE IF EXISTS `market`;
@@ -481,23 +436,19 @@ CREATE TABLE IF NOT EXISTS `market` (
   `amount` bigint(20) unsigned NOT NULL,
   `price` bigint(20) unsigned NOT NULL,
   `type` tinyint(3) unsigned NOT NULL,
+  `time` int(11) unsigned NOT NULL,
   `company_id` int(11) unsigned NOT NULL,
   `currency` tinyint(3) unsigned NOT NULL,
   `country` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `market`
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `messages`
 --
--- Creación: 13-08-2010 a las 21:35:45
+-- Creación: 15-08-2010 a las 17:40:19
 --
 
 DROP TABLE IF EXISTS `messages`;
@@ -512,17 +463,12 @@ CREATE TABLE IF NOT EXISTS `messages` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `messages`
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `newspapers`
 --
--- Creación: 13-08-2010 a las 21:36:37
+-- Creación: 15-08-2010 a las 17:40:19
 --
 
 DROP TABLE IF EXISTS `newspapers`;
@@ -534,17 +480,12 @@ CREATE TABLE IF NOT EXISTS `newspapers` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `newspapers`
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `parties`
 --
--- Creación: 13-08-2010 a las 21:36:53
+-- Creación: 15-08-2010 a las 17:40:19
 --
 
 DROP TABLE IF EXISTS `parties`;
@@ -619,17 +560,30 @@ CREATE TABLE IF NOT EXISTS `parties` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
+-- --------------------------------------------------------
+
 --
--- Volcar la base de datos para la tabla `parties`
+-- Estructura de tabla para la tabla `sessions`
+--
+-- Creación: 23-10-2010 a las 16:16:43
 --
 
+DROP TABLE IF EXISTS `sessions`;
+CREATE TABLE IF NOT EXISTS `sessions` (
+  `session_id` varchar(40) NOT NULL DEFAULT '0',
+  `ip_address` varchar(16) NOT NULL DEFAULT '0',
+  `user_agent` varchar(50) NOT NULL,
+  `last_activity` int(10) unsigned NOT NULL DEFAULT '0',
+  `user_data` text NOT NULL,
+  PRIMARY KEY (`session_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `shouts`
 --
--- Creación: 13-08-2010 a las 21:37:04
+-- Creación: 15-08-2010 a las 17:40:19
 --
 
 DROP TABLE IF EXISTS `shouts`;
@@ -641,17 +595,12 @@ CREATE TABLE IF NOT EXISTS `shouts` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `shouts`
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `states`
 --
--- Creación: 13-08-2010 a las 21:37:42
+-- Creación: 15-08-2010 a las 17:40:19
 --
 
 DROP TABLE IF EXISTS `states`;
@@ -668,17 +617,12 @@ CREATE TABLE IF NOT EXISTS `states` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `states`
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `suscriptions`
 --
--- Creación: 13-08-2010 a las 21:37:52
+-- Creación: 15-08-2010 a las 17:40:19
 --
 
 DROP TABLE IF EXISTS `suscriptions`;
@@ -689,17 +633,12 @@ CREATE TABLE IF NOT EXISTS `suscriptions` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `suscriptions`
---
-
-
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `users`
 --
--- Creación: 13-08-2010 a las 21:38:04
+-- Creación: 15-08-2010 a las 17:40:19
 --
 
 DROP TABLE IF EXISTS `users`;
@@ -806,9 +745,8 @@ CREATE TABLE IF NOT EXISTS `users` (
   `VEB` bigint(20) unsigned NOT NULL DEFAULT '0',
   `ZAR` bigint(20) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
---
--- Volcar la base de datos para la tabla `users`
---
-
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -12,7 +12,7 @@ class Logout extends Controller {
 		if($this->user->is_checked())
 		{
 			$this->load->helper('cookie');
-			delete_cookie('MegaPublik', '127.0.0.1', '/megapublik');
+			delete_cookie('MegaPublik');
 		}
 		redirect('/');
 	}
