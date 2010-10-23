@@ -1,10 +1,12 @@
 <?php echo $head; ?>
+		<div class="content">
 		<?php echo form_open('login'); ?>
-			Login: <br />
-			<?php echo lang('login.username'); ?>: <input type="text" name="username" /><br />
-			<?php echo lang('login.password'); ?>: <input type="password" name="password" /><br /><br />
-			<?php echo lang('login.remember'); ?>: <input type="checkbox" name="remember" />
-			<input type="submit" value="<?php echo lang('login.submit'); ?>" name="submit" />
-		</form><?php echo br(2); ?>
-		<?php echo anchor('registration', 'Regístrate'); ?>
+			<h1>Login:</h1>
+			<div class="login-input"><label><?php echo lang('login.username'); ?>:</label> <input type="text" name="username" /></div>
+			<div class="login-input"><label><?php echo lang('login.password'); ?>:</label> <input type="password" name="password" /></div>
+			<div class="login-input"><label><?php echo lang('login.remember'); ?>:</label> <input type="checkbox" name="remember" /></div>
+			<div class="login-input"><input type="submit" value="<?php echo lang('login.submit'); ?>" name="submit" /></div>
+		</form>
+		<?php echo anchor('registration', lang('login.register')); ?>
+		</div>
 <?php echo $footer; ?>

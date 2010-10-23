@@ -13,6 +13,7 @@ $lang['reg.email']			= 'Correo electrónico';
 $lang['reg.country']		= 'País';
 $lang['reg.submit']			= 'Regístrate';
 $lang['reg.here']			= 'aquí';
+$lang['reg.go_back']		= 'Volver';
 
 /* End of file registration_lang.php */
 /* Location: ./system/application/language/spanish/registration_lang.php */

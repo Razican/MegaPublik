@@ -25,6 +25,7 @@ class Registration extends Controller {
 			$data['countries']	.= '<option value="'. $country->id .'">'. $country->name .'</option>';
 		}
 		$data['head']		= $this->load->view('head', '', TRUE);
+		$data['footer']		= $this->load->view('footer', '', TRUE);
 		$this->load->view('register', $data);
 	}
 	
@@ -119,7 +120,9 @@ class Registration extends Controller {
             //mail desde view
 			$this->email->send();
 
-			$this->load->view('registration');
+			$data['head']		= $this->load->view('head', '', TRUE);
+			$data['footer']		= $this->load->view('footer', '', TRUE);
+			$this->load->view('registration', $data);
 		}
 	}
 	
@@ -143,7 +146,10 @@ class Registration extends Controller {
 				$user			=& $result;
 			}
 			$this->db->update('users', array('validated' => '1'), "id = ". $user->id);
-			$this->load->view('validation');
+
+			$data['head']		= $this->load->view('head', '', TRUE);
+			$data['footer']		= $this->load->view('footer', '', TRUE);
+			$this->load->view('validation', $data);
  		}
 	}
 }

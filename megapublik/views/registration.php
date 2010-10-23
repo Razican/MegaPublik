@@ -1,4 +1,5 @@
 <?php echo $head; ?>
+	<div class="content">
 		<?php echo lang('reg.complete').br(2).anchor('/', lang('reg.home')); ?>
-	</body>
-</html>
+	</div>
+<?php echo $footer; ?>

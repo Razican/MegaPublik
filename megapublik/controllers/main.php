@@ -15,6 +15,7 @@ class Main extends Controller {
 			define ('INGAME', TRUE);
 			$head['help']		= lang('ingame.help');
 			$data['head']		= $this->load->view('head', $head, TRUE);
+			$data['footer']		= $this->load->view('footer', '', TRUE);
 			$user_id			= $this->user->id();
 			$data['user']		= $this->user->data($user_id);
 			$data['country']	= $this->user->data($data['user']->location, 'countries');

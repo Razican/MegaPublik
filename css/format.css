@@ -1,10 +1,38 @@
 body {
 	background: url("../images/background.jpg") no-repeat top right;
-
+	margin: 0px;
 }
 img {
 	border-width:0;
 }
 .footer {
+	background-color: aqua;
+	opacity: 0.75;
 	text-align: center;
+	padding: 10px;
+}
+h1 {
+	color: gray;
+	text-decoration: underline;
+	margin: 20px;
+}
+.content {
+	background-color: red;
+	opacity: 0.75;
+	padding: 10px;	
+}
+.logo img {
+	margin:  10px;
+}
+.login-input {
+	
+}
+a {
+	text-decoration: none;
+	color: gray;
+}
+.help {
+	background-color: green;
+	opacity: 0.75;
+	padding: 10px;	
 }
