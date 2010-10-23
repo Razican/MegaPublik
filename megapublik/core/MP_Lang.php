@@ -4,7 +4,7 @@
 // http://maestric.com/en/doc/php/codeigniter_i18n
 // version 6 - April 20, 2009
 
-class MY_Lang extends CI_Lang {
+class MP_Lang extends CI_Lang {
 
 	/**************************************************
 	 configuration
@@ -26,7 +26,7 @@ class MY_Lang extends CI_Lang {
 	/**************************************************/
 	
 	
-	function MY_Lang()
+	function MP_Lang()
 	{
 		parent::CI_Lang();		
 		

@@ -15,7 +15,7 @@ class Login extends Controller {
 		}
 		else
 		{
-			if($this->user->is_checked())
+			if($this->session->userdata('logged_in'))
 			{
 				exit(redirect('/'));
 			}
@@ -34,26 +34,25 @@ class Login extends Controller {
 				}
 				else
 				{
-					$this->load->library('encrypt');
-
-					if ($this->input->post('remember'))
+					$query		= $this->db->get_where('users', array('username' => $this->input->post('username')), '1');
+					foreach ($query->result() as $result)
 					{
-						$expire		= 60*60*24*7;
+						$user	= $result;
 					}
-					else
+					if (!$this->input->post('remember'))
 					{
-						$expire		= 0;
+						$this->config->set_item('sess_expire_on_close', TRUE);
 					}
-
-					$value			= $this->encrypt->encode($this->input->post('username')) . '/%/' . $this->encrypt->encode($user->password);
-
-					$cookie = array(
-						'name'		=> 'MegaPublik',
-						'value'		=> $value,
-						'expire'	=> $expire,
+					
+					$userdata	= array(
+					'user_id'	=> $user->id,					
+					'username'  => $this->input->post('username'),
+					'language'	=> $this->lang->lang(),					
+					'logged_in' => TRUE
 					);
 
-					set_cookie($cookie);
+					$this->session->set_userdata($userdata);
+															
 					$this->db->update('users', array('last_IP' => $this->input->ip_address()), "username = '". $this->input->post('username') ."'");
 					//insertar en la db el user agent
 

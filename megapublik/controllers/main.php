@@ -9,20 +9,21 @@ class Main extends Controller {
 	
 	function index()
 	{
-		if($this->user->is_checked())
+		if($this->session->userdata('logged_in'))
 		{
+			$this->output->enable_profiler(TRUE);
 			$this->lang->load('ingame');
 			define ('INGAME', TRUE);
 			$head['help']		= lang('ingame.help');
 			$data['head']		= $this->load->view('head', $head, TRUE);
 			$data['footer']		= $this->load->view('footer', '', TRUE);
-			$user_id			= $this->user->id();
-			$data['user']		= $this->user->data($user_id);
+			$data['user']		= $this->user->data($this->session->userdata('user_id'));
 			$data['country']	= $this->user->data($data['user']->location, 'countries');
 			$this->load->view('ingame', $data);
 		}
 		else
 		{
+			$this->output->enable_profiler(TRUE);
 			$data['head']		= $this->load->view('head', '', TRUE);
 			$data['footer']		= $this->load->view('footer', '', TRUE);
 			$this->lang->load('login');

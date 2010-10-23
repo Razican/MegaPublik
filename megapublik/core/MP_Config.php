@@ -4,7 +4,7 @@
 // http://maestric.com/en/doc/php/codeigniter_i18n
 // version 6 - April 20, 2009
 
-class MY_Config extends CI_Config {
+class MP_Config extends CI_Config {
 
 	function site_url($uri = '')
 	{	

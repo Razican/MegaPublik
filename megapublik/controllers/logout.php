@@ -9,10 +9,9 @@ class Logout extends Controller {
 	
 	function index()
 	{
-		if($this->user->is_checked())
+		if($this->session->userdata('logged_in'))
 		{
-			$this->load->helper('cookie');
-			delete_cookie('MegaPublik');
+			$this->session->sess_destroy();
 		}
 		redirect('/');
 	}

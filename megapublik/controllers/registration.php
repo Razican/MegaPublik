@@ -12,7 +12,8 @@ class Registration extends Controller {
 	
 	function index()
 	{
-		if($this->user->is_checked())
+		$this->output->enable_profiler(TRUE);
+		if($this->session->userdata('logged_in'))
 		{
 			exit(redirect('/'));
 		}
@@ -31,6 +32,7 @@ class Registration extends Controller {
 	
 	function register()
 	{
+		$this->output->enable_profiler(TRUE);
 		if($this->user->is_checked())
 		{
 			exit(redirect('/'));
@@ -128,6 +130,7 @@ class Registration extends Controller {
 	
 	function validate($validation_str = '')
 	{
+		$this->output->enable_profiler(TRUE);
 		if (strlen($validation_str) != 15)
 		{
 			redirect('/');
