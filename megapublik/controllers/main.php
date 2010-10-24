@@ -11,7 +11,7 @@ class Main extends Controller {
 	{
 		if($this->session->userdata('logged_in'))
 		{
-			$this->output->enable_profiler(TRUE);
+			$this->output->enable_profiler($this->config->item('debug'));
 			$this->lang->load('ingame');
 			define ('INGAME', TRUE);
 			$head['help']		= lang('ingame.help');
@@ -23,7 +23,7 @@ class Main extends Controller {
 		}
 		else
 		{
-			$this->output->enable_profiler(TRUE);
+			$this->output->enable_profiler($this->config->item('debug'));
 			$data['head']		= $this->load->view('head', '', TRUE);
 			$data['footer']		= $this->load->view('footer', '', TRUE);
 			$this->lang->load('login');
@@ -33,4 +33,4 @@ class Main extends Controller {
 }
 
 /* End of file main.php */
-/* Location: ./system/application/controllers/main.php */
+/* Location: ./application/controllers/main.php */

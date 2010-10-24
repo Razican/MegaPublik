@@ -17,4 +17,5 @@
 	<div class="logo"><img alt="MegaPublik Logo" src="<?php echo site_url("images/logo.png"); ?>" /></div>
 	<?php if (defined('INGAME')) : ?><div class="help"><?php echo $help; ?></div><?php endif; ?>
 	<div class="menu"></div>
+	<?php if (defined('INGAME')) : ?><div class="panel"><?php //echo $panel; ?></div><?php endif; ?>
 </div>

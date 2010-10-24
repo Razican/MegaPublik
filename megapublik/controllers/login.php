@@ -54,7 +54,6 @@ class Login extends Controller {
 					$this->session->set_userdata($userdata);
 															
 					$this->db->update('users', array('last_IP' => $this->input->ip_address()), "username = '". $this->input->post('username') ."'");
-					//insertar en la db el user agent
 
 					redirect('/');
 				}
@@ -68,4 +67,4 @@ class Login extends Controller {
 }
 
 /* End of file login.php */
-/* Location: ./system/application/controllers/login.php */
+/* Location: ./application/controllers/login.php */

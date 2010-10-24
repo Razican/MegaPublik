@@ -13,9 +13,13 @@ class Logout extends Controller {
 		{
 			$this->session->sess_destroy();
 		}
+		else
+		{
+			log_message('error', 'User with IP '.$this->input->ip_address().' has tried to enter /logout without loggin in.');
+		}
 		redirect('/');
 	}
 }
 
 /* End of file logout.php */
-/* Location: ./system/application/controllers/logout.php */
+/* Location: ./application/controllers/logout.php */

@@ -20,5 +20,5 @@ Class User extends CI_Model
 	}
 }
 
-/* End of file overal_helper.php */
-/* Location: ./system/application/helpers/overal_helper.php */
+/* End of file user.php */
+/* Location: ./application/models/user.php */

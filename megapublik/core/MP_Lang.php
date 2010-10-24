@@ -1,31 +1,34 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-// CodeIgniter i18n library by Jérôme Jaglale
-// http://maestric.com/en/doc/php/codeigniter_i18n
-// version 6 - April 20, 2009
+/**
+ * MP_Config Class
+ *
+ * @subpackage	Libraries
+ * @author		Jérôme Jaglale
+ * @category	Libraries
+ * @link		http://maestric.com/en/doc/php/codeigniter_i18n
+ */
 
 class MP_Lang extends CI_Lang {
 
-	/**************************************************
-	 configuration
-	***************************************************/
+/*
+|--------------------------------------------------------------------------
+| Configuration
+|--------------------------------------------------------------------------
+|
+| $languages	-> array with all the languaes inplemented
+| $special		-> Not localized URIs
+|
+*/
 
-	// languages
 	var $languages = array(
 		'es' => 'spanish'/*,
 		'en' => 'english',
 		'eu' => 'basque'*/
 	);
 
-	// special URIs (not localized)
 	var $special = array ('admin');
-	
-	// where to redirect if no language in URI
-	var $default_uri = ''; 
 
-	/**************************************************/
-	
-	
 	function MP_Lang()
 	{
 		parent::CI_Lang();		
@@ -36,29 +39,24 @@ class MP_Lang extends CI_Lang {
 		
 		$segment = $URI->segment(1);
 		
-		if (isset($this->languages[$segment]))	// URI with language -> ok
+		if (isset($this->languages[$segment]))
 		{
 			$language = $this->languages[$segment];
 			$CFG->set_item('language', $language);
 		}
-		else if($this->is_special($segment)) // special URI -> no redirect
+		else if($this->is_special($segment))
 		{
 			return;
 		}
-		else	// URI without language -> redirect to default_uri
+		else
 		{
-			// set default language
 			$CFG->set_item('language', $this->languages[$this->default_lang()]);
 
-			// redirect
 			header("Location: " . $CFG->site_url($this->lang($CFG->item('language')).$URI->uri_string()), TRUE, 302);
 			exit;
 		}
 	}
 	
-	
-	// get current language
-	// ex: return 'en' if language in CI config is 'english' 
 	function lang()
 	{
 		global $CFG;		
@@ -70,10 +68,9 @@ class MP_Lang extends CI_Lang {
 			return $lang;
 		}
 		
-		return NULL;	// this should not happen
+		return NULL;
 	}
-	
-	
+
 	function is_special($uri)
 	{
 		$exploded = explode('/', $uri);
@@ -87,8 +84,7 @@ class MP_Lang extends CI_Lang {
 		}
 		return FALSE;
 	}
-	
-	
+
 	function switch_uri($lang)
 	{
 		$CI =& get_instance();
@@ -105,8 +101,7 @@ class MP_Lang extends CI_Lang {
 		}
 		return $uri;
 	}
-	
-	// is there a language segment in this $uri?
+
 	function has_language($uri)
 	{
 		$first_segment = NULL;
@@ -131,9 +126,7 @@ class MP_Lang extends CI_Lang {
 		
 		return FALSE;
 	}
-	
-	
-	// default language: first element of $this->languages
+
 	function default_lang()
 	{
 		foreach ($this->languages as $lang => $language)
@@ -141,29 +134,21 @@ class MP_Lang extends CI_Lang {
 			return $lang;
 		}
 	}
-	
-	// add language segment to $uri (if appropriate)
+
 	function localized($uri)
 	{
 		if($this->has_language($uri)
-				|| $this->is_special($uri)
-				|| preg_match('/(.+)\.[a-zA-Z0-9]{2,4}$/', $uri))
-		{
-			// we don't need a language segment because:
-			// - there's already one
-			// - or it's a special uri (set in $special)
-			// - or that's a link to a file
-		}
+		|| $this->is_special($uri)
+		|| preg_match('/(.+)\.[a-zA-Z0-9]{2,4}$/', $uri))
+		{}
 		else
 		{
 			$uri = $this->lang() . '/' . $uri;
 		}
-		
+
 		return $uri;
 	}
-	
 }
-// END MY_Language Class
 
-/* End of file MY_Language.php */
-/* Location: ./system/application/libraries/MY_Language.php */
+/* End of file MP_Language.php */
+/* Location: ./application/core/MP_Language.php */

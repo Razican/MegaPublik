@@ -10,4 +10,4 @@ $lang['ingame.logout']		= 'Salir';
 $lang['ingame.help']		= 'Esta es la barra de ayuda.';
 
 /* End of file ingame_lang.php */
-/* Location: ./system/application/language/spanish/ingame_lang.php */
+/* Location: ./application/language/spanish/ingame_lang.php */

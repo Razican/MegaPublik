@@ -10,4 +10,4 @@ $lang['overal.licensed']	= 'está bajo una licencia';
 $lang['overal.license']		= 'Reconocimiento-NoComercial-SinObraDerivada 3.0 Unported';
 
 /* End of file overal_lang.php */
-/* Location: ./system/application/language/spanish/overal_lang.php */
+/* Location: ./application/language/spanish/overal_lang.php */

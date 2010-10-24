@@ -130,7 +130,7 @@ class Registration extends Controller {
 	
 	function validate($validation_str = '')
 	{
-		$this->output->enable_profiler(TRUE);
+		$this->output->enable_profiler($this->config->item('debug'));
 		if (strlen($validation_str) != 15)
 		{
 			redirect('/');
@@ -158,4 +158,4 @@ class Registration extends Controller {
 }
 
 /* End of file register.php */
-/* Location: ./system/application/controllers/register.php */
+/* Location: ./application/controllers/register.php */

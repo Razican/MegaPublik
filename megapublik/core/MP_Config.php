@@ -1,8 +1,13 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-// CodeIgniter i18n library by Jérôme Jaglale
-// http://maestric.com/en/doc/php/codeigniter_i18n
-// version 6 - April 20, 2009
+/**
+ * MP_Config Class
+ *
+ * @subpackage	Libraries
+ * @author		Jérôme Jaglale
+ * @category	Libraries
+ * @link		http://maestric.com/en/doc/php/codeigniter_i18n
+ */
 
 class MP_Config extends CI_Config {
 
@@ -23,7 +28,6 @@ class MP_Config extends CI_Config {
 	}
 		
 }
-// END MY_Config Class
 
-/* End of file MY_Config.php */
-/* Location: ./system/application/libraries/MY_Config.php */
+/* End of file MP_Config.php */
+/* Location: ./application/core/MP_Config.php */

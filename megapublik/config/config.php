@@ -342,6 +342,16 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
+/*
+|--------------------------------------------------------------------------
+| Debug
+|--------------------------------------------------------------------------
+|
+| If you enable this, all the pages will generate a profiler report. You
+| can enable it manually or let threshold configuration do it for you.
+*/
+$config['debug']    = TRUE ? $config['log_threshold'] >= 2 : FALSE;
+
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */

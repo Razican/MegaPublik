@@ -15,6 +15,7 @@ class Error extends Controller {
 		}
 		else
 		{
+			$this->output->enable_profiler($this->config->item('debug'));
 			$this->lang->load('errors');
 			show_error(lang('errors.'.$error), 400, lang('errors.error'));
 		}
@@ -22,4 +23,4 @@ class Error extends Controller {
 }
 
 /* End of file error.php */
-/* Location: ./system/application/controllers/error.php */
+/* Location: ./application/controllers/error.php */

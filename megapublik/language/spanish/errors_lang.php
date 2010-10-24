@@ -12,4 +12,4 @@ $lang['errors.8']		= 'Debes introducir un email válido.';
 $lang['errors.9']		= 'El email ya está validado.';
 
 /* End of file errors_lang.php */
-/* Location: ./system/application/language/spanish/errors_lang.php */
+/* Location: ./application/language/spanish/errors_lang.php */

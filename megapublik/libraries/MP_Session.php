@@ -1,12 +1,21 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+/**
+ * MP_Session Class
+ *
+ * @subpackage	Libraries
+ * @author		Razican
+ * @category	Libraries
+ * @link		http://www.razican.com/
+ */
+ 
 class MP_Session extends CI_Session {
 
     function MP_Session()
     {
         parent::CI_Session();
     }
-    
+
    	/**
 	 * Write the session cookie
 	 *
@@ -20,7 +29,6 @@ class MP_Session extends CI_Session {
 			$cookie_data = $this->userdata;
 		}
 
-		// Serialize the userdata for the cookie
 		$cookie_data = $this->_serialize($cookie_data);
 
 		if ($this->sess_encrypt_cookie == TRUE)
@@ -29,13 +37,11 @@ class MP_Session extends CI_Session {
 		}
 		else
 		{
-			// if encryption is not used, we provide an md5 hash to prevent userside tampering
 			$cookie_data = $cookie_data.md5($cookie_data.$this->encryption_key);
 		}
 
 		$expire = ($this->CI->config->item('sess_expire_on_close') === TRUE) ? 0 : $this->sess_expiration + time();
 
-		// Set the cookie
 		setcookie(
 					$this->sess_cookie_name,
 					$cookie_data,
