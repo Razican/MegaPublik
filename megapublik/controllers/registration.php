@@ -12,7 +12,7 @@ class Registration extends Controller {
 	
 	function index()
 	{
-		$this->output->enable_profiler(TRUE);
+		$this->output->enable_profiler($this->config->item('debug'));
 		if($this->session->userdata('logged_in'))
 		{
 			exit(redirect('/'));
@@ -32,8 +32,8 @@ class Registration extends Controller {
 	
 	function register()
 	{
-		$this->output->enable_profiler(TRUE);
-		if($this->user->is_checked())
+		$this->output->enable_profiler($this->config->item('debug'));
+		if($this->session->userdata('logged_in'))
 		{
 			exit(redirect('/'));
 		}
