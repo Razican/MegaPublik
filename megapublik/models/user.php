@@ -10,13 +10,20 @@ Class User extends CI_Model
 	function data($id, $table = 'users')
 	{
 		$query			= $this->db->get_where($table, array('id' => $id), '1');
-		
+
 		foreach ($query->result() as $result)
 		{
 			$return		=& $result;
 		}
-		
+
 		return $return;
+	}
+
+	function online()
+	{
+		$query			= $this->db->get('sessions');
+
+		return $query->num_rows();
 	}
 }
 

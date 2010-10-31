@@ -101,11 +101,13 @@ class Registration extends Controller {
 
 			$this->load->library('email');
 			
-			$config['protocol']	= 'smtp';
-			$config['smtp_host']	= 'smtp.gmail.com';
+			$config['protocol']		= 'smtp';
+			$config['smtp_host']	= 'ssl://smtp.googlemail.com';
 			$config['smtp_user']	= 'admin@megapublik.com';
 			$config['smtp_pass']	= 'verysecretpass';
-			$config['mailtype']	= 'html';
+			$config['mailtype']		= 'html';
+			$config['smtp_port']	= 465;
+			$config['newline']		= "\r\n";
 
 			$this->email->initialize($config);
 
@@ -116,10 +118,12 @@ class Registration extends Controller {
 			$pattern			= array('%username%', '%password%', '%link%', '%url%');
 			$replacement		= array($this->input->post('username'), $this->input->post('password'), anchor('registration/validate/'. $validation_str, lang('reg.here')), site_url('registration/validate/'. $validation_str));
 
-			$this->email->message(preg_replace($pattern, $replacement, lang('reg.message')));
+			$data['message']	= preg_replace($pattern, $replacement, lang('reg.message'));
+			$data['head']		= $this->load->view('head', '', TRUE);
+			$data['footer']		= $this->load->view('footer', '', TRUE);
+			$this->email->message($this->load->view('mail', $data, TRUE));
 			$this->email->set_alt_message(preg_replace($pattern, $replacement, lang('reg.alt_message')));
-			
-            //mail desde view
+
 			$this->email->send();
 
 			$data['head']		= $this->load->view('head', '', TRUE);
