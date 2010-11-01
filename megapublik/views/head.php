@@ -11,6 +11,10 @@
 	<meta name="description" content="<?php echo lang('overal.description'); ?>" />
 	<meta name="keywords" content="juego online, online game, estrategia, strategy, simulacion, simulation, megapublik, gratis, free, economia, economy, politica, politics, vida real, real life" />
 	<!-- <link rel="canonical" href="http://www.megapublik.com/" /> -->
+	<?php if (defined('AJAX')) : ?>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<?php echo $script; ?>
+	<?php endif; ?>
 </head>
 <body>
 <div class="head">
