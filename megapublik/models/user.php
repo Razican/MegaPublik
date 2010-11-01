@@ -9,7 +9,7 @@ Class User extends CI_Model
 
 	function data($id, $table = 'users')
 	{
-		$query			= $this->db->get_where($table, array('id' => $id), '1');
+		$query			= $this->db->get_where($table, array('id' => $id));
 
 		foreach ($query->result() as $result)
 		{

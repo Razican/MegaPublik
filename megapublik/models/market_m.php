@@ -1,22 +1,16 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-Class Market extends CI_Model
+Class Market_m extends CI_Model
 {
-	function Market()
+	function Market_m()
 	{
 		parent::CI_Model();
 	}
 
 	function get_market($type, $from, $to, $country)
 	{
-		$query			= $this->db->get_where($table, array('id' => $id), '1');
-	}
-
-	function online()
-	{
-		$query			= $this->db->get('sessions');
-
-		return $query->num_rows();
+		$query			= $this->db->get_where('market', array('country' => $country, 'type' => $type), $from.', '.$to);
+		return $query;
 	}
 }
 

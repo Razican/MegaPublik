@@ -12,14 +12,14 @@
 	<meta name="keywords" content="juego online, online game, estrategia, strategy, simulacion, simulation, megapublik, gratis, free, economia, economy, politica, politics, vida real, real life" />
 	<!-- <link rel="canonical" href="http://www.megapublik.com/" /> -->
 	<?php if (defined('AJAX')) : ?>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script charset="utf-8" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
 	<?php echo $script; ?>
 	<?php endif; ?>
 </head>
 <body>
 <div class="head">
-	<div class="logo"><img alt="MegaPublik Logo" src="<?php echo site_url("images/logo.png"); ?>" /></div>
+	<div class="logo"><a href="<?php echo base_url(); ?>"><img alt="MegaPublik Logo" src="<?php echo site_url("images/logo.png"); ?>" /></a></div>
 	<?php if (defined('INGAME')) : ?><div class="help"><?php echo $help; ?></div><?php endif; ?>
-	<div class="menu"></div>
+	<div class="menu"><?php //echo $menu; ?></div>
 	<?php if (defined('INGAME')) : ?><div class="panel"><?php //echo $panel; ?></div><?php endif; ?>
 </div>
