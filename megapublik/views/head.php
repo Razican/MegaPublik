@@ -10,16 +10,30 @@
 	<link href="http://www.megapublik.com/" title="<?php echo lang('overal.title'); ?>" rel="index" /> -->
 	<meta name="description" content="<?php echo lang('overal.description'); ?>" />
 	<meta name="keywords" content="juego online, online game, estrategia, strategy, simulacion, simulation, megapublik, gratis, free, economia, economy, politica, politics, vida real, real life" />
-	<!-- <link rel="canonical" href="http://www.megapublik.com/" /> -->
+	<!-- <link rel="canonical" href="<?php echo base_url(); ?>" /> -->
 	<?php if (defined('AJAX')) : ?>
 	<script charset="utf-8" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
-	<?php echo $script; ?>
-	<?php endif; ?>
+	<script type="text/javascript" charset="utf-8">
+	<!--
+		if(typeof jQuery==='undefined'){
+			document.write(unescape('<scri'+'pt src="<?php echo base_url(); ?>javascript/jquery-1.4.3.min.js" type="text/javascript" charset="utf-8"></scri'+'pt>'));
+		}
+	//-->
+	</script>
+	<script type="text/javascript" charset="utf-8">
+	<!--
+		<?php echo $script; ?>
+	//-->
+	</script><?php endif; ?>
 </head>
 <body>
 <div class="head">
 	<div class="logo"><a href="<?php echo base_url(); ?>"><img alt="MegaPublik Logo" src="<?php echo site_url("images/logo.png"); ?>" /></a></div>
-	<?php if (defined('INGAME')) : ?><div class="help"><?php echo $help; ?></div><?php endif; ?>
+	<?php if (defined('INGAME')) : ?><div class="help">
+		<?php echo $help; ?>
+	</div><?php endif; ?>
 	<div class="menu"><?php //echo $menu; ?></div>
-	<?php if (defined('INGAME')) : ?><div class="panel"><?php //echo $panel; ?></div><?php endif; ?>
+	<?php if (defined('INGAME')) : ?><div class="panel">
+		<?php //echo $panel; ?>
+	</div><?php endif; ?>
 </div>

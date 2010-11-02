@@ -31,7 +31,7 @@ class Market extends Controller {
 	}
 	function request($type='food', $from=0, $to=20)
 	{
-		if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH']=="XMLHttpRequest")
+		if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH']==="XMLHttpRequest")
 		{
 			sleep(1);
 			$this->lang->load('market');

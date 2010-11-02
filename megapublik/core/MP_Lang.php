@@ -32,13 +32,13 @@ class MP_Lang extends CI_Lang {
 	function MP_Lang()
 	{
 		parent::CI_Lang();		
-		
+
 		global $CFG;
 		global $URI;
 		global $RTR;
-		
+
 		$segment = $URI->segment(1);
-		
+
 		if (isset($this->languages[$segment]))
 		{
 			$language = $this->languages[$segment];

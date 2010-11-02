@@ -1,5 +1,3 @@
-<script type="text/javascript" charset="utf-8">
-<!--
 $(function(){
 	$('#selector a').click(function(event){
 		event.preventDefault();
@@ -8,5 +6,3 @@ $(function(){
 		$('#market_content').html('<img src="<?php echo base_url(); ?>images/loading.gif" alt="<?php echo lang('market.loading'); ?>" />').load($(this).attr('href'));
 	})
 })
-//-->
-</script>
