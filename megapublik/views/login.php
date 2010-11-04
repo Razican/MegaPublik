@@ -1,5 +1,5 @@
 <?php echo $head; ?>
-		<div class="content">
+		<div class="log_reg">
 		<?php echo form_open('login'); ?>
 			<h1>Login:</h1>
 			<div class="login-input"><label><?php echo lang('login.username'); ?>:</label> <input type="text" name="username" /></div>

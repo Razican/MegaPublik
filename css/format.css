@@ -7,6 +7,7 @@ img {
 	border-width:0;
 }
 .footer {
+	clear: both;
 	background-color: aqua;
 	opacity: 0.75;
 	text-align: center;
@@ -17,10 +18,16 @@ h1 {
 	text-decoration: underline;
 	margin: 20px;
 }
+.log_reg {
+	background-color: red;
+	opacity: 0.75;
+	padding: 10px;
+}
 .content {
 	background-color: red;
 	opacity: 0.75;
 	padding: 10px;
+	margin-left: 175px;
 }
 .logo img {
 	margin:  10px;
@@ -39,4 +46,29 @@ a {
 }
 table.market_table {
 	width: 100%;
+}
+#avatar {
+
+}
+#experience {
+	width: 100px;
+	border: 1px solid black;
+	background: white;
+	height: 5px;
+	display: block;
+	margin-left: 25px;
+}
+.exp_percent {
+	height: 100%;
+	background: green;
+	display: block;
+	overflow: visible;
+}
+
+.panel {
+	float: left;
+	width: 150px;
+	background-color: blue;
+	text-align: center;
+	padding: 10px;
 }

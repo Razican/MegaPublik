@@ -34,6 +34,6 @@
 	</div><?php endif; ?>
 	<div class="menu"><?php //echo $menu; ?></div>
 	<?php if (defined('INGAME')) : ?><div class="panel">
-		<?php //echo $panel; ?>
+		<?php echo $panel; ?>
 	</div><?php endif; ?>
 </div>

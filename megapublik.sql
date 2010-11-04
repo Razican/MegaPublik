@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 3.2.4
+-- version 3.3.2deb1
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 23-10-2010 a las 23:32:07
+-- Tiempo de generación: 04-11-2010 a las 20:32:48
 -- Versión del servidor: 5.1.41
--- Versión de PHP: 5.3.1
+-- Versión de PHP: 5.3.2-1ubuntu4.5
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -24,7 +24,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 -- Estructura de tabla para la tabla `alerts`
 --
--- Creación: 23-10-2010 a las 23:21:10
+-- Creación: 04-11-2010 a las 17:30:04
 --
 
 DROP TABLE IF EXISTS `alerts`;
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `alerts` (
 --
 -- Estructura de tabla para la tabla `articles`
 --
--- Creación: 23-10-2010 a las 23:21:10
+-- Creación: 04-11-2010 a las 17:30:04
 --
 
 DROP TABLE IF EXISTS `articles`;
@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `articles` (
 --
 -- Estructura de tabla para la tabla `article_comments`
 --
--- Creación: 23-10-2010 a las 23:21:10
+-- Creación: 04-11-2010 a las 17:30:04
 --
 
 DROP TABLE IF EXISTS `article_comments`;
@@ -96,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `article_comments` (
 --
 -- Estructura de tabla para la tabla `article_votes`
 --
--- Creación: 23-10-2010 a las 23:21:10
+-- Creación: 04-11-2010 a las 17:30:05
 --
 
 DROP TABLE IF EXISTS `article_votes`;
@@ -117,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `article_votes` (
 --
 -- Estructura de tabla para la tabla `borders`
 --
--- Creación: 23-10-2010 a las 23:21:10
+-- Creación: 04-11-2010 a las 17:30:05
 --
 
 DROP TABLE IF EXISTS `borders`;
@@ -138,7 +138,7 @@ CREATE TABLE IF NOT EXISTS `borders` (
 --
 -- Estructura de tabla para la tabla `companies`
 --
--- Creación: 23-10-2010 a las 23:21:10
+-- Creación: 04-11-2010 a las 17:30:05
 --
 
 DROP TABLE IF EXISTS `companies`;
@@ -214,19 +214,22 @@ CREATE TABLE IF NOT EXISTS `companies` (
   `VEB` bigint(20) unsigned NOT NULL DEFAULT '0',
   `ZAR` bigint(20) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Volcar la base de datos para la tabla `companies`
 --
 
+INSERT INTO `companies` (`id`, `name`, `owner_id`, `type`, `non_stock`, `stock`, `raw_materials`, `quality`, `localization`, `money_mp`, `ARS`, `ATS`, `AUD`, `BAM`, `BEF`, `BGN`, `BOB`, `BRL`, `CAD`, `CHF`, `CLP`, `CNY`, `COP`, `CZK`, `DEM`, `DKK`, `EEK`, `ESP`, `FIM`, `FRF`, `GBP`, `GRD`, `HRK`, `HUF`, `IDR`, `IEP`, `INR`, `IRR`, `ITL`, `JPY`, `KPW`, `KRW`, `LTL`, `LVL`, `MDL`, `MXN`, `MYR`, `NIS`, `NLG`, `NOK`, `PEN`, `PHP`, `PKR`, `PLN`, `PTE`, `PYG`, `RON`, `RSD`, `RUB`, `SEK`, `SGD`, `SIT`, `SKK`, `THB`, `TRY`, `UAH`, `USD`, `UYU`, `VEB`, `ZAR`) VALUES
+(1, 'Compañía 1', 1, 1, 2500, 250, 3460, 1, 1, 34578, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(2, 'Compañía 2', 2, 1, 345, 100, 400, 1, 1, 3470, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `countries`
 --
--- Creación: 23-10-2010 a las 23:21:11
+-- Creación: 04-11-2010 a las 17:30:05
 --
 
 DROP TABLE IF EXISTS `countries`;
@@ -343,7 +346,7 @@ INSERT INTO `countries` (`id`, `name`, `currency`, `president_id`, `food_income_
 --
 -- Estructura de tabla para la tabla `decisions`
 --
--- Creación: 23-10-2010 a las 23:21:11
+-- Creación: 04-11-2010 a las 17:30:05
 --
 
 DROP TABLE IF EXISTS `decisions`;
@@ -371,7 +374,7 @@ CREATE TABLE IF NOT EXISTS `decisions` (
 --
 -- Estructura de tabla para la tabla `friendships`
 --
--- Creación: 23-10-2010 a las 23:21:11
+-- Creación: 04-11-2010 a las 17:30:05
 --
 
 DROP TABLE IF EXISTS `friendships`;
@@ -393,7 +396,7 @@ CREATE TABLE IF NOT EXISTS `friendships` (
 --
 -- Estructura de tabla para la tabla `inventories`
 --
--- Creación: 23-10-2010 a las 23:21:11
+-- Creación: 04-11-2010 a las 17:30:06
 --
 
 DROP TABLE IF EXISTS `inventories`;
@@ -472,33 +475,36 @@ CREATE TABLE IF NOT EXISTS `inventories` (
 --
 -- Estructura de tabla para la tabla `market`
 --
--- Creación: 23-10-2010 a las 23:21:11
+-- Creación: 04-11-2010 a las 17:53:01
 --
 
 DROP TABLE IF EXISTS `market`;
 CREATE TABLE IF NOT EXISTS `market` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `amount` bigint(20) unsigned NOT NULL,
-  `price` bigint(20) unsigned NOT NULL,
+  `price` decimal(20,2) unsigned NOT NULL,
   `type` tinyint(3) unsigned NOT NULL,
   `time` int(11) unsigned NOT NULL,
   `company_id` int(11) unsigned NOT NULL,
   `currency` tinyint(3) unsigned NOT NULL,
   `country` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Volcar la base de datos para la tabla `market`
 --
 
+INSERT INTO `market` (`id`, `amount`, `price`, `type`, `time`, `company_id`, `currency`, `country`) VALUES
+(1, 250, '2.37', 1, 1288634400, 1, 1, 1),
+(2, 100, '2.37', 1, 1288630800, 2, 1, 1);
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `messages`
 --
--- Creación: 23-10-2010 a las 23:21:11
+-- Creación: 04-11-2010 a las 17:30:06
 --
 
 DROP TABLE IF EXISTS `messages`;
@@ -523,7 +529,7 @@ CREATE TABLE IF NOT EXISTS `messages` (
 --
 -- Estructura de tabla para la tabla `newspapers`
 --
--- Creación: 23-10-2010 a las 23:21:12
+-- Creación: 04-11-2010 a las 17:30:06
 --
 
 DROP TABLE IF EXISTS `newspapers`;
@@ -545,7 +551,7 @@ CREATE TABLE IF NOT EXISTS `newspapers` (
 --
 -- Estructura de tabla para la tabla `parties`
 --
--- Creación: 23-10-2010 a las 23:21:12
+-- Creación: 04-11-2010 a las 17:30:06
 --
 
 DROP TABLE IF EXISTS `parties`;
@@ -630,7 +636,7 @@ CREATE TABLE IF NOT EXISTS `parties` (
 --
 -- Estructura de tabla para la tabla `sessions`
 --
--- Creación: 23-10-2010 a las 23:21:12
+-- Creación: 04-11-2010 a las 17:30:07
 --
 
 DROP TABLE IF EXISTS `sessions`;
@@ -647,13 +653,12 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 -- Volcar la base de datos para la tabla `sessions`
 --
 
-
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `shouts`
 --
--- Creación: 23-10-2010 a las 23:21:12
+-- Creación: 04-11-2010 a las 17:30:07
 --
 
 DROP TABLE IF EXISTS `shouts`;
@@ -675,7 +680,7 @@ CREATE TABLE IF NOT EXISTS `shouts` (
 --
 -- Estructura de tabla para la tabla `states`
 --
--- Creación: 23-10-2010 a las 23:21:12
+-- Creación: 04-11-2010 a las 17:30:07
 --
 
 DROP TABLE IF EXISTS `states`;
@@ -702,7 +707,7 @@ CREATE TABLE IF NOT EXISTS `states` (
 --
 -- Estructura de tabla para la tabla `suscriptions`
 --
--- Creación: 23-10-2010 a las 23:21:12
+-- Creación: 04-11-2010 a las 17:30:07
 --
 
 DROP TABLE IF EXISTS `suscriptions`;
@@ -723,7 +728,7 @@ CREATE TABLE IF NOT EXISTS `suscriptions` (
 --
 -- Estructura de tabla para la tabla `users`
 --
--- Creación: 23-10-2010 a las 23:21:12
+-- Creación: 04-11-2010 a las 18:59:40
 --
 
 DROP TABLE IF EXISTS `users`;
@@ -734,6 +739,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(30) NOT NULL,
   `reg_IP` varchar(15) NOT NULL,
   `last_IP` varchar(15) NOT NULL,
+  `avatar` tinyint(1) NOT NULL DEFAULT '0',
   `location` int(11) unsigned NOT NULL,
   `ref_id` int(11) unsigned DEFAULT NULL,
   `validated` tinyint(1) unsigned NOT NULL DEFAULT '0',
@@ -830,13 +836,10 @@ CREATE TABLE IF NOT EXISTS `users` (
   `VEB` bigint(20) unsigned NOT NULL DEFAULT '0',
   `ZAR` bigint(20) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Volcar la base de datos para la tabla `users`
 --
 
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

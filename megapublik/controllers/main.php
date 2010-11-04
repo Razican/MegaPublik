@@ -15,9 +15,13 @@ class Main extends Controller {
 			$this->lang->load('ingame');
 			define ('INGAME', TRUE);
 			$head['help']		= lang('ingame.help');
+			$data['user']		= $this->user->data($this->session->userdata('user_id'));
+			$panel['avatar']	= avatar($data['user']);
+			$panel['user']		= $data['user'];
+			$panel['exp']		= experience($data['user']);
+			$head['panel']		= $this->load->view('panel', $panel, TRUE);
 			$data['head']		= $this->load->view('head', $head, TRUE);
 			$data['footer']		= $this->load->view('footer', '', TRUE);
-			$data['user']		= $this->user->data($this->session->userdata('user_id'));
 			$data['country']	= $this->user->data($data['user']->location, 'countries');
 			$this->load->view('ingame', $data);
 		}

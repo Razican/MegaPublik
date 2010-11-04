@@ -1,5 +1,5 @@
 <?php echo $head; ?>
-	<div class="content">
+	<div class="log_reg">
 		<?php echo form_open('registration/register'); ?>
 			<?php echo lang('reg.username'); ?>: <input type="text" name="username" /><?php echo br(2); ?>
 			<?php echo lang('reg.password'); ?>: <input type="password" name="password" /><?php echo br(2); ?>

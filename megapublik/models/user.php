@@ -11,11 +11,17 @@ Class User extends CI_Model
 	{
 		$query			= $this->db->get_where($table, array('id' => $id));
 
-		foreach ($query->result() as $result)
-		{
-			$return		=& $result;
+		if ($query->num_rows() > 0){
+			foreach ($query->result() as $result)
+			{
+				$return		=& $result;
+			}
 		}
-
+		else
+		{
+			$return			= NULL;
+			log_message('error', 'function data() in /application/models/user.php has received bad data for argument 1 ($id).');
+		}
 		return $return;
 	}
 
