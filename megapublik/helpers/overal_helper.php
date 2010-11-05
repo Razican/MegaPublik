@@ -2,16 +2,12 @@
 
 function avatar($user)
 {
-	if ($user->avatar == 1)
-	{
-		$return	= $user->id;
-	}
-	else
-	{
-		$return	="default";
-	}
-
-	return $return;
+	$avatar		= array(
+		'src' => 'images/avatars/'.$user->avatar.'.png',
+		'alt' => 'Avatar - '.$user->username,
+		'title' => 'Avatar - '.$user->username
+	);
+	return $avatar;
 }
 
 function experience($user)

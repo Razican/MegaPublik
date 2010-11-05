@@ -22,6 +22,7 @@ class Market extends Controller {
 			$panel['exp']		= experience($panel['user']);
 			$head['panel']		= $this->load->view('panel', $panel, TRUE);
 			$head['help']		= lang('ingame.help');
+			$head['menu']		= $this->load->view('menu_ingame', '', TRUE);
 			$head['script']		= $this->load->view('market/market_ajax', '', TRUE);
 			$data['head']		= $this->load->view('head', $head, TRUE);
 			$data['footer']		= $this->load->view('footer', '', TRUE);

@@ -1,0 +1,1 @@
+<?php //this.form.elements['submit2'].disabled=true; ?>

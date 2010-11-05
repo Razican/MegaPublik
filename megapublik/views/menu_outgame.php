@@ -1,0 +1,2 @@
+<?php echo anchor('/', lang('overal.menu.index'), 'title="'.lang('overal.menu.index').'"'); ?>
+<?php echo anchor('registration', lang('overal.menu.registration'), 'title="'.lang('overal.menu.registration').'"'); ?>

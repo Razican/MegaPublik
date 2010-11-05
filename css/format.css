@@ -29,8 +29,9 @@ h1 {
 	padding: 10px;
 	margin-left: 175px;
 }
-.logo img {
+.logo {
 	margin:  10px;
+	float: left;
 }
 .login-input {
   width: 30px;
@@ -40,9 +41,10 @@ a {
 	color: gray;
 }
 .help {
-	background-color: green;
-	opacity: 0.75;
+	background-color: yellow;
 	padding: 10px;
+	float: right;
+	margin: 110px 50px 0px 0px;
 }
 table.market_table {
 	width: 100%;
@@ -71,4 +73,15 @@ table.market_table {
 	background-color: blue;
 	text-align: center;
 	padding: 10px;
+}
+.menu {
+	clear: both;
+	background-color: green;
+	padding: 10px;
+}
+.menu a {
+	padding: 10px;
+}
+.menu_logout {
+	float: right;
 }

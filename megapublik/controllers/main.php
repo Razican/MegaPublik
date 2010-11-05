@@ -19,6 +19,7 @@ class Main extends Controller {
 			$panel['avatar']	= avatar($data['user']);
 			$panel['user']		= $data['user'];
 			$panel['exp']		= experience($data['user']);
+			$head['menu']		= $this->load->view('menu_ingame', '', TRUE);
 			$head['panel']		= $this->load->view('panel', $panel, TRUE);
 			$data['head']		= $this->load->view('head', $head, TRUE);
 			$data['footer']		= $this->load->view('footer', '', TRUE);
@@ -28,7 +29,8 @@ class Main extends Controller {
 		else
 		{
 			$this->output->enable_profiler($this->config->item('debug'));
-			$data['head']		= $this->load->view('head', '', TRUE);
+			$head['menu']		= $this->load->view('menu_outgame', '', TRUE);
+			$data['head']		= $this->load->view('head', $head, TRUE);
 			$data['footer']		= $this->load->view('footer', '', TRUE);
 			$this->lang->load('login');
 			$this->load->view('login', $data);	

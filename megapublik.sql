@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 04-11-2010 a las 20:32:48
+-- Tiempo de generación: 05-11-2010 a las 19:03:23
 -- Versión del servidor: 5.1.41
 -- Versión de PHP: 5.3.2-1ubuntu4.5
 
@@ -728,7 +728,7 @@ CREATE TABLE IF NOT EXISTS `suscriptions` (
 --
 -- Estructura de tabla para la tabla `users`
 --
--- Creación: 04-11-2010 a las 18:59:40
+-- Creación: 05-11-2010 a las 15:52:00
 --
 
 DROP TABLE IF EXISTS `users`;
@@ -739,7 +739,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(30) NOT NULL,
   `reg_IP` varchar(15) NOT NULL,
   `last_IP` varchar(15) NOT NULL,
-  `avatar` tinyint(1) NOT NULL DEFAULT '0',
+  `avatar` varchar(20) NOT NULL DEFAULT 'default',
   `location` int(11) unsigned NOT NULL,
   `ref_id` int(11) unsigned DEFAULT NULL,
   `validated` tinyint(1) unsigned NOT NULL DEFAULT '0',
@@ -836,10 +836,8 @@ CREATE TABLE IF NOT EXISTS `users` (
   `VEB` bigint(20) unsigned NOT NULL DEFAULT '0',
   `ZAR` bigint(20) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Volcar la base de datos para la tabla `users`
 --
-
-

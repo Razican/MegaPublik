@@ -10,5 +10,5 @@
 |
 */
 
-$config['first_level']		= 1000;
-$config['exp_multiplier']	= 5;
+$config['first_level']		= 10;
+$config['exp_multiplier']	= 2;

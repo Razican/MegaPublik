@@ -32,7 +32,7 @@
 	<?php if (defined('INGAME')) : ?><div class="help">
 		<?php echo $help; ?>
 	</div><?php endif; ?>
-	<div class="menu"><?php //echo $menu; ?></div>
+	<div class="menu"><?php echo $menu; ?></div>
 	<?php if (defined('INGAME')) : ?><div class="panel">
 		<?php echo $panel; ?>
 	</div><?php endif; ?>
