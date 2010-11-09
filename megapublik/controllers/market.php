@@ -16,10 +16,10 @@ class Market extends Controller {
 			$this->lang->load('ingame');
 			define ('INGAME', TRUE);
 			define ('AJAX', TRUE);
-
-			$panel['user']		= $this->user->data($this->session->userdata('user_id'));
-			$panel['avatar']	= avatar($panel['user']);
-			$panel['exp']		= experience($panel['user']);
+			$user				= $this->user->data($this->session->userdata('user_id'));
+			$panel['user']		= $user;
+			$panel['avatar']	= avatar($user);
+			$panel['exp']		= experience($user);
 			$head['panel']		= $this->load->view('panel', $panel, TRUE);
 			$head['help']		= lang('ingame.help');
 			$head['menu']		= $this->load->view('menu_ingame', '', TRUE);

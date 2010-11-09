@@ -14,16 +14,17 @@ class Main extends Controller {
 			$this->output->enable_profiler($this->config->item('debug'));
 			$this->lang->load('ingame');
 			define ('INGAME', TRUE);
+			$user				= $this->user->data($this->session->userdata('user_id'));
 			$head['help']		= lang('ingame.help');
-			$data['user']		= $this->user->data($this->session->userdata('user_id'));
-			$panel['avatar']	= avatar($data['user']);
-			$panel['user']		= $data['user'];
-			$panel['exp']		= experience($data['user']);
+			$data['user']		= $user;
+			$panel['avatar']	= avatar($user);
+			$panel['user']		= $user;
+			$panel['exp']		= experience($user);
 			$head['menu']		= $this->load->view('menu_ingame', '', TRUE);
 			$head['panel']		= $this->load->view('panel', $panel, TRUE);
 			$data['head']		= $this->load->view('head', $head, TRUE);
 			$data['footer']		= $this->load->view('footer', '', TRUE);
-			$data['country']	= $this->user->data($data['user']->location, 'countries');
+			$data['country']	= $this->user->data($user->location, 'countries');
 			$this->load->view('ingame', $data);
 		}
 		else

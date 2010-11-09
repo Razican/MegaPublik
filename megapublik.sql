@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 05-11-2010 a las 19:03:23
+-- Tiempo de generación: 09-11-2010 a las 18:19:26
 -- Versión del servidor: 5.1.41
 -- Versión de PHP: 5.3.2-1ubuntu4.5
 
@@ -728,7 +728,7 @@ CREATE TABLE IF NOT EXISTS `suscriptions` (
 --
 -- Estructura de tabla para la tabla `users`
 --
--- Creación: 05-11-2010 a las 15:52:00
+-- Creación: 09-11-2010 a las 18:18:54
 --
 
 DROP TABLE IF EXISTS `users`;
@@ -763,7 +763,6 @@ CREATE TABLE IF NOT EXISTS `users` (
   `militar_rank` tinyint(3) unsigned NOT NULL DEFAULT '1',
   `wellness` tinyint(3) unsigned NOT NULL DEFAULT '50',
   `experience` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `level` tinyint(3) unsigned NOT NULL DEFAULT '1',
   `manufacturing` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `land` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `constructions` tinyint(3) unsigned NOT NULL DEFAULT '0',

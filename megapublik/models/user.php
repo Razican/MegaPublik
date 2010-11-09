@@ -22,6 +22,10 @@ Class User extends CI_Model
 			$return			= NULL;
 			log_message('error', 'function data() in /application/models/user.php has received bad data for argument 1 ($id).');
 		}
+		if ($table === 'users')
+		{
+			$return->level	= floor(log($return->experience/$this->config->item('first_level'),$this->config->item('exp_multiplier'))+2);
+		}
 		return $return;
 	}
 
