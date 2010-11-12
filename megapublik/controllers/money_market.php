@@ -1,10 +1,10 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Money_market extends Controller {
+class Money_market extends CI_Controller {
 	
-	function Money_market()
+	function __construct()
 	{
-		parent::Controller();	
+		parent::__construct();	
 	}
 	
 	function index()

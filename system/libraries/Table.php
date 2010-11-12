@@ -2,7 +2,7 @@
 /**
  * CodeIgniter
  *
- * An open source application development framework for PHP 4.3.2 or newer
+ * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package		CodeIgniter
  * @author		ExpressionEngine Dev Team
@@ -37,7 +37,7 @@ class CI_Table {
 	var $empty_cells		= "";
 	var	$function			= FALSE;
 
-	function CI_Table()
+	public function __construct()
 	{
 		log_message('debug', "Table Class Initialized");
 	}

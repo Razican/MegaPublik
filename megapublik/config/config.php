@@ -217,7 +217,7 @@ $config['cache_path'] = '';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = "0ShY8m60gJ63DJ36gdRmF20ypzevuywD";
+$config['encryption_key'] = "f61PwVKH78GEg9BMjeK8jS07XEzLdPsl";
 
 /*
 |--------------------------------------------------------------------------
@@ -280,7 +280,7 @@ $config['global_xss_filtering'] = TRUE;
 | checked on a submitted form. If you are accepting user data, it is strongly
 | recommended CSRF protection be enabled.
 */
-$config['csrf_protection'] = FALSE;
+$config['csrf_protection'] = TRUE;
 
 
 /*
@@ -326,7 +326,7 @@ $config['time_reference'] = 'local';
 | in your view files.  Options are TRUE or FALSE (boolean)
 |
 */
-$config['rewrite_short_tags'] = FALSE;
+$config['rewrite_short_tags'] = TRUE;
 
 
 /*
@@ -349,9 +349,9 @@ $config['proxy_ips'] = '';
 |
 | If you enable this, all the pages will generate a profiler report. You
 | can enable it manually or let threshold configuration do it for you.
+|
 */
 $config['debug']    = TRUE ? $config['log_threshold'] >= 2 : FALSE;
-
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */

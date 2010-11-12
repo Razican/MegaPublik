@@ -2,7 +2,7 @@
 /**
  * CodeIgniter
  *
- * An open source application development framework for PHP 4.3.2 or newer
+ * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package		CodeIgniter
  * @author		ExpressionEngine Dev Team
@@ -35,7 +35,7 @@ class CI_Unit_test {
 	var $_template_rows			= NULL;
 	var $_test_items_visible	= array();
 
-	function CI_Unit_test()
+	public function __construct()
 	{
 		// These are the default items visible when a test is run.
 		$this->_test_items_visible = array (

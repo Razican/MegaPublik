@@ -2,9 +2,9 @@
 
 Class Market_m extends CI_Model
 {
-	function Market_m()
+	function __construct()
 	{
-		parent::CI_Model();
+		parent::__construct();
 	}
 
 	function get_market($type, $from, $to, $country)

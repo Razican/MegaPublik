@@ -2,7 +2,7 @@
 /**
  * CodeIgniter
  *
- * An open source application development framework for PHP 4.3.2 or newer
+ * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package		CodeIgniter
  * @author		ExpressionEngine Dev Team
@@ -52,7 +52,7 @@ class CI_Session {
 	 * The constructor runs the session routines automatically
 	 * whenever the class is instantiated.
 	 */
-	function CI_Session($params = array())
+	public function __construct($params = array())
 	{
 		log_message('debug', "Session Class Initialized");
 

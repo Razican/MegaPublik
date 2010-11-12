@@ -29,9 +29,10 @@ class MP_Lang extends CI_Lang {
 
 	var $special = array ('admin');
 
-	function MP_Lang()
+	function __construct()
 	{
-		parent::CI_Lang();		
+
+		parent::__construct();
 
 		global $CFG;
 		global $URI;

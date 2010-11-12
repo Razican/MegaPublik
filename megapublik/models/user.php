@@ -2,9 +2,9 @@
 
 Class User extends CI_Model
 {
-	function User()
+	function __construct()
 	{
-		parent::CI_Model();
+		parent::__construct();
 	}
 
 	function data($id, $table = 'users')

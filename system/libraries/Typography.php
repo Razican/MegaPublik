@@ -2,7 +2,7 @@
 /**
  * CodeIgniter
  *
- * An open source application development framework for PHP 4.3.2 or newer
+ * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package		CodeIgniter
  * @author		ExpressionEngine Dev Team
@@ -43,14 +43,6 @@ class CI_Typography {
 
 	// whether or not to protect quotes within { curly braces }
 	var $protect_braced_quotes = FALSE;
-
-	/**
-	 * Nothing to do here...
-	 *
-	 */
-	function CI_Typography()
-	{
-	}
 
 	/**
 	 * Auto Typography

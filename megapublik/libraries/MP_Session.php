@@ -11,9 +11,9 @@
  
 class MP_Session extends CI_Session {
 
-    function MP_Session()
+    function __construct()
     {
-        parent::CI_Session();
+        parent::__construct();
     }
 
    	/**

@@ -11,6 +11,11 @@
 
 class MP_Config extends CI_Config {
 
+	function __construct()
+	{
+		parent::__construct();
+	}
+
 	function site_url($uri = '')
 	{	
 		if (is_array($uri))

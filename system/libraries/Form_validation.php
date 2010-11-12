@@ -2,7 +2,7 @@
 /**
  * CodeIgniter
  *
- * An open source application development framework for PHP 4.3.2 or newer
+ * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package		CodeIgniter
  * @author		ExpressionEngine Dev Team
@@ -39,9 +39,8 @@ class CI_Form_validation {
 
 	/**
 	 * Constructor
-	 *
 	 */
-	function CI_Form_validation($rules = array())
+	public function __construct($rules = array())
 	{
 		$this->CI =& get_instance();
 
@@ -78,7 +77,7 @@ class CI_Form_validation {
 		// No reason to set rules if we have no POST data
 		if (count($_POST) == 0)
 		{
-			return;
+			return $this;
 		}
 
 		// If an array was passed via the first parameter instead of indidual string
@@ -99,13 +98,13 @@ class CI_Form_validation {
 				// Here we go!
 				$this->set_rules($row['field'], $label, $row['rules']);
 			}
-			return;
+			return $this;
 		}
 
 		// No fields? Nothing to do...
 		if ( ! is_string($field) OR  ! is_string($rules) OR $field == '')
 		{
-			return;
+			return $this;
 		}
 
 		// If the field label wasn't passed we use the field name
@@ -147,6 +146,8 @@ class CI_Form_validation {
 											'postdata'			=> NULL,
 											'error'				=> ''
 											);
+
+		return $this;
 	}
 
 	// --------------------------------------------------------------------
@@ -170,6 +171,8 @@ class CI_Form_validation {
 		}
 
 		$this->_error_messages = array_merge($this->_error_messages, $lang);
+		
+		return $this;
 	}
 
 	// --------------------------------------------------------------------
@@ -188,6 +191,8 @@ class CI_Form_validation {
 	{
 		$this->_error_prefix = $prefix;
 		$this->_error_suffix = $suffix;
+		
+		return $this;
 	}
 
 	// --------------------------------------------------------------------

@@ -2,23 +2,23 @@
 /**
  * CodeIgniter
  *
- * An open source application development framework for PHP 4.3.2 or newer
+ * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package		CodeIgniter
  * @author		ExpressionEngine Dev Team
  * @copyright	Copyright (c) 2008 - 2010, EllisLab, Inc.
  * @license		http://codeigniter.com/user_guide/license.html
  * @link		http://codeigniter.com
- * @since		Version 1.0
+ * @since		Version 2.0
  * @filesource
  */
 
 // ------------------------------------------------------------------------
 
 /**
- * Output Class
+ * Unicode Class
  *
- * Responsible for sending final output to browser
+ * Provides unicode support for UTF-8 environments
  *
  * @package		CodeIgniter
  * @subpackage	Libraries
@@ -34,7 +34,7 @@ class CI_Unicode {
 	 * Determines if UTF-8 support is to be enabled
 	 *
 	 */
-	function CI_Unicode()
+	function __construct()
 	{
 		log_message('debug', "Unicode Class Initialized");
 

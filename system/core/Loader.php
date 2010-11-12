@@ -2,7 +2,7 @@
 /**
  * CodeIgniter
  *
- * An open source application development framework for PHP 4.3.2 or newer
+ * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package		CodeIgniter
  * @author		ExpressionEngine Dev Team
@@ -34,7 +34,6 @@ class CI_Loader {
 	var $_ci_library_paths	= array();
 	var $_ci_model_paths	= array();
 	var $_ci_helper_paths	= array();
-	var $_ci_is_instance	= FALSE; // Whether we should use $this or $CI =& get_instance()
 	var $_base_classes		= array(); // Set by the controller class
 	var $_ci_cached_vars	= array();
 	var $_ci_classes		= array();
@@ -51,7 +50,7 @@ class CI_Loader {
 	 *
 	 * @access	public
 	 */
-	function CI_Loader()
+	function __construct()
 	{
 		$this->_ci_view_path = APPPATH.'views/';
 		$this->_ci_ob_level  = ob_get_level();
@@ -109,8 +108,6 @@ class CI_Loader {
 		{
 			$this->_ci_load_class($library, $params, $object_name);
 		}
-
-		$this->_ci_assign_to_models();
 	}
 
 	// --------------------------------------------------------------------
@@ -182,7 +179,9 @@ class CI_Loader {
 			if ($db_conn !== FALSE AND ! class_exists('CI_DB'))
 			{
 				if ($db_conn === TRUE)
+				{
 					$db_conn = '';
+				}
 
 				$CI->load->database($db_conn, FALSE, TRUE);
 			}
@@ -197,7 +196,6 @@ class CI_Loader {
 			$model = ucfirst($model);
 
 			$CI->$name = new $model();
-			$CI->$name->_assign_libraries();
 
 			$this->_ci_models[] = $name;
 			return;
@@ -242,9 +240,6 @@ class CI_Loader {
 
 		// Load the DB class
 		$CI->db =& DB($params, $active_record);
-
-		// Assign the DB object to any existing models
-		$this->_ci_assign_to_models();
 	}
 
 	// --------------------------------------------------------------------
@@ -272,9 +267,7 @@ class CI_Loader {
 		require_once(BASEPATH.'database/drivers/'.$CI->db->dbdriver.'/'.$CI->db->dbdriver.'_utility'.EXT);
 		$class = 'CI_DB_'.$CI->db->dbdriver.'_utility';
 
-		$CI->dbutil =& instantiate_class(new $class());
-
-		$CI->load->_ci_assign_to_models();
+		$CI->dbutil = new $class();
 	}
 
 	// --------------------------------------------------------------------
@@ -299,8 +292,6 @@ class CI_Loader {
 		$class = 'CI_DB_'.$CI->db->dbdriver.'_forge';
 
 		$CI->dbforge = new $class();
-
-		$CI->load->_ci_assign_to_models();
 	}
 
 	// --------------------------------------------------------------------
@@ -535,6 +526,8 @@ class CI_Loader {
 	 */
 	function add_package_path($path)
 	{
+		$path = rtrim($path, '/').'/';
+		
 		array_unshift($this->_ci_library_paths, $path);
 		array_unshift($this->_ci_model_paths, $path);
 		array_unshift($this->_ci_helper_paths, $path);
@@ -569,6 +562,8 @@ class CI_Loader {
 		}
 		else
 		{
+			$path = rtrim($path, '/').'/';
+			
 			foreach (array('_ci_library_paths', '_ci_model_paths', '_ci_helper_paths') as $var)
 			{
 				if (($key = array_search($path, $this->{$var})) !== FALSE)
@@ -631,17 +626,13 @@ class CI_Loader {
 
 		// This allows anything loaded using $this->load (views, files, etc.)
 		// to become accessible from within the Controller and Model functions.
-		// Only needed when running PHP 5
 
-		if ($this->_ci_is_instance())
+		$_ci_CI =& get_instance();
+		foreach (get_object_vars($_ci_CI) as $_ci_key => $_ci_var)
 		{
-			$_ci_CI =& get_instance();
-			foreach (get_object_vars($_ci_CI) as $_ci_key => $_ci_var)
+			if ( ! isset($this->$_ci_key))
 			{
-				if ( ! isset($this->$_ci_key))
-				{
-					$this->$_ci_key =& $_ci_CI->$_ci_key;
-				}
+				$this->$_ci_key =& $_ci_CI->$_ci_key;
 			}
 		}
 
@@ -712,9 +703,7 @@ class CI_Loader {
 		}
 		else
 		{
-			// PHP 4 requires that we use a global
-			global $OUT;
-			$OUT->append_output(ob_get_contents());
+			$_ci_CI->output->append_output(ob_get_contents());
 			@ob_end_clean();
 		}
 	}
@@ -1001,33 +990,6 @@ class CI_Loader {
 		{
 			$this->model($autoload['model']);
 		}
-
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Assign to Models
-	 *
-	 * Makes sure that anything loaded by the loader class (libraries, etc.)
-	 * will be available to models, if any exist.
-	 *
-	 * @access	private
-	 * @param	object
-	 * @return	array
-	 */
-	function _ci_assign_to_models()
-	{
-		if (count($this->_ci_models) == 0)
-		{
-			return;
-		}
-
-		foreach($this->_ci_models as $model)
-		{
-			$model = $this->_ci_get_component($model);
-			$model->_assign_libraries();
-		}
 	}
 
 	// --------------------------------------------------------------------
@@ -1049,26 +1011,6 @@ class CI_Loader {
 	// --------------------------------------------------------------------
 
 	/**
-	 * Determines whether we should use the CI instance or $this
-	 * @PHP4
-	 *
-	 * @access	private
-	 * @return	bool
-	 */
-	function _ci_is_instance()
-	{
-		if (is_php('5.0.0') == TRUE)
-		{
-			return TRUE;
-		}
-
-		global $CI;
-		return (is_object($CI)) ? TRUE : FALSE;
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
 	 * Get a reference to a specific library or model
 	 *
 	 * @access	private
@@ -1076,15 +1018,8 @@ class CI_Loader {
 	 */
 	function &_ci_get_component($component)
 	{
-		if ($this->_ci_is_instance())
-		{
-			$CI =& get_instance();
-			return $CI->$component;
-		}
-		else
-		{
-			return $this->$component;
-		}
+		$CI =& get_instance();
+		return $CI->$component;
 	}
 
 	// --------------------------------------------------------------------

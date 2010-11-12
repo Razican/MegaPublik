@@ -2,7 +2,7 @@
 /**
  * CodeIgniter
  *
- * An open source application development framework for PHP 4.3.2 or newer
+ * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package		CodeIgniter
  * @author		ExpressionEngine Dev Team
@@ -51,7 +51,7 @@ class CI_Security {
 										"Redirect\s+302"			=> '[removed]'
 									);
 
-	function CI_Security()
+	public function __construct()
 	{
 		// Append application specific cookie prefix to token name
 		$this->csrf_cookie_name = (config_item('cookie_prefix')) ? config_item('cookie_prefix').$this->csrf_token_name : $this->csrf_token_name;

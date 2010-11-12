@@ -2,7 +2,7 @@
 /**
  * CodeIgniter
  *
- * An open source application development framework for PHP 4.3.2 or newer
+ * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package		CodeIgniter
  * @author		ExpressionEngine Dev Team
@@ -42,7 +42,7 @@ class CI_Parser {
 	 * @param	bool
 	 * @return	string
 	 */
-	function parse($template, $data, $return = FALSE)
+	public function parse($template, $data, $return = FALSE)
 	{
 		$CI =& get_instance();
 		$template = $CI->load->view($template, $data, TRUE);

@@ -2,7 +2,7 @@
 /**
  * CodeIgniter
  *
- * An open source application development framework for PHP 4.3.2 or newer
+ * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package		CodeIgniter
  * @author		ExpressionEngine Dev Team
@@ -163,27 +163,8 @@
 		// Keep track of what we just loaded
 		is_loaded($class);
 
-		$_classes[$class] =& instantiate_class(new $name());
+		$_classes[$class] = new $name();
 		return $_classes[$class];
-	}
-
-// ------------------------------------------------------------------------
-
-/**
- * Instantiate Class
- *
- * Returns a new class object by reference, used by load_class() and the DB class.
- * Required to retain PHP 4 compatibility and also not make PHP 5.3 cry.
- *
- * Use: $obj =& instantiate_class(new Foo());
- *
- * @access	public
- * @param	object
- * @return	object
- */
-	function &instantiate_class(&$class_object)
-	{
-		return $class_object;
 	}
 
 // --------------------------------------------------------------------

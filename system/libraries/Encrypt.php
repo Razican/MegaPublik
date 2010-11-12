@@ -2,7 +2,7 @@
 /**
  * CodeIgniter
  *
- * An open source application development framework for PHP 4.3.2 or newer
+ * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package		CodeIgniter
  * @author		ExpressionEngine Dev Team
@@ -41,7 +41,7 @@ class CI_Encrypt {
 	 * Simply determines whether the mcrypt library exists.
 	 *
 	 */
-	function CI_Encrypt()
+	public function __construct()
 	{
 		$this->CI =& get_instance();
 		$this->_mcrypt_exists = ( ! function_exists('mcrypt_encrypt')) ? FALSE : TRUE;

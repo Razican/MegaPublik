@@ -1,10 +1,10 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Error extends Controller {
+class Error extends CI_Controller {
 
-	function Error()
+	function __construct()
 	{
-		parent::Controller();	
+		parent::__construct();	
 	}
 
 	function _remap($error = 0)

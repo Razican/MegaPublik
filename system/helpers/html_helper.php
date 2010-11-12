@@ -2,7 +2,7 @@
 /**
  * CodeIgniter
  *
- * An open source application development framework for PHP 4.3.2 or newer
+ * An open source application development framework for PHP 5.1.6 or newer
  *
  * @package		CodeIgniter
  * @author		ExpressionEngine Dev Team
@@ -216,16 +216,16 @@ if ( ! function_exists('img'))
 
 				if ($index_page === TRUE)
 				{
-					$img .= ' src="'.$CI->config->site_url($v).'" ';
+					$img .= ' src="'.$CI->config->site_url($v).'"';
 				}
 				else
 				{
-					$img .= ' src="'.$CI->config->slash_item('base_url').$v.'" ';
+					$img .= ' src="'.$CI->config->slash_item('base_url').$v.'"';
 				}
 			}
 			else
 			{
-				$img .= " $k=\"$v\" ";
+				$img .= " $k=\"$v\"";
 			}
 		}
 
