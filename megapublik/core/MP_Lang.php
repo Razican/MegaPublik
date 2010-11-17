@@ -51,7 +51,7 @@ class MP_Lang extends CI_Lang {
 		}
 		else
 		{
-			$CFG->set_item('language', $this->languages[$this->default_lang()]);
+			$CFG->set_item('language', $this->languages[$this->default_lang()]);			
 
 			header("Location: " . $CFG->site_url($this->lang($CFG->item('language')).$URI->uri_string()), TRUE, 302);
 			exit;
@@ -124,8 +124,10 @@ class MP_Lang extends CI_Lang {
 		{
 			return isset($this->languages[$first_segment]);
 		}
-		
-		return FALSE;
+		else
+		{
+			return FALSE;
+		}
 	}
 
 	function default_lang()
