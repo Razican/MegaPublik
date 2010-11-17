@@ -38,7 +38,7 @@ class Market extends CI_Controller {
 	{
 		if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH']==="XMLHttpRequest")
 		{
-			sleep(1);
+			sleep(2);
 			$this->lang->load('market');
 			$this->load->model('market_m');
 			$user			= $this->user->data($this->session->userdata('user_id'));
