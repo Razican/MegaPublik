@@ -15,5 +15,10 @@ $lang['overal.menu.index']			= 'Inicio';
 $lang['overal.menu.registration']	= 'Regístrate';
 $lang['overal.menu.logout']			= 'Salir';
 
+//Panel
+$lang['overal.panel.wellness']		= 'Salud';
+$lang['overal.panel.happiness']		= 'Felicidad';
+$lang['overal.panel.productivity']	= 'Productividad';
+
 /* End of file overal_lang.php */
 /* Location: ./application/language/spanish/overal_lang.php */

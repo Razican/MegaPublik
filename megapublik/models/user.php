@@ -9,7 +9,7 @@ Class User extends CI_Model
 
 	function data($id, $table = 'users')
 	{
-		$query			= $this->db->get_where($table, array('id' => $id));
+		$query				= $this->db->get_where($table, array('id' => $id));
 
 		if ($query->num_rows() > 0){
 			foreach ($query->result() as $result)
@@ -28,10 +28,19 @@ Class User extends CI_Model
 		}
 		return $return;
 	}
+	
+	function has_company()
+	{
+		$query				= $this->db->get_where('companies', array('owner_id' => $this->session->userdata('user_id')));
+
+		$has_company		= $query->num_rows() != 0 ? TRUE : FALSE;
+
+		return $has_company;
+	}
 
 	function online()
 	{
-		$query			= $this->db->get('sessions');
+		$query				= $this->db->get('sessions');
 
 		return $query->num_rows();
 	}

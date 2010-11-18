@@ -9,6 +9,8 @@ class Login extends CI_Controller {
 	
 	function index()
 	{
+		$this->load->model('login_m');
+
 		if ((!$this->input->post('username')) OR (!$this->input->post('password')))
 		{
 			redirect('error/6');
@@ -20,30 +22,23 @@ class Login extends CI_Controller {
 				exit(redirect('/'));
 			}
 
-			$query	= $this->db->get_where('users', array('username' => $this->input->post('username')), '1');
+			$user	= $this->login_m->user();
 
-			if ($query->num_rows() > 0)
+			if (isset($user))
 			{
-				foreach ($query->result() as $result)
-				{
-					$user			=& $result;
-				}
-				if ($user->password		!= sha1($this->input->post('password')))
+				if ($user->password	!= sha1($this->input->post('password')))
 				{
 					redirect('error/2');
 				}
 				else
 				{
-					$query		= $this->db->get_where('users', array('username' => $this->input->post('username')), '1');
-					foreach ($query->result() as $result)
-					{
-						$user	= $result;
-					}
+					$user			= $this->login_m->login($this->input->post('username'), $this->input->ip_address());
+
 					if (!$this->input->post('remember'))
 					{
 						$this->config->set_item('sess_expire_on_close', TRUE);
 					}
-					
+
 					$userdata	= array(
 					'user_id'	=> $user->id,					
 					'username'  => $this->input->post('username'),
@@ -52,8 +47,6 @@ class Login extends CI_Controller {
 					);
 
 					$this->session->set_userdata($userdata);
-															
-					$this->db->update('users', array('last_IP' => $this->input->ip_address()), "username = '". $this->input->post('username') ."'");
 
 					redirect('/');
 				}

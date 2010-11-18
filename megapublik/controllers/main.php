@@ -11,29 +11,43 @@ class Main extends CI_Controller {
 	{
 		if($this->session->userdata('logged_in'))
 		{
-			$this->output->enable_profiler($this->config->item('debug'));
-			$this->lang->load('ingame');
 			define ('INGAME', TRUE);
+
+			$this->output->enable_profiler($this->config->item('debug'));
+
+			$this->lang->load('ingame');
+
 			$user				= $this->user->data($this->session->userdata('user_id'));
-			$head['help']		= lang('ingame.help');
-			$data['user']		= $user;
+			$country			= $this->user->data($user->location, 'countries');
+
 			$panel['avatar']	= avatar($user);
 			$panel['user']		= $user;
-			$panel['exp']		= experience($user);
+			$panel['exp_prcnt']	= exp_percent($user);
+			$panel['l18n']		= l18n($this->lang->lang());
+			$panel['country']	= $country;
+
+			$head['help']		= lang('ingame.help');
 			$head['menu']		= $this->load->view('menu_ingame', '', TRUE);
 			$head['panel']		= $this->load->view('panel', $panel, TRUE);
+
+			$data['user']		= $user;
 			$data['head']		= $this->load->view('head', $head, TRUE);
 			$data['footer']		= $this->load->view('footer', '', TRUE);
-			$data['country']	= $this->user->data($user->location, 'countries');
+			$data['country']	= $country;
+
 			$this->load->view('ingame', $data);
 		}
 		else
 		{
+			$this->lang->load('login');
+
 			$this->output->enable_profiler($this->config->item('debug'));
+
 			$head['menu']		= $this->load->view('menu_outgame', '', TRUE);
+
 			$data['head']		= $this->load->view('head', $head, TRUE);
 			$data['footer']		= $this->load->view('footer', '', TRUE);
-			$this->lang->load('login');
+
 			$this->load->view('login', $data);	
 		}
 	}

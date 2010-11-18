@@ -10,21 +10,21 @@ class Registration extends CI_Controller {
 	function index()
 	{
 		$this->output->enable_profiler($this->config->item('debug'));
+
 		if($this->session->userdata('logged_in'))
 		{
 			exit(redirect('/'));
 		}
 
 		$this->lang->load('registration');
-		$query					= $this->db->get('countries');
-		$data['countries']		= '';
-		foreach ($query->result() as $country)
-		{
-			$data['countries']	.= '<option value="'. $country->id .'">'. $country->name .'</option>';
-		}
+		$this->load->model('registration_m');
+
 		$head['menu']		= $this->load->view('menu_outgame', '', TRUE);
+
+		$data['countries']	= $this->registration_m->countries();
 		$data['head']		= $this->load->view('head', $head, TRUE);
 		$data['footer']		= $this->load->view('footer', '', TRUE);
+
 		$this->load->view('registration/register', $data);
 	}
 	

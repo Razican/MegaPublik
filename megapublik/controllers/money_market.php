@@ -12,11 +12,13 @@ class Money_market extends CI_Controller {
 		if($this->session->userdata('logged_in'))
 		{
 			$this->output->enable_profiler($this->config->item('debug'));
+
 			$this->lang->load('money_market');
 		}
 		else
 		{
 			log_message('error', 'User with IP '.$this->input->ip_address().' has tried to enter /money_market without loggin in.');
+
 			redirect('/');
 		}
 	}

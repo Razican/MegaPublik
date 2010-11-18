@@ -11,21 +11,32 @@ class Market extends CI_Controller {
 	{
 		if($this->session->userdata('logged_in'))
 		{
-			$this->output->enable_profiler($this->config->item('debug'));
-			$this->lang->load('market');
-			$this->lang->load('ingame');
 			define ('INGAME', TRUE);
 			define ('AJAX', TRUE);
+
+			$this->output->enable_profiler($this->config->item('debug'));
+
+			$this->lang->load('market');
+			$this->lang->load('ingame');
+
 			$user				= $this->user->data($this->session->userdata('user_id'));
+			$country			= $this->user->data($user->location, 'countries');
+
 			$panel['user']		= $user;
 			$panel['avatar']	= avatar($user);
-			$panel['exp']		= experience($user);
+			$panel['exp_prcnt']	= exp_percent($user);
+			$panel['l18n']		= l18n($this->lang->lang());
+			$panel['country']	= $country;
+
 			$head['panel']		= $this->load->view('panel', $panel, TRUE);
 			$head['help']		= lang('ingame.help');
 			$head['menu']		= $this->load->view('menu_ingame', '', TRUE);
 			$head['script']		= $this->load->view('market/market_ajax', '', TRUE);
+
 			$data['head']		= $this->load->view('head', $head, TRUE);
 			$data['footer']		= $this->load->view('footer', '', TRUE);
+			$data['is_society']	= $this->user->has_company();
+
 			$this->load->view('market/market', $data);
 		}
 		else
@@ -39,16 +50,19 @@ class Market extends CI_Controller {
 		if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH']==="XMLHttpRequest")
 		{
 			sleep(2);
+
 			$this->lang->load('market');
 			$this->load->model('market_m');
+
 			$user			= $this->user->data($this->session->userdata('user_id'));
 			$user_country	= $this->user->data($user->location, 'countries');
 			$country		= $user_country->id;
 			$content		= $this->market_m->get_market($type, $from, $to, $country);
+
 			if ($content->num_rows() > 0)
 			{
-				$data			= array();
 				$data['rows']	= NULL;
+
 				foreach ($content->result() as $content)
 				{
 					$row['price']		= $content->price;
@@ -62,6 +76,7 @@ class Market extends CI_Controller {
 			}
 			else
 			{
+				//Cargar desde view
 				echo "no hay datos";
 			}
 		}

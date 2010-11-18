@@ -10,7 +10,7 @@ function avatar($user)
 	return $avatar;
 }
 
-function experience($user)
+function exp_percent($user)
 {
 	global $CFG;
 	if ($user->level == 1)
@@ -27,6 +27,57 @@ function experience($user)
 	}
 
 	return $percentage;
+}
+
+function l18n($lang)
+{
+	if(($lang === 'es') OR ($lang === 'fr'))
+	{
+		$l18n->dec	= ',';
+		$l18n->thou	= ' ';
+	}
+	else if($lang === 'eu')
+	{
+		$l18n->dec	= ',';
+		$l18n->thou	= '.';
+	}
+	else
+	{
+		$l18n->dec	= '.';
+		$l18n->thou	= ',';
+	}
+	
+	return $l18n;
+}
+
+function country_money($user, $country)
+{
+	$country_currency	= $country->currency;
+	$country_money		= $user->$country_currency;
+	
+	return $country_money;
+}
+
+function color($percentage)
+{
+	if($percentage <20)
+	{
+		$color	= 'red';
+	}
+	else if($percentage <50)
+	{
+		$color	= 'orange';
+	}
+	else if($percentage <80)
+	{
+		$color	= 'yellow';
+	}
+	else
+	{
+		$color	= 'green';
+	}
+	
+	return $color;
 }
 
 /* End of file overal_helper.php */

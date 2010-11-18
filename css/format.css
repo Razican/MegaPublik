@@ -52,21 +52,6 @@ table.market_table {
 #avatar {
 
 }
-#experience {
-	width: 100px;
-	border: 1px solid black;
-	background: white;
-	height: 5px;
-	display: block;
-	margin-left: 25px;
-}
-.exp_percent {
-	height: 100%;
-	background: green;
-	display: block;
-	overflow: visible;
-}
-
 .panel {
 	float: left;
 	width: 150px;
@@ -86,5 +71,28 @@ table.market_table {
 	float: right;
 }
 .loading {
+	text-align: center;
+}
+.percent_box {
+	width: 100px;
+	border: 1px solid black;
+	background: white;
+	height: 10px;
+	display: block;
+	margin-left: 25px;
+}
+.box_percent {
+	height: 100%;
+	display: block;
+	overflow: visible;
+	font-size:60%
+}
+#experience .percent_box {
+	height: 5px;
+}
+#experience .box_percent {
+	background: green;
+}
+#selector {
 	text-align: center;
 }
