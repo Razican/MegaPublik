@@ -28,7 +28,6 @@ h1 {
 	opacity: 0.75;
 	padding: 10px;
 	margin-left: 175px;
-	text-align: center;
 }
 .logo {
 	margin:  10px;
@@ -85,4 +84,7 @@ table.market_table {
 }
 .menu_logout {
 	float: right;
+}
+.loading {
+	text-align: center;
 }

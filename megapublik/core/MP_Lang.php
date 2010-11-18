@@ -1,7 +1,7 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
- * MP_Config Class
+ * MP_Lang Class
  *
  * @subpackage	Libraries
  * @author		Jérôme Jaglale
