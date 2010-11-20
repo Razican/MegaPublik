@@ -27,11 +27,13 @@ class Market extends CI_Controller {
 			$panel['exp_prcnt']	= exp_percent($user);
 			$panel['l18n']		= l18n($this->lang->lang());
 			$panel['country']	= $country;
+			
+			$script['img']		= loading(lang('market.loading'));
 
 			$head['panel']		= $this->load->view('panel', $panel, TRUE);
 			$head['help']		= lang('ingame.help');
 			$head['menu']		= $this->load->view('menu_ingame', '', TRUE);
-			$head['script']		= $this->load->view('market/market_ajax', '', TRUE);
+			$head['script']		= $this->load->view('market/market_ajax', $script, TRUE);
 
 			$data['head']		= $this->load->view('head', $head, TRUE);
 			$data['footer']		= $this->load->view('footer', '', TRUE);
@@ -76,8 +78,7 @@ class Market extends CI_Controller {
 			}
 			else
 			{
-				//Cargar desde view
-				echo "no hay datos";
+				$this->load->view('market/market_nodata');
 			}
 		}
 		else

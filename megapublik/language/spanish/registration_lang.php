@@ -14,6 +14,8 @@ $lang['reg.country']		= 'País';
 $lang['reg.submit']			= 'Regístrate';
 $lang['reg.here']			= 'aquí';
 $lang['reg.go_back']		= 'Volver';
+$lang['reg.correct']		= 'Correcto';
+$lang['reg.wrong']			= 'Incorrecto';
 
 /* End of file registration_lang.php */
 /* Location: ./application/language/spanish/registration_lang.php */

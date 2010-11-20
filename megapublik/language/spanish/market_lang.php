@@ -5,6 +5,7 @@ $lang['market.price']		= 'Precio';
 $lang['market.amount']		= 'Cantidad';
 $lang['market.buy']			= 'Comprar';
 $lang['market.loading']		= 'Cargando';
+$lang['market.nodata']		= 'No hay Datos';
 
 $lang['market.food']		= 'Comida';
 $lang['market.weapon']		= 'Armas';

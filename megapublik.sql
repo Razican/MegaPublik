@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 09-11-2010 a las 18:19:26
+-- Tiempo de generación: 20-11-2010 a las 17:16:44
 -- Versión del servidor: 5.1.41
 -- Versión de PHP: 5.3.2-1ubuntu4.5
 
@@ -24,7 +24,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 -- Estructura de tabla para la tabla `alerts`
 --
--- Creación: 04-11-2010 a las 17:30:04
+-- Creación: 11-11-2010 a las 17:58:08
 --
 
 DROP TABLE IF EXISTS `alerts`;
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `alerts` (
 --
 -- Estructura de tabla para la tabla `articles`
 --
--- Creación: 04-11-2010 a las 17:30:04
+-- Creación: 11-11-2010 a las 17:58:08
 --
 
 DROP TABLE IF EXISTS `articles`;
@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `articles` (
 --
 -- Estructura de tabla para la tabla `article_comments`
 --
--- Creación: 04-11-2010 a las 17:30:04
+-- Creación: 11-11-2010 a las 17:58:08
 --
 
 DROP TABLE IF EXISTS `article_comments`;
@@ -96,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `article_comments` (
 --
 -- Estructura de tabla para la tabla `article_votes`
 --
--- Creación: 04-11-2010 a las 17:30:05
+-- Creación: 11-11-2010 a las 17:58:08
 --
 
 DROP TABLE IF EXISTS `article_votes`;
@@ -117,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `article_votes` (
 --
 -- Estructura de tabla para la tabla `borders`
 --
--- Creación: 04-11-2010 a las 17:30:05
+-- Creación: 11-11-2010 a las 17:58:08
 --
 
 DROP TABLE IF EXISTS `borders`;
@@ -138,7 +138,7 @@ CREATE TABLE IF NOT EXISTS `borders` (
 --
 -- Estructura de tabla para la tabla `companies`
 --
--- Creación: 04-11-2010 a las 17:30:05
+-- Creación: 11-11-2010 a las 17:58:08
 --
 
 DROP TABLE IF EXISTS `companies`;
@@ -229,14 +229,14 @@ INSERT INTO `companies` (`id`, `name`, `owner_id`, `type`, `non_stock`, `stock`,
 --
 -- Estructura de tabla para la tabla `countries`
 --
--- Creación: 04-11-2010 a las 17:30:05
+-- Creación: 18-11-2010 a las 19:20:55
 --
 
 DROP TABLE IF EXISTS `countries`;
 CREATE TABLE IF NOT EXISTS `countries` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(20) NOT NULL,
-  `currency` tinyint(3) unsigned NOT NULL,
+  `currency` char(3) NOT NULL,
   `president_id` int(11) unsigned NOT NULL,
   `food_income_tax` tinyint(3) unsigned NOT NULL DEFAULT '1',
   `food_import_tax` tinyint(3) unsigned NOT NULL DEFAULT '1',
@@ -338,15 +338,15 @@ CREATE TABLE IF NOT EXISTS `countries` (
 --
 
 INSERT INTO `countries` (`id`, `name`, `currency`, `president_id`, `food_income_tax`, `food_import_tax`, `food_vat_tax`, `gift_income_tax`, `gift_import_tax`, `gift_vat_tax`, `weapon_income_tax`, `weapon_import_tax`, `weapon_vat_tax`, `tickets_income_tax`, `tickets_import_tax`, `tickets_vat_tax`, `grain_income_tax`, `grain_import_tax`, `diamonds_income_tax`, `diamonds_import_tax`, `iron_income_tax`, `iron_import_tax`, `oil_income_tax`, `oil_import_tax`, `wood_income_tax`, `wood_import_tax`, `house_income_tax`, `house_import_tax`, `house_vat_tax`, `hospital_income_tax`, `hospital_import_tax`, `hospital_vat_tax`, `defense_system_income_tax`, `defense_system_import_tax`, `defense_system_vat_tax`, `money_mp`, `ARS`, `ATS`, `AUD`, `BAM`, `BEF`, `BGN`, `BOB`, `BRL`, `CAD`, `CHF`, `CLP`, `CNY`, `COP`, `CZK`, `DEM`, `DKK`, `EEK`, `ESP`, `FIM`, `FRF`, `GBP`, `GRD`, `HRK`, `HUF`, `IDR`, `IEP`, `INR`, `IRR`, `ITL`, `JPY`, `KPW`, `KRW`, `LTL`, `LVL`, `MDL`, `MXN`, `MYR`, `NIS`, `NLG`, `NOK`, `PEN`, `PHP`, `PKR`, `PLN`, `PTE`, `PYG`, `RON`, `RSD`, `RUB`, `SEK`, `SGD`, `SIT`, `SKK`, `THB`, `TRY`, `UAH`, `USD`, `UYU`, `VEB`, `ZAR`) VALUES
-(1, 'MegaPublik 1', 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(2, 'MegaPublik 2', 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+(1, 'MegaPublik 1', 'ESP', 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(2, 'MegaPublik 2', 'GBP', 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `decisions`
 --
--- Creación: 04-11-2010 a las 17:30:05
+-- Creación: 11-11-2010 a las 17:58:08
 --
 
 DROP TABLE IF EXISTS `decisions`;
@@ -374,7 +374,7 @@ CREATE TABLE IF NOT EXISTS `decisions` (
 --
 -- Estructura de tabla para la tabla `friendships`
 --
--- Creación: 04-11-2010 a las 17:30:05
+-- Creación: 11-11-2010 a las 17:58:08
 --
 
 DROP TABLE IF EXISTS `friendships`;
@@ -394,9 +394,34 @@ CREATE TABLE IF NOT EXISTS `friendships` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `houses`
+--
+-- Creación: 20-11-2010 a las 17:15:39
+--
+
+DROP TABLE IF EXISTS `houses`;
+CREATE TABLE IF NOT EXISTS `houses` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `state_id` int(11) unsigned NOT NULL,
+  `quality` tinyint(3) NOT NULL,
+  `TV` tinyint(3) NOT NULL DEFAULT '0',
+  `computer` tinyint(3) NOT NULL DEFAULT '0',
+  `refrigerator` tinyint(3) NOT NULL DEFAULT '0',
+  `safe` tinyint(3) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `houses`
+--
+
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `inventories`
 --
--- Creación: 04-11-2010 a las 17:30:06
+-- Creación: 11-11-2010 a las 17:58:08
 --
 
 DROP TABLE IF EXISTS `inventories`;
@@ -475,7 +500,7 @@ CREATE TABLE IF NOT EXISTS `inventories` (
 --
 -- Estructura de tabla para la tabla `market`
 --
--- Creación: 04-11-2010 a las 17:53:01
+-- Creación: 11-11-2010 a las 17:58:08
 --
 
 DROP TABLE IF EXISTS `market`;
@@ -504,7 +529,7 @@ INSERT INTO `market` (`id`, `amount`, `price`, `type`, `time`, `company_id`, `cu
 --
 -- Estructura de tabla para la tabla `messages`
 --
--- Creación: 04-11-2010 a las 17:30:06
+-- Creación: 11-11-2010 a las 17:58:08
 --
 
 DROP TABLE IF EXISTS `messages`;
@@ -529,7 +554,7 @@ CREATE TABLE IF NOT EXISTS `messages` (
 --
 -- Estructura de tabla para la tabla `newspapers`
 --
--- Creación: 04-11-2010 a las 17:30:06
+-- Creación: 11-11-2010 a las 17:58:08
 --
 
 DROP TABLE IF EXISTS `newspapers`;
@@ -551,7 +576,7 @@ CREATE TABLE IF NOT EXISTS `newspapers` (
 --
 -- Estructura de tabla para la tabla `parties`
 --
--- Creación: 04-11-2010 a las 17:30:06
+-- Creación: 11-11-2010 a las 17:58:08
 --
 
 DROP TABLE IF EXISTS `parties`;
@@ -636,7 +661,7 @@ CREATE TABLE IF NOT EXISTS `parties` (
 --
 -- Estructura de tabla para la tabla `sessions`
 --
--- Creación: 04-11-2010 a las 17:30:07
+-- Creación: 11-11-2010 a las 17:58:08
 --
 
 DROP TABLE IF EXISTS `sessions`;
@@ -653,12 +678,13 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 -- Volcar la base de datos para la tabla `sessions`
 --
 
+
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `shouts`
 --
--- Creación: 04-11-2010 a las 17:30:07
+-- Creación: 11-11-2010 a las 17:58:08
 --
 
 DROP TABLE IF EXISTS `shouts`;
@@ -680,7 +706,7 @@ CREATE TABLE IF NOT EXISTS `shouts` (
 --
 -- Estructura de tabla para la tabla `states`
 --
--- Creación: 04-11-2010 a las 17:30:07
+-- Creación: 11-11-2010 a las 17:58:08
 --
 
 DROP TABLE IF EXISTS `states`;
@@ -707,7 +733,7 @@ CREATE TABLE IF NOT EXISTS `states` (
 --
 -- Estructura de tabla para la tabla `suscriptions`
 --
--- Creación: 04-11-2010 a las 17:30:07
+-- Creación: 11-11-2010 a las 17:58:08
 --
 
 DROP TABLE IF EXISTS `suscriptions`;
@@ -728,7 +754,7 @@ CREATE TABLE IF NOT EXISTS `suscriptions` (
 --
 -- Estructura de tabla para la tabla `users`
 --
--- Creación: 09-11-2010 a las 18:18:54
+-- Creación: 20-11-2010 a las 17:10:39
 --
 
 DROP TABLE IF EXISTS `users`;
@@ -758,10 +784,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   `company_internal_level` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `party_id` int(11) unsigned DEFAULT NULL,
   `party_internal_level` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `house_id` int(11) unsigned DEFAULT NULL,
+  `banned` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `fights` bigint(20) unsigned NOT NULL DEFAULT '0',
   `total_damage` bigint(20) unsigned NOT NULL DEFAULT '0',
   `militar_rank` tinyint(3) unsigned NOT NULL DEFAULT '1',
   `wellness` tinyint(3) unsigned NOT NULL DEFAULT '50',
+  `happiness` tinyint(3) unsigned NOT NULL DEFAULT '50',
+  `productivity` tinyint(3) unsigned NOT NULL DEFAULT '50',
   `experience` bigint(20) unsigned NOT NULL DEFAULT '0',
   `manufacturing` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `land` tinyint(3) unsigned NOT NULL DEFAULT '0',
@@ -835,8 +865,10 @@ CREATE TABLE IF NOT EXISTS `users` (
   `VEB` bigint(20) unsigned NOT NULL DEFAULT '0',
   `ZAR` bigint(20) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Volcar la base de datos para la tabla `users`
 --
+
+

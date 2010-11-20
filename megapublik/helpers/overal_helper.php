@@ -80,5 +80,50 @@ function color($percentage)
 	return $color;
 }
 
+function reg_img($type, $alt)
+{
+	if($type === 'correct')
+	{
+		$src		=	'images/tick.png';
+	
+	}
+	else if($type === 'wrong')
+	{
+		$src		=	'images/cross.png';
+	}
+	else
+	{
+		log_message('error', 'function reg_img() has received bad arguments.');
+	}
+	$img	= array(
+		'src'		=> $src,
+		'alt'		=> $alt		
+	);
+
+	return $img;
+}
+
+function loading($alt, $size = 'big')
+{
+	if($size === 'big')
+	{
+		$src		=	'images/loading.gif';
+	}
+	else if ($size === 'mini')
+	{
+		$src		=	'images/mini_loading.gif';
+	}
+	else
+	{
+		log_message('error', 'function loading() has received bad arguments.');
+	}
+	$img	= array(
+		'src'		=> $src,
+		'alt'		=> $alt		
+	);
+
+	return $img;
+}
+
 /* End of file overal_helper.php */
 /* Location: ./application/helpers/overal_helper.php */

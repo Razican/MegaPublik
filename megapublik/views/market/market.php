@@ -17,7 +17,7 @@
 			<a href="<?php echo site_url('market/request/12'); ?>"><?php echo lang('market.appliance'); ?></a> | 
 			<a href="<?php echo site_url('market/request/13'); ?>"><?php echo lang('market.boat'); ?></a>
 		</div>
-		<div id="market_content_p">
+		<div id="market_content">
 		</div>
 	</div>
 <?php echo $footer; ?>

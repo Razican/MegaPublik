@@ -16,9 +16,15 @@ class Registration extends CI_Controller {
 			exit(redirect('/'));
 		}
 
+		define ('AJAX', TRUE);
+
 		$this->lang->load('registration');
 		$this->load->model('registration_m');
 
+		$script['correct']	= reg_img('correct', lang('reg.correct'));
+		$script['wrong']	= reg_img('wrong', lang('reg.correct'));
+
+		$head['script']		= $this->load->view('registration/registration_ajax', $script, TRUE);
 		$head['menu']		= $this->load->view('menu_outgame', '', TRUE);
 
 		$data['countries']	= $this->registration_m->countries();
