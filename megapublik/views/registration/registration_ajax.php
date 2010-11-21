@@ -3,14 +3,6 @@ $(function(){
 	correct_img		= '<?php echo img($correct); ?>';
 	wrong_img		= '<?php echo img($wrong); ?>';
 
-	alert(correct_img);
-
-	$(document).ready(function(){
-
-		$('#submit').attr('disabled', 'disabled');
-
-	});
-
 	$('#username').focus(function() {
 
 		$('#user_result').html('');
@@ -21,11 +13,7 @@ $(function(){
 
 		$('#user_result').html(correct_img);
 
-		if($("#user_result").html() == correct_img && $("#pass_result").html() == correct_img && $("#passconf_result").html() == correct_img && $("#email_result").html() == correct_img) {
-
-			$(#submit).removeAttr('disabled')
-
-		}
+		
 	});
 
 	$('#password').focus(function() {
@@ -41,21 +29,11 @@ $(function(){
 		var password		= $(this).val(),
 			pass_conf		= $('#pass_conf').val();
 		
-		if(password == pass_conf) {
+		if(password == pass_conf && password && pass_conf) {
+
 			$('#passconf_result').html(correct_img);
 
-			if($("#user_result").html() == correct_img && $("#pass_result").html() == correct_img && $("#passconf_result").html() == correct_img && $("#email_result").html() == correct_img) {
-
-				$(#submit).removeAttr('disabled')
-
-			}
 		}
-	});
-
-	$('#pass_conf').focus(function() {
-
-		$('#passconf_result').html('');
-
 	});
 
 	$('#pass_conf').blur(function() {
@@ -63,14 +41,10 @@ $(function(){
 		var password		= $('#password').val(),
 			pass_conf		= $(this).val();
 
-		if(password == pass_conf) {
+		if(password == pass_conf && password && pass_conf) {
+
 			$('#passconf_result').html(correct_img);
 
-			if($("#user_result").html() == correct_img && $("#pass_result").html() == correct_img && $("#passconf_result").html() == correct_img && $("#email_result").html() == correct_img) {
-
-				$(#submit).removeAttr('disabled')
-
-			}
 		}
 		else
 		{
@@ -89,16 +63,23 @@ $(function(){
 
 		$('#email_result').html(correct_img);
 
-		if($("#user_result").html() == correct_img && $("#pass_result").html() == correct_img && $("#passconf_result").html() == correct_img && $("#email_result").html() == correct_img) {
-
-			$(#submit).removeAttr('disabled')
-
-		}
 	});
+
+	if($("#user_result").html() == correct_img && $("#pass_result").html() == correct_img && $("#passconf_result").html() == correct_img && $("#email_result").html() == correct_img) {
+
+		$('#submit').removeAttr('disabled');
+
+	}
+
+	if($("#user_result").html() != correct_img && $("#pass_result").html() != correct_img && $("#passconf_result").html() != correct_img && $("#email_result").html() != correct_img) {
+
+		$('#submit').attr('disabled', 'disabled');
+
+	}
 
 	$('#submit').submit(function() {
 
-		$(#submit).attr('disabled','disabled');
+		$('#submit').attr('disabled', 'disabled');
 
 	});
 });
