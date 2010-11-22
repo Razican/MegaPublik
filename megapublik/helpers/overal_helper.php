@@ -80,7 +80,7 @@ function color($percentage)
 	return $color;
 }
 
-function reg_img($type, $alt)
+function reg_img($type, $alt, $slash = TRUE)
 {
 	if($type === 'correct')
 	{
@@ -95,10 +95,19 @@ function reg_img($type, $alt)
 	{
 		log_message('error', 'function reg_img() has received bad arguments.');
 	}
-	$img	= array(
-		'src'		=> $src,
-		'alt'		=> $alt		
-	);
+
+	if ($slash)
+	{
+		$img	= array(
+			'src'		=> $src,
+			'alt'		=> $alt		
+		);
+
+	}
+	else
+	{
+		$img	= '<img src="'.site_url($src).'" alt="'.$alt.'">';
+	}
 
 	return $img;
 }
