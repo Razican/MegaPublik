@@ -2,7 +2,7 @@
 	<div class="log_reg">
 		<?php echo form_open('registration/register'); ?>
 	<?php echo lang('reg.username'); ?>: <input id="username" type="text" name="username" /><div id="user_result" class="result"></div><?php echo br(2); ?>
-			<?php echo lang('reg.password'); ?>: <input id="password" type="password" name="password" /><div id="pass_result" class="result"></div><?php echo br(2); ?>
+	<?php echo lang('reg.password'); ?>: <input id="password" type="password" name="password" /><div id="pass_result" class="result"><div id="pass_strenght"><?php echo lang('reg.strenght'); ?>:<div class="percent_box"><div id="percent" class="box_percent"></div></div></div></div><?php echo br(2); ?>
 			<?php echo lang('reg.passconf'); ?>: <input id="pass_conf" type="password" name="passconf" /><div id="passconf_result" class="result"></div><?php echo br(2); ?>
 			<?php echo lang('reg.email'); ?>: <input id="email" type="text" name="email" /><div id="email_result" class="result"></div><?php echo br(2); ?>
 			<?php echo lang('reg.country'); ?>: <select name="country">

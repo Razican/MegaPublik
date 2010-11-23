@@ -96,3 +96,9 @@ table.market_table {
 #selector {
 	text-align: center;
 }
+#pass_strenght .percent_box {
+	height: 5px;
+}
+#pass_strenght .box_percent {
+	background: green;
+}

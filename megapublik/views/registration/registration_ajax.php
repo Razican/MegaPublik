@@ -1,45 +1,88 @@
 $(function(){
+$.fn.checkRepetition = checkRepetition(pLen,str) {
+	var res = "";
+	for ( i=0; i<str.length ; i++ ) {
+		repeated=true;
+		for (j=0;j < pLen && (j+i+pLen) < str.length;j++)
+		{
+			repeated=repeated && (str.charAt(j+i)==str.charAt(j+i+pLen));
+		}
+		if (j<pLen) {repeated=false;}
+		if (repeated) {
+			i+=pLen-1;
+			repeated=false;
+		}
+		else {
+			res+=str.charAt(i);
+		}
+	}
+	return res;
+}
 
+$.fn.pass_strenght = pass_strenght(password)
+{
+	var score = 0;
+
+	if (password.length < 8 || !(/\d/.test(password))) { return 0; }
+
+	score += password.length * 4;
+	score += ( checkRepetition(1,password).length - password.length ) * 1;
+	score += ( checkRepetition(2,password).length - password.length ) * 1;
+	score += ( checkRepetition(3,password).length - password.length ) * 1;
+	score += ( checkRepetition(4,password).length - password.length ) * 1;
+
+	if (password.match(/(.*[0-9].*[0-9].*[0-9])/)) { score += 5; }
+	if (password.match(/(.*[!,@,#,$,%,^,&,*,?,_,~].*[!,@,#,$,%,^,&,*,?,_,~])/)) { score += 5; }
+	if (password.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/)) { score += 10; }
+	if (password.match(/([a-zA-Z])/) && password.match(/([0-9])/)) { score += 15; }
+	if (password.match(/([!,@,#,$,%,^,&,*,?,_,~])/) && password.match(/([0-9])/)) { score += 15; }
+	if (password.match(/([!,@,#,$,%,^,&,*,?,_,~])/) && password.match(/([a-zA-Z])/)) { score += 15; }
+	if (password.match(/^\w+$/) || password.match(/^\d+$/) ) { score -= 10; }
+	if (score > 100) { return 100; }
+	if (score < 0) { return 0; }
+
+	return score;
+}
+
 	correct_img		= '<?php echo img($correct); ?>';
 	compare_img		= '<?php echo $comp_img; ?>';
 	wrong_img		= '<?php echo img($wrong); ?>';
-
 	$('#submit').attr('disabled', true);
 
 	$('#username').focus(function() {
-
 		$('#user_result').html('');
-
 	});
 
-	$('#username').blur(function() {
-
+	$('#username').bind('blur keyup',function() {
 		$('#user_result').html(correct_img);
-
-		
 	});
 
 	$('#password').focus(function() {
-
 		$('#pass_result').html('');
-
 	});
 
-	$('#password').blur(function() {
-
-		$('#pass_result').html(correct_img);
+	$('#password').bind('blur keyup',function() {
 
 		var password		= $(this).val(),
-			pass_conf		= $('#pass_conf').val();
-		
+			pass_conf		= $('#pass_conf').val(),
+			username		= $('#username').val();
+
+		if (password.toLowerCase() == username.toLowerCase() || pass_strenght(password) == 0)
+		{
+			$('#pass_result').html(wrong_img);
+		}
+		else
+		{
+			$('#pass_result').html(correct_img);
+			$('#percent').style.width	= pass_strenght(password)+'%';
+		}
+
 		if(password == pass_conf && password && pass_conf) {
-
 			$('#passconf_result').html(correct_img);
-
 		}
 	});
 
-	$('#pass_conf').blur(function() {
+	$('#pass_conf').bind('blur keyup',function() {
 
 		var password		= $('#password').val(),
 			pass_conf		= $(this).val();
@@ -53,38 +96,42 @@ $(function(){
 		{
 			$('#passconf_result').html(wrong_img);
 		}
-
 	});
 
 	$('#email').focus(function() {
-
 		$('#email_result').html('');
-
 	});
 
-	$('#email').blur(function() {
+	$('#email').bind('blur keyup', function() {
 
-		$('#email_result').html(correct_img);
+		var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+		if(pattern.test($(this).val()))
+		{
+			$('#email_result').html(correct_img);
+		}
+		else
+		{
+			$('#email_result').html(wrong_img);
+		}
+	});
+
+	$('input').focus(function() {
+		$('#submit').attr('disabled', true);
+	});
+
+	$('input').bind('blur keyup', function() {
 
 		if($("#user_result").html() != compare_img || $("#pass_result").html() != compare_img || $("#passconf_result").html() != compare_img || $("#email_result").html() != compare_img) {
 
 			$('#submit').attr('disabled', true);
-
-			alert($("#user_result").html()+' | '+$("#pass_result").html()+' | '+$("#passconf_result").html()+' | '+$("#email_result").html()+' |C| '+correct_img);
-
 		}
 		else
 		{
-
 			$('#submit').removeAttr('disabled');
-
 		}
-
 	});
 
 	$('#submit').submit(function() {
-
 		$('#submit').attr('disabled', true);
-
 	});
 });
