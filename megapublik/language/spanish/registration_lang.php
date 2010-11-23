@@ -16,6 +16,7 @@ $lang['reg.here']			= 'aquí';
 $lang['reg.go_back']		= 'Volver';
 $lang['reg.correct']		= 'Correcto';
 $lang['reg.wrong']			= 'Incorrecto';
+$lang['reg.strenght']		= 'Foraleza de la contraseña (Usa una contraseña de al menos 6 caracteres, con números y letras, distinta al nombre de usuario)';
 
 /* End of file registration_lang.php */
 /* Location: ./application/language/spanish/registration_lang.php */

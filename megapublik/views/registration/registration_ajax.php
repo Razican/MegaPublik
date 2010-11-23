@@ -1,5 +1,5 @@
-$(function(){
-$.fn.checkRepetition = checkRepetition(pLen,str) {
+$(function(){	
+function check_repetition(pLen,str) {
 	var res = "";
 	for ( i=0; i<str.length ; i++ ) {
 		repeated=true;
@@ -19,35 +19,33 @@ $.fn.checkRepetition = checkRepetition(pLen,str) {
 	return res;
 }
 
-$.fn.pass_strenght = pass_strenght(password)
+function pass_strenght(password)
 {
-	var score = 0;
-
-	if (password.length < 8 || !(/\d/.test(password))) { return 0; }
-
-	score += password.length * 4;
-	score += ( checkRepetition(1,password).length - password.length ) * 1;
-	score += ( checkRepetition(2,password).length - password.length ) * 1;
-	score += ( checkRepetition(3,password).length - password.length ) * 1;
-	score += ( checkRepetition(4,password).length - password.length ) * 1;
+	var score = 0;	
+	if (password.length < 6 || !(/\d/.test(password))) { return 0; }	
+	score += (password.length-6) * 4;
+	score += ( check_repetition(1,password).length - password.length ) * 1;
+	score += ( check_repetition(2,password).length - password.length ) * 1;
+	score += ( check_repetition(3,password).length - password.length ) * 1;
+	score += ( check_repetition(4,password).length - password.length ) * 1;
 
 	if (password.match(/(.*[0-9].*[0-9].*[0-9])/)) { score += 5; }
 	if (password.match(/(.*[!,@,#,$,%,^,&,*,?,_,~].*[!,@,#,$,%,^,&,*,?,_,~])/)) { score += 5; }
-	if (password.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/)) { score += 10; }
-	if (password.match(/([a-zA-Z])/) && password.match(/([0-9])/)) { score += 15; }
-	if (password.match(/([!,@,#,$,%,^,&,*,?,_,~])/) && password.match(/([0-9])/)) { score += 15; }
-	if (password.match(/([!,@,#,$,%,^,&,*,?,_,~])/) && password.match(/([a-zA-Z])/)) { score += 15; }
+	if (password.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/)) { score += 7; }
+	if (password.match(/([a-zA-Z])/) && password.match(/([0-9])/)) { score += 10; }
+	if (password.match(/([!,@,#,$,%,^,&,*,?,_,~])/) && password.match(/([0-9])/)) { score += 10; }
+	if (password.match(/([!,@,#,$,%,^,&,*,?,_,~])/) && password.match(/([a-zA-Z])/)) { score += 10; }
 	if (password.match(/^\w+$/) || password.match(/^\d+$/) ) { score -= 10; }
 	if (score > 100) { return 100; }
 	if (score < 0) { return 0; }
-
-	return score;
+	
+	return (score);
 }
 
-	correct_img		= '<?php echo img($correct); ?>';
-	compare_img		= '<?php echo $comp_img; ?>';
-	wrong_img		= '<?php echo img($wrong); ?>';
-	$('#submit').attr('disabled', true);
+	correct_img				= '<?php echo img($correct); ?>';
+	compare_img				= '<?php echo $comp_img; ?>';
+	wrong_img				= '<?php echo img($wrong); ?>';
+	$('#submit').attr('disabled', true);	
 
 	$('#username').focus(function() {
 		$('#user_result').html('');
@@ -67,14 +65,15 @@ $.fn.pass_strenght = pass_strenght(password)
 			pass_conf		= $('#pass_conf').val(),
 			username		= $('#username').val();
 
+		$('#percent').width(pass_strenght(password)+'%');		
+
 		if (password.toLowerCase() == username.toLowerCase() || pass_strenght(password) == 0)
 		{
 			$('#pass_result').html(wrong_img);
 		}
 		else
 		{
-			$('#pass_result').html(correct_img);
-			$('#percent').style.width	= pass_strenght(password)+'%';
+			$('#pass_result').html(correct_img);			
 		}
 
 		if(password == pass_conf && password && pass_conf) {
