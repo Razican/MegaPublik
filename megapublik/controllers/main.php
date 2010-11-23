@@ -14,6 +14,7 @@ class Main extends CI_Controller {
 			define ('INGAME', TRUE);
 
 			$this->output->enable_profiler($this->config->item('debug'));
+			$this->output->cache($this->config->item('cache'));
 
 			$this->lang->load('ingame');
 
@@ -39,9 +40,10 @@ class Main extends CI_Controller {
 		}
 		else
 		{
-			$this->lang->load('login');
-
 			$this->output->enable_profiler($this->config->item('debug'));
+			$this->output->cache($this->config->item('cache'));
+			
+			$this->lang->load('login');
 
 			$head['menu']		= $this->load->view('menu_outgame', '', TRUE);
 

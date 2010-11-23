@@ -1,2 +1,7 @@
 syntax: glob
 *redcar*
+.DS_Store
+
+syntax: regexp
+system/cache/(?!index\.html|\.htaccess)
+system/logs/(?!index\.html)

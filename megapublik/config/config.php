@@ -173,7 +173,7 @@ $config['directory_trigger']	= 'd'; // experimental not currently in use
 | your log files will fill up very fast.
 |
 */
-$config['log_threshold'] = 4;
+$config['log_threshold'] = 1;
 
 /*
 |--------------------------------------------------------------------------
@@ -351,7 +351,18 @@ $config['proxy_ips'] = '';
 | can enable it manually or let threshold configuration do it for you.
 |
 */
-$config['debug']    = TRUE ? $config['log_threshold'] >= 2 : FALSE;
+$config['debug']    = TRUE;//TRUE ? $config['log_threshold'] >= 2 : FALSE
+
+/*
+|--------------------------------------------------------------------------
+| Cache
+|--------------------------------------------------------------------------
+|
+| This configuration item will determine how many minutes will be the web
+| pages cached. After that, the cache file will be deleted.
+|
+*/
+$config['cache']    = 0;
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */

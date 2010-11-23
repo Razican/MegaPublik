@@ -15,6 +15,7 @@ class Market extends CI_Controller {
 			define ('AJAX', TRUE);
 
 			$this->output->enable_profiler($this->config->item('debug'));
+			$this->output->cache($this->config->item('cache'));
 
 			$this->lang->load('market');
 			$this->lang->load('ingame');
@@ -48,10 +49,11 @@ class Market extends CI_Controller {
 		}
 	}
 	function request($type='food', $from=0, $to=20)
-	{
-		if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH']==="XMLHttpRequest")
+	{		
+		if ($this->input->is_ajax_request())
 		{
 			sleep(2);
+			$this->output->cache($this->config->item('cache'));
 
 			$this->lang->load('market');
 			$this->load->model('market_m');
