@@ -101,23 +101,12 @@ class Registration extends CI_Controller {
 				'location'			=> $this->input->post('country'),
 				'validation_str'	=> $validation_str,
 				'birthday'			=> time(),
-				'citizenship'		=> $this->input->post('country'),
-				'salary_currency'	=> $country->currency,
+				'citizenship'		=> $this->input->post('country'),				
 			);
 
 			$this->db->insert('users', $data);
 
 			$this->load->library('email');
-			
-			$config['protocol']		= 'smtp';
-			$config['smtp_host']	= 'ssl://smtp.googlemail.com';
-			$config['smtp_user']	= 'admin@megapublik.com';
-			$config['smtp_pass']	= 'verysecretpass';
-			$config['mailtype']		= 'html';
-			$config['smtp_port']	= 465;
-			$config['newline']		= "\r\n";
-
-			$this->email->initialize($config);
 
 			$this->email->from('noreply@megapublik.com', 'MegaPublik');
 			$this->email->to($this->input->post('email'));

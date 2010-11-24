@@ -66,7 +66,7 @@ $autoload['helper'] = array('language', 'form', 'html', 'url', 'cookie', 'overal
 |
 */
 
-$autoload['config'] = array('arrays');
+$autoload['config'] = array('megapublik');
 
 
 /*
@@ -96,7 +96,6 @@ $autoload['language'] = array('overal');
 */
 
 $autoload['model'] = array('user');
-
 
 
 /* End of file autoload.php */

@@ -114,9 +114,9 @@ function pass_strenght(password)
 		}
 	});
 
-	$('input').focus(function() {
+	/*$('input').focus(function() {
 		$('#submit').attr('disabled', true);
-	});
+	});*/
 
 	$('input').bind('blur keyup', function() {
 
@@ -130,7 +130,7 @@ function pass_strenght(password)
 		}
 	});
 
-	$('#submit').submit(function() {
+	/*$('#submit').submit(function() {
 		$('#submit').attr('disabled', true);
-	});
+	});*/
 });

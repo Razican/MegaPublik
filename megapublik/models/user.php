@@ -24,7 +24,14 @@ Class User extends CI_Model
 		}
 		if ($table === 'users')
 		{
-			$return->level	= floor(log($return->experience/$this->config->item('first_level'),$this->config->item('exp_multiplier'))+2);
+			if ($return->experience == 0)
+			{
+				$return->level	= 1;
+			}
+			else
+			{
+				$return->level		= floor(log($return->experience/$this->config->item('first_level'),$this->config->item('exp_multiplier'))+2);
+			}
 		}
 		return $return;
 	}
