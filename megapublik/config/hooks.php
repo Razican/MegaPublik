@@ -10,6 +10,12 @@
 |
 */
 
+$hook['post_controller_constructor'] = array(
+							'class'    => 'State',
+							'function' => 'language',
+							'filename' => 'State.php',
+							'filepath' => 'hooks'	
+						);
 
 
 /* End of file hooks.php */

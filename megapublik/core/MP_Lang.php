@@ -22,9 +22,9 @@ class MP_Lang extends CI_Lang {
 */
 
 	var $languages = array(
-		'es' => 'spanish'/*,
+		'es' => 'spanish',
 		'en' => 'english',
-		'eu' => 'basque'*/
+		'eu' => 'basque'
 	);
 
 	var $special = array ('admin');
@@ -34,16 +34,14 @@ class MP_Lang extends CI_Lang {
 
 		parent::__construct();
 
-		global $CFG;
-		global $URI;
-		global $RTR;
+		global $CFG, $URI, $RTR;		
 
 		$segment = $URI->segment(1);
 
 		if (isset($this->languages[$segment]))
 		{
-			$language = $this->languages[$segment];
-			$CFG->set_item('language', $language);
+			$language	= $this->languages[$segment];
+			$CFG->set_item('language', $language);			
 		}
 		else if($this->is_special($segment))
 		{
@@ -51,7 +49,7 @@ class MP_Lang extends CI_Lang {
 		}
 		else
 		{
-			$CFG->set_item('language', $this->languages[$this->default_lang()]);			
+			$CFG->set_item('language', $this->languages[$this->default_lang()]);
 
 			header("Location: " . $CFG->site_url($this->lang($CFG->item('language')).$URI->uri_string()), TRUE, 302);
 			exit;
@@ -132,10 +130,20 @@ class MP_Lang extends CI_Lang {
 
 	function default_lang()
 	{
-		foreach ($this->languages as $lang => $language)
+		global $CFG;
+
+		if(!$CFG->sess_lang())
 		{
-			return $lang;
+			$lang		= array_keys ($this->languages);
+			$language	= $lang[0];
+			log_message('info', 'sess_lang() no dice nada');
 		}
+		else
+		{
+			$language		= $CFG->sess_lang();
+		}
+		
+		return $language;
 	}
 
 	function localized($uri)

@@ -101,7 +101,7 @@ class Registration extends CI_Controller {
 				'location'			=> $this->input->post('country'),
 				'validation_str'	=> $validation_str,
 				'birthday'			=> time(),
-				'citizenship'		=> $this->input->post('country'),				
+				'citizenship'		=> $this->input->post('country'),			
 			);
 
 			$this->db->insert('users', $data);

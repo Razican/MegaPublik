@@ -22,7 +22,7 @@ $config['exp_multiplier']	= 2;
 | can enable it manually or let threshold configuration do it for you.
 |
 */
-$config['debug']    = TRUE;//TRUE ? $config['log_threshold'] >= 2 : FALSE
+$config['debug']    = TRUE;
 
 /*
 |--------------------------------------------------------------------------

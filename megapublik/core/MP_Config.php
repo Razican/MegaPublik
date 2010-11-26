@@ -25,13 +25,25 @@ class MP_Config extends CI_Config {
 
 		if (class_exists('CI_Controller'))
 		{
-			$uri = get_instance()->lang->localized($uri);
+			$uri = get_instance()->lang->localized($uri);			
 		}
 
 		return parent::site_url($uri);
 	}
-
+	function sess_lang()
+	{	
+		if (class_exists('CI_Controller'))
+		{
+			$language	= get_instance()->session->userdata('language');
+			log_message('info', 'sess_lang() dice: '.$language);
+			if($language != '')
+			{
+				return $language;
+			}
+		}
+	}
 }
+
 
 /* End of file MP_Config.php */
 /* Location: ./application/core/MP_Config.php */
