@@ -27,7 +27,7 @@ class MP_Lang extends CI_Lang {
 		'eu' => 'basque'
 	);
 
-	var $special = array ('admin');
+	var $special = array ();
 
 	function __construct()
 	{
@@ -43,30 +43,26 @@ class MP_Lang extends CI_Lang {
 			$language	= $this->languages[$segment];
 			$CFG->set_item('language', $language);			
 		}
-		else if($this->is_special($segment))
-		{
-			return;
-		}
 		else
 		{
-			$CFG->set_item('language', $this->languages[$this->default_lang()]);
-
-			header("Location: " . $CFG->site_url($this->lang($CFG->item('language')).$URI->uri_string()), TRUE, 302);
-			exit;
+			return;
 		}
 	}
 	
 	function lang()
 	{
-		global $CFG;		
-		$language = $CFG->item('language');
-		
-		$lang = array_search($language, $this->languages);
-		if ($lang)
+		global $CFG, $URI;
+		if ($this->has_language($URI->uri_string()))
 		{
-			return $lang;
+			$language = $CFG->item('language');
+
+			$lang = array_search($language, $this->languages);
+			if ($lang)
+			{
+				return $lang;
+			}
 		}
-		
+
 		return NULL;
 	}
 
@@ -129,20 +125,10 @@ class MP_Lang extends CI_Lang {
 	}
 
 	function default_lang()
-	{
-		global $CFG;
+	{		
+		$lang		= array_keys ($this->languages);
+		$language	= $lang[0];
 
-		if(!$CFG->sess_lang())
-		{
-			$lang		= array_keys ($this->languages);
-			$language	= $lang[0];
-			log_message('info', 'sess_lang() no dice nada');
-		}
-		else
-		{
-			$language		= $CFG->sess_lang();
-		}
-		
 		return $language;
 	}
 
@@ -161,5 +147,5 @@ class MP_Lang extends CI_Lang {
 	}
 }
 
-/* End of file MP_Language.php */
-/* Location: ./application/core/MP_Language.php */
+/* End of file MP_Lang.php */
+/* Location: ./application/core/MP_Lang.php */

@@ -29,6 +29,14 @@
 <body>
 <div class="head">
 	<div class="logo"><a href="<?php echo base_url(); ?>"><img alt="MegaPublik Logo" src="<?php echo site_url("images/logo.png"); ?>" /></a></div>
+	<div id="lang_bar">
+		<?php if($this->lang->lang() != 'es')
+			echo anchor($this->lang->switch_uri('es'),img(array('src' => 'images/countries/es.png', 'alt' => 'Español', 'title' => 'Español'))); ?>
+		<?php if($this->lang->lang() != 'en')
+			echo anchor($this->lang->switch_uri('en'),img(array('src' => 'images/countries/gb.png', 'alt' => 'English', 'title' => 'English'))); ?>
+		<?php if($this->lang->lang() != 'eu')
+			echo anchor($this->lang->switch_uri('eu'),img(array('src' => 'images/countries/eu.png', 'alt' => 'Euskara', 'title' => 'Euskara'))); ?>
+	</div>
 	<?php if (defined('INGAME')) : ?><div class="help">
 		<?php echo $help; ?>
 	</div><?php endif; ?>

@@ -30,18 +30,6 @@ class MP_Config extends CI_Config {
 
 		return parent::site_url($uri);
 	}
-	function sess_lang()
-	{	
-		if (class_exists('CI_Controller'))
-		{
-			$language	= get_instance()->session->userdata('language');
-			log_message('info', 'sess_lang() dice: '.$language);
-			if($language != '')
-			{
-				return $language;
-			}
-		}
-	}
 }
 
 

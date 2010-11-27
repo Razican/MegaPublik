@@ -102,3 +102,12 @@ table.market_table {
 #pass_strenght .box_percent {
 	background: green;
 }
+#lang_bar {
+	background-color: blue;
+	padding: 10px;
+	float: right;
+	/*margin: 110px 50px 0px 0px;*/
+}
+#lang_bar a {
+	margin: 5px;
+}
