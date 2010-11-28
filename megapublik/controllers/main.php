@@ -13,8 +13,7 @@ class Main extends CI_Controller {
 		{
 			define ('INGAME', TRUE);
 
-			$this->output->enable_profiler($this->config->item('debug'));
-			$this->output->cache($this->config->item('cache'));
+			$this->output->enable_profiler($this->config->item('debug'));			
 
 			$this->lang->load('ingame');
 
@@ -40,8 +39,7 @@ class Main extends CI_Controller {
 		}
 		else
 		{
-			$this->output->enable_profiler($this->config->item('debug'));
-			$this->output->cache($this->config->item('cache'));
+			$this->output->enable_profiler($this->config->item('debug'));			
 			
 			$this->lang->load('login');
 

@@ -14,8 +14,7 @@ class Market extends CI_Controller {
 			define ('INGAME', TRUE);
 			define ('AJAX', TRUE);
 
-			$this->output->enable_profiler($this->config->item('debug'));
-			$this->output->cache($this->config->item('cache'));
+			$this->output->enable_profiler($this->config->item('debug'));			
 
 			$this->lang->load('market');
 			$this->lang->load('ingame');
@@ -53,7 +52,6 @@ class Market extends CI_Controller {
 		if ($this->input->is_ajax_request())
 		{
 			sleep(2);
-			$this->output->cache($this->config->item('cache'));
 
 			$this->lang->load('market');
 			$this->load->model('market_m');

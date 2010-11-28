@@ -9,8 +9,7 @@ class Registration extends CI_Controller {
 	
 	function index()
 	{
-		$this->output->enable_profiler($this->config->item('debug'));
-		$this->output->cache($this->config->item('cache'));
+		$this->output->enable_profiler($this->config->item('debug'));		
 
 		if($this->session->userdata('logged_in'))
 		{
@@ -38,8 +37,7 @@ class Registration extends CI_Controller {
 	
 	function register()
 	{
-		$this->output->enable_profiler($this->config->item('debug'));
-		$this->output->cache($this->config->item('cache'));
+		$this->output->enable_profiler($this->config->item('debug'));		
 
 		if($this->session->userdata('logged_in'))
 		{
@@ -133,8 +131,7 @@ class Registration extends CI_Controller {
 	
 	function validate($validation_str = '')
 	{
-		$this->output->enable_profiler($this->config->item('debug'));
-		$this->output->cache($this->config->item('cache'));
+		$this->output->enable_profiler($this->config->item('debug'));		
 
 		if (strlen($validation_str) != 15)
 		{
