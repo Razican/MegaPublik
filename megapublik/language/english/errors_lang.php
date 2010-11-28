@@ -1,15 +1,15 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-$lang['errors.error']	= 'Ha ocurrido un error';
-$lang['errors.1']		= 'El usuario introducido no existe.';
-$lang['errors.2']		= 'Contraseña incorrecta.';
-$lang['errors.3']		= 'El usuario ya existe.';
-$lang['errors.4']		= 'Ya hay otro usuario usando ese email.';
-$lang['errors.5']		= 'Has creado demasiadas cuentas desde esta IP, por favor no intentes hacer multicuentas.'; //Sin poner
-$lang['errors.6']		= 'Debes introducir todos los campos.';
-$lang['errors.7']		= 'Las contraseñas no coinciden.';
-$lang['errors.8']		= 'Debes introducir un email válido.';
-$lang['errors.9']		= 'El email ya está validado.';
+$lang['errors.error']	= 'An error occurred';
+$lang['errors.1']		= 'The user you entered does not exist.';
+$lang['errors.2']		= 'Wrong password.';
+$lang['errors.3']		= 'The user already exists.';
+$lang['errors.4']		= 'Another user is already using that email.';
+$lang['errors.5']		= 'You have created too many accounts from this IP, please do not try to make multiple accounts.'; //Sin poner
+$lang['errors.6']		= 'You must enter all fields.';
+$lang['errors.7']		= 'Passwords do not match.';
+$lang['errors.8']		= 'You have to enter a valid email.';
+$lang['errors.9']		= 'The email has been already validated.';
 
 /* End of file errors_lang.php */
-/* Location: ./application/language/spanish/errors_lang.php */
+/* Location: ./application/language/english/errors_lang.php */

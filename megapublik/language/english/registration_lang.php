@@ -1,22 +1,21 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-$lang['reg.subject']		= 'Registro en MegaPublik';
-$lang['reg.message']		= 'Hola username. Te has registrado en MegaPublik, para validar tu cuenta, por favor, haz clic {unwrap}link{/unwrap}.<br />Tus datos son los siguientes: <br /><br />Usuario: username<br />Contraseña: password<br /><br /><u>Nota:</u> La contraseña se guarda encriptada en la base de datos, así que guárdala bien, porque no se podrá recuperar.';
-$lang['reg.alt_message']	= 'Hola username. Te has registrado en MegaPublik, para validar tu cuenta, por favor, copia y pega esta dirección en tu navegador {unwrap}url{/unwrap}.\nTus datos son los siguientes: \n\nUsuario: username\nContraseña: password\n\nNota: La contraseña se guarda encriptada en la base de datos, así que guárdala bien, porque no se podrá recuperar.';
-$lang['reg.complete']		= 'Te has registrado con éxito!<br />Se te ha enviado un mensaje para que confirmes tu email.';
-$lang['reg.validated']		= 'Tu email se ha validado correctamente!';
-$lang['reg.home']			= 'Ir al juego';
-$lang['reg.username']		= 'Nombre del ciudadano';
-$lang['reg.password']		= 'Contraseña';
-$lang['reg.passconf']		= 'Repite la contraseña';
-$lang['reg.email']			= 'Correo electrónico';
-$lang['reg.country']		= 'País';
-$lang['reg.submit']			= 'Regístrate';
-$lang['reg.here']			= 'aquí';
-$lang['reg.go_back']		= 'Volver';
-$lang['reg.correct']		= 'Correcto';
-$lang['reg.wrong']			= 'Incorrecto';
-$lang['reg.strenght']		= 'Foraleza de la contraseña (Usa una contraseña de al menos 6 caracteres, con números y letras, distinta al nombre de usuario)';
+$lang['reg.subject']		= 'MegaPublik Registration';
+$lang['reg.message']		= 'Hello username. You have been registered in MegaPublik, for validating your account, please, click {unwrap}link{/unwrap}.<br />This is your data: <br /><br />Username: username<br />Password: password<br /><br /><u>Note:</u> The password is stored encrypted in de database, so save it well, since we wont be able to recover it.';
+$lang['reg.alt_message']	= 'Hello username. You have been registered in MegaPublik, for validating your account, please, copy and paste this address in your broser: {unwrap}url{/unwrap}.\nThis is your data: \n\nUsername: username\nPassword: password\n\nNote: The password is stored encrypted in de database, so save it well, since we wont be able to recover it.';
+$lang['reg.complete']		= 'You have successfully registered!<br />A message has been sent for you to confirm your email.';
+$lang['reg.validated']		= 'Your email has been successfully validated!';
+$lang['reg.home']			= 'Go back to the game';
+$lang['reg.username']		= 'Citizen\'s name';
+$lang['reg.password']		= 'Password';
+$lang['reg.passconf']		= 'Rewrite the password';
+$lang['reg.email']			= 'Email';
+$lang['reg.country']		= 'Country';
+$lang['reg.submit']			= 'Register';
+$lang['reg.here']			= 'here';
+$lang['reg.correct']		= 'Correct';
+$lang['reg.wrong']			= 'Incorrect';
+$lang['reg.strenght']		= 'Password strenght (Use a password with at least six characters, with numbes and letters, different from the username)';
 
 /* End of file registration_lang.php */
-/* Location: ./application/language/spanish/registration_lang.php */
+/* Location: ./application/language/english/registration_lang.php */

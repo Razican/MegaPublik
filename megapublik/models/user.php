@@ -47,7 +47,7 @@ Class User extends CI_Model
 
 	function online()
 	{
-		$query				= $this->db->get('sessions');
+		$query				= $this->db->get_where('sessions', array('last_activity >' => time()-$this->config->item('sess_time_to_update')));
 
 		return $query->num_rows();
 	}

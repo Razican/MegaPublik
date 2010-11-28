@@ -1,10 +1,9 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-$lang['login.username']		= 'Usuario';
-$lang['login.password']		= 'Contraseña';
-$lang['login.remember']		= 'Recordarme';
-$lang['login.submit']		= 'Entrar';
-$lang['login.register']		= 'Regístrate';
+$lang['login.username']		= 'Username';
+$lang['login.password']		= 'Password';
+$lang['login.remember']		= 'Remember me';
+$lang['login.submit']		= 'Login';
 
 /* End of file login_lang.php */
-/* Location: ./application/language/spanish/login_lang.php */
+/* Location: ./application/language/english/login_lang.php */

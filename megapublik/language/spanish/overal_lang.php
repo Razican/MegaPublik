@@ -3,7 +3,8 @@
 $lang['overal.title']				= 'MegaPublik | Juego online de simulación social';
 $lang['overal.description']			= 'MegaPublik es un juego multijugador online de simulación social, desde un punto de vista estratégico.';
 
-//License
+//Footer
+$lang['overal.total_users']			= 'Usuarios conectados';
 $lang['overal.license_alt']			= 'Licencia de Creative Commons';
 $lang['overal.by']					= 'por';
 $lang['overal.licensed']			= 'está bajo una licencia';

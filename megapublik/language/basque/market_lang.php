@@ -1,25 +1,25 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-$lang['market.company']		= 'Compañía';
-$lang['market.price']		= 'Precio';
-$lang['market.amount']		= 'Cantidad';
-$lang['market.buy']			= 'Comprar';
-$lang['market.loading']		= 'Cargando';
-$lang['market.nodata']		= 'No hay Datos';
+$lang['market.company']		= 'Konpainia';
+$lang['market.price']		= 'Prezioa';
+$lang['market.amount']		= 'Kantitatea';
+$lang['market.buy']			= 'Erosi';
+$lang['market.loading']		= 'Kargatzen';
+$lang['market.nodata']		= 'Ez dago daturik';
 
-$lang['market.food']		= 'Comida';
-$lang['market.weapon']		= 'Armas';
-$lang['market.iron']		= 'Hierro';
-$lang['market.wood']		= 'Madera';
-$lang['market.stone']		= 'Piedra';
-$lang['market.house']		= 'Casas';
-$lang['market.oil']			= 'Petróleo';
-$lang['market.petrol']		= 'Combustible';
-$lang['market.car']			= 'Coches';
-$lang['market.plane']		= 'Aviones';
-$lang['market.ticket']		= 'Tickets';
-$lang['market.appliance']	= 'Electrodomésticos';
-$lang['market.boat']		= 'Barcos';
+$lang['market.food']		= 'Janaria';
+$lang['market.weapon']		= 'Armak';
+$lang['market.iron']		= 'Burdina';
+$lang['market.wood']		= 'Egurra';
+$lang['market.stone']		= 'Harria';
+$lang['market.house']		= 'Etxeak';
+$lang['market.oil']			= 'Petrolioa';
+$lang['market.petrol']		= 'Erregaia';
+$lang['market.car']			= 'Kotxeak';
+$lang['market.plane']		= 'Hegazkinak';
+$lang['market.ticket']		= 'Tiketak';
+$lang['market.appliance']	= 'Etxetresnak';
+$lang['market.boat']		= 'Itsasontziak';
 
 /* End of file market_lang.php */
-/* Location: ./application/language/spanish/market_lang.php */
+/* Location: ./application/language/basque/market_lang.php */

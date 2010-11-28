@@ -21,7 +21,7 @@ class Main extends CI_Controller {
 			$user				= $this->user->data($this->session->userdata('user_id'));
 			$country			= $this->user->data($user->location, 'countries');
 
-			$panel['avatar']	= avatar($user);
+			$panel['avatar']	= avatar($user, $this->lang->lang());
 			$panel['user']		= $user;
 			$panel['exp_prcnt']	= exp_percent($user);
 			$panel['l18n']		= l18n($this->lang->lang());

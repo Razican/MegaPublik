@@ -1,25 +1,25 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-$lang['market.company']		= 'Compañía';
-$lang['market.price']		= 'Precio';
-$lang['market.amount']		= 'Cantidad';
-$lang['market.buy']			= 'Comprar';
-$lang['market.loading']		= 'Cargando';
-$lang['market.nodata']		= 'No hay Datos';
+$lang['market.company']		= 'Company';
+$lang['market.price']		= 'Price';
+$lang['market.amount']		= 'Quantity';
+$lang['market.buy']			= 'Buy';
+$lang['market.loading']		= 'Loading';
+$lang['market.nodata']		= 'There is no data';
 
-$lang['market.food']		= 'Comida';
-$lang['market.weapon']		= 'Armas';
-$lang['market.iron']		= 'Hierro';
-$lang['market.wood']		= 'Madera';
-$lang['market.stone']		= 'Piedra';
-$lang['market.house']		= 'Casas';
-$lang['market.oil']			= 'Petróleo';
-$lang['market.petrol']		= 'Combustible';
-$lang['market.car']			= 'Coches';
-$lang['market.plane']		= 'Aviones';
+$lang['market.food']		= 'Food';
+$lang['market.weapon']		= 'Weapons';
+$lang['market.iron']		= 'Iron';
+$lang['market.wood']		= 'Wood';
+$lang['market.stone']		= 'Stone';
+$lang['market.house']		= 'Houses';
+$lang['market.oil']			= 'Oil';
+$lang['market.petrol']		= 'Fuel';
+$lang['market.car']			= 'Cars';
+$lang['market.plane']		= 'Planes';
 $lang['market.ticket']		= 'Tickets';
-$lang['market.appliance']	= 'Electrodomésticos';
-$lang['market.boat']		= 'Barcos';
+$lang['market.appliance']	= 'Appliances';
+$lang['market.boat']		= 'Ships';
 
 /* End of file market_lang.php */
-/* Location: ./application/language/spanish/market_lang.php */
+/* Location: ./application/language/english/market_lang.php */

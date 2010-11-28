@@ -1,9 +1,9 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-function avatar($user)
+function avatar($user, $lang)
 {
 	$avatar		= array(
-		'src' => 'images/avatars/'.$user->avatar.'.png',
+		'src' => 'images/avatars/'.$user->avatar.'_'.$lang.'.png',
 		'alt' => 'Avatar - '.$user->username,
 		'title' => 'Avatar - '.$user->username
 	);

@@ -27,7 +27,7 @@ class Registration extends CI_Controller {
 		$script['comp_img']	= reg_img('correct', lang('reg.correct'), FALSE);
 
 		$head['script']		= $this->load->view('registration/registration_ajax', $script, TRUE);
-		$head['menu']		= $this->load->view('menu_outgame', '', TRUE);
+		$head['menu']		= $this->load->view('menu_outgame', '', TRUE);		
 
 		$data['countries']	= $this->registration_m->countries();
 		$data['head']		= $this->load->view('head', $head, TRUE);
@@ -105,26 +105,28 @@ class Registration extends CI_Controller {
 			);
 
 			$this->db->insert('users', $data);
-
+			
 			$this->load->library('email');
-
-			$this->email->from('noreply@megapublik.com', 'MegaPublik');
-			$this->email->to($this->input->post('email'));
-			$this->email->subject('Registro en MegaPublik');
 
 			$pattern			= array('%username%', '%password%', '%link%', '%url%');
 			$replacement		= array($this->input->post('username'), $this->input->post('password'), anchor('registration/validate/'. $validation_str, lang('reg.here')), site_url('registration/validate/'. $validation_str));
 
+			$footer['email']	= TRUE;
+
 			$data['message']	= preg_replace($pattern, $replacement, lang('reg.message'));
 			$data['head']		= $this->load->view('head', '', TRUE);
-			$data['footer']		= $this->load->view('footer', '', TRUE);
-			$this->email->message($this->load->view('mail', $data, TRUE));
-			$this->email->set_alt_message(preg_replace($pattern, $replacement, lang('reg.alt_message')));
+			$data['footer']		= $this->load->view('footer', $footer, TRUE);
+			$this->email->from('noreply@megapublik.com', 'MegaPublik')
+						->to($this->input->post('email'))
+						->subject('Registro en MegaPublik')
+						->message($this->load->view('mail', $data, TRUE))
+						->set_alt_message(preg_replace($pattern, $replacement, lang('reg.alt_message')))
+						->send();
 
-			$this->email->send();
+			$head['menu']		= $this->load->view('menu_outgame', '', TRUE);			
 
-			$head['menu']		= $this->load->view('menu_outgame', '', TRUE);
 			$data['head']		= $this->load->view('head', $head, TRUE);
+			$data['footer']		= $this->load->view('footer', '', TRUE);
 			$this->load->view('registration/registration', $data);
 		}
 	}

@@ -24,7 +24,7 @@ class Market extends CI_Controller {
 			$country			= $this->user->data($user->location, 'countries');
 
 			$panel['user']		= $user;
-			$panel['avatar']	= avatar($user);
+			$panel['avatar']	= avatar($user, $this->lang->lang());
 			$panel['exp_prcnt']	= exp_percent($user);
 			$panel['l18n']		= l18n($this->lang->lang());
 			$panel['country']	= $country;

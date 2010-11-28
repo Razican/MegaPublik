@@ -1,24 +1,25 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-$lang['overal.title']				= 'MegaPublik | Juego online de simulación social';
-$lang['overal.description']			= 'MegaPublik es un juego multijugador online de simulación social, desde un punto de vista estratégico.';
+$lang['overal.title']				= 'MegaPublik | Online social simulation game';
+$lang['overal.description']			= 'MegaPublik is a multiplayer online social simulation game, viewed from a strategic point of view.';
 
-//License
-$lang['overal.license_alt']			= 'Licencia de Creative Commons';
-$lang['overal.by']					= 'por';
-$lang['overal.licensed']			= 'está bajo una licencia';
-$lang['overal.license']				= 'Reconocimiento-NoComercial-SinObraDerivada 3.0 Unported';
+//Footer
+$lang['overal.total_users']			= 'Online users';
+$lang['overal.license_alt']			= 'Creative Commons license';
+$lang['overal.by']					= 'by';
+$lang['overal.licensed']			= 'is licensed under a';
+$lang['overal.license']				= 'Attribution-NonCommercial-NoDerivs 3.0 Unported License';
 
 //Menu
-$lang['overal.menu.market']			= 'Mercado';
-$lang['overal.menu.index']			= 'Inicio';
-$lang['overal.menu.registration']	= 'Regístrate';
-$lang['overal.menu.logout']			= 'Salir';
+$lang['overal.menu.market']			= 'Market';
+$lang['overal.menu.index']			= 'Home';
+$lang['overal.menu.registration']	= 'Register';
+$lang['overal.menu.logout']			= 'Logout';
 
 //Panel
-$lang['overal.panel.wellness']		= 'Salud';
-$lang['overal.panel.happiness']		= 'Felicidad';
-$lang['overal.panel.productivity']	= 'Productividad';
+$lang['overal.panel.wellness']		= 'Wellness';
+$lang['overal.panel.happiness']		= 'Happiness';
+$lang['overal.panel.productivity']	= 'Productivity';
 
 /* End of file overal_lang.php */
-/* Location: ./application/language/spanish/overal_lang.php */
+/* Location: ./application/language/english/overal_lang.php */
