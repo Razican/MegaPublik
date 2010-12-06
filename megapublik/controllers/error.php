@@ -9,7 +9,7 @@ class Error extends CI_Controller {
 
 	function _remap($error = 0)
 	{
-		if (($error == 0) OR (!is_numeric($error)) OR ($error > 9))
+		if (($error == 0) OR (!is_numeric($error)) OR ($error > 10))
 		{
 			redirect('/');
 		}

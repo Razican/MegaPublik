@@ -10,6 +10,7 @@ $lang['errors.6']		= 'You must enter all fields.';
 $lang['errors.7']		= 'Passwords do not match.';
 $lang['errors.8']		= 'You have to enter a valid email.';
 $lang['errors.9']		= 'The email has been already validated.';
+$lang['errors.10']		= 'The code is not valid.';
 
 /* End of file errors_lang.php */
 /* Location: ./application/language/english/errors_lang.php */

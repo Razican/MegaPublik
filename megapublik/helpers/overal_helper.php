@@ -91,6 +91,10 @@ function reg_img($type, $alt, $slash = TRUE)
 	{
 		$src		=	'images/cross.png';
 	}
+	else if($type === 'loading')
+	{
+		$src		=	'images/mini_loading.gif';
+	}
 	else
 	{
 		log_message('error', 'function reg_img() has received bad arguments.');

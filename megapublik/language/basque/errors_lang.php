@@ -9,7 +9,8 @@ $lang['errors.5']		= 'IP honekin kontu asko ireki dituzu, mesedez, ez saiatu kon
 $lang['errors.6']		= 'Datu guztiak sartu behar dituzu.';
 $lang['errors.7']		= 'Pasahitzak ez dira berdinak.';
 $lang['errors.8']		= 'Posta elektroniko erreala sartu behar duzu.';
-$lang['errors.9']		= 'Posta elektronikoa jada baioztuta dago.';
+$lang['errors.9']		= 'Posta elektronikoa jada balioztuta dago.';
+$lang['errors.10']		= 'Kodea ez da baliozkoa.';
 
 /* End of file errors_lang.php */
 /* Location: ./application/language/basque/errors_lang.php */

@@ -19,11 +19,12 @@ class Registration extends CI_Controller {
 		define ('AJAX', TRUE);
 
 		$this->lang->load('registration');
-		$this->load->model('registration_m');
+		$this->load->model('registration_m');		
 
 		$script['correct']	= reg_img('correct', lang('reg.correct'));
 		$script['wrong']	= reg_img('wrong', lang('reg.wrong'));
 		$script['comp_img']	= reg_img('correct', lang('reg.correct'), FALSE);
+		$script['loading']	= reg_img('loading', lang('reg.loading'));
 
 		$head['script']		= $this->load->view('registration/registration_ajax', $script, TRUE);
 		$head['menu']		= $this->load->view('menu_outgame', '', TRUE);		
@@ -44,7 +45,6 @@ class Registration extends CI_Controller {
 			exit(redirect('/'));
 		}
 
-		$this->lang->load('registration');
 		$this->load->helper('email');
 
 		if ((!$this->input->post('username'))	OR
@@ -53,34 +53,34 @@ class Registration extends CI_Controller {
 			(!$this->input->post('email'))		OR
 			(!$this->input->post('country'))	)
 		{
+			log_message('error', 'User with IP '.$this->input->ip_address().' has tried to hack JQuery at the registration.');
 			redirect('error/6');
 		}
-		elseif ($this->input->post('password') != $this->input->post('passconf'))
+		else if ($this->input->post('password') != $this->input->post('passconf'))
 		{
+			log_message('error', 'User with IP '.$this->input->ip_address().' has tried to hack JQuery at the registration.');
 			redirect('error/7');
 		}
-		elseif (!valid_email($this->input->post('email')))
+		else if (!valid_email($this->input->post('email')))
 		{
+			log_message('error', 'User with IP '.$this->input->ip_address().' has tried to hack JQuery at the registration.');
 			redirect('error/8');
+		}
+		else if ($this->registration_m->is_valid($this->input->ip_address(), 'ip') != '')
+		{
+			log_message('error', 'User with IP '.$this->input->ip_address().' has tried to create multiple accounts.');
+			redirect('error/5');
+		}
+		else if ($this->registration_m->is_valid($this->input->post('username'), 'user') != '')
+		{
+			redirect('error/3');
+		}
+		else if ($this->registration_m->is_valid($this->input->post('email'), 'email') != '')
+		{
+			redirect('error/4');
 		}
 		else
 		{
-	 		$query				= $this->db->get_where('countries', array('ID' => $this->input->post('country')), '1');
- 			foreach ($query->result() as $result)
- 			{
- 				$country	=& $result;
- 			}
-
-			$query			= $this->db->get_where('users', array('username' => $this->input->post('username')));
-			if ($query->num_rows() > 0)
-	 		{
-	 			redirect('error/3');
-	 		}
-			$query			= $this->db->get_where('users', array('email' => $this->input->post('email')));
-			if ($query->num_rows() > 0)
-	 		{
-	 			redirect('error/4');
-	 		}
 	 		$this->load->helper('string');
 	 		for ($i = 1; $i != 0;)
 	 		{
@@ -103,7 +103,8 @@ class Registration extends CI_Controller {
 			);
 
 			$this->db->insert('users', $data);
-			
+
+			$this->lang->load('registration');
 			$this->load->library('email');
 
 			$pattern			= array('%username%', '%password%', '%link%', '%url%');
@@ -128,36 +129,66 @@ class Registration extends CI_Controller {
 			$this->load->view('registration/registration', $data);
 		}
 	}
-	
+
 	function validate($validation_str = '')
 	{
 		$this->output->enable_profiler($this->config->item('debug'));		
 
 		if (strlen($validation_str) != 15)
 		{
-			redirect('/');
+			redirect('error/10');
 		}
-		//No revisa si el código está en la database!!!
-		$query				= $this->db->get_where('users', array('validation_str' => $validation_str, 'validated' => '0'));
-		
-		if ($query->num_rows() === 0)
- 		{
- 			redirect('error/9');
- 		}
- 		else
- 		{
- 			$this->lang->load('registration');
-			foreach ($query->result() as $result)
-			{
-				$user			=& $result;
-			}
-			$this->db->update('users', array('validated' => '1'), "id = ". $user->id);
+
+		$this->load->model('registration_m');
+
+		if($this->registration_m->is_valid($validation_str) === TRUE)
+		{
+			$this->lang->load('registration');
 
 			$head['menu']		= $this->load->view('menu_outgame', '', TRUE);
+
 			$data['head']		= $this->load->view('head', $head, TRUE);
 			$data['footer']		= $this->load->view('footer', '', TRUE);
+
 			$this->load->view('registration/validation', $data);
- 		}
+		}
+		else
+		{
+			redirect($this->registration_m->is_valid($validation_str));
+		}		
+	}
+
+	function request($type, $value = NULL)
+	{
+		if ($this->input->is_ajax_request())
+		{
+			sleep(2);
+
+			$this->load->model('registration_m');
+
+			if ($type	!= 'states')
+			{				
+				if ($this->input->post('email') != '')
+				{
+					$data['validated']	= $this->registration_m->is_valid($this->input->post('email'), $type);
+				}
+				else
+				{
+					$data['validated']	= $this->registration_m->is_valid($value, $type);
+				}
+				$this->load->view('registration/result', $data);
+			}
+			else
+			{
+				$data['states']		= $this->registration_m->states($value);
+				$this->load->view('registration/states', $data);
+			}
+		}
+		else
+		{
+			log_message('error', 'User with IP '.$this->input->ip_address().' has tried to enter /registration/request without doing a XMLHttpRequest.');
+			redirect('registration');
+		}
 	}
 }
 

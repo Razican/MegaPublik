@@ -45,13 +45,18 @@ function pass_strenght(password)
 	correct_img				= '<?php echo img($correct); ?>';
 	compare_img				= '<?php echo $comp_img; ?>';
 	wrong_img				= '<?php echo img($wrong); ?>';
-	$('#submit').attr('disabled', true);	
+	loading_img				= '<?php echo img($loading); ?>';
+	post_url				= '<?php echo site_url('registration/request'); ?>'
+	$('#submit').attr('disabled', true);
+	$('#state').attr('disabled', true);
 
 	$('#username').focus(function() {
 		$('#user_result').html('');
+		$('#user_notes').html('');
 	});
 
 	$('#username').bind('blur keyup',function() {
+		$('#user_notes').html(loading_img).load(post_url + "/user/" + $(this).val());
 		$('#user_result').html(correct_img);
 	});
 
@@ -99,6 +104,7 @@ function pass_strenght(password)
 
 	$('#email').focus(function() {
 		$('#email_result').html('');
+		$('#email_notes').html('');
 	});
 
 	$('#email').bind('blur keyup', function() {

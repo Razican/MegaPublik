@@ -85,7 +85,7 @@ class Market extends CI_Controller {
 		{
 			log_message('error', 'User with IP '.$this->input->ip_address().' has tried to enter /market/request without doing a XMLHttpRequest.');
 			redirect('market');
-		}  
+		}
 	}
 }
 

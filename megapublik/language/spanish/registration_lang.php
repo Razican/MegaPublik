@@ -11,11 +11,17 @@ $lang['reg.password']		= 'Contraseña';
 $lang['reg.passconf']		= 'Repite la contraseña';
 $lang['reg.email']			= 'Correo electrónico';
 $lang['reg.country']		= 'País';
+$lang['reg.state']			= 'Provincia';
+$lang['reg.select_country']	= 'Selecciona un país';
+$lang['reg.select_state']	= 'Selecciona una provincia';
 $lang['reg.submit']			= 'Regístrate';
 $lang['reg.here']			= 'aquí';
 $lang['reg.correct']		= 'Correcto';
 $lang['reg.wrong']			= 'Incorrecto';
 $lang['reg.strenght']		= 'Fortaleza de la contraseña: (Usa una contraseña de al menos seis caracteres, con números y letras, distinta al nombre de usuario)';
+$lang['reg.too_email']		= 'Ya hay otro usuario usando ese email.';
+$lang['reg.too_user']		= 'El usuario ya existe.';
+
 
 /* End of file registration_lang.php */
 /* Location: ./application/language/spanish/registration_lang.php */

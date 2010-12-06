@@ -36,7 +36,7 @@ h1 {
 </head>
 <body>
 	<div class="head">
-		<div class="logo"><img alt="MegaPublik Logo" src="http://127.0.0.1/megapublik/images/logo.png" /></div>		
+		<div class="logo"><a href="http://127.0.0.1/megapublik/"><img alt="MegaPublik Logo" src="http://127.0.0.1/megapublik/images/logo.png" /></a></div>		
 	</div>
 	<div id="content">
 		<h1><?php echo $heading; ?></h1>

@@ -12,10 +12,7 @@ Class User extends CI_Model
 		$query				= $this->db->get_where($table, array('id' => $id));
 
 		if ($query->num_rows() > 0){
-			foreach ($query->result() as $result)
-			{
-				$return		=& $result;
-			}
+			foreach ($query->result() as $return){}
 		}
 		else
 		{

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 20-11-2010 a las 17:16:44
+-- Tiempo de generación: 06-12-2010 a las 22:09:27
 -- Versión del servidor: 5.1.41
 -- Versión de PHP: 5.3.2-1ubuntu4.5
 
@@ -229,13 +229,13 @@ INSERT INTO `companies` (`id`, `name`, `owner_id`, `type`, `non_stock`, `stock`,
 --
 -- Estructura de tabla para la tabla `countries`
 --
--- Creación: 18-11-2010 a las 19:20:55
+-- Creación: 06-12-2010 a las 19:14:23
 --
 
 DROP TABLE IF EXISTS `countries`;
 CREATE TABLE IF NOT EXISTS `countries` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(20) NOT NULL,
+  `name` varchar(30) NOT NULL,
   `currency` char(3) NOT NULL,
   `president_id` int(11) unsigned NOT NULL,
   `food_income_tax` tinyint(3) unsigned NOT NULL DEFAULT '1',
@@ -338,8 +338,8 @@ CREATE TABLE IF NOT EXISTS `countries` (
 --
 
 INSERT INTO `countries` (`id`, `name`, `currency`, `president_id`, `food_income_tax`, `food_import_tax`, `food_vat_tax`, `gift_income_tax`, `gift_import_tax`, `gift_vat_tax`, `weapon_income_tax`, `weapon_import_tax`, `weapon_vat_tax`, `tickets_income_tax`, `tickets_import_tax`, `tickets_vat_tax`, `grain_income_tax`, `grain_import_tax`, `diamonds_income_tax`, `diamonds_import_tax`, `iron_income_tax`, `iron_import_tax`, `oil_income_tax`, `oil_import_tax`, `wood_income_tax`, `wood_import_tax`, `house_income_tax`, `house_import_tax`, `house_vat_tax`, `hospital_income_tax`, `hospital_import_tax`, `hospital_vat_tax`, `defense_system_income_tax`, `defense_system_import_tax`, `defense_system_vat_tax`, `money_mp`, `ARS`, `ATS`, `AUD`, `BAM`, `BEF`, `BGN`, `BOB`, `BRL`, `CAD`, `CHF`, `CLP`, `CNY`, `COP`, `CZK`, `DEM`, `DKK`, `EEK`, `ESP`, `FIM`, `FRF`, `GBP`, `GRD`, `HRK`, `HUF`, `IDR`, `IEP`, `INR`, `IRR`, `ITL`, `JPY`, `KPW`, `KRW`, `LTL`, `LVL`, `MDL`, `MXN`, `MYR`, `NIS`, `NLG`, `NOK`, `PEN`, `PHP`, `PKR`, `PLN`, `PTE`, `PYG`, `RON`, `RSD`, `RUB`, `SEK`, `SGD`, `SIT`, `SKK`, `THB`, `TRY`, `UAH`, `USD`, `UYU`, `VEB`, `ZAR`) VALUES
-(1, 'MegaPublik 1', 'ESP', 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(2, 'MegaPublik 2', 'GBP', 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+(1, 'España', 'ESP', 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(2, 'United Kingdom', 'GBP', 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -706,13 +706,13 @@ CREATE TABLE IF NOT EXISTS `shouts` (
 --
 -- Estructura de tabla para la tabla `states`
 --
--- Creación: 11-11-2010 a las 17:58:08
+-- Creación: 06-12-2010 a las 19:14:07
 --
 
 DROP TABLE IF EXISTS `states`;
 CREATE TABLE IF NOT EXISTS `states` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(20) NOT NULL,
+  `name` varchar(30) NOT NULL,
   `country_id` int(11) unsigned NOT NULL,
   `defense_sistem` tinyint(2) unsigned NOT NULL DEFAULT '0',
   `hospital` tinyint(2) unsigned NOT NULL DEFAULT '0',
@@ -721,12 +721,42 @@ CREATE TABLE IF NOT EXISTS `states` (
   `diamonds_production` tinyint(2) unsigned NOT NULL DEFAULT '0',
   `oil_production` tinyint(2) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=30 ;
 
 --
 -- Volcar la base de datos para la tabla `states`
 --
 
+INSERT INTO `states` (`id`, `name`, `country_id`, `defense_sistem`, `hospital`, `iron_production`, `grain_production`, `diamonds_production`, `oil_production`) VALUES
+(1, 'País Vasco', 1, 0, 0, 0, 0, 0, 0),
+(2, 'Galicia', 1, 0, 0, 0, 0, 0, 0),
+(3, 'Asturias', 1, 0, 0, 0, 0, 0, 0),
+(4, 'Cantabria', 1, 0, 0, 0, 0, 0, 0),
+(5, 'Castilla y Leon', 1, 0, 0, 0, 0, 0, 0),
+(6, 'La Rioja', 1, 0, 0, 0, 0, 0, 0),
+(7, 'Navarra', 1, 0, 0, 0, 0, 0, 0),
+(8, 'Aragón', 1, 0, 0, 0, 0, 0, 0),
+(9, 'Cataluña', 1, 0, 0, 0, 0, 0, 0),
+(10, 'Extremadura', 1, 0, 0, 0, 0, 0, 0),
+(11, 'Madrid', 1, 0, 0, 0, 0, 0, 0),
+(12, 'Castilla La Mancha', 1, 0, 0, 0, 0, 0, 0),
+(13, 'Valencia', 1, 0, 0, 0, 0, 0, 0),
+(14, 'Islas Baleares', 1, 0, 0, 0, 0, 0, 0),
+(15, 'Andalucía', 1, 0, 0, 0, 0, 0, 0),
+(16, 'Murcia', 1, 0, 0, 0, 0, 0, 0),
+(17, 'Islas Canarias', 1, 0, 0, 0, 0, 0, 0),
+(18, 'Greater London', 2, 0, 0, 0, 0, 0, 0),
+(19, 'Northern Ireland', 2, 0, 0, 0, 0, 0, 0),
+(20, 'Scotland', 2, 0, 0, 0, 0, 0, 0),
+(21, 'Wales', 2, 0, 0, 0, 0, 0, 0),
+(22, 'North East England', 2, 0, 0, 0, 0, 0, 0),
+(23, 'North West England', 2, 0, 0, 0, 0, 0, 0),
+(24, 'Yorkshire And The Humber', 2, 0, 0, 0, 0, 0, 0),
+(25, 'West Midlands', 2, 0, 0, 0, 0, 0, 0),
+(26, 'East Midlands', 2, 0, 0, 0, 0, 0, 0),
+(27, 'East Of England', 2, 0, 0, 0, 0, 0, 0),
+(28, 'South West England', 2, 0, 0, 0, 0, 0, 0),
+(29, 'South East England', 2, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -754,7 +784,7 @@ CREATE TABLE IF NOT EXISTS `suscriptions` (
 --
 -- Estructura de tabla para la tabla `users`
 --
--- Creación: 20-11-2010 a las 17:10:39
+-- Creación: 06-12-2010 a las 22:09:10
 --
 
 DROP TABLE IF EXISTS `users`;
@@ -767,11 +797,12 @@ CREATE TABLE IF NOT EXISTS `users` (
   `last_IP` varchar(15) NOT NULL,
   `avatar` varchar(20) NOT NULL DEFAULT 'default',
   `location` int(11) unsigned NOT NULL,
+  `state` int(10) unsigned NOT NULL,
   `ref_id` int(11) unsigned DEFAULT NULL,
   `validated` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `validation_str` char(15) NOT NULL,
   `hard_worker` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  `worked_days` tinyint(2) NOT NULL DEFAULT '0',
+  `worked_days` tinyint(2) unsigned NOT NULL DEFAULT '0',
   `congress_member` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `country_president` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `media_mogul` smallint(3) unsigned NOT NULL DEFAULT '0',
@@ -802,7 +833,6 @@ CREATE TABLE IF NOT EXISTS `users` (
   `congress_nr` tinyint(2) unsigned NOT NULL DEFAULT '0',
   `citizenship` int(11) unsigned NOT NULL,
   `salary_amount` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `salary_currency` tinyint(3) unsigned NOT NULL,
   `money_mp` bigint(20) unsigned NOT NULL DEFAULT '50000',
   `ARS` bigint(20) unsigned NOT NULL DEFAULT '0',
   `ATS` bigint(20) unsigned NOT NULL DEFAULT '0',
@@ -865,10 +895,9 @@ CREATE TABLE IF NOT EXISTS `users` (
   `VEB` bigint(20) unsigned NOT NULL DEFAULT '0',
   `ZAR` bigint(20) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Volcar la base de datos para la tabla `users`
 --
-
 

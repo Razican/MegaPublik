@@ -9,6 +9,10 @@ class Main extends CI_Controller {
 	
 	function index()
 	{
+		if($this->uri->segment(2))
+		{
+			redirect('/');
+		}
 		if($this->session->userdata('logged_in'))
 		{
 			define ('INGAME', TRUE);
