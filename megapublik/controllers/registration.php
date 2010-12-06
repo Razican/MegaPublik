@@ -137,6 +137,7 @@ class Registration extends CI_Controller {
 		{
 			redirect('/');
 		}
+		//No revisa si el código está en la database!!!
 		$query				= $this->db->get_where('users', array('validation_str' => $validation_str, 'validated' => '0'));
 		
 		if ($query->num_rows() === 0)
@@ -152,7 +153,8 @@ class Registration extends CI_Controller {
 			}
 			$this->db->update('users', array('validated' => '1'), "id = ". $user->id);
 
-			$data['head']		= $this->load->view('head', '', TRUE);
+			$head['menu']		= $this->load->view('menu_outgame', '', TRUE);
+			$data['head']		= $this->load->view('head', $head, TRUE);
 			$data['footer']		= $this->load->view('footer', '', TRUE);
 			$this->load->view('registration/validation', $data);
  		}
