@@ -5,6 +5,7 @@ Class Market_m extends CI_Model
 	function __construct()
 	{
 		parent::__construct();
+		log_message('debug', 'Market_m model loaded.');
 	}
 
 	function get_market($type, $from, $to, $country)
@@ -16,5 +17,5 @@ Class Market_m extends CI_Model
 	}
 }
 
-/* End of file market.php */
-/* Location: ./application/models/market.php */
+/* End of file market_m.php */
+/* Location: ./application/models/market_m.php */

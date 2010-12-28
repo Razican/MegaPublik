@@ -19,6 +19,9 @@ $lang['reg.here']			= 'here';
 $lang['reg.correct']		= 'Correct';
 $lang['reg.wrong']			= 'Incorrect';
 $lang['reg.strenght']		= 'Password strenght (Use a password with at least six characters, with numbes and letters, different from the username)';
+$lang['reg.too_email']		= 'There is alredy an user with that email.';
+$lang['reg.too_user']		= 'The user already exists.';
+
 
 /* End of file registration_lang.php */
 /* Location: ./application/language/english/registration_lang.php */

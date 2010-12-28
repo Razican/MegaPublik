@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-$lang['errors.error']	= 'Oker bat gertatu da';
+$lang['errors.error']	= 'Arazo bat egon da';
 $lang['errors.1']		= 'Sartutako erabiltzailea ez da existitzen.';
 $lang['errors.2']		= 'Pasahitza ez da zuzena.';
 $lang['errors.3']		= 'Erabiltzailea existitzen da.';

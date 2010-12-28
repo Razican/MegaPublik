@@ -5,6 +5,7 @@ Class Login_m extends CI_Model
 	function __construct()
 	{
 		parent::__construct();
+		log_message('debug', 'Login_m model loaded.');
 	}
 
 	function login($username, $ip_address)
@@ -43,11 +44,5 @@ Class Login_m extends CI_Model
 	}
 }
 
-/* End of file market.php */
-/* Location: ./application/models/market.php */
-
-
-
-
-															
-					
+/* End of file login_m.php */
+/* Location: ./application/models/login_m.php */

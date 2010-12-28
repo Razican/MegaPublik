@@ -24,17 +24,6 @@ $config['exp_multiplier']	= 2;
 */
 $config['debug']    = TRUE;
 
-/*
-|--------------------------------------------------------------------------
-| Cache
-|--------------------------------------------------------------------------
-|
-| This configuration item will determine how many minutes will be the web
-| pages cached. After that, the cache file will be deleted.
-|
-*/
-$config['cache']    = 0;
-
 
 /* End of file megapublik.php */
 /* Location: ./application/config/megapublik.php */

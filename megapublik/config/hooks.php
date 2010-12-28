@@ -11,9 +11,9 @@
 */
 
 $hook['post_controller_constructor'] = array(
-							'class'    => 'State',
+							'class'    => '',
 							'function' => 'language',
-							'filename' => 'State.php',
+							'filename' => 'Pcc.php',
 							'filepath' => 'hooks'	
 						);
 

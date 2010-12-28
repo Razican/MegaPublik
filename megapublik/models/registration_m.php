@@ -5,6 +5,7 @@ Class Registration_m extends CI_Model
 	function __construct()
 	{
 		parent::__construct();
+		log_message('debug', 'Registration_m model loaded.');
 	}
 
 	function countries()
@@ -105,5 +106,5 @@ Class Registration_m extends CI_Model
 	}
 }
 
-/* End of file market.php */
-/* Location: ./application/models/market.php */
+/* End of file registration_m.php */
+/* Location: ./application/models/registration_m.php */

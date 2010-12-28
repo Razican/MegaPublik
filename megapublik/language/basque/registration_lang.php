@@ -19,6 +19,9 @@ $lang['reg.here']			= 'hemen';
 $lang['reg.correct']		= 'Zuzena';
 $lang['reg.wrong']			= 'Okerra';
 $lang['reg.strenght']		= 'Pasahitzaren sendotasuna: (Gutxienez sei karaktere dituen pasahitza erabili, zenbaki eta letrekin eta ez dadila erabiltzailearen berdina izan)';
+$lang['reg.too_email']		= 'Badago beste erabiltzaile bat email horrekin.';
+$lang['reg.too_user']		= 'Erabiltzailea existitzen da.';
+
 
 /* End of file registration_lang.php */
 /* Location: ./application/language/basque/registration_lang.php */

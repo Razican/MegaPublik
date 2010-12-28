@@ -33,6 +33,7 @@
 */
 
 $route['default_controller'] = "main";
+
 // URI like '/en/about' -> use controller 'about'
 $route['^es/(.+)$'] = "$1";
 $route['^en/(.+)$'] = "$1";

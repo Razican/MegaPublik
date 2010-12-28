@@ -217,7 +217,7 @@ $config['cache_path'] = '';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = "f61PwVKH78GEg9BMjeK8jS07XEzLdPsl";
+$config['encryption_key'] = "VHs0em6S23Z01A0620701QWjgQoYA68t";
 
 /*
 |--------------------------------------------------------------------------
@@ -326,7 +326,7 @@ $config['time_reference'] = 'local';
 | in your view files.  Options are TRUE or FALSE (boolean)
 |
 */
-$config['rewrite_short_tags'] = TRUE;
+$config['rewrite_short_tags'] = FALSE;
 
 
 /*
