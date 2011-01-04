@@ -6,7 +6,7 @@
 		@@@ Autor : Raca
 		@@@ Fecha : 30-Dic-2010
 		@@@ Version HTML: 0.10
-		@@@ CSS : el diseño esta basado en las plantillas de racanofeller.com (los colores son 
+		@@@ CSS : el diseÃ±o esta basado en las plantillas de racanofeller.com (los colores son 
 				 aleatorios) y queda pendiente adaptarlo a la interfaz grafica de megapublik
 		@@@ Validacion:  Probado solo en Firefox
 		
@@ -19,13 +19,13 @@
 								hay que crear el equivalente en moneda.
 			>>> PRESIDENTE DEL BANCO: poner el nombre y el link a la pantalla de control del banco,
 			esta pantalla es accesible por todos los usuarios, pero solo el presidente podra enviar
-			los datos ( se podria poner un input en el que introducir una contraseña...o por comprobacion
-			del nif del presidente). La pantalla de control esta pendiente de diseño.
+			los datos ( se podria poner un input en el que introducir una contraseÃ±a...o por comprobacion
+			del nif del presidente). La pantalla de control esta pendiente de diseÃ±o.
 			>>> TIPO INTERES INTERBANCARIO: Lo fija el parlamento, se pone en la pantalla del presi del banco
 			>>> BANCOS PRIVADOS: Se creean a partir de empresa de un ciudadano y de los usuarios que se le unan,
 								estos bancos son limitados a 5-10 y son autorizados por el administrador del juego.
 								Los privados NO DAN CAMBIO DE MONEDA, solo creditos y depositos de ahorro...y quizas 
-								acciones de bolsa en un futuro. Los bancos privados estan pendientes de diseño y se
+								acciones de bolsa en un futuro. Los bancos privados estan pendientes de diseï¿½o y se
 								accede a ellos mediante el link de la tabla.
 			>>> COMPRA-VENTA DE MONEDA : Para que el banco central no sea solo una pantalla de muestra de datos
 								ha de tener algo interactivo, o sea una entrada de datos , ademas tiene la 
@@ -242,7 +242,7 @@ td.cabacc{
 <div id="sepuno"></div>
 
 <div id=menu>
-<p class=uno>Zona de menus </p>
+<p class=uno>Zona de menus</p>
 </div><!-- menu -->
 
 <div id="sepuno"></div>
@@ -278,56 +278,56 @@ td.cabacc{
 </tr>
 <tr>
 	<td class="valmasa">Moneda 1</td>
-	<td class="valmasa">0000000 €</td>
+	<td class="valmasa">0000000</td>
 </tr>
 <tr>
 	<td class="chart_divider">&nbsp;</td>
 </tr>
 <tr>
 	<td class="valmasa">Moneda 2</td>
-	<td class="valmasa">0000000 €</td>
+	<td class="valmasa">0000000</td>
 </tr>
 <tr>
 	<td class="chart_divider">&nbsp;</td>
 </tr>
 <tr>
 	<td class="valmasa">Moneda 3</td>
-	<td class="valmasa">0000000 €</td>
+	<td class="valmasa">0000000</td>
 </tr>
 <tr>
 	<td class="chart_divider">&nbsp;</td>
 </tr>
 <tr>
 	<td class="valmasa">Moneda 4</td>
-	<td class="valmasa">0000000 €</td>
+	<td class="valmasa">0000000</td>
 </tr>
 <tr>
 	<td class="chart_divider">&nbsp;</td>
 </tr>
 <tr>
 	<td class="valmasa">Moneda 5</td>
-	<td class="valmasa">0000000 €</td>
+	<td class="valmasa">0000000</td>
 </tr>
 <tr>
 	<td class="chart_divider">&nbsp;</td>
 </tr>
 <tr>
 	<td class="valmasa">Moneda 6</td>
-	<td class="valmasa">0000000 €</td>
+	<td class="valmasa">0000000</td>
 </tr>
 <tr>
 	<td class="chart_divider">&nbsp;</td>
 </tr>
 <tr>
 	<td class="valmasa">Moneda 7</td>
-	<td class="valmasa">0000000 €</td>
+	<td class="valmasa">0000000</td>
 </tr>
 <tr>
 	<td class="chart_divider">&nbsp;</td>
 </tr>
 <tr>
 	<td class="valmasa">Moneda 8</td>
-	<td class="valmasa">0000000 €</td>
+	<td class="valmasa">0000000</td>
 </tr>
 </table>
 

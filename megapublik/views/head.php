@@ -40,7 +40,9 @@
 	<?php if (defined('INGAME')) : ?><div class="help">
 		<?php echo $help; ?>
 	</div><?php endif; ?>
-	<div class="menu"><?php echo $menu; ?></div>
+	<?php if(!isset($email)) : ?><div class="menu">
+		<?php echo $menu; ?>
+	</div><?php endif; ?>
 	<?php if (defined('INGAME')) : ?><div class="panel">
 		<?php echo $panel; ?>
 	</div><?php endif; ?>

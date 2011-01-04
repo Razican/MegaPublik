@@ -8,7 +8,7 @@ class Registration extends CI_Controller {
 	}
 	
 	function index()
-	{
+	{		
 		$this->output->enable_profiler($this->config->item('debug'));		
 
 		if($this->session->userdata('logged_in'))
@@ -72,12 +72,14 @@ class Registration extends CI_Controller {
 			log_message('error', 'User with IP '.$this->input->ip_address().' has tried to create multiple accounts.');
 			redirect('error/5');
 		}
-		else if ($this->registration_m->is_valid($this->input->post('username'), 'user') != '')
+		else if ($this->registration_m->is_valid($this->input->post('username'), 'user') === FALSE)
 		{
+			log_message('error', 'User with IP '.$this->input->ip_address().' has tried to hack JQuery at the registration.');
 			redirect('error/3');
 		}
-		else if ($this->registration_m->is_valid($this->input->post('email'), 'email') != '')
+		else if ($this->registration_m->is_valid($this->input->post('email'), 'email') === FALSE)
 		{
+			//log_message('error', 'User with IP '.$this->input->ip_address().' has tried to hack JQuery at the registration.');
 			redirect('error/4');
 		}
 		else
@@ -111,6 +113,7 @@ class Registration extends CI_Controller {
 			$pattern			= array('%username%', '%password%', '%link%', '%url%');
 			$replacement		= array($this->input->post('username'), $this->input->post('password'), anchor('registration/validate/'. $validation_str, lang('reg.here')), site_url('registration/validate/'. $validation_str));
 
+			$head['email']		= TRUE;
 			$footer['email']	= TRUE;
 
 			$data['message']	= preg_replace($pattern, $replacement, lang('reg.message'));
@@ -159,30 +162,30 @@ class Registration extends CI_Controller {
 		}		
 	}
 
-	function request($type, $value = NULL)
+	function request($type = 'user', $value = NULL)
 	{
 		if ($this->input->is_ajax_request())
-		{
-			sleep(2);
+		{			
+			//sleep(1);
 
-			//$this->load->model('registration_m');
+			$this->lang->load('registration');
+			$this->load->model('registration_m');
 
-			if ($type	!= 'states')
-			{				
-				if ($this->input->post('email') != '')
-				{
-					$data['validated']	= $this->is_valid($this->input->post('email'), $type);
-				}
-				else
-				{
-					$data['validated']	= $this->is_valid($value, $type);
-				}
-				$this->load->view('registration/result', $data);
-			}
-			else
+			switch ($type)
 			{
-				$data['states']		= $this->states($value);
-				$this->load->view('registration/states', $data);
+				case 'states':
+					$data['states']			= $this->registration_m->states($value);
+					$this->load->view('registration/states', $data);
+				break;				
+				default:
+				log_message('debug', str_replace('~', '@', $value));
+					$validated	= $this->registration_m->is_valid(str_replace('~', '@', $value), $type);									
+					$data['validated']		= '';
+					if ($validated === FALSE)
+					{
+						$data['validated']	= lang('reg.too_'.$type);
+					}
+					$this->load->view('registration/result', $data);
 			}
 		}
 		else

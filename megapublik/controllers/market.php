@@ -51,7 +51,7 @@ class Market extends CI_Controller {
 	{		
 		if ($this->input->is_ajax_request())
 		{
-			sleep(2);
+			sleep(1);
 
 			$this->lang->load('market');
 			$this->load->model('market_m');

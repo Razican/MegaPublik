@@ -57,8 +57,24 @@ $(function(){
 	});
 
 	$('#username').bind('blur keyup',function() {
-		$('#user_notes').html(loading_img).load(post_url + "/user/" + $(this).val());
-		$('#user_result').html(correct_img);
+		if ($(this).val() != '')
+		{
+			$('#user_notes').html(loading_img).load(post_url + "/user/" + $(this).val(), function()
+			{
+				if($('#user_notes').html() != '')
+				{
+					$('#user_result').html(wrong_img);
+				}
+				else
+				{
+					$('#user_result').html(correct_img);
+				}
+			});
+		}
+		else
+		{
+			$('#user_result').html(wrong_img);
+		}
 	});
 
 	$('#password').focus(function() {
@@ -111,19 +127,30 @@ $(function(){
 	$('#email').bind('blur keyup', function() {
 
 		var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
-		if(pattern.test($(this).val()))
-		{
-			$('#email_result').html(correct_img);
+		if(pattern.test($(this).val()) && $(this).val() != '')
+		{			
+			alert($(this).val().replace('@', '~'));
+			$('#email_notes').html(loading_img).load(post_url + "/email/" + $(this).val().replace('@', '~'), function()
+			{
+				if($('#email_notes').html() != '')
+				{
+					$('#email_result').html(wrong_img);
+				}
+				else
+				{
+					$('#email_result').html(correct_img);
+				}
+			});			
 		}
 		else
 		{
-			$('#email_result').html(wrong_img);
+		$('#email_result').html(wrong_img);
 		}
 	});
 
-	/*$('input').focus(function() {
+	$('input').focus(function() {
 		$('#submit').attr('disabled', true);
-	});*/
+	});
 
 	$('input').bind('blur keyup', function() {
 
@@ -137,7 +164,7 @@ $(function(){
 		}
 	});
 
-	/*$('#submit').submit(function() {
+	$('#submit').submit(function() {
 		$('#submit').attr('disabled', true);
-	});*/
+	});
 });

@@ -74,34 +74,29 @@ Class Registration_m extends CI_Model
 				{
 					return TRUE;
 				}
-			break;
-			//empiezan los fallos
+			break;			
 			case 'user':
-				$query	= $this->db->get_where('users', array('username' => $string));
-				echo lang('reg.too_user');
+				$query	= $this->db->get_where('users', array('username' => $string));				
 				if ($query->num_rows() > 0)
- 				{
-					echo lang('reg.too_user');
-					return lang('reg.too_user');
+				{					
+					return FALSE;
  				}
 				else
-				{
-					return '';
+				{					
+					return TRUE;
 				}
 			break;
 			case 'email':
 				$query			= $this->db->get_where('users', array('email' => $string));					
 				if ($query->num_rows() > 0)
-				{
-					echo lang('reg.too_email');
-					return lang('reg.too_email');
+				{					
+					return FALSE;
 				}
 				else
-				{
-					return '';					
+				{					
+					return TRUE;					
 				}
-			break;
-			//acaban los fallos
+			break;			
 			default:
 				log_message('error', 'function is_valid() in registration_m model has received bad arguments');
 				redirect('/');
