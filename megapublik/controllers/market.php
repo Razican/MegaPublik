@@ -47,7 +47,7 @@ class Market extends CI_Controller {
 			redirect('/');
 		}
 	}
-	function request($type='food', $from=0, $to=20)
+	function request($type='food', $page=0)
 	{		
 		if ($this->input->is_ajax_request())
 		{
@@ -59,21 +59,30 @@ class Market extends CI_Controller {
 			$user			= $this->user->data($this->session->userdata('user_id'));
 			$user_country	= $this->user->data($user->location, 'countries');
 			$country		= $user_country->id;
+			$from			= ($page)*20;
+			$to				= ($page+1)*20;
 			$content		= $this->market_m->get_market($type, $from, $to, $country);
+			$market			= $this->market_m->get_market($type, 0, 0, $country);
+			$num_rows		= $market->num_rows();
 
-			if ($content->num_rows() > 0)
+			if ($num_rows > 0)
 			{
-				$data['rows']	= NULL;
+				$data['content']	=& $content;
+				$data['user']		=& $this->user;
+				$data['img']		= loading(lang('market.loading'));
 
-				foreach ($content->result() as $content)
-				{
-					$row['price']		= $content->price;
-					$company			= $this->user->data($content->company_id, 'companies');
-					$row['company']		= $company->name;
-					$row['amount']		= $content->amount;
+				$this->load->library('pagination');
+				
+				$config['base_url']		= site_url("market/request/".$type."/");
+				$config['total_rows']	= $num_rows;
+				$config['per_page']		= '20';
+				$config['uri_segment']	= 5;
+				$config['first_link']	= lang('overal.first');
+				$config['last_link']	= lang('overal.last');
 
-					$data['rows']		.= $this->load->view('market/market_table_row', $row, TRUE);
-				}
+				$this->pagination->initialize($config);
+				$data['pagination']		= $this->pagination->create_links();
+
 				$this->load->view('market/market_table', $data);
 			}
 			else

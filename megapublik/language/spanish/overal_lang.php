@@ -21,5 +21,9 @@ $lang['overal.panel.wellness']		= 'Salud';
 $lang['overal.panel.happiness']		= 'Felicidad';
 $lang['overal.panel.productivity']	= 'Productividad';
 
+//pagination
+$lang['overal.first']				= 'Primera';
+$lang['overal.last']				= 'Útima';
+
 /* End of file overal_lang.php */
 /* Location: ./application/language/spanish/overal_lang.php */

@@ -21,5 +21,9 @@ $lang['overal.panel.wellness']		= 'Osasuna';
 $lang['overal.panel.happiness']		= 'Zoriontasuna';
 $lang['overal.panel.productivity']	= 'Productibitatea';
 
+//pagination
+$lang['overal.first']				= 'Lehena';
+$lang['overal.last']				= 'Azkena';
+
 /* End of file overal_lang.php */
 /* Location: ./application/language/basque/overal_lang.php */

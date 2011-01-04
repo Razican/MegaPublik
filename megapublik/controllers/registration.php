@@ -19,7 +19,7 @@ class Registration extends CI_Controller {
 		define ('AJAX', TRUE);
 
 		$this->lang->load('registration');
-		$this->load->model('registration_m');		
+		$this->load->model('registration_m');
 
 		$script['correct']	= reg_img('correct', lang('reg.correct'));
 		$script['wrong']	= reg_img('wrong', lang('reg.wrong'));
@@ -46,6 +46,7 @@ class Registration extends CI_Controller {
 		}
 
 		$this->load->helper('email');
+		$this->load->model('registration_m');
 
 		if ((!$this->input->post('username'))	OR
 			(!$this->input->post('password'))	OR
@@ -66,7 +67,7 @@ class Registration extends CI_Controller {
 			log_message('error', 'User with IP '.$this->input->ip_address().' has tried to hack JQuery at the registration.');
 			redirect('error/8');
 		}
-		else if ($this->registration_m->is_valid($this->input->ip_address(), 'ip') != '')
+		else if (!$this->registration_m->is_valid($this->input->ip_address(), 'ip'))
 		{
 			log_message('error', 'User with IP '.$this->input->ip_address().' has tried to create multiple accounts.');
 			redirect('error/5');
@@ -164,23 +165,23 @@ class Registration extends CI_Controller {
 		{
 			sleep(2);
 
-			$this->load->model('registration_m');
+			//$this->load->model('registration_m');
 
 			if ($type	!= 'states')
 			{				
 				if ($this->input->post('email') != '')
 				{
-					$data['validated']	= $this->registration_m->is_valid($this->input->post('email'), $type);
+					$data['validated']	= $this->is_valid($this->input->post('email'), $type);
 				}
 				else
 				{
-					$data['validated']	= $this->registration_m->is_valid($value, $type);
+					$data['validated']	= $this->is_valid($value, $type);
 				}
 				$this->load->view('registration/result', $data);
 			}
 			else
 			{
-				$data['states']		= $this->registration_m->states($value);
+				$data['states']		= $this->states($value);
 				$this->load->view('registration/states', $data);
 			}
 		}

@@ -11,8 +11,8 @@
 */
 $config['num_links']		= 2;
 
-$config['full_tag_open']	= '<p>';
-$config['full_tag_close']	= '</p>';
+$config['full_tag_open']	= '<div id="pagination">';
+$config['full_tag_close']	= '</div>';
 
 $config['next_link']		= '&gt;';
 $config['prev_link']		= '&lt;';

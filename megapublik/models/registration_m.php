@@ -63,8 +63,9 @@ Class Registration_m extends CI_Model
 				}
 			break;
 			case 'ip':
-				$where	= "reg_IP='".$string."' OR last_IP='".$string."'";
-				$query	= $this->db->get_where('users', $where);
+				$this->db->where('reg_IP', $string);
+				$this->db->or_where('last_IP', $string);
+				$query	= $this->db->get('users');
 				if ($query->num_rows() > 3)
  				{
 					return FALSE;
@@ -74,6 +75,7 @@ Class Registration_m extends CI_Model
 					return TRUE;
 				}
 			break;
+			//empiezan los fallos
 			case 'user':
 				$query	= $this->db->get_where('users', array('username' => $string));
 				echo lang('reg.too_user');
@@ -99,6 +101,7 @@ Class Registration_m extends CI_Model
 					return '';					
 				}
 			break;
+			//acaban los fallos
 			default:
 				log_message('error', 'function is_valid() in registration_m model has received bad arguments');
 				redirect('/');
