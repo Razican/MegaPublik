@@ -16,7 +16,7 @@ class Registration extends CI_Controller {
 			exit(redirect('/'));
 		}
 
-		define ('AJAX', TRUE);
+		//define ('AJAX', TRUE);
 
 		$this->lang->load('registration');
 		$this->load->model('registration_m');
@@ -93,7 +93,7 @@ class Registration extends CI_Controller {
 	 			$i = $query->num_rows();
 	 		}
 
-			$data = array(
+			$user_data = array(
 				'username'			=> $this->input->post('username'),
 				'password'			=> sha1($this->input->post('password')),
 				'email'				=> $this->input->post('email'),
@@ -105,7 +105,7 @@ class Registration extends CI_Controller {
 				'citizenship'		=> $this->input->post('country'),			
 			);
 
-			$this->db->insert('users', $data);
+			$this->db->insert('users', $user_data);
 
 			$this->lang->load('registration');
 			$this->load->library('email');
@@ -113,11 +113,11 @@ class Registration extends CI_Controller {
 			$pattern			= array('%username%', '%password%', '%link%', '%url%');
 			$replacement		= array($this->input->post('username'), $this->input->post('password'), anchor('registration/validate/'. $validation_str, lang('reg.here')), site_url('registration/validate/'. $validation_str));
 
-			$head['email']		= TRUE;
+			$head['email']		= TRUE;			
 			$footer['email']	= TRUE;
 
 			$data['message']	= preg_replace($pattern, $replacement, lang('reg.message'));
-			$data['head']		= $this->load->view('head', '', TRUE);
+			$data['head']		= $this->load->view('head', $head, TRUE);
 			$data['footer']		= $this->load->view('footer', $footer, TRUE);
 			$this->email->from('noreply@megapublik.com', 'MegaPublik')
 						->to($this->input->post('email'))
@@ -125,6 +125,8 @@ class Registration extends CI_Controller {
 						->message($this->load->view('mail', $data, TRUE))
 						->set_alt_message(preg_replace($pattern, $replacement, lang('reg.alt_message')))
 						->send();
+			
+			$head['email']		= FALSE;
 
 			$head['menu']		= $this->load->view('menu_outgame', '', TRUE);			
 

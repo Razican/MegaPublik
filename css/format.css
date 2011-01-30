@@ -27,7 +27,7 @@ h1 {
 	background-color: red;
 	opacity: 0.75;
 	padding: 10px;
-	margin-left: 175px;
+	margin-left: 170px;
 }
 .logo {
 	margin:  10px;
@@ -45,6 +45,7 @@ a {
 	padding: 10px;
 	float: right;
 	margin: 110px 50px 0px 0px;
+	height: 25px;
 }
 table.market_table {
 	width: 100%;
