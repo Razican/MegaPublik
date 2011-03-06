@@ -22,5 +22,6 @@ $config['cur_tag_close']	= '</b>';
 
 $config['anchor_class']		= 'pagination';
 
+
 /* End of file pagination.php */
 /* Location: ./application/config/pagination.php */

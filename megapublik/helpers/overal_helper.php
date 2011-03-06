@@ -138,5 +138,6 @@ function loading($alt, $size = 'big')
 	return $img;
 }
 
+
 /* End of file overal_helper.php */
 /* Location: ./application/helpers/overal_helper.php */

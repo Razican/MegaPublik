@@ -21,5 +21,6 @@ Class Market_m extends CI_Model
 	}
 }
 
+
 /* End of file market_m.php */
 /* Location: ./application/models/market_m.php */

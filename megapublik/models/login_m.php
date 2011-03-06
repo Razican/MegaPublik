@@ -44,5 +44,6 @@ Class Login_m extends CI_Model
 	}
 }
 
+
 /* End of file login_m.php */
 /* Location: ./application/models/login_m.php */
