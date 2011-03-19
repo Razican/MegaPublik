@@ -2,13 +2,13 @@
 
 class Registration extends CI_Controller {
 
-	function __construct()
+	public function index()
 	{
-		parent::__construct();	
-	}
-	
-	function index()
-	{		
+		if($this->uri->segment(3))
+		{
+			redirect('registration');
+		}
+
 		$this->output->enable_profiler($this->config->item('debug'));		
 
 		if($this->session->userdata('logged_in'))
@@ -36,7 +36,7 @@ class Registration extends CI_Controller {
 		$this->load->view('registration/register', $data);
 	}
 	
-	function register()
+	public function register()
 	{
 		$this->output->enable_profiler($this->config->item('debug'));		
 
@@ -136,7 +136,7 @@ class Registration extends CI_Controller {
 		}
 	}
 
-	function validate($validation_str = '')
+	public function validate($validation_str = '')
 	{
 		$this->output->enable_profiler($this->config->item('debug'));		
 
@@ -164,7 +164,7 @@ class Registration extends CI_Controller {
 		}		
 	}
 
-	function request($type = 'user', $value = NULL)
+	public function request($type = 'user', $value = NULL)
 	{
 		if ($this->input->is_ajax_request())
 		{			
@@ -197,6 +197,7 @@ class Registration extends CI_Controller {
 		}
 	}
 }
+
 
 /* End of file register.php */
 /* Location: ./application/controllers/register.php */

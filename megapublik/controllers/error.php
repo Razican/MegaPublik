@@ -2,14 +2,9 @@
 
 class Error extends CI_Controller {
 
-	function __construct()
+	public function _remap($error = 0)
 	{
-		parent::__construct();	
-	}
-
-	function _remap($error = 0)
-	{
-		if (($error == 0) OR (!is_numeric($error)) OR ($error > 10))
+		if (($error <= 0) OR (!is_numeric($error)) OR ($error > 10))
 		{
 			redirect('/');
 		}
@@ -23,6 +18,7 @@ class Error extends CI_Controller {
 		}
 	}
 }
+
 
 /* End of file error.php */
 /* Location: ./application/controllers/error.php */

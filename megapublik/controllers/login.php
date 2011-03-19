@@ -2,12 +2,7 @@
 
 class Login extends CI_Controller {
 
-	function __construct()
-	{
-		parent::__construct();	
-	}
-	
-	function index()
+	public function index()
 	{
 		$this->load->model('login_m');
 
@@ -58,6 +53,7 @@ class Login extends CI_Controller {
 		}
 	}
 }
+
 
 /* End of file login.php */
 /* Location: ./application/controllers/login.php */

@@ -2,13 +2,13 @@
 
 class Market extends CI_Controller {
 
-	function __construct()
+	public function index()
 	{
-		parent::__construct();	
-	}
-	
-	function index()
-	{
+		if($this->uri->segment(3))
+		{
+			redirect('market');
+		}
+
 		if($this->session->userdata('logged_in'))
 		{
 			define ('INGAME', TRUE);
@@ -47,7 +47,8 @@ class Market extends CI_Controller {
 			redirect('/');
 		}
 	}
-	function request($type='food', $page=0)
+
+	public function request($type='food', $page=0)
 	{		
 		if ($this->input->is_ajax_request())
 		{
@@ -97,6 +98,7 @@ class Market extends CI_Controller {
 		}
 	}
 }
+
 
 /* End of file market.php */
 /* Location: ./application/controllers/market.php */

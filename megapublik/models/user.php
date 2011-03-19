@@ -2,13 +2,7 @@
 
 Class User extends CI_Model
 {
-	function __construct()
-	{
-		parent::__construct();
-		log_message('debug', 'User model loaded.');
-	}
-
-	function data($id, $table = 'users')
+	public function data($id, $table = 'users')
 	{
 		$query				= $this->db->get_where($table, array('id' => $id));
 
@@ -33,8 +27,8 @@ Class User extends CI_Model
 		}
 		return $return;
 	}
-	
-	function has_company()
+
+	public function has_company()
 	{
 		$query				= $this->db->get_where('companies', array('owner_id' => $this->session->userdata('user_id')));
 
@@ -43,9 +37,9 @@ Class User extends CI_Model
 		return $has_company;
 	}
 
-	function online()
+	public function online()
 	{
-		$query				= $this->db->get_where('sessions', array('last_activity >' => time()-$this->config->item('sess_time_to_update')));
+		$query				= $this->db->get_where('sessions', array('last_activity >' => now()-$this->config->item('sess_time_to_update')));
 
 		return $query->num_rows();
 	}

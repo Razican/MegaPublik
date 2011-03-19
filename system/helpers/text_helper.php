@@ -364,30 +364,28 @@ if ( ! function_exists('highlight_phrase'))
  */
 if ( ! function_exists('convert_accented_characters'))
 {
-	function convert_accented_characters($match)
+	function convert_accented_characters($str)
 	{
-		if ( ! file_exists(APPPATH.'config/foreign_chars'.EXT))
+		if ( ! file_exists(APPPATH.'config/foreign_chars'.EXT) AND ! file_exists(APPPATH.'config/'.ENVIRONMENT.'/foreign_chars'.EXT))
 		{
-			return $match;
+			return $str;
 		}
 
-		include APPPATH.'config/foreign_chars'.EXT;
-
-		if ( ! isset($foreign_characters))
+		if (file_exists(APPPATH.'config/'.ENVIRONMENT.'/foreign_chars'.EXT))
 		{
-			return $match;
-		}
-
-		$ord = ord($match['1']);
-
-		if (isset($foreign_characters[$ord]))
-		{
-			return $foreign_characters[$ord];
+			include APPPATH.'config/'.ENVIRONMENT.'/foreign_chars'.EXT;
 		}
 		else
 		{
-			return $match['1'];
+			include APPPATH.'config/foreign_chars'.EXT;
 		}
+
+		if ( ! isset($foreign_characters))
+		{
+			return $str;
+		}
+
+		return preg_replace(array_keys($foreign_characters), array_values($foreign_characters), $str);
 	}
 }
 
@@ -452,7 +450,7 @@ if ( ! function_exists('word_wrap'))
 			}
 
 			$temp = '';
-			while((strlen($line)) > $charlim)
+			while ((strlen($line)) > $charlim)
 			{
 				// If the over-length word is a URL we won't wrap it
 				if (preg_match("!\[url.+\]|://|wwww.!", $line))

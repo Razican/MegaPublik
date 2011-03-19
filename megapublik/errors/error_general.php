@@ -12,25 +12,26 @@
 <meta name="keywords" content="juego online, online game, estrategia, strategy, simulacion, simulation, megapublik, gratis, free, economia, economy, politica, politics, vida real, real life" />
 <!-- <link rel="canonical" href="http://www.megapublik.com/" /> -->
 <style type="text/css">
-body {	
-	font-family:		Lucida Grande, Verdana, Sans-serif;
-	font-size:			12px;
-	color:				#000;
+
+body {
+background-color:	#fff;
+margin:				40px;
+font-family:		Lucida Grande, Verdana, Sans-serif;
+font-size:			12px;
+color:				#000;
 }
 
 #content  {
-	background-color:	#fff;
-	border:				1px solid #999;
-	clear:				both;
-	margin:				40px;
-	padding:			20px 20px 12px 20px;
+border:				#999 1px solid;
+background-color:	#fff;
+padding:			20px 20px 12px 20px;
 }
 
 h1 {
-	font-weight:		normal;
-	font-size:			14px;
-	color:				#990000;
-	margin:				0 0 4px 0;
+font-weight:		normal;
+font-size:			14px;
+color:				#990000;
+margin:				0 0 4px 0;
 }
 </style>
 </head>

@@ -23,22 +23,29 @@
 | RESERVED ROUTES
 | -------------------------------------------------------------------------
 |
-| There is one reserved routes:
+| There area two reserved routes:
 |
 |	$route['default_controller'] = 'welcome';
 |
 | This route indicates which controller class should be loaded if the
 | URI contains no data. In the above example, the "welcome" class
 | would be loaded.
+|
+|	$route['404_override'] = 'errors/page_missing';
+|
+| This route will tell the Router what URI segments to use if those provided
+| in the URL cannot be matched to a valid route.
+|
 */
 
 $route['default_controller'] = "main";
+$route['404_override'] = '';
 
 // URI like '/en/about' -> use controller 'about'
 $route['^es/(.+)$'] = "$1";
 $route['^en/(.+)$'] = "$1";
 $route['^eu/(.+)$'] = "$1";
- 
+
 // '/en' and '/fr' URIs -> use default controller
 $route['^es$'] = $route['default_controller'];
 $route['^en$'] = $route['default_controller'];

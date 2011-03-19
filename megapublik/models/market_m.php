@@ -2,13 +2,7 @@
 
 Class Market_m extends CI_Model
 {
-	function __construct()
-	{
-		parent::__construct();
-		log_message('debug', 'Market_m model loaded.');
-	}
-
-	function get_market($type, $from, $to, $country)
+	public function get_market($type, $from, $to, $country)
 	{
 		if ($to != 0)
 		{

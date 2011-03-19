@@ -2,12 +2,7 @@
 
 class Logout extends CI_Controller {
 
-	function __construct()
-	{
-		parent::__construct();	
-	}
-	
-	function index()
+	public function index()
 	{
 		if($this->session->userdata('logged_in'))
 		{
@@ -20,6 +15,7 @@ class Logout extends CI_Controller {
 		redirect('/');
 	}
 }
+
 
 /* End of file logout.php */
 /* Location: ./application/controllers/logout.php */

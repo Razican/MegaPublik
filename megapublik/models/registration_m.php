@@ -2,13 +2,7 @@
 
 Class Registration_m extends CI_Model
 {
-	function __construct()
-	{
-		parent::__construct();
-		log_message('debug', 'Registration_m model loaded.');
-	}
-
-	function countries()
+	public function countries()
 	{
 		$query			= $this->db->get('countries');
 		$countries		= '';
@@ -21,7 +15,7 @@ Class Registration_m extends CI_Model
 		return $countries;
 	}
 
-	function states($country)
+	public function states($country)
 	{		
 		$query			= $this->db->get_where('countries', array('name' => $country));
 		foreach ($query->result() as $country){}
@@ -37,7 +31,7 @@ Class Registration_m extends CI_Model
 		return $countries;
 	}
 
-	function is_valid($string, $type = 'code')
+	public function is_valid($string, $type = 'code')
 	{
 		switch ($type)
 		{

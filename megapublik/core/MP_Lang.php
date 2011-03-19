@@ -84,16 +84,8 @@ class MP_Lang extends CI_Lang {
 	{
 		$CI =& get_instance();
 
-		$uri = $CI->uri->uri_string();
-		if ($uri != "")
-		{
-			$exploded = explode('/', $uri);
-			if($exploded[1] == $this->lang())
-			{
-				$exploded[1] = $lang;
-			}
-			$uri = implode('/',$exploded);
-		}
+		$uri = '/'.$lang.'/'.$CI->uri->segment(2).'/'.$CI->uri->segment(3);
+
 		return $uri;
 	}
 
@@ -146,6 +138,7 @@ class MP_Lang extends CI_Lang {
 		return $uri;
 	}
 }
+
 
 /* End of file MP_Lang.php */
 /* Location: ./application/core/MP_Lang.php */

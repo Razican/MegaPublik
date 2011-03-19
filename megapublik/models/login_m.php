@@ -2,13 +2,7 @@
 
 Class Login_m extends CI_Model
 {
-	function __construct()
-	{
-		parent::__construct();
-		log_message('debug', 'Login_m model loaded.');
-	}
-
-	function login($username, $ip_address)
+	public function login($username, $ip_address)
 	{
 		$query		= $this->db->get_where('users', array('username' => $username), '1');
 		foreach ($query->result() as $user){}
@@ -31,8 +25,8 @@ Class Login_m extends CI_Model
 
 		return $user;
 	}
-	
-	function user()
+
+	public function user()
 	{
 		$query	= $this->db->get_where('users', array('username' => $this->input->post('username')), '1');
 

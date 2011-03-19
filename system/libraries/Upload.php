@@ -142,7 +142,7 @@ class CI_Upload {
 	 */
 	public function do_upload($field = 'userfile')
 	{
-		
+
 	// Is $_FILES[$field] set? If not, no reason to continue.
 		if ( ! isset($_FILES[$field]))
 		{
@@ -213,7 +213,18 @@ class CI_Upload {
 		if ($this->_file_name_override != '')
 		{
 			$this->file_name = $this->_prep_filename($this->_file_name_override);
-			$this->file_ext  = $this->get_extension($this->file_name);
+
+			// If no extension was provided in the file_name config item, use the uploaded one
+			if (strpos($this->_file_name_override, '.') === FALSE)
+			{
+				$this->file_name .= $this->file_ext;
+			}
+
+			// An extension was provided, lets have it!
+			else
+			{
+				$this->file_ext	 = $this->get_extension($this->_file_name_override);
+			}
 
 			if ( ! $this->is_allowed_filetype(TRUE))
 			{
@@ -940,7 +951,16 @@ class CI_Upload {
 
 		if (count($this->mimes) == 0)
 		{
-			if (@require_once(APPPATH.'config/mimes'.EXT))
+			if (file_exists(APPPATH.'config/'.ENVIRONMENT.'/mimes'.EXT))
+			{
+				$_mimes_path = APPPATH.'config/'.ENVIRONMENT.'/mimes'.EXT;
+			}
+			else
+			{
+				$_mimes_path = APPPATH.'config/mimes'.EXT;
+			}
+
+			if (@require($_mimes_path))
 			{
 				$this->mimes = $mimes;
 				unset($mimes);

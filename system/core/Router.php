@@ -87,7 +87,15 @@ class CI_Router {
 		}
 
 		// Load the routes.php file.
-		@include(APPPATH.'config/routes'.EXT);
+
+		if (file_exists(APPPATH.'config/'.ENVIRONMENT.'/routes'.EXT))
+		{
+			include(APPPATH.'config/'.ENVIRONMENT.'/routes'.EXT);
+		}
+		else
+		{
+			@include(APPPATH.'config/routes'.EXT);
+		}
 		$this->routes = ( ! isset($route) OR ! is_array($route)) ? array() : $route;
 		unset($route);
 
@@ -270,18 +278,16 @@ class CI_Router {
 
 		// If we've gotten this far it means that the URI does not correlate to a valid
 		// controller class.  We will now see if there is an override
-		if (isset($this->routes['404_override']) AND $this->routes['404_override'] != '')
+		if ( ! empty($this->routes['404_override']))
 		{
-			if (strpos($this->routes['404_override'], '/') !== FALSE)
-			{
-				$x = explode('/', $this->routes['404_override']);
+			$x = explode('/', $this->routes['404_override']);
 
-				$this->set_class($x[0]);
-				$this->set_method($x[1]);
+			$this->set_class($x[0]);
+			$this->set_method(isset($x[1]) ? $x[1] : 'index');
 
-				return $x;
-			}
+			return $x;
 		}
+
 
 		// Nothing else to do at this point but show a 404
 		show_404($segments[0]);

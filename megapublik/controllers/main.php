@@ -2,17 +2,13 @@
 
 class Main extends CI_Controller {
 
-	function __construct()
-	{
-		parent::__construct();	
-	}
-	
-	function index()
+	public function index()
 	{
 		if($this->uri->segment(2))
 		{
 			redirect('/');
 		}
+
 		if($this->session->userdata('logged_in'))
 		{
 			define ('INGAME', TRUE);
@@ -56,6 +52,7 @@ class Main extends CI_Controller {
 		}
 	}
 }
+
 
 /* End of file main.php */
 /* Location: ./application/controllers/main.php */
