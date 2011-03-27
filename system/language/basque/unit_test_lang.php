@@ -18,6 +18,7 @@ $lang['ut_array']			= 'Array-a';
 $lang['ut_object']			= 'Objektua';
 $lang['ut_resource']		= 'Baliabidea';
 $lang['ut_null']			= 'Null';
+$lang['ut_notes']			= 'Oharrak';
 
 
 /* End of file unit_test_lang.php */
