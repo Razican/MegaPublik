@@ -47,9 +47,6 @@ a {
 	margin: 110px 50px 0px 0px;
 	height: 25px;
 }
-table.market_table {
-	width: 100%;
-}
 #avatar {
 
 }
@@ -111,4 +108,15 @@ table.market_table {
 }
 #lang_bar a {
 	margin: 5px;
+}
+.market_table {
+	width: 100%;
+	display: table;
+}
+.market_row {
+	width: 100%;
+	display: table-row;
+}
+.market_cell {
+	display: table-cell;
 }

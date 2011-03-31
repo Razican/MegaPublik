@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 3.3.2deb1
+-- version 3.3.7deb5build0.10.10.1
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 04-01-2011 a las 17:25:47
--- Versión del servidor: 5.1.41
--- Versión de PHP: 5.3.2-1ubuntu4.5
+-- Tiempo de generación: 31-03-2011 a las 23:51:36
+-- Versión del servidor: 5.1.49
+-- Versión de PHP: 5.3.3-1ubuntu9.3
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -24,7 +24,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 -- Estructura de tabla para la tabla `alerts`
 --
--- Creación: 09-12-2010 a las 23:07:13
+-- Creación: 26-02-2011 a las 20:23:15
 --
 
 DROP TABLE IF EXISTS `alerts`;
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `alerts` (
 --
 -- Estructura de tabla para la tabla `articles`
 --
--- Creación: 09-12-2010 a las 23:07:13
+-- Creación: 26-02-2011 a las 20:23:15
 --
 
 DROP TABLE IF EXISTS `articles`;
@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `articles` (
 --
 -- Estructura de tabla para la tabla `article_comments`
 --
--- Creación: 09-12-2010 a las 23:07:13
+-- Creación: 26-02-2011 a las 20:23:15
 --
 
 DROP TABLE IF EXISTS `article_comments`;
@@ -96,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `article_comments` (
 --
 -- Estructura de tabla para la tabla `article_votes`
 --
--- Creación: 09-12-2010 a las 23:07:13
+-- Creación: 26-02-2011 a las 20:23:15
 --
 
 DROP TABLE IF EXISTS `article_votes`;
@@ -117,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `article_votes` (
 --
 -- Estructura de tabla para la tabla `borders`
 --
--- Creación: 09-12-2010 a las 23:07:13
+-- Creación: 26-02-2011 a las 20:23:15
 --
 
 DROP TABLE IF EXISTS `borders`;
@@ -138,7 +138,7 @@ CREATE TABLE IF NOT EXISTS `borders` (
 --
 -- Estructura de tabla para la tabla `companies`
 --
--- Creación: 09-12-2010 a las 23:07:13
+-- Creación: 31-03-2011 a las 23:50:10
 --
 
 DROP TABLE IF EXISTS `companies`;
@@ -152,67 +152,7 @@ CREATE TABLE IF NOT EXISTS `companies` (
   `raw_materials` bigint(20) unsigned NOT NULL DEFAULT '0',
   `quality` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `localization` int(11) unsigned NOT NULL,
-  `money_mp` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `ARS` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `ATS` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `AUD` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `BAM` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `BEF` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `BGN` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `BOB` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `BRL` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `CAD` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `CHF` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `CLP` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `CNY` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `COP` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `CZK` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `DEM` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `DKK` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `EEK` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `ESP` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `FIM` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `FRF` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `GBP` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `GRD` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `HRK` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `HUF` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `IDR` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `IEP` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `INR` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `IRR` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `ITL` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `JPY` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `KPW` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `KRW` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `LTL` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `LVL` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `MDL` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `MXN` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `MYR` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `NIS` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `NLG` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `NOK` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `PEN` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `PHP` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `PKR` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `PLN` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `PTE` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `PYG` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `RON` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `RSD` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `RUB` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `SEK` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `SGD` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `SIT` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `SKK` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `THB` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `TRY` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `UAH` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `USD` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `UYU` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `VEB` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `ZAR` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `money` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
@@ -220,18 +160,18 @@ CREATE TABLE IF NOT EXISTS `companies` (
 -- Volcar la base de datos para la tabla `companies`
 --
 
-INSERT INTO `companies` (`id`, `name`, `owner_id`, `type`, `non_stock`, `stock`, `raw_materials`, `quality`, `localization`, `money_mp`, `ARS`, `ATS`, `AUD`, `BAM`, `BEF`, `BGN`, `BOB`, `BRL`, `CAD`, `CHF`, `CLP`, `CNY`, `COP`, `CZK`, `DEM`, `DKK`, `EEK`, `ESP`, `FIM`, `FRF`, `GBP`, `GRD`, `HRK`, `HUF`, `IDR`, `IEP`, `INR`, `IRR`, `ITL`, `JPY`, `KPW`, `KRW`, `LTL`, `LVL`, `MDL`, `MXN`, `MYR`, `NIS`, `NLG`, `NOK`, `PEN`, `PHP`, `PKR`, `PLN`, `PTE`, `PYG`, `RON`, `RSD`, `RUB`, `SEK`, `SGD`, `SIT`, `SKK`, `THB`, `TRY`, `UAH`, `USD`, `UYU`, `VEB`, `ZAR`) VALUES
-(1, 'Compañía 1', 1, 1, 2500, 250, 3460, 1, 1, 34578, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(2, 'Compañía 2', 2, 1, 345, 100, 400, 1, 1, 3470, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(3, 'Compañía 3', 3, 5, 1205, 1412, 25432, 5, 2, 5368, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(4, 'Compañía 4', 4, 5, 2556, 234, 7134, 2, 2, 123152, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+INSERT INTO `companies` (`id`, `name`, `owner_id`, `type`, `non_stock`, `stock`, `raw_materials`, `quality`, `localization`, `money`) VALUES
+(1, 'Compañía 1', 1, 1, 2500, 250, 3460, 1, 1, ''),
+(2, 'Compañía 2', 2, 1, 345, 100, 400, 1, 1, ''),
+(3, 'Compañía 3', 3, 5, 1205, 1412, 25432, 5, 2, ''),
+(4, 'Compañía 4', 4, 5, 2556, 234, 7134, 2, 2, '');
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `countries`
 --
--- Creación: 09-12-2010 a las 23:07:13
+-- Creación: 31-03-2011 a las 23:48:58
 --
 
 DROP TABLE IF EXISTS `countries`;
@@ -271,67 +211,7 @@ CREATE TABLE IF NOT EXISTS `countries` (
   `defense_system_income_tax` tinyint(3) unsigned NOT NULL DEFAULT '1',
   `defense_system_import_tax` tinyint(3) unsigned NOT NULL DEFAULT '1',
   `defense_system_vat_tax` tinyint(3) unsigned NOT NULL DEFAULT '1',
-  `money_mp` bigint(20) unsigned NOT NULL DEFAULT '1000000',
-  `ARS` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `ATS` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `AUD` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `BAM` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `BEF` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `BGN` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `BOB` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `BRL` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `CAD` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `CHF` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `CLP` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `CNY` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `COP` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `CZK` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `DEM` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `DKK` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `EEK` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `ESP` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `FIM` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `FRF` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `GBP` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `GRD` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `HRK` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `HUF` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `IDR` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `IEP` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `INR` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `IRR` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `ITL` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `JPY` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `KPW` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `KRW` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `LTL` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `LVL` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `MDL` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `MXN` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `MYR` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `NIS` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `NLG` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `NOK` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `PEN` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `PHP` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `PKR` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `PLN` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `PTE` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `PYG` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `RON` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `RSD` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `RUB` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `SEK` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `SGD` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `SIT` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `SKK` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `THB` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `TRY` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `UAH` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `USD` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `UYU` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `VEB` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `ZAR` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `money` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
@@ -339,16 +219,16 @@ CREATE TABLE IF NOT EXISTS `countries` (
 -- Volcar la base de datos para la tabla `countries`
 --
 
-INSERT INTO `countries` (`id`, `name`, `currency`, `president_id`, `food_income_tax`, `food_import_tax`, `food_vat_tax`, `gift_income_tax`, `gift_import_tax`, `gift_vat_tax`, `weapon_income_tax`, `weapon_import_tax`, `weapon_vat_tax`, `tickets_income_tax`, `tickets_import_tax`, `tickets_vat_tax`, `grain_income_tax`, `grain_import_tax`, `diamonds_income_tax`, `diamonds_import_tax`, `iron_income_tax`, `iron_import_tax`, `oil_income_tax`, `oil_import_tax`, `wood_income_tax`, `wood_import_tax`, `house_income_tax`, `house_import_tax`, `house_vat_tax`, `hospital_income_tax`, `hospital_import_tax`, `hospital_vat_tax`, `defense_system_income_tax`, `defense_system_import_tax`, `defense_system_vat_tax`, `money_mp`, `ARS`, `ATS`, `AUD`, `BAM`, `BEF`, `BGN`, `BOB`, `BRL`, `CAD`, `CHF`, `CLP`, `CNY`, `COP`, `CZK`, `DEM`, `DKK`, `EEK`, `ESP`, `FIM`, `FRF`, `GBP`, `GRD`, `HRK`, `HUF`, `IDR`, `IEP`, `INR`, `IRR`, `ITL`, `JPY`, `KPW`, `KRW`, `LTL`, `LVL`, `MDL`, `MXN`, `MYR`, `NIS`, `NLG`, `NOK`, `PEN`, `PHP`, `PKR`, `PLN`, `PTE`, `PYG`, `RON`, `RSD`, `RUB`, `SEK`, `SGD`, `SIT`, `SKK`, `THB`, `TRY`, `UAH`, `USD`, `UYU`, `VEB`, `ZAR`) VALUES
-(1, 'España', 'ESP', 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
-(2, 'United Kingdom', 'GBP', 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+INSERT INTO `countries` (`id`, `name`, `currency`, `president_id`, `food_income_tax`, `food_import_tax`, `food_vat_tax`, `gift_income_tax`, `gift_import_tax`, `gift_vat_tax`, `weapon_income_tax`, `weapon_import_tax`, `weapon_vat_tax`, `tickets_income_tax`, `tickets_import_tax`, `tickets_vat_tax`, `grain_income_tax`, `grain_import_tax`, `diamonds_income_tax`, `diamonds_import_tax`, `iron_income_tax`, `iron_import_tax`, `oil_income_tax`, `oil_import_tax`, `wood_income_tax`, `wood_import_tax`, `house_income_tax`, `house_import_tax`, `house_vat_tax`, `hospital_income_tax`, `hospital_import_tax`, `hospital_vat_tax`, `defense_system_income_tax`, `defense_system_import_tax`, `defense_system_vat_tax`, `money`) VALUES
+(1, 'España', 'ESP', 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ''),
+(2, 'United Kingdom', 'GBP', 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '');
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `decisions`
 --
--- Creación: 09-12-2010 a las 23:07:13
+-- Creación: 26-02-2011 a las 20:23:16
 --
 
 DROP TABLE IF EXISTS `decisions`;
@@ -376,7 +256,7 @@ CREATE TABLE IF NOT EXISTS `decisions` (
 --
 -- Estructura de tabla para la tabla `friendships`
 --
--- Creación: 09-12-2010 a las 23:07:13
+-- Creación: 26-02-2011 a las 20:23:16
 --
 
 DROP TABLE IF EXISTS `friendships`;
@@ -398,7 +278,7 @@ CREATE TABLE IF NOT EXISTS `friendships` (
 --
 -- Estructura de tabla para la tabla `houses`
 --
--- Creación: 09-12-2010 a las 23:07:13
+-- Creación: 26-02-2011 a las 20:23:16
 --
 
 DROP TABLE IF EXISTS `houses`;
@@ -423,7 +303,7 @@ CREATE TABLE IF NOT EXISTS `houses` (
 --
 -- Estructura de tabla para la tabla `inventories`
 --
--- Creación: 09-12-2010 a las 23:07:13
+-- Creación: 26-02-2011 a las 20:23:16
 --
 
 DROP TABLE IF EXISTS `inventories`;
@@ -502,7 +382,7 @@ CREATE TABLE IF NOT EXISTS `inventories` (
 --
 -- Estructura de tabla para la tabla `market`
 --
--- Creación: 09-12-2010 a las 23:07:13
+-- Creación: 26-02-2011 a las 20:23:16
 --
 
 DROP TABLE IF EXISTS `market`;
@@ -533,7 +413,7 @@ INSERT INTO `market` (`id`, `amount`, `price`, `type`, `time`, `company_id`, `cu
 --
 -- Estructura de tabla para la tabla `messages`
 --
--- Creación: 09-12-2010 a las 23:07:13
+-- Creación: 26-02-2011 a las 20:23:16
 --
 
 DROP TABLE IF EXISTS `messages`;
@@ -558,7 +438,7 @@ CREATE TABLE IF NOT EXISTS `messages` (
 --
 -- Estructura de tabla para la tabla `newspapers`
 --
--- Creación: 09-12-2010 a las 23:07:13
+-- Creación: 26-02-2011 a las 20:23:17
 --
 
 DROP TABLE IF EXISTS `newspapers`;
@@ -580,7 +460,7 @@ CREATE TABLE IF NOT EXISTS `newspapers` (
 --
 -- Estructura de tabla para la tabla `parties`
 --
--- Creación: 09-12-2010 a las 23:07:13
+-- Creación: 31-03-2011 a las 23:46:31
 --
 
 DROP TABLE IF EXISTS `parties`;
@@ -591,67 +471,7 @@ CREATE TABLE IF NOT EXISTS `parties` (
   `president_id` int(11) unsigned NOT NULL,
   `country_id` int(11) unsigned NOT NULL,
   `orientation` varchar(25) NOT NULL,
-  `money_mp` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `ARS` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `ATS` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `AUD` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `BAM` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `BEF` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `BGN` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `BOB` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `BRL` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `CAD` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `CHF` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `CLP` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `CNY` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `COP` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `CZK` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `DEM` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `DKK` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `EEK` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `ESP` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `FIM` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `FRF` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `GBP` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `GRD` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `HRK` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `HUF` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `IDR` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `IEP` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `INR` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `IRR` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `ITL` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `JPY` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `KPW` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `KRW` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `LTL` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `LVL` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `MDL` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `MXN` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `MYR` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `NIS` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `NLG` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `NOK` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `PEN` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `PHP` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `PKR` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `PLN` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `PTE` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `PYG` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `RON` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `RSD` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `RUB` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `SEK` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `SGD` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `SIT` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `SKK` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `THB` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `TRY` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `UAH` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `USD` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `UYU` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `VEB` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `ZAR` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `money` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
@@ -665,7 +485,7 @@ CREATE TABLE IF NOT EXISTS `parties` (
 --
 -- Estructura de tabla para la tabla `sessions`
 --
--- Creación: 09-12-2010 a las 23:07:13
+-- Creación: 26-02-2011 a las 20:23:17
 --
 
 DROP TABLE IF EXISTS `sessions`;
@@ -688,7 +508,7 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 --
 -- Estructura de tabla para la tabla `shouts`
 --
--- Creación: 09-12-2010 a las 23:07:13
+-- Creación: 26-02-2011 a las 20:23:17
 --
 
 DROP TABLE IF EXISTS `shouts`;
@@ -710,7 +530,7 @@ CREATE TABLE IF NOT EXISTS `shouts` (
 --
 -- Estructura de tabla para la tabla `states`
 --
--- Creación: 09-12-2010 a las 23:07:13
+-- Creación: 26-02-2011 a las 20:23:17
 --
 
 DROP TABLE IF EXISTS `states`;
@@ -767,7 +587,7 @@ INSERT INTO `states` (`id`, `name`, `country_id`, `defense_sistem`, `hospital`, 
 --
 -- Estructura de tabla para la tabla `suscriptions`
 --
--- Creación: 09-12-2010 a las 23:07:13
+-- Creación: 26-02-2011 a las 20:23:17
 --
 
 DROP TABLE IF EXISTS `suscriptions`;
@@ -788,7 +608,7 @@ CREATE TABLE IF NOT EXISTS `suscriptions` (
 --
 -- Estructura de tabla para la tabla `users`
 --
--- Creación: 04-01-2011 a las 14:05:35
+-- Creación: 31-03-2011 a las 23:32:38
 --
 
 DROP TABLE IF EXISTS `users`;
@@ -837,69 +657,9 @@ CREATE TABLE IF NOT EXISTS `users` (
   `congress_nr` tinyint(2) unsigned NOT NULL DEFAULT '0',
   `citizenship` int(11) unsigned NOT NULL,
   `salary_amount` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `money_mp` bigint(20) unsigned NOT NULL DEFAULT '50000',
-  `ARS` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `ATS` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `AUD` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `BAM` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `BEF` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `BGN` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `BOB` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `BRL` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `CAD` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `CHF` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `CLP` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `CNY` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `COP` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `CZK` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `DEM` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `DKK` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `EEK` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `ESP` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `FIM` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `FRF` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `GBP` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `GRD` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `HRK` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `HUF` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `IDR` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `IEP` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `INR` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `IRR` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `ITL` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `JPY` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `KPW` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `KRW` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `LTL` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `LVL` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `MDL` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `MXN` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `MYR` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `NIS` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `NLG` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `NOK` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `PEN` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `PHP` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `PKR` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `PLN` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `PTE` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `PYG` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `RON` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `RSD` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `RUB` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `SEK` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `SGD` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `SIT` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `SKK` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `THB` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `TRY` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `UAH` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `USD` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `UYU` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `VEB` bigint(20) unsigned NOT NULL DEFAULT '0',
-  `ZAR` bigint(20) unsigned NOT NULL DEFAULT '0',
+  `money` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Volcar la base de datos para la tabla `users`

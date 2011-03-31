@@ -22,8 +22,9 @@ Class User extends CI_Model
 			}
 			else
 			{
-				$return->level		= floor(log($return->experience/$this->config->item('first_level'),$this->config->item('exp_multiplier'))+2);
+				$return->level	= floor(log($return->experience/$this->config->item('first_level'),$this->config->item('exp_multiplier'))+2);
 			}
+			$return->money		= unserialize($return->money);
 		}
 		return $return;
 	}

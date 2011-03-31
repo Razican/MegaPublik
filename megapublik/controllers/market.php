@@ -93,7 +93,20 @@ class Market extends CI_Controller {
 		}
 		else
 		{
-			log_message('error', 'User with IP '.$this->input->ip_address().' has tried to enter /market/request without doing a XMLHttpRequest.');
+			log_message('error', 'User with IP '.$this->input->ip_address().' has tried to enter /market/request without doing an AJAX request.');
+			redirect('market');
+		}
+	}
+
+	public function buy($id)
+	{
+		if ($this->input->is_ajax_request())
+		{
+		
+		}
+		else
+		{
+			log_message('error', 'User with IP '.$this->input->ip_address().' has tried to enter /market/buy without doing an AJAX request.');
 			redirect('market');
 		}
 	}

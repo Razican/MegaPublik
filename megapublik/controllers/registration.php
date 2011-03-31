@@ -101,8 +101,9 @@ class Registration extends CI_Controller {
 				'last_IP'			=> $this->input->ip_address(),
 				'location'			=> $this->input->post('country'),
 				'validation_str'	=> $validation_str,
-				'birthday'			=> time(),
-				'citizenship'		=> $this->input->post('country'),			
+				'birthday'			=> now(),
+				'citizenship'		=> $this->input->post('country'),
+				'money'				=> 'a:1:{s:2:"MP";i:50000;}'
 			);
 
 			$this->db->insert('users', $user_data);
@@ -192,7 +193,7 @@ class Registration extends CI_Controller {
 		}
 		else
 		{
-			log_message('error', 'User with IP '.$this->input->ip_address().' has tried to enter /registration/request without doing a XMLHttpRequest.');
+			log_message('error', 'User with IP '.$this->input->ip_address().' has tried to enter /registration/request without doing an AJAX request.');
 			redirect('registration');
 		}
 	}

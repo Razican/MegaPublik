@@ -9,23 +9,22 @@
 	});
 //-->
 </script>
-<table class="market_table" >
-	<tbody>
-	<tr>
-		<td><?php echo lang('market.company'); ?></td>
-		<td><?php echo lang('market.price'); ?></td>
-		<td><?php echo lang('market.amount'); ?></td>
-		<td><?php echo lang('market.buy'); ?></td>
-	</tr>
+<div class="market_table">
+	<div class="market_row">
+		<div class="market_cell" style="width: 40%;"><?php echo lang('market.company'); ?></div>
+		<div class="market_cell"><?php echo lang('market.price'); ?></div>
+		<div class="market_cell"><?php echo lang('market.amount'); ?></div>
+		<div class="market_cell"><?php echo lang('market.buy'); ?></div>
+	</div>
 	<?php foreach ($content->result() as $content): ?>
-		<tr>
-			<td><?php $company	= $user->data($content->company_id, 'companies');
-						echo $company->name; ?></td>
-			<td><?php echo $content->price; ?></td>
-			<td><?php echo $content->amount; ?></td>
-			<td><?php echo lang('market.buy'); ?></td>
-		</tr>
+		<div class="market_row">
+			<div class="market_cell"><?php $company	= $user->data($content->company_id, 'companies');
+						echo $company->name; ?></div>
+			<div class="market_cell"><?php echo $content->price; ?></div>
+			<div class="market_cell"><?php echo $content->amount; ?></div>
+			<div class="market_cell"><?php echo form_open('market/buy/'.$content->id);?></form>
+			</div>
+		</div>
 	<?php endforeach;?>
-	</tbody>
-</table>
+</div>
 <?php echo $pagination; ?>

@@ -53,7 +53,7 @@ function l18n($lang)
 function country_money($user, $country)
 {
 	$country_currency	= $country->currency;
-	$country_money		= $user->$country_currency;
+	$country_money		= isset($user->money[$country_currency]) ? $user->money[$country_currency] : 0;
 	
 	return $country_money;
 }
