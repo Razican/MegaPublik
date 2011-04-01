@@ -1,3 +1,4 @@
+<div id="date"><?php echo lang('overal.day').': '.floor((now()-1257811200)/86400)?></div>
 <div id="avatar"><?php echo img($avatar); ?></div>
 <div id="level"><?php echo $user->level; ?></div>
 <div id="experience"><div class="percent_box"><div class="box_percent"  style="width: <?php echo $exp_prcnt; ?>%;"></div></div></div>

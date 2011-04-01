@@ -17,6 +17,7 @@ $lang['overal.menu.registration']	= 'Regístrate';
 $lang['overal.menu.logout']			= 'Salir';
 
 //Panel
+$lang['overal.day']					= 'Día';
 $lang['overal.panel.wellness']		= 'Salud';
 $lang['overal.panel.happiness']		= 'Felicidad';
 $lang['overal.panel.productivity']	= 'Productividad';

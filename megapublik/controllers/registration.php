@@ -103,7 +103,7 @@ class Registration extends CI_Controller {
 				'validation_str'	=> $validation_str,
 				'birthday'			=> now(),
 				'citizenship'		=> $this->input->post('country'),
-				'money'				=> 'a:1:{s:2:"MP";i:50000;}'
+				'money'				=> serialize(array('MP' => 50000))
 			);
 
 			$this->db->insert('users', $user_data);
