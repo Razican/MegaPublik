@@ -19,20 +19,17 @@ $config['states']	= array(
 	16 => array('name' => 'Islas Baleares', 'borders' => array(9, 13), 'timezone' => 'Europe/Madrid'),
 	17 => array('name' => 'Ceuta', 'borders' => array(14), 'timezone' => 'Europe/Madrid'),
 	18 => array('name' => 'Melilla', 'borders' => array(14), 'timezone' => 'Europe/Madrid'),
-	19 => array('name' => 'Islas Canarias', 'borders' => array(14), 'timezone' => 'Europe/Madrid')	
+	19 => array('name' => 'Islas Canarias', 'borders' => array(14), 'timezone' => 'Atlantic/Canary'),
+	20 => array('name' => 'Greater London', 'borders' => array(30, 31), 'timezone' => 'Europe/London'),
+	21 => array('name' => 'Northern Ireland', 'borders' => array(22, 24, 26), 'timezone' => 'Europe/Belfast'),
+	22 => array('name' => 'Scotland', 'borders' => array(21, 23, 24), 'timezone' => 'Europe/London'),
+	23 => array('name' => 'North East England', 'borders' => array(22, 24, 25), 'timezone' => 'Europe/London'),
+	24 => array('name' => 'North West England', 'borders' => array(21, 22, 23, 25, 26, 27, 28), 'timezone' => 'Europe/London'),
+	25 => array('name' => 'Yorkshire And The Humber', 'borders' => array(24, 23, 28), 'timezone' => 'Europe/London'),
+	26 => array('name' => 'Wales', 'borders' => array(21, 24, 27, 29), 'timezone' => 'Europe/London'),
+	27 => array('name' => 'West Midlands', 'borders' => array(24, 26, 28, 29, 30), 'timezone' => 'Europe/London'),
+	28 => array('name' => 'East Midlands', 'borders' => array(24, 25, 27, 30, 31), 'timezone' => 'Europe/London'),
+	29 => array('name' => 'South West England', 'borders' => array(26, 27, 30), 'timezone' => 'Europe/London'),
+	30 => array('name' => 'South East England', 'borders' => array(20, 28, 29, 31), 'timezone' => 'Europe/London'),
+	31 => array('name' => 'East Of England', 'borders' => array(20, 28, 30), 'timezone' => 'Europe/London')
 );
-
-/*
-Greater London
-Northern Ireland
-Scotland
-Wales
-North East England
-North West England
-Yorkshire And The Humber
-West Midlands
-East Midlands
-East Of England
-South West England
-South East England
-*/
