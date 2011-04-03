@@ -18,6 +18,7 @@ $lang['overal.menu.logout']			= 'Irten';
 
 //Panel
 $lang['overal.day']					= 'Eguna';
+$lang['overal.time']				= 'Ordua';
 $lang['overal.panel.wellness']		= 'Osasuna';
 $lang['overal.panel.happiness']		= 'Zoriontasuna';
 $lang['overal.panel.productivity']	= 'Productibitatea';

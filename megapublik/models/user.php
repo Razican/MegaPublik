@@ -6,7 +6,7 @@ Class User extends CI_Model
 	{
 		$query				= $this->db->get_where($table, array('id' => $id));
 
-		if ($query->num_rows() > 0){
+		if ($query->num_rows() === 1){
 			foreach ($query->result() as $return){}
 		}
 		else
@@ -25,6 +25,9 @@ Class User extends CI_Model
 				$return->level	= floor(log($return->experience/$this->config->item('first_level'),$this->config->item('exp_multiplier'))+2);
 			}
 			$return->money		= unserialize($return->money);
+			
+			$state				= $this->config->item('states');
+			$return->timezone	= $state[$return->location]['timezone'];
 		}
 		return $return;
 	}
@@ -43,6 +46,23 @@ Class User extends CI_Model
 		$query				= $this->db->get_where('sessions', array('last_activity >' => now()-$this->config->item('sess_time_to_update')));
 
 		return $query->num_rows();
+	}
+
+	public function current_country($location)
+	{
+		$query = $this->db->get('countries');
+		
+		foreach ($query->result() as $country)
+		{
+			$states = unserialize($country->states);
+			if (in_array($location, $states))
+			{
+				$country	= $country->id;
+				break;
+			}
+		}
+		
+		return $country;
 	}
 }
 

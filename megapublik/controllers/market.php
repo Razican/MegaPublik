@@ -20,13 +20,15 @@ class Market extends CI_Controller {
 			$this->lang->load('ingame');
 
 			$user				= $this->user->data($this->session->userdata('user_id'));
-			$country			= $this->user->data($user->location, 'countries');
+			$country			= $this->user->data($this->user->current_country($user->location), 'countries');
 
-			$panel['user']		= $user;
+			date_default_timezone_set($user->timezone);
+
 			$panel['avatar']	= avatar($user, $this->lang->lang());
+			$panel['user']		= $user;
 			$panel['exp_prcnt']	= exp_percent($user);
 			$panel['l18n']		= l18n($this->lang->lang());
-			$panel['country']	= $country;
+			$panel['currency']	= $country->currency;
 			
 			$script['img']		= loading(lang('market.loading'));
 

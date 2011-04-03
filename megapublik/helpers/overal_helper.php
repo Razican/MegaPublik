@@ -33,27 +33,26 @@ function l18n($lang)
 {
 	if(($lang === 'es') OR ($lang === 'fr'))
 	{
-		$l18n->dec	= ',';
-		$l18n->thou	= ' ';
+		$l18n->decimal	= ',';
+		$l18n->thousand	= ' ';
 	}
 	else if($lang === 'eu')
 	{
-		$l18n->dec	= ',';
-		$l18n->thou	= '.';
+		$l18n->decimal	= ',';
+		$l18n->thousand	= '.';
 	}
 	else
 	{
-		$l18n->dec	= '.';
-		$l18n->thou	= ',';
+		$l18n->decimal	= '.';
+		$l18n->thousand	= ',';
 	}
 	
 	return $l18n;
 }
 
-function country_money($user, $country)
+function country_money($user, $currency)
 {
-	$country_currency	= $country->currency;
-	$country_money		= isset($user->money[$country_currency]) ? $user->money[$country_currency] : 0;
+	$country_money		= isset($user->money[$currency]) ? $user->money[$currency] : 0;
 	
 	return $country_money;
 }

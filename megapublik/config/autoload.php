@@ -80,7 +80,7 @@ $autoload['helper'] = array('language', 'form', 'html', 'url', 'cookie', 'date',
 |
 */
 
-$autoload['config'] = array('megapublik', 'enviroment');
+$autoload['config'] = array('megapublik', 'enviroment', 'states');
 
 
 /*

@@ -18,6 +18,7 @@ $lang['overal.menu.logout']			= 'Logout';
 
 //Panel
 $lang['overal.day']					= 'Day';
+$lang['overal.time']				= 'Time';
 $lang['overal.panel.wellness']		= 'Wellness';
 $lang['overal.panel.happiness']		= 'Happiness';
 $lang['overal.panel.productivity']	= 'Productivity';
