@@ -25,6 +25,7 @@ color:				#000;
 border:				#999 1px solid;
 background-color:	#fff;
 padding:			20px 20px 12px 20px;
+clear:				both;
 }
 
 h1 {
