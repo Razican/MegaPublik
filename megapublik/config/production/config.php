@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://127.0.0.1/megapublik/';
+$config['base_url']	= 'http://privete.megapublik.com/';
 
 /*
 |--------------------------------------------------------------------------
@@ -224,7 +224,7 @@ $config['cache_path'] = '';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = 'zv20kMa9jqgaav093SR6chwjfhInMEJ3';
+$config['encryption_key'] = '9PqQGJK8RJamn5S5Jqnm74rstq3z8ID2';
 
 /*
 |--------------------------------------------------------------------------
@@ -266,8 +266,8 @@ $config['sess_time_to_update']	= 900; //60*15
 |
 */
 $config['cookie_prefix']	= "";
-$config['cookie_domain']	= "127.0.0.1";
-$config['cookie_path']		= "/megapublik";
+$config['cookie_domain']	= "private.megapublik.com";
+$config['cookie_path']		= "/";
 $config['cookie_secure']	= FALSE;
 
 /*

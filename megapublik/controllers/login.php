@@ -6,7 +6,7 @@ class Login extends CI_Controller {
 	{
 		$this->load->model('login_m');
 
-		if ((!$this->input->post('username')) OR (!$this->input->post('password')))
+		if (( ! $this->input->post('username')) OR (!$this->input->post('password')))
 		{
 			redirect('error/6');
 		}

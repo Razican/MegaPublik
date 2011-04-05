@@ -54,13 +54,13 @@ class Market extends CI_Controller {
 	{		
 		if ($this->input->is_ajax_request())
 		{
-			sleep(1);
+			sleep($this->config->item('sleep'));
 
 			$this->lang->load('market');
 			$this->load->model('market_m');
 
 			$user			= $this->user->data($this->session->userdata('user_id'));
-			$user_country	= $this->user->data($user->location, 'countries');
+			$user_country	= $this->user->data($this->user->current_country($user->location), 'countries');
 			$country		= $user_country->id;
 			$from			= ($page)*20;
 			$to				= ($page+1)*20;
@@ -73,9 +73,10 @@ class Market extends CI_Controller {
 				$data['content']	=& $content;
 				$data['user']		=& $this->user;
 				$data['img']		= loading(lang('market.loading'));
+				$data['mini_img']	= loading(lang('market.loading'), 'mini');
 
 				$this->load->library('pagination');
-				
+
 				$config['base_url']		= site_url("market/request/".$type."/");
 				$config['total_rows']	= $num_rows;
 				$config['per_page']		= '20';
@@ -104,7 +105,26 @@ class Market extends CI_Controller {
 	{
 		if ($this->input->is_ajax_request())
 		{
-		
+			sleep($this->config->item('sleep'));
+
+			$this->lang->load('market');
+			$this->load->model('market_m');
+
+			$user				= $this->user->data($this->session->userdata('user_id'));
+			$country			= $this->user->data($this->user->current_country($user->location), 'countries');
+			$product			= $this->user->data($id, 'market');
+			if (( ! $product)																				OR
+			(($product->price * $this->input->post('amount')) > country_money($user, $country->currency))	OR
+			($this->input->post('amount') > $product->amount)												)
+			{
+				echo '<span style="color: blue;">Error</span>';
+			}
+			else
+			{
+				$company			= $this->user->data($product->company_id, 'companies');
+				$this->market_m->buy_product($id, $company->id, $this->input->post('amount'), $user);
+				echo '<span style="color: green;">OK</span>';
+			}
 		}
 		else
 		{

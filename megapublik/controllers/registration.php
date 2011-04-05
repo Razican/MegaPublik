@@ -48,11 +48,11 @@ class Registration extends CI_Controller {
 		$this->load->helper('email');
 		$this->load->model('registration_m');
 
-		if ((!$this->input->post('username'))	OR
-			(!$this->input->post('password'))	OR
-			(!$this->input->post('passconf'))	OR
-			(!$this->input->post('email'))		OR
-			(!$this->input->post('country'))	)
+		if (( ! $this->input->post('username'))	OR
+			( ! $this->input->post('password'))	OR
+			( ! $this->input->post('passconf'))	OR
+			( ! $this->input->post('email'))	OR
+			( ! $this->input->post('country'))	)
 		{
 			log_message('error', 'User with IP '.$this->input->ip_address().' has tried to hack JQuery at the registration.');
 			redirect('error/6');
@@ -62,12 +62,12 @@ class Registration extends CI_Controller {
 			log_message('error', 'User with IP '.$this->input->ip_address().' has tried to hack JQuery at the registration.');
 			redirect('error/7');
 		}
-		else if (!valid_email($this->input->post('email')))
+		else if ( ! valid_email($this->input->post('email')))
 		{
 			log_message('error', 'User with IP '.$this->input->ip_address().' has tried to hack JQuery at the registration.');
 			redirect('error/8');
 		}
-		else if (!$this->registration_m->is_valid($this->input->ip_address(), 'ip'))
+		else if ( ! $this->registration_m->is_valid($this->input->ip_address(), 'ip'))
 		{
 			log_message('error', 'User with IP '.$this->input->ip_address().' has tried to create multiple accounts.');
 			redirect('error/5');
@@ -169,7 +169,7 @@ class Registration extends CI_Controller {
 	{
 		if ($this->input->is_ajax_request())
 		{			
-			//sleep(1);
+			sleep($this->config->item('sleep'));
 
 			$this->lang->load('registration');
 			$this->load->model('registration_m');
