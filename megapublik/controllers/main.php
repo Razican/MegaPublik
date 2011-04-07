@@ -18,7 +18,7 @@ class Main extends CI_Controller {
 			$this->lang->load('ingame');
 
 			$user				= $this->user->data($this->session->userdata('user_id'));
-			$country			= $this->user->data($this->user->current_country($user->location), 'countries');
+			$country			= $this->user->data($this->user->country, 'countries');
 
 			date_default_timezone_set($user->timezone);
 

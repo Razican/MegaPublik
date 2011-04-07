@@ -6,6 +6,8 @@ $lang['market.amount']		= 'Kantitatea';
 $lang['market.buy']			= 'Erosi';
 $lang['market.loading']		= 'Kargatzen';
 $lang['market.nodata']		= 'Ez dago daturik';
+$lang['market.no_amount']	= 'Ezin da 0 izan';
+$lang['market.correct']		= 'Ondo';
 
 $lang['market.food']		= 'Janaria';
 $lang['market.weapon']		= 'Armak';
@@ -20,6 +22,7 @@ $lang['market.plane']		= 'Hegazkinak';
 $lang['market.ticket']		= 'Tiketak';
 $lang['market.appliance']	= 'Etxetresnak';
 $lang['market.boat']		= 'Itsasontziak';
+
 
 /* End of file market_lang.php */
 /* Location: ./application/language/basque/market_lang.php */

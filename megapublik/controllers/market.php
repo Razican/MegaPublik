@@ -20,7 +20,7 @@ class Market extends CI_Controller {
 			$this->lang->load('ingame');
 
 			$user				= $this->user->data($this->session->userdata('user_id'));
-			$country			= $this->user->data($this->user->current_country($user->location), 'countries');
+			$country			= $this->user->data($this->user->country, 'countries');
 
 			date_default_timezone_set($user->timezone);
 
@@ -60,7 +60,7 @@ class Market extends CI_Controller {
 			$this->load->model('market_m');
 
 			$user			= $this->user->data($this->session->userdata('user_id'));
-			$user_country	= $this->user->data($this->user->current_country($user->location), 'countries');
+			$user_country	= $this->user->data($this->user->country, 'countries');
 			$country		= $user_country->id;
 			$from			= ($page)*20;
 			$to				= ($page+1)*20;
@@ -74,6 +74,7 @@ class Market extends CI_Controller {
 				$data['user']		=& $this->user;
 				$data['img']		= loading(lang('market.loading'));
 				$data['mini_img']	= loading(lang('market.loading'), 'mini');
+				$data['l18n']		= l18n($this->lang->lang());
 
 				$this->load->library('pagination');
 
@@ -108,22 +109,37 @@ class Market extends CI_Controller {
 			sleep($this->config->item('sleep'));
 
 			$this->lang->load('market');
-			$this->load->model('market_m');
-
-			$user				= $this->user->data($this->session->userdata('user_id'));
-			$country			= $this->user->data($this->user->current_country($user->location), 'countries');
-			$product			= $this->user->data($id, 'market');
-			if (( ! $product)																				OR
-			(($product->price * $this->input->post('amount')) > country_money($user, $country->currency))	OR
-			($this->input->post('amount') > $product->amount)												)
+			
+			$amount	= $this->input->post('amount');
+			if ($amount <1)
 			{
-				echo '<span style="color: blue;">Error</span>';
+				echo '<span class="error">'.lang('market.no_amount').'.</span>';
 			}
 			else
 			{
-				$company			= $this->user->data($product->company_id, 'companies');
-				$this->market_m->buy_product($id, $company->id, $this->input->post('amount'), $user);
-				echo '<span style="color: green;">OK</span>';
+				$this->load->model('market_m');
+
+				$user				= $this->user->data($this->session->userdata('user_id'));
+				$country			= $this->user->data($user->country, 'countries');
+				$product			= $this->user->data($id, 'market');
+				if (( ! $product)														OR
+				(($product->price * $amount) > money($user->money, $country->currency))	OR
+				($amount > $product->amount)											)
+				{
+					echo '<span class="error">Error</span>';
+				}
+				else
+				{
+					if ($this->market_m->buy_product($id, $amount, $product, $user->id, $user->money))
+					{
+						echo '<span class="market-correct">'.img(array('src' => 'images/tick.png', 'alt' => lang('market-correct'), 'class' => 'market-correct')).'</span>';
+					}
+					else
+					{
+						log_message('error', 'Error while buying at market.');
+						echo '<span class="error">Error</span>';
+					}
+				}
 			}
 		}
 		else

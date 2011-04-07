@@ -6,6 +6,8 @@ $lang['market.amount']		= 'Quantity';
 $lang['market.buy']			= 'Buy';
 $lang['market.loading']		= 'Loading';
 $lang['market.nodata']		= 'There is no data';
+$lang['market.no_amount']	= 'Can\'t be 0';
+$lang['market.correct']		= 'Correct';
 
 $lang['market.food']		= 'Food';
 $lang['market.weapon']		= 'Weapons';
@@ -20,6 +22,7 @@ $lang['market.plane']		= 'Planes';
 $lang['market.ticket']		= 'Tickets';
 $lang['market.appliance']	= 'Appliances';
 $lang['market.boat']		= 'Ships';
+
 
 /* End of file market_lang.php */
 /* Location: ./application/language/english/market_lang.php */

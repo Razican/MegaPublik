@@ -50,11 +50,11 @@ function l18n($lang)
 	return $l18n;
 }
 
-function country_money($user, $currency)
+function money($money, $currency)
 {
-	$country_money		= isset($user->money[$currency]) ? $user->money[$currency] : 0;
+	$money		= isset($money[$currency]) ? $money[$currency] : 0;
 	
-	return $country_money;
+	return $money;
 }
 
 function color($percentage)
