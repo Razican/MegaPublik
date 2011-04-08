@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 03-04-2011 a las 20:02:52
+-- Tiempo de generación: 08-04-2011 a las 22:09:27
 -- Versión del servidor: 5.1.49
 -- Versión de PHP: 5.3.3-1ubuntu9.3
 
@@ -140,17 +140,17 @@ CREATE TABLE IF NOT EXISTS `companies` (
 --
 
 INSERT INTO `companies` (`id`, `name`, `owner_id`, `type`, `non_stock`, `stock`, `raw_materials`, `quality`, `localization`, `money`) VALUES
-(1, 'Compañía 1', 1, 1, 2500, 250, 3460, 1, 1, ''),
-(2, 'Compañía 2', 2, 1, 345, 100, 400, 1, 1, ''),
-(3, 'Compañía 3', 3, 5, 1205, 1412, 25432, 5, 2, ''),
-(4, 'Compañía 4', 4, 5, 2556, 234, 7134, 2, 2, '');
+(1, 'Compañía 1', 1, 1, 2500, 250, 3460, 1, 1, 'a:2:{s:2:"MP";i:0;s:3:"ESP";d:11.85;}'),
+(2, 'Compañía 2', 2, 1, 345, 100, 400, 1, 1, 'a:2:{s:2:"MP";i:0;s:3:"ESP";d:11.85;}'),
+(3, 'Compañía 3', 3, 5, 1205, 1412, 25432, 5, 2, 'a:1:{s:2:"MP";i:0;}'),
+(4, 'Compañía 4', 4, 5, 2556, 234, 7134, 2, 2, 'a:1:{s:2:"MP";i:0;}');
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `countries`
 --
--- Creación: 01-04-2011 a las 20:05:32
+-- Creación: 07-04-2011 a las 18:58:02
 --
 
 DROP TABLE IF EXISTS `countries`;
@@ -200,8 +200,8 @@ CREATE TABLE IF NOT EXISTS `countries` (
 --
 
 INSERT INTO `countries` (`id`, `name`, `currency`, `states`, `president_id`, `food_income_tax`, `food_import_tax`, `food_vat_tax`, `gift_income_tax`, `gift_import_tax`, `gift_vat_tax`, `weapon_income_tax`, `weapon_import_tax`, `weapon_vat_tax`, `tickets_income_tax`, `tickets_import_tax`, `tickets_vat_tax`, `grain_income_tax`, `grain_import_tax`, `diamonds_income_tax`, `diamonds_import_tax`, `iron_income_tax`, `iron_import_tax`, `oil_income_tax`, `oil_import_tax`, `wood_income_tax`, `wood_import_tax`, `house_income_tax`, `house_import_tax`, `house_vat_tax`, `hospital_income_tax`, `hospital_import_tax`, `hospital_vat_tax`, `defense_system_income_tax`, `defense_system_import_tax`, `defense_system_vat_tax`, `money`) VALUES
-(1, 'España', 'ESP', 'a:19:{i:0;i:1;i:1;i:2;i:2;i:3;i:3;i:4;i:4;i:5;i:5;i:6;i:6;i:7;i:7;i:8;i:8;i:9;i:9;i:10;i:10;i:11;i:11;i:12;i:12;i:13;i:13;i:14;i:14;i:15;i:15;i:16;i:16;i:17;i:17;i:18;i:18;i:19;}', 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ''),
-(2, 'United Kingdom', 'GBP', '', 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '');
+(1, 'España', 'ESP', 'a:19:{i:0;i:1;i:1;i:2;i:2;i:3;i:3;i:4;i:4;i:5;i:5;i:6;i:6;i:7;i:7;i:8;i:8;i:9;i:9;i:10;i:10;i:11;i:11;i:12;i:12;i:13;i:13;i:14;i:14;i:15;i:15;i:16;i:16;i:17;i:17;i:18;i:18;i:19;}', 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'a:1:{s:2:"MP";i:0;}'),
+(2, 'United Kingdom', 'GBP', 'a:12:{i:0;i:20;i:1;i:21;i:2;i:22;i:3;i:23;i:4;i:24;i:5;i:25;i:6;i:26;i:7;i:27;i:8;i:28;i:9;i:29;i:10;i:30;i:11;i:31;}', 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'a:1:{s:2:"MP";i:0;}');
 
 -- --------------------------------------------------------
 
@@ -362,7 +362,7 @@ CREATE TABLE IF NOT EXISTS `inventories` (
 --
 -- Estructura de tabla para la tabla `market`
 --
--- Creación: 26-02-2011 a las 20:23:16
+-- Creación: 07-04-2011 a las 18:57:52
 --
 
 DROP TABLE IF EXISTS `market`;
@@ -373,7 +373,7 @@ CREATE TABLE IF NOT EXISTS `market` (
   `type` tinyint(3) unsigned NOT NULL,
   `time` int(11) unsigned NOT NULL,
   `company_id` int(11) unsigned NOT NULL,
-  `currency` tinyint(3) unsigned NOT NULL,
+  `currency` char(3) NOT NULL,
   `country` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
@@ -383,10 +383,10 @@ CREATE TABLE IF NOT EXISTS `market` (
 --
 
 INSERT INTO `market` (`id`, `amount`, `price`, `type`, `time`, `company_id`, `currency`, `country`) VALUES
-(1, 250, '2.37', 1, 1288634400, 1, 1, 1),
-(2, 100, '2.37', 1, 1288630800, 2, 1, 1),
-(3, 263, '5.97', 5, 1288650000, 3, 2, 2),
-(4, 2436, '5.95', 5, 1288650045, 4, 2, 2);
+(1, 573, '2.37', 1, 1288634400, 1, 'ESP', 1),
+(2, 200, '2.37', 1, 1288630800, 2, 'ESP', 1),
+(3, 263, '5.97', 5, 1288650000, 3, 'GBP', 2),
+(4, 2436, '5.95', 5, 1288650045, 4, 'GBP', 2);
 
 -- --------------------------------------------------------
 
@@ -531,7 +531,7 @@ CREATE TABLE IF NOT EXISTS `suscriptions` (
 --
 -- Estructura de tabla para la tabla `users`
 --
--- Creación: 03-04-2011 a las 20:01:51
+-- Creación: 08-04-2011 a las 22:07:33
 --
 
 DROP TABLE IF EXISTS `users`;

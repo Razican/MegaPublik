@@ -20,7 +20,7 @@ class Market extends CI_Controller {
 			$this->lang->load('ingame');
 
 			$user				= $this->user->data($this->session->userdata('user_id'));
-			$country			= $this->user->data($this->user->country, 'countries');
+			$country			= $this->user->data($user->country, 'countries');
 
 			date_default_timezone_set($user->timezone);
 
@@ -60,7 +60,7 @@ class Market extends CI_Controller {
 			$this->load->model('market_m');
 
 			$user			= $this->user->data($this->session->userdata('user_id'));
-			$user_country	= $this->user->data($this->user->country, 'countries');
+			$user_country	= $this->user->data($user->country, 'countries');
 			$country		= $user_country->id;
 			$from			= ($page)*20;
 			$to				= ($page+1)*20;

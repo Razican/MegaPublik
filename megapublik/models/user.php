@@ -26,9 +26,9 @@ Class User extends CI_Model
 			}
 
 			$return->money		= unserialize($return->money);
-			
+
 			$return->country	= $this->user->current_country($return->location);
-			
+
 			$state				= $this->config->item('states');
 			$return->timezone	= $state[$return->location]['timezone'];
 		}

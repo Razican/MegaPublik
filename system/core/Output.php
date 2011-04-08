@@ -28,7 +28,6 @@
  */
 class CI_Output {
 
-	public $parse_exec_vars	= TRUE;	// whether or not to parse variables like {elapsed_time} and {memory_usage}
 	protected $final_output;
 	protected $cache_expiration	= 0;
 	protected $headers			= array();
@@ -36,13 +35,14 @@ class CI_Output {
 	protected $enable_profiler	= FALSE;
 	protected $_zlib_oc			= FALSE;
 	protected $_profiler_sections = array();
+	protected $parse_exec_vars	= TRUE;	// whether or not to parse variables like {elapsed_time} and {memory_usage}
 
 	function __construct()
 	{
 		$this->_zlib_oc = @ini_get('zlib.output_compression');
 
 		// Get mime types for later
-		if (file_exists(APPPATH.'config/'.ENVIRONMENT.'/mimes'.EXT))
+		if (defined('ENVIRONMENT') AND file_exists(APPPATH.'config/'.ENVIRONMENT.'/mimes'.EXT))
 		{
 		    include APPPATH.'config/'.ENVIRONMENT.'/mimes'.EXT;
 		}
