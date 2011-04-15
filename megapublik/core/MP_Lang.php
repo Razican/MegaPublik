@@ -34,21 +34,21 @@ class MP_Lang extends CI_Lang {
 
 		parent::__construct();
 
-		global $CFG, $URI, $RTR;		
+		global $CFG, $URI, $RTR;
 
 		$segment = $URI->segment(1);
 
 		if (isset($this->languages[$segment]))
 		{
 			$language	= $this->languages[$segment];
-			$CFG->set_item('language', $language);			
+			$CFG->set_item('language', $language);
 		}
 		else
 		{
 			return;
 		}
 	}
-	
+
 	function lang()
 	{
 		global $CFG, $URI;
@@ -92,7 +92,7 @@ class MP_Lang extends CI_Lang {
 	function has_language($uri)
 	{
 		$first_segment = NULL;
-		
+
 		$exploded = explode('/', $uri);
 		if(isset($exploded[0]))
 		{
@@ -105,7 +105,7 @@ class MP_Lang extends CI_Lang {
 				$first_segment = $exploded[1];
 			}
 		}
-		
+
 		if($first_segment != NULL)
 		{
 			return isset($this->languages[$first_segment]);
@@ -117,7 +117,7 @@ class MP_Lang extends CI_Lang {
 	}
 
 	function default_lang()
-	{		
+	{
 		$lang		= array_keys ($this->languages);
 		$language	= $lang[0];
 

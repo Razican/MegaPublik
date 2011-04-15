@@ -11,15 +11,15 @@ Class Registration_m extends CI_Model
 		{
 			$countries	.= '<option value="'. $country->id .'">'. $country->name .'</option>';
 		}
-		
+
 		return $countries;
 	}
 
 	public function states($country)
-	{		
+	{
 		$query			= $this->db->get_where('countries', array('name' => $country));
 		foreach ($query->result() as $country){}
-		
+
 		$query			= $this->db->get_where('states', array('country_id' => $country->id));
 		$states		= '';
 
@@ -27,7 +27,7 @@ Class Registration_m extends CI_Model
 		{
 			$states	.= '<option value="'. $state->id .'">'. $state->name .'</option>';
 		}
-		
+
 		return $countries;
 	}
 
@@ -37,7 +37,7 @@ Class Registration_m extends CI_Model
 		{
 			case 'code':
 				$query	= $this->db->get_where('users', array('validation_str' => $string));
-				
+
 				if ($query->num_rows() === 0)
  				{
 					return 'error/10';
@@ -68,29 +68,29 @@ Class Registration_m extends CI_Model
 				{
 					return TRUE;
 				}
-			break;			
+			break;
 			case 'user':
-				$query	= $this->db->get_where('users', array('username' => $string));				
+				$query	= $this->db->get_where('users', array('username' => $string));
 				if ($query->num_rows() > 0)
-				{					
+				{
 					return FALSE;
  				}
 				else
-				{					
+				{
 					return TRUE;
 				}
 			break;
 			case 'email':
-				$query			= $this->db->get_where('users', array('email' => $string));					
+				$query			= $this->db->get_where('users', array('email' => $string));
 				if ($query->num_rows() > 0)
-				{					
+				{
 					return FALSE;
 				}
 				else
-				{					
-					return TRUE;					
+				{
+					return TRUE;
 				}
-			break;			
+			break;
 			default:
 				log_message('error', 'function is_valid() in registration_m model has received bad arguments');
 				redirect('/');

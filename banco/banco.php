@@ -10,9 +10,9 @@ $this->load->helper('date');
 
 }
 
-/*	******* AUTOR: RACA 
+/*	******* AUTOR: RACA
 	******* ESTE SCRIPT ESTA SACADO DE WWW.RACANOFELLER.COM
-	
+
 	******* VERSION 0.01     25-NOV-2010
 	******* OBSERVACIONES: PENDIENTE ADAPTAR EN SU TOTALIDAD
 */
@@ -33,10 +33,10 @@ function index()
 	$datab['nif']=$filu->id;
 	$datab['nik']=$filu->nick;
 	$datab['city']=$filu->ciudad;
-	
+
 	// leo tabla cuenta del banco
 	$this->db->where('id',$usu);
-	$this->db->select('ciudadano,caja,banco,fechaing');	
+	$this->db->select('ciudadano,caja,banco,fechaing');
 	$consu=$this->db->getwhere('saldos'); //cojo datos cta banco del usuario
 	$tupla=$consu->row();
 	$datab['cc']=$tupla->ciudadano/100; // el dinero se guarda en formato centimos
@@ -63,8 +63,8 @@ function index()
 
 /*  ZONA PARA VENTA Y PUESTA EN CIRCULACION DE ACCIONES DE BOLSA
 	 PENDIENTE DE ADAPTAR
-	
-	$this->db->where('idnif',$usu); 
+
+	$this->db->where('idnif',$usu);
 	$this->db->select('cartera1,cartera2,cartera3,cartera4,cartera5,cartera6');
 	$consu=$this->db->getwhere('acciones');
 	$tupla=$consu->row();
@@ -133,7 +133,7 @@ function ingreso() // ingresos de dinero en la cuenta
 		}
 		$fechaing=strtotime("now");
 	}
-	$caja=$caja-$ingreso; // resto importe del ingreso 
+	$caja=$caja-$ingreso; // resto importe del ingreso
 	$banco=$banco+$ingreso; // sumo ingreso a la cta del banco
 	$dadab=array(
 		'caja'=>$caja,
@@ -175,7 +175,7 @@ function reintegro() // Sacar dinero del la cta del banco
 	{
 		redirect('http://www. /index.php/banco');
 	}
-	
+
 	// pendiente ADAPTAR
 	$this->db->where('id',$usu);
 	$this->db->select('intereses,caja,ganancias,banco,fechaing,intcuenta');
@@ -225,8 +225,8 @@ function reintegro() // Sacar dinero del la cta del banco
 
 /* ------------------FUNCIONES DE CUENTA CORRIENTE Y BOLSA---------------------
 -------------------- QUEDA EN ESPERA DE UN POSIBLE USO-------------------------
-	
-	
+
+
 function cajacta()
 {
 	$usu=$this->session->userdata('username');
@@ -822,4 +822,3 @@ function burguer()
 */
 
 }
-?>

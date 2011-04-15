@@ -2,17 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
 <head>
 
-<!-- 
+<!--
 		@@@ Autor : Raca
 		@@@ Fecha : 30-Dic-2010
 		@@@ Version HTML: 0.10
-		@@@ CSS : el diseño esta basado en las plantillas de racanofeller.com (los colores son 
+		@@@ CSS : el diseño esta basado en las plantillas de racanofeller.com (los colores son
 				 aleatorios) y queda pendiente adaptarlo a la interfaz grafica de megapublik
 		@@@ Validacion:  Probado solo en Firefox
-		
+
 		@@@ Informacion para programar los controladores:
 			>>> MASA MONETARIA : Es la cantidad total de oro que hay en el juego, requiere
-								un campo en la tabla correspondiente que se actualizara en 
+								un campo en la tabla correspondiente que se actualizara en
 								todos los controladores que creen oro nuevo
 			>>> ACTIVOS EN DIVISAS : La suma de todos los saldos de monedas ( en su conversion a oro)
 								ha de ser igual a la masa monetaria...por lo tanto si se crea oro,
@@ -24,11 +24,11 @@
 			>>> TIPO INTERES INTERBANCARIO: Lo fija el parlamento, se pone en la pantalla del presi del banco
 			>>> BANCOS PRIVADOS: Se creean a partir de empresa de un ciudadano y de los usuarios que se le unan,
 								estos bancos son limitados a 5-10 y son autorizados por el administrador del juego.
-								Los privados NO DAN CAMBIO DE MONEDA, solo creditos y depositos de ahorro...y quizas 
+								Los privados NO DAN CAMBIO DE MONEDA, solo creditos y depositos de ahorro...y quizas
 								acciones de bolsa en un futuro. Los bancos privados estan pendientes de dise�o y se
 								accede a ellos mediante el link de la tabla.
 			>>> COMPRA-VENTA DE MONEDA : Para que el banco central no sea solo una pantalla de muestra de datos
-								ha de tener algo interactivo, o sea una entrada de datos , ademas tiene la 
+								ha de tener algo interactivo, o sea una entrada de datos , ademas tiene la
 								ventaja de centralizar todos los movimientos de moneda y oro en el controlador
 								del banco.
 
@@ -141,42 +141,42 @@ p.depcom{
 	margin:2px 0 0 20px;
 	}
 
-table.masa{ 
+table.masa{
 	background-color:#383838;
 	margin:35px 0 0 10px;
 	width:300px;
 	position:absolute;
 	}
-table.divisas{ 
+table.divisas{
 	background-color:#ff3836;
 	margin:110px 0 0 10px;
 	position:absolute;
 	width:310px;
 	}
-table.presi{ 
+table.presi{
 	background-color:#383838;
 	margin:450px 0 0 10px;
 	width:310px;
 	position:absolute;
 	}
-table.ciudadano{ 
+table.ciudadano{
 	background-color:#ff3836;
 	margin:5px 0 0 10px;
 	width:540px;
 	}
-table.interes{ 
+table.interes{
 	background-color:#383838;
 	margin:45px 0 0 10px;
 	width:300px;
 	position:absolute;
 	}
-table.listbancos{ 
+table.listbancos{
 	background-color:#ff3836;
 	margin:120px 0 0 0;
 	position:absolute;
 	width:560px;
 	}
-table.cambios{ 
+table.cambios{
 	background-color:#ff3836;
 	margin:280px 0 0 0;
 	position:absolute;

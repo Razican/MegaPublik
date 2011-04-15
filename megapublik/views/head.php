@@ -3,7 +3,7 @@
 <head>
 	<title><?php echo lang('overal.title'); ?></title>
 	<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
-	<meta name="robots" content="noindex,nofollow,noarchive,noodp,nosnippet,noydir" /> 
+	<meta name="robots" content="noindex,nofollow,noarchive,noodp,nosnippet,noydir" />
 	<link rel="shortcut icon" href="<?php echo site_url("images/favicon.ico"); ?>" />
 	<link rel="stylesheet" media="screen" type="text/css" href="<?php echo site_url("css/format.css"); ?>" />
 	<!-- <link rel="stylesheet" media="handheld" type="text/css" href="css/format_movile.css" />

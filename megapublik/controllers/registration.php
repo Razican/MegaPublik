@@ -9,14 +9,14 @@ class Registration extends CI_Controller {
 			redirect('registration');
 		}
 
-		$this->output->enable_profiler($this->config->item('debug'));		
+		$this->output->enable_profiler($this->config->item('debug'));
 
 		if($this->session->userdata('logged_in'))
 		{
 			exit(redirect('/'));
 		}
 
-		//define ('AJAX', TRUE);
+		define ('AJAX', TRUE);
 
 		$this->lang->load('registration');
 		$this->load->model('registration_m');
@@ -27,7 +27,7 @@ class Registration extends CI_Controller {
 		$script['loading']	= reg_img('loading', lang('reg.loading'));
 
 		$head['script']		= $this->load->view('registration/registration_ajax', $script, TRUE);
-		$head['menu']		= $this->load->view('menu_outgame', '', TRUE);		
+		$head['menu']		= $this->load->view('menu_outgame', '', TRUE);
 
 		$data['countries']	= $this->registration_m->countries();
 		$data['head']		= $this->load->view('head', $head, TRUE);
@@ -35,10 +35,10 @@ class Registration extends CI_Controller {
 
 		$this->load->view('registration/register', $data);
 	}
-	
+
 	public function register()
 	{
-		$this->output->enable_profiler($this->config->item('debug'));		
+		$this->output->enable_profiler($this->config->item('debug'));
 
 		if($this->session->userdata('logged_in'))
 		{
@@ -69,12 +69,12 @@ class Registration extends CI_Controller {
 		}
 		else if ( ! $this->registration_m->is_valid($this->input->ip_address(), 'ip'))
 		{
-			log_message('error', 'User with IP '.$this->input->ip_address().' has tried to create multiple accounts.');
+			//log_message('error', 'User with IP '.$this->input->ip_address().' has tried to create multiple accounts.');
 			redirect('error/5');
 		}
 		else if ($this->registration_m->is_valid($this->input->post('username'), 'user') === FALSE)
 		{
-			log_message('error', 'User with IP '.$this->input->ip_address().' has tried to hack JQuery at the registration.');
+			//log_message('error', 'User with IP '.$this->input->ip_address().' has tried to hack JQuery at the registration.');
 			redirect('error/3');
 		}
 		else if ($this->registration_m->is_valid($this->input->post('email'), 'email') === FALSE)
@@ -89,7 +89,7 @@ class Registration extends CI_Controller {
 	 		{
 	 			$validation_str	=  random_string('alnum', 15);
 	 			$query			= $this->db->get_where('users', array('validation_str' => $validation_str));
-	 			
+
 	 			$i = $query->num_rows();
 	 		}
 
@@ -114,7 +114,7 @@ class Registration extends CI_Controller {
 			$pattern			= array('%username%', '%password%', '%link%', '%url%');
 			$replacement		= array($this->input->post('username'), $this->input->post('password'), anchor('registration/validate/'. $validation_str, lang('reg.here')), site_url('registration/validate/'. $validation_str));
 
-			$head['email']		= TRUE;			
+			$head['email']		= TRUE;
 			$footer['email']	= TRUE;
 
 			$data['message']	= preg_replace($pattern, $replacement, lang('reg.message'));
@@ -126,10 +126,10 @@ class Registration extends CI_Controller {
 						->message($this->load->view('mail', $data, TRUE))
 						->set_alt_message(preg_replace($pattern, $replacement, lang('reg.alt_message')))
 						->send();
-			
+
 			$head['email']		= FALSE;
 
-			$head['menu']		= $this->load->view('menu_outgame', '', TRUE);			
+			$head['menu']		= $this->load->view('menu_outgame', '', TRUE);
 
 			$data['head']		= $this->load->view('head', $head, TRUE);
 			$data['footer']		= $this->load->view('footer', '', TRUE);
@@ -139,7 +139,7 @@ class Registration extends CI_Controller {
 
 	public function validate($validation_str = '')
 	{
-		$this->output->enable_profiler($this->config->item('debug'));		
+		$this->output->enable_profiler($this->config->item('debug'));
 
 		if (strlen($validation_str) != 15)
 		{
@@ -162,13 +162,13 @@ class Registration extends CI_Controller {
 		else
 		{
 			redirect($this->registration_m->is_valid($validation_str));
-		}		
+		}
 	}
 
 	public function request($type = 'user', $value = NULL)
 	{
 		if ($this->input->is_ajax_request())
-		{			
+		{
 			sleep($this->config->item('sleep'));
 
 			$this->lang->load('registration');
@@ -179,10 +179,10 @@ class Registration extends CI_Controller {
 				case 'states':
 					$data['states']			= $this->registration_m->states($value);
 					$this->load->view('registration/states', $data);
-				break;				
+				break;
 				default:
 				log_message('debug', str_replace('~', '@', $value));
-					$validated	= $this->registration_m->is_valid(str_replace('~', '@', $value), $type);									
+					$validated	= $this->registration_m->is_valid(str_replace('~', '@', $value), $type);
 					$data['validated']		= '';
 					if ($validated === FALSE)
 					{

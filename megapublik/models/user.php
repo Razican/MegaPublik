@@ -54,7 +54,7 @@ Class User extends CI_Model
 	public function current_country($location)
 	{
 		$query = $this->db->get('countries');
-		
+
 		foreach ($query->result() as $country)
 		{
 			$states = unserialize($country->states);
@@ -64,7 +64,7 @@ Class User extends CI_Model
 				break;
 			}
 		}
-		
+
 		return $country;
 	}
 }

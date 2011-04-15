@@ -3,7 +3,7 @@
 <head>
 <title>Database Error</title>
 <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
-<meta name="robots" content="noindex,nofollow,noarchive,noodp,nosnippet,noydir" /> 
+<meta name="robots" content="noindex,nofollow,noarchive,noodp,nosnippet,noydir" />
 <link rel="shortcut icon" href="http://127.0.0.1/megapublik/images/favicon.ico" />
 <link rel="stylesheet" media="screen" type="text/css" href="http://127.0.0.1/megapublik/css/format.css" />
 <!-- <link rel="stylesheet" media="handheld" type="text/css" href="http://127.0.0.1/megapublik/css/format_movile.css" />
@@ -38,7 +38,7 @@ margin:				0 0 4px 0;
 </head>
 <body>
 	<div class="head">
-		<div class="logo"><a href="http://127.0.0.1/megapublik/"><img alt="MegaPublik Logo" src="http://127.0.0.1/megapublik/images/logo.png" /></a></div>		
+		<div class="logo"><a href="http://127.0.0.1/megapublik/"><img alt="MegaPublik Logo" src="http://127.0.0.1/megapublik/images/logo.png" /></a></div>
 	</div>
 	<div id="content">
 		<h1><?php echo $heading; ?></h1>

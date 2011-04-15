@@ -10,7 +10,7 @@ Class Market_m extends CI_Model
 			$this->db->order_by("time", "asc");
 			$this->db->limit($to, $from);
 		}
-		$query	= $this->db->get_where('market', array('country' => $country, 'type' => $type));		
+		$query	= $this->db->get_where('market', array('country' => $country, 'type' => $type));
 		return $query;
 	}
 

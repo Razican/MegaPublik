@@ -13,7 +13,7 @@ class Main extends CI_Controller {
 		{
 			define ('INGAME', TRUE);
 
-			$this->output->enable_profiler($this->config->item('debug'));			
+			$this->output->enable_profiler($this->config->item('debug'));
 
 			$this->lang->load('ingame');
 
@@ -41,8 +41,8 @@ class Main extends CI_Controller {
 		}
 		else
 		{
-			$this->output->enable_profiler($this->config->item('debug'));			
-			
+			$this->output->enable_profiler($this->config->item('debug'));
+
 			$this->lang->load('login');
 
 			$head['menu']		= $this->load->view('menu_outgame', '', TRUE);
@@ -50,7 +50,7 @@ class Main extends CI_Controller {
 			$data['head']		= $this->load->view('head', $head, TRUE);
 			$data['footer']		= $this->load->view('footer', '', TRUE);
 
-			$this->load->view('login', $data);	
+			$this->load->view('login', $data);
 		}
 	}
 }

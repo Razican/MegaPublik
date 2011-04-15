@@ -1,6 +1,6 @@
 # Deny OR Allow Folder Indexes.
-# Since we disable access to PHP files you 
-# can leave this on without worries. 
+# Since we disable access to PHP files you
+# can leave this on without worries.
 # OR better yet, create a .htaccess file in
 # the dir you want to allow browsing and
 # set it to +Indexes

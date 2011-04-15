@@ -17,7 +17,7 @@ class MP_Config extends CI_Config {
 	}
 
 	function site_url($uri = '')
-	{	
+	{
 		if (is_array($uri))
 		{
 			$uri = implode('/', $uri);
@@ -25,7 +25,7 @@ class MP_Config extends CI_Config {
 
 		if (class_exists('CI_Controller'))
 		{
-			$uri = get_instance()->lang->localized($uri);			
+			$uri = get_instance()->lang->localized($uri);
 		}
 
 		return parent::site_url($uri);

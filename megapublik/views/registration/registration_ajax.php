@@ -22,8 +22,8 @@ $(function(){
 
 	function pass_strenght(password)
 	{
-		var score = 0;	
-		if (password.length < 6 || !(/\d/.test(password))) { return 0; }	
+		var score = 0;
+		if (password.length < 6 || !(/\d/.test(password))) { return 0; }
 		score += (password.length-6) * 4;
 		score += ( check_repetition(1,password).length - password.length ) * 1;
 		score += ( check_repetition(2,password).length - password.length ) * 1;
@@ -87,7 +87,7 @@ $(function(){
 			pass_conf		= $('#pass_conf').val(),
 			username		= $('#username').val();
 
-		$('#percent').width(pass_strenght(password)+'%');		
+		$('#percent').width(pass_strenght(password)+'%');
 
 		if (password.toLowerCase() == username.toLowerCase() || pass_strenght(password) == 0)
 		{
@@ -95,7 +95,7 @@ $(function(){
 		}
 		else
 		{
-			$('#pass_result').html(correct_img);			
+			$('#pass_result').html(correct_img);
 		}
 
 		if(password == pass_conf && password && pass_conf) {
@@ -128,7 +128,7 @@ $(function(){
 
 		var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
 		if(pattern.test($(this).val()) && $(this).val() != '')
-		{			
+		{
 			alert($(this).val().replace('@', '~'));
 			$('#email_notes').html(loading_img).load(post_url + "/email/" + $(this).val().replace('@', '~'), function()
 			{
@@ -140,7 +140,7 @@ $(function(){
 				{
 					$('#email_result').html(correct_img);
 				}
-			});			
+			});
 		}
 		else
 		{

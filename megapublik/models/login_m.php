@@ -10,7 +10,7 @@ Class Login_m extends CI_Model
 		$this->db->update('users', array('last_IP' => $ip_address), "username = '". $username ."'");
 
 		$this->db->where('reg_IP', $ip_address);
-		$this->db->or_where('last_IP', $ip_address);		
+		$this->db->or_where('last_IP', $ip_address);
 		$query	= $this->db->get('users');
 
 		if ($query->num_rows() > 3)

@@ -19,7 +19,7 @@ function exp_percent($user)
 	}
 	else
 	{
-		
+
 		$level_min_exp	= $CFG->item('first_level')*pow($CFG->item('exp_multiplier'),($user->level-2));
 		$next_min_exp	= $CFG->item('first_level')*pow($CFG->item('exp_multiplier'),($user->level-1));
 		$exp_level		= $user->experience-$level_min_exp;
@@ -46,14 +46,14 @@ function l18n($lang)
 		$l18n->decimal	= '.';
 		$l18n->thousand	= ',';
 	}
-	
+
 	return $l18n;
 }
 
 function money($money, $currency)
 {
 	$money		= isset($money[$currency]) ? $money[$currency] : 0;
-	
+
 	return $money;
 }
 
@@ -75,7 +75,7 @@ function color($percentage)
 	{
 		$color	= 'green';
 	}
-	
+
 	return $color;
 }
 
@@ -84,7 +84,7 @@ function reg_img($type, $alt, $slash = TRUE)
 	if($type === 'correct')
 	{
 		$src		=	'images/tick.png';
-	
+
 	}
 	else if($type === 'wrong')
 	{
@@ -103,7 +103,7 @@ function reg_img($type, $alt, $slash = TRUE)
 	{
 		$img	= array(
 			'src'		=> $src,
-			'alt'		=> $alt		
+			'alt'		=> $alt
 		);
 
 	}
@@ -131,7 +131,7 @@ function loading($alt, $size = 'big')
 	}
 	$img	= array(
 		'src'		=> $src,
-		'alt'		=> $alt		
+		'alt'		=> $alt
 	);
 
 	return $img;

@@ -10,7 +10,7 @@ class Error extends CI_Controller {
 		}
 		else
 		{
-			$this->output->enable_profiler($this->config->item('debug'));			
+			$this->output->enable_profiler($this->config->item('debug'));
 
 			$this->lang->load('errors');
 

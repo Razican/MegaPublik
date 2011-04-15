@@ -14,7 +14,7 @@ class Market extends CI_Controller {
 			define ('INGAME', TRUE);
 			define ('AJAX', TRUE);
 
-			$this->output->enable_profiler($this->config->item('debug'));			
+			$this->output->enable_profiler($this->config->item('debug'));
 
 			$this->lang->load('market');
 			$this->lang->load('ingame');
@@ -29,7 +29,7 @@ class Market extends CI_Controller {
 			$panel['exp_prcnt']	= exp_percent($user);
 			$panel['l18n']		= l18n($this->lang->lang());
 			$panel['currency']	= $country->currency;
-			
+
 			$script['img']		= loading(lang('market.loading'));
 
 			$head['panel']		= $this->load->view('panel', $panel, TRUE);
@@ -51,7 +51,7 @@ class Market extends CI_Controller {
 	}
 
 	public function request($type='food', $page=0)
-	{		
+	{
 		if ($this->input->is_ajax_request())
 		{
 			sleep($this->config->item('sleep'));
@@ -109,7 +109,7 @@ class Market extends CI_Controller {
 			sleep($this->config->item('sleep'));
 
 			$this->lang->load('market');
-			
+
 			$amount	= $this->input->post('amount');
 			if ($amount <1)
 			{

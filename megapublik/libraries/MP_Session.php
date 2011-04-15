@@ -8,7 +8,7 @@
  * @category	Libraries
  * @link		http://www.razican.com/
  */
- 
+
 class MP_Session extends CI_Session {
 
     function __construct()
