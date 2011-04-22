@@ -42,14 +42,51 @@ $(function(){
 
 		return (score);
 	}
-
-	correct_img				= '<?php echo img($correct); ?>';
-	compare_img				= '<?php echo $comp_img; ?>';
-	wrong_img				= '<?php echo img($wrong); ?>';
-	loading_img				= '<?php echo img($loading); ?>';
-	post_url				= '<?php echo site_url('registration/request'); ?>'
-	$('#submit').attr('disabled', true);
+	loading			= '<?php echo img($loading); ?>';
 	$('#state').attr('disabled', true);
+	$('#submit').attr('disabled', true);
+
+	$('input').focus(function()
+	{
+		$('#submit').attr('disabled', true);
+		$('#form_result').html('');
+		$('#user_notes').html('');
+		$('#email_notes').html('');
+	});
+
+	$('input').bind('blur keyup', function()
+	{
+		$('#form_result').html(loading);
+		var id		= $(this).attr('id'),
+			value	= $(this).val();
+		$.post("<?php echo site_url('registration/request'); ?>", { id: value }, function(data) {
+			$('#form_result').html(data);
+		});
+		switch(id)
+		{
+			case 'password':
+				var password		= $(this).val(),
+					pass_conf		= $('#pass_conf').val(),
+
+				$('#percent').width(pass_strenght(password)+'%');
+
+				if(password != pass_conf OR ! password OR ! pass_conf) {
+					$('#form_result').html('');
+				}
+			break;
+			case 'pass_conf':
+				execute code block 2
+			break;
+			case 'email':
+				execute code block 2
+			break;
+		}
+	});
+
+
+// A Partir de aquí no cambia nada, se está reescribiendo... //
+
+
 
 	$('#username').focus(function() {
 		$('#user_result').html('');
@@ -146,25 +183,5 @@ $(function(){
 		{
 		$('#email_result').html(wrong_img);
 		}
-	});
-
-	$('input').focus(function() {
-		$('#submit').attr('disabled', true);
-	});
-
-	$('input').bind('blur keyup', function() {
-
-		if($("#user_result").html() != compare_img || $("#pass_result").html() != compare_img || $("#passconf_result").html() != compare_img || $("#email_result").html() != compare_img) {
-
-			$('#submit').attr('disabled', true);
-		}
-		else
-		{
-			$('#submit').removeAttr('disabled');
-		}
-	});
-
-	$('#submit').submit(function() {
-		$('#submit').attr('disabled', true);
 	});
 });

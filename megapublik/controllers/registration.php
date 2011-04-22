@@ -165,7 +165,7 @@ class Registration extends CI_Controller {
 		}
 	}
 
-	public function request($type = 'user', $value = NULL)
+	public function request()
 	{
 		if ($this->input->is_ajax_request())
 		{
