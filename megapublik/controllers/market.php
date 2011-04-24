@@ -30,7 +30,7 @@ class Market extends CI_Controller {
 			$panel['l18n']		= l18n($this->lang->lang());
 			$panel['currency']	= $country->currency;
 
-			$script['img']		= loading(lang('market.loading'));
+			$script['img']		= loading(lang('overal.loading'));
 
 			$head['panel']		= $this->load->view('panel', $panel, TRUE);
 			$head['help']		= lang('ingame.help');
@@ -72,15 +72,15 @@ class Market extends CI_Controller {
 			{
 				$data['content']	=& $content;
 				$data['user']		=& $this->user;
-				$data['img']		= loading(lang('market.loading'));
-				$data['mini_img']	= loading(lang('market.loading'), 'mini');
+				$data['img']		= loading(lang('overal.loading'));
+				$data['mini_img']	= loading(lang('overal.loading'), 'mini');
 				$data['l18n']		= l18n($this->lang->lang());
 
 				$this->load->library('pagination');
 
 				$config['base_url']		= site_url("market/request/".$type."/");
 				$config['total_rows']	= $num_rows;
-				$config['per_page']		= '20';
+				$config['per_page']		= 20;
 				$config['uri_segment']	= 5;
 				$config['first_link']	= lang('overal.first');
 				$config['last_link']	= lang('overal.last');
@@ -132,7 +132,7 @@ class Market extends CI_Controller {
 				{
 					if ($this->market_m->buy_product($id, $amount, $product, $user->id, $user->money))
 					{
-						echo '<span class="market-correct">'.img(array('src' => 'images/tick.png', 'alt' => lang('market-correct'), 'class' => 'market-correct')).'</span>';
+						echo '<span class="market-correct">'.img(array('src' => 'images/tick.png', 'alt' => lang('overal.correct'), 'class' => 'market-correct')).'</span>';
 					}
 					else
 					{

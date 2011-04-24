@@ -27,5 +27,11 @@ $lang['overal.panel.productivity']	= 'Productibitatea';
 $lang['overal.first']				= 'Lehena';
 $lang['overal.last']				= 'Azkena';
 
+//AJAX
+$lang['overal.loading']				= 'Kargatzen';
+$lang['overal.correct']				= 'Zuzena';
+$lang['reg.wrong']					= 'Okerra';
+
+
 /* End of file overal_lang.php */
 /* Location: ./application/language/basque/overal_lang.php */

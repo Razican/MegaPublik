@@ -4,10 +4,8 @@ $lang['market.company']		= 'Konpainia';
 $lang['market.price']		= 'Prezioa';
 $lang['market.amount']		= 'Kantitatea';
 $lang['market.buy']			= 'Erosi';
-$lang['market.loading']		= 'Kargatzen';
 $lang['market.nodata']		= 'Ez dago daturik';
 $lang['market.no_amount']	= 'Ezin da 0 izan';
-$lang['market.correct']		= 'Ondo';
 
 $lang['market.food']		= 'Janaria';
 $lang['market.weapon']		= 'Armak';

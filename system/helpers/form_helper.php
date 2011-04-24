@@ -1035,7 +1035,7 @@ if ( ! function_exists('_get_validation_object'))
 		// We set this as a variable since we're returning by reference.
 		$return = FALSE;
 		
-		if ( ! ($object = $CI->load->is_loaded('form_validation')))
+		if (FALSE !== ($object = $CI->load->is_loaded('form_validation')))
 		{
 			if ( ! isset($CI->$object) OR ! is_object($CI->$object))
 			{

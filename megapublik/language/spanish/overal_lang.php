@@ -27,5 +27,11 @@ $lang['overal.panel.productivity']	= 'Productividad';
 $lang['overal.first']				= 'Primera';
 $lang['overal.last']				= 'Útima';
 
+//AJAX
+$lang['overal.loading']				= 'Cargando';
+$lang['overal.correct']				= 'Correcto';
+$lang['reg.wrong']					= 'Incorrecto';
+
+
 /* End of file overal_lang.php */
 /* Location: ./application/language/spanish/overal_lang.php */

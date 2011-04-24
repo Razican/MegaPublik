@@ -21,10 +21,10 @@ class Registration extends CI_Controller {
 		$this->lang->load('registration');
 		$this->load->model('registration_m');
 
-		$script['correct']	= reg_img('correct', lang('reg.correct'));
-		$script['wrong']	= reg_img('wrong', lang('reg.wrong'));
-		$script['comp_img']	= reg_img('correct', lang('reg.correct'), FALSE);
-		$script['loading']	= reg_img('loading', lang('reg.loading'));
+		$script['correct']	= reg_img('correct', lang('overal.correct'));
+		$script['wrong']	= reg_img('wrong', lang('overal.wrong'));
+		$script['comp_img']	= reg_img('correct', lang('overal.correct'), FALSE);
+		$script['loading']	= reg_img('loading', lang('overal.loading'));
 
 		$head['script']		= $this->load->view('registration/registration_ajax', $script, TRUE);
 		$head['menu']		= $this->load->view('menu_outgame', '', TRUE);

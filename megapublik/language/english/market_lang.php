@@ -4,10 +4,8 @@ $lang['market.company']		= 'Company';
 $lang['market.price']		= 'Price';
 $lang['market.amount']		= 'Quantity';
 $lang['market.buy']			= 'Buy';
-$lang['market.loading']		= 'Loading';
 $lang['market.nodata']		= 'There is no data';
 $lang['market.no_amount']	= 'Can\'t be 0';
-$lang['market.correct']		= 'Correct';
 
 $lang['market.food']		= 'Food';
 $lang['market.weapon']		= 'Weapons';
