@@ -1,4 +1,4 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 $config['states']	= array(
 	1 => array('name' => 'País Vasco', 'borders' => array(4, 5, 6, 7), 'timezone' => 'Europe/Madrid'),

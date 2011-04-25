@@ -57,14 +57,16 @@ $(function(){
 	$('input').bind('blur keyup', function()
 	{
 		$('#form_result').html(loading);
-		var id		= $(this).attr('id'),
+		var name	= $(this).attr('name'),
 			value	= $(this).val();
-		$.post("<?php echo site_url('registration/request'); ?>", { id: value }, function(data) {
-			$('#form_result').html(data);
+		$.post("<?php echo site_url('registration/request'); ?>", { name: value }, function(data) {
+			alert(data);
+			//$('#form_result').html(data);
 		});
-		switch(id)
+		/*switch(name)
 		{
 			case 'password':
+			alert('EHHH');
 				var password		= $(this).val(),
 					pass_conf		= $('#pass_conf').val(),
 
@@ -74,19 +76,19 @@ $(function(){
 					$('#form_result').html('');
 				}
 			break;
-			case 'pass_conf':
+			case 'passconf':
 				execute code block 2
 			break;
 			case 'email':
 				execute code block 2
 			break;
-		}
+		}*/
 	});
 
 
 // A Partir de aquí no cambia nada, se está reescribiendo... //
 
-
+/*
 
 	$('#username').focus(function() {
 		$('#user_result').html('');
@@ -183,5 +185,5 @@ $(function(){
 		{
 		$('#email_result').html(wrong_img);
 		}
-	});
+	});*/
 });

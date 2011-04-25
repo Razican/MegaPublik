@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 08-04-2011 a las 22:09:27
+-- Tiempo de generación: 25-04-2011 a las 22:52:53
 -- Versión del servidor: 5.1.49
 -- Versión de PHP: 5.3.3-1ubuntu9.3
 
@@ -465,14 +465,14 @@ CREATE TABLE IF NOT EXISTS `parties` (
 --
 -- Estructura de tabla para la tabla `sessions`
 --
--- Creación: 26-02-2011 a las 20:23:17
+-- Creación: 20-04-2011 a las 21:16:54
 --
 
 DROP TABLE IF EXISTS `sessions`;
 CREATE TABLE IF NOT EXISTS `sessions` (
   `session_id` varchar(40) NOT NULL DEFAULT '0',
   `ip_address` varchar(16) NOT NULL DEFAULT '0',
-  `user_agent` varchar(50) NOT NULL,
+  `user_agent` varchar(120) NOT NULL,
   `last_activity` int(10) unsigned NOT NULL DEFAULT '0',
   `user_data` text,
   PRIMARY KEY (`session_id`)
@@ -531,7 +531,7 @@ CREATE TABLE IF NOT EXISTS `suscriptions` (
 --
 -- Estructura de tabla para la tabla `users`
 --
--- Creación: 08-04-2011 a las 22:07:33
+-- Creación: 25-04-2011 a las 22:43:08
 --
 
 DROP TABLE IF EXISTS `users`;

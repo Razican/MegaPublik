@@ -1,6 +1,6 @@
 <?php
 
-$lang['profiler_database']		  = 'DATUBASE';
+$lang['profiler_database']		 = 'DATUBASE';
 $lang['profiler_controller_info'] = 'KLASEA/METODOA';
 $lang['profiler_benchmarks']	= 'EBALUAKETAK'; //BENCHMARKS
 $lang['profiler_queries']		= 'KONTSULTAK';

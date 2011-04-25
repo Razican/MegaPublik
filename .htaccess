@@ -13,6 +13,8 @@ DirectoryIndex index.php
 
 <IfModule mod_rewrite.c>
 	RewriteEngine On
+	#This can be replaced if you have the script somewhere not in your
+	#root: RewriteBase /path/to/your/folder/
 	RewriteBase /megapublik/
 
 	# You can also uncomment this if you know the IP:

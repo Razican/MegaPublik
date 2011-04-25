@@ -87,7 +87,7 @@ class Registration extends CI_Controller {
 	 		$this->load->helper('string');
 	 		for ($i = 1; $i != 0;)
 	 		{
-	 			$validation_str	=  random_string('alnum', 15);
+	 			$validation_str	= random_string('alnum', 15);
 	 			$query			= $this->db->get_where('users', array('validation_str' => $validation_str));
 
 	 			$i = $query->num_rows();
@@ -169,26 +169,32 @@ class Registration extends CI_Controller {
 	{
 		if ($this->input->is_ajax_request())
 		{
-			sleep($this->config->item('sleep'));
+			//sleep($this->config->item('sleep'));
 
 			$this->lang->load('registration');
 			$this->load->model('registration_m');
 
-			switch ($type)
+			$name	= $this->input->post('name');
+			log_message('debug', 'Name: "'.$name.'"');
+
+			switch ($name)
 			{
 				case 'states':
 					$data['states']			= $this->registration_m->states($value);
 					$this->load->view('registration/states', $data);
 				break;
+				case 'username':
+					echo 'OK';
+				break;
 				default:
-				log_message('debug', str_replace('~', '@', $value));
+			/*	log_message('debug', str_replace('~', '@', $value));
 					$validated	= $this->registration_m->is_valid(str_replace('~', '@', $value), $type);
 					$data['validated']		= '';
 					if ($validated === FALSE)
 					{
 						$data['validated']	= lang('reg.too_'.$type);
 					}
-					$this->load->view('registration/result', $data);
+					$this->load->view('registration/result', $data);*/
 			}
 		}
 		else

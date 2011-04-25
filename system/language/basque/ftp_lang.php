@@ -11,7 +11,7 @@ $lang['ftp_unable_to_download']		= "Ezin da zehaztutako fitxategia deskargatu. M
 $lang['ftp_no_source_file']			= "Ezin da iturburu fitxategia aurkitu. Baieztatu mesedez zure bidea.";
 $lang['ftp_unable_to_rename']		= "Ezin da fitxategia berizendatu.";
 $lang['ftp_unable_to_delete']		= "Ezin da fitxategia ezabatu.";
-$lang['ftp_unable_to_move']			= "Ezin da fitxategia mugitu.  Baieztatu mesedez helburuko direktorioa badagoenik.";
+$lang['ftp_unable_to_move']			= "Ezin da fitxategia mugitu. Baieztatu mesedez helburuko direktorioa badagoenik.";
 
 
 /* End of file ftp_lang.php */

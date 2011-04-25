@@ -1,4 +1,4 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /*
 |--------------------------------------------------------------------------
@@ -10,7 +10,7 @@
 |
 */
 
-$config['debug']    = FALSE;
+$config['debug']  = FALSE;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +22,7 @@ $config['debug']    = FALSE;
 |
 */
 
-$config['sleep']    = 0;
+$config['sleep']  = 0;
 
 
 /* End of file enviroment.php */

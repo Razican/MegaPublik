@@ -2,7 +2,7 @@ Copyright (c) 2009 - 2010, MegaPublik Developer Team
 All rights reserved.
 
 This license is a legal agreement between you and MegaPublik Developer Team for the use
-of MegaPublik Software (the "Software").  By obtaining the Software you
+of MegaPublik Software (the "Software"). By obtaining the Software you
 agree to comply with the terms and conditions of this license.
 
 PERMITTED USE

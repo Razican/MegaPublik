@@ -11,13 +11,13 @@ $lang['imglib_jpg_or_png_required'] = "Hobespenetan ezarritako irudi tamaina ald
 $lang['imglib_copy_error'] = "Errorea gertatu da fitxategia ordezterakoan. ziurtatu mesedez fitxategiraren direktorioan idatzi daitekela.";
 $lang['imglib_rotate_unsupported'] = "Ez dirudi zure zerbitzariak irudiak biratzeko euskarririk duenik.";
 $lang['imglib_libpath_invalid'] = "zure irudi liburutegirako bidea ez da zuzena. Ezarri mesedez bide zuzena zure irudi hobespenetan.";
-$lang['imglib_image_process_failed'] = "Irudi prozesamenduak huts egin dut.  Egiaztatu mesedez zure zerbitzariak aukeratutako protokoloarentzat euskarria duen eta irudi liburutegirako bidea zuzena den.";
+$lang['imglib_image_process_failed'] = "Irudi prozesamenduak huts egin dut. Egiaztatu mesedez zure zerbitzariak aukeratutako protokoloarentzat euskarria duen eta irudi liburutegirako bidea zuzena den.";
 $lang['imglib_rotation_angle_required'] = "Irudia biratzeko beharrezkoa da biratze angelu bat.";
 $lang['imglib_writing_failed_gif'] = "GIF irudia.";
 $lang['imglib_invalid_path'] = "Irudiaren bidea ez da zuzena.";
 $lang['imglib_copy_failed'] = "Irudi kopia rutinak huts egin du.";
 $lang['imglib_missing_font'] = "Ezin da aurkitu letra-tipoa.";
-$lang['imglib_save_failed'] = "Ezin da irudia gorde.  Zirutatu mesedez irudi eta fitxategi direktorioan idatzi daitekela.";
+$lang['imglib_save_failed'] = "Ezin da irudia gorde. Zirutatu mesedez irudi eta fitxategi direktorioan idatzi daitekela.";
 
 
 /* End of file imglib_lang.php */

@@ -1,4 +1,4 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
  * MP_Session Class
@@ -11,12 +11,12 @@
 
 class MP_Session extends CI_Session {
 
-    function __construct()
-    {
-        parent::__construct();
-    }
+  function __construct()
+  {
+    parent::__construct();
+  }
 
-   	/**
+  	/**
 	 * Write the session cookie
 	 *
 	 * @access	public
@@ -41,7 +41,6 @@ class MP_Session extends CI_Session {
 		}
 
 		$expire				= (config_item('sess_expire_on_close') === TRUE) ? 0 : $this->sess_expiration + time();
-
 		$secure_cookie		= (config_item('cookie_secure') === TRUE) ? 1 : 0;
 
 		setcookie(
@@ -57,5 +56,5 @@ class MP_Session extends CI_Session {
 }
 
 
-/* End of file MP_Session.php.php */
+/* End of file MP_Session.php */
 /* Location: ./application/libraries/MP_Session.php */

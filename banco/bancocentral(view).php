@@ -8,7 +8,7 @@
 		@@@ Version HTML: 0.10
 		@@@ CSS : el diseño esta basado en las plantillas de racanofeller.com (los colores son
 				 aleatorios) y queda pendiente adaptarlo a la interfaz grafica de megapublik
-		@@@ Validacion:  Probado solo en Firefox
+		@@@ Validacion: Probado solo en Firefox
 
 		@@@ Informacion para programar los controladores:
 			>>> MASA MONETARIA : Es la cantidad total de oro que hay en el juego, requiere

@@ -1,4 +1,13 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+/**
+ * Language hook
+ *
+ * @subpackage	Hooks
+ * @author		Razican
+ * @category	Hooks
+ * @link		http://www.razican.com/
+ */
 
 function language()
 {
@@ -24,5 +33,5 @@ function language()
 }
 
 
-/* End of file Pcc.php */
-/* Location: ./application/hooks/Pcc.php */
+/* End of file Language.php */
+/* Location: ./application/hooks/Language.php */

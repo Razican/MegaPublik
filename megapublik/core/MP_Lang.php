@@ -1,11 +1,11 @@
-<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
  * MP_Lang Class
  *
  * @subpackage	Libraries
  * @author		Jérôme Jaglale
- * @category	Libraries
+ * @category	Language
  * @link		http://maestric.com/en/doc/php/codeigniter_i18n
  */
 
@@ -31,9 +31,7 @@ class MP_Lang extends CI_Lang {
 
 	function __construct()
 	{
-
 		parent::__construct();
-
 		global $CFG, $URI, $RTR;
 
 		$segment = $URI->segment(1);
@@ -69,15 +67,14 @@ class MP_Lang extends CI_Lang {
 	function is_special($uri)
 	{
 		$exploded = explode('/', $uri);
-		if (in_array($exploded[0], $this->special))
+		if ((in_array($exploded[0], $this->special)) OR (isset($this->languages[$uri])))
 		{
 			return TRUE;
 		}
-		if(isset($this->languages[$uri]))
+		else
 		{
-			return TRUE;
+			return FALSE;
 		}
-		return FALSE;
 	}
 
 	function switch_uri($lang)

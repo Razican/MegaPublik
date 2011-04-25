@@ -1,4 +1,5 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
 class Banco extends Controller {
 function Banco()
 {
@@ -13,7 +14,7 @@ $this->load->helper('date');
 /*	******* AUTOR: RACA
 	******* ESTE SCRIPT ESTA SACADO DE WWW.RACANOFELLER.COM
 
-	******* VERSION 0.01     25-NOV-2010
+	******* VERSION 0.01   25-NOV-2010
 	******* OBSERVACIONES: PENDIENTE ADAPTAR EN SU TOTALIDAD
 */
 
@@ -48,11 +49,11 @@ function index()
 	{
 		$ahora=strtotime("now");	// coge la hora actual
 		$fechaing=$ahora-$fechaing; // tiempo desde el ingreso
-		$fechaing=$fechaing/86400;  // 86400 = 1 dia
+		$fechaing=$fechaing/86400; // 86400 = 1 dia
 		$fechaing=floor($fechaing);
 		if($fechaing>0)				// si hace menos de 1 dia no calcula interes
 		{
-			$intbanco=5;  // tipo de interes
+			$intbanco=5; // tipo de interes
 			$diario=(($banco*$intbanco)/100)/7; // interes semanal
 			$interes=$diario*$fechaing;
 		}
@@ -61,7 +62,7 @@ function index()
 	$datab['banc']=$banco/100;	// no se pasa al saldo de la cta hasta que que meta o quite dinero
 	$datab['inte']=$interes/100;
 
-/*  ZONA PARA VENTA Y PUESTA EN CIRCULACION DE ACCIONES DE BOLSA
+/* ZONA PARA VENTA Y PUESTA EN CIRCULACION DE ACCIONES DE BOLSA
 	 PENDIENTE DE ADAPTAR
 
 	$this->db->where('idnif',$usu);
@@ -92,7 +93,7 @@ function ingreso() // ingresos de dinero en la cuenta
 	$usu=$this->session->userdata('username');
 	$rules['ingr']="trim|numeric|max_length[10]|xss_clean";
 	$this->validation->set_rules($rules);
-	if(!$this->validation->run())  // no se permiten ingresos con decimales
+	if(!$this->validation->run()) // no se permiten ingresos con decimales
 	{
 		redirect('http://www. /index.php/banco');
 	}
@@ -160,8 +161,8 @@ function reintegro() // Sacar dinero del la cta del banco
 	$reintegro=$this->input->post('rein');
 	$ctr=0;					 // los reintegros pueden ser con decimales
 	$len=strlen($reintegro); // el calculo del interes puede dar decimales
-    for($a=0; $a<$len; $a++)
-   	{
+  for($a=0; $a<$len; $a++)
+  	{
 		$p=ord($reintegro[$a]);
 		if($p<48 or $p>57)
 		{
