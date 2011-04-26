@@ -57,9 +57,7 @@ $(function(){
 	$('input').bind('blur keyup', function()
 	{
 		$('#form_result').html(loading);
-		var name	= $(this).attr('name'),
-			value	= $(this).val();
-		$.post("<?php echo site_url('registration/request'); ?>", { name: value }, function(data) {
+		$.post("<?php echo site_url('registration/request'); ?>", $(this).serialize(), function(data) {
 			alert(data);
 			//$('#form_result').html(data);
 		});

@@ -30,7 +30,7 @@ $lang['overal.last']				= 'Útima';
 //AJAX
 $lang['overal.loading']				= 'Cargando';
 $lang['overal.correct']				= 'Correcto';
-$lang['reg.wrong']					= 'Incorrecto';
+$lang['overal.wrong']				= 'Incorrecto';
 
 
 /* End of file overal_lang.php */

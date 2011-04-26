@@ -30,7 +30,7 @@ $lang['overal.last']				= 'Azkena';
 //AJAX
 $lang['overal.loading']				= 'Kargatzen';
 $lang['overal.correct']				= 'Zuzena';
-$lang['reg.wrong']					= 'Okerra';
+$lang['overal.wrong']				= 'Okerra';
 
 
 /* End of file overal_lang.php */
