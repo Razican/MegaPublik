@@ -22,15 +22,15 @@ Class User extends CI_Model
 			}
 			else
 			{
-				$return->level	= floor(log($return->experience/$this->config->item('first_level'),$this->config->item('exp_multiplier'))+2);
+				$return->level	=& floor(log($return->experience/$this->config->item('first_level'),$this->config->item('exp_multiplier'))+2);
 			}
 
-			$return->money		= unserialize($return->money);
+			$return->money		=& unserialize($return->money);
 
-			$return->country	= $this->user->current_country($return->location);
+			$return->country	=& $this->user->current_country($return->location);
 
 			$state				= $this->config->item('states');
-			$return->timezone	= $state[$return->location]['timezone'];
+			$return->timezone	=& $state[$return->location]['timezone'];
 		}
 		return $return;
 	}
