@@ -45,7 +45,7 @@ $autoload['packages'] = array();
 | Auto-load Libraries
 | -------------------------------------------------------------------
 | These are the classes located in the system/libraries folder
-| or in your application/libraries folder.
+| or in your megapublik/libraries folder.
 |
 | Prototype:
 |
@@ -113,4 +113,4 @@ $autoload['model'] = array('user');
 
 
 /* End of file autoload.php */
-/* Location: ./application/config/autoload.php */
+/* Location: ./megapublik/config/autoload.php */

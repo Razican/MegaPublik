@@ -6,4 +6,4 @@ $lang['ingame.location']	= 'Orain herrialde honetan bizi zara';
 $lang['ingame.help']		= 'Hau laguntza barra da.';
 
 /* End of file ingame_lang.php */
-/* Location: ./application/language/basque/ingame_lang.php */
+/* Location: ./megapublik/language/basque/ingame_lang.php */

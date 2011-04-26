@@ -31,7 +31,7 @@ Class Market_m extends CI_Model
 		else
 		{
 			$return			= NULL;
-			log_message('error', 'function buy_product() in /application/models/market_m.php has received bad data for $product->company_id.');
+			log_message('error', 'function buy_product() in /megapublik/models/market_m.php has received bad data for $product->company_id.');
 		}
 
 		$company_money					= unserialize($company->money);
@@ -59,4 +59,4 @@ Class Market_m extends CI_Model
 
 
 /* End of file market_m.php */
-/* Location: ./application/models/market_m.php */
+/* Location: ./megapublik/models/market_m.php */

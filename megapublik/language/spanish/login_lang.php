@@ -6,4 +6,4 @@ $lang['login.remember']		= 'Recordarme';
 $lang['login.submit']		= 'Entrar';
 
 /* End of file login_lang.php */
-/* Location: ./application/language/spanish/login_lang.php */
+/* Location: ./megapublik/language/spanish/login_lang.php */

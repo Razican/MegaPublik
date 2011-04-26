@@ -175,4 +175,4 @@ $robots = array(
 				);
 
 /* End of file user_agents.php */
-/* Location: ./application/config/user_agents.php */
+/* Location: ./megapublik/config/user_agents.php */

@@ -25,4 +25,4 @@ function timezone()
 
 
 /* End of file Timezone.php */
-/* Location: ./application/hooks/Timezone.php */
+/* Location: ./megapublik/hooks/Timezone.php */

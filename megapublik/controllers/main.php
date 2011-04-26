@@ -57,4 +57,4 @@ class Main extends CI_Controller {
 
 
 /* End of file main.php */
-/* Location: ./application/controllers/main.php */
+/* Location: ./megapublik/controllers/main.php */

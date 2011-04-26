@@ -152,4 +152,4 @@ class Market extends CI_Controller {
 
 
 /* End of file market.php */
-/* Location: ./application/controllers/market.php */
+/* Location: ./megapublik/controllers/market.php */

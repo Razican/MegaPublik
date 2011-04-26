@@ -22,4 +22,4 @@ $lang['reg.too_user']		= 'The user already exists.';
 
 
 /* End of file registration_lang.php */
-/* Location: ./application/language/english/registration_lang.php */
+/* Location: ./megapublik/language/english/registration_lang.php */

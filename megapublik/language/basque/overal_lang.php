@@ -34,4 +34,4 @@ $lang['overal.wrong']				= 'Okerra';
 
 
 /* End of file overal_lang.php */
-/* Location: ./application/language/basque/overal_lang.php */
+/* Location: ./megapublik/language/basque/overal_lang.php */

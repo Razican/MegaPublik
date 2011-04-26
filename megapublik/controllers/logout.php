@@ -18,4 +18,4 @@ class Logout extends CI_Controller {
 
 
 /* End of file logout.php */
-/* Location: ./application/controllers/logout.php */
+/* Location: ./megapublik/controllers/logout.php */

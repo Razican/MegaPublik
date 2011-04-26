@@ -13,4 +13,4 @@ $lang['errors.9']		= 'The email has been already validated.';
 $lang['errors.10']		= 'The code is not valid.';
 
 /* End of file errors_lang.php */
-/* Location: ./application/language/english/errors_lang.php */
+/* Location: ./megapublik/language/english/errors_lang.php */

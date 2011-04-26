@@ -6,4 +6,4 @@ $lang['login.remember']		= 'Remember me';
 $lang['login.submit']		= 'Login';
 
 /* End of file login_lang.php */
-/* Location: ./application/language/english/login_lang.php */
+/* Location: ./megapublik/language/english/login_lang.php */

@@ -33,4 +33,4 @@ $hook['post_controller']				= array(
 
 
 /* End of file hooks.php */
-/* Location: ./application/config/hooks.php */
+/* Location: ./megapublik/config/hooks.php */

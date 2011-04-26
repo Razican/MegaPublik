@@ -89,4 +89,4 @@ $config['useragent']		= 'MegaPublik';
 
 
 /* End of file email.php */
-/* Location: ./application/config/email.php */
+/* Location: ./megapublik/config/email.php */

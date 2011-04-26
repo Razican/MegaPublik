@@ -207,4 +207,4 @@ class Registration extends CI_Controller {
 
 
 /* End of file register.php */
-/* Location: ./application/controllers/register.php */
+/* Location: ./megapublik/controllers/register.php */

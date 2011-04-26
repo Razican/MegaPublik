@@ -6,4 +6,4 @@ $lang['ingame.location']	= 'Ahora mismo vives en este país';
 $lang['ingame.help']		= 'Esta es la barra de ayuda.';
 
 /* End of file ingame_lang.php */
-/* Location: ./application/language/spanish/ingame_lang.php */
+/* Location: ./megapublik/language/spanish/ingame_lang.php */

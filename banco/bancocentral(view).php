@@ -556,7 +556,7 @@ td.cabacc{
 	<td class="chart_divider">&nbsp;</td>
 </tr>
 <tr>
-	<?php echo form_open('http://www.megapublik.com/index.php/bancocentral/moneda8'); ?>
+	<?php echo form_open('/bancocentral/moneda8'); ?>
 	<td class="valmasa">Moneda 8</td>
 	<td class="valmasa">0000.00 Oro</td>
 	<td class="valmasa">0000000 </td>

@@ -21,4 +21,4 @@ class Error extends CI_Controller {
 
 
 /* End of file error.php */
-/* Location: ./application/controllers/error.php */
+/* Location: ./megapublik/controllers/error.php */

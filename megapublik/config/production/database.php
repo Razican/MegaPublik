@@ -65,4 +65,4 @@ $db['default']['stricton'] = FALSE;
 
 
 /* End of file database.php */
-/* Location: ./application/config/database.php */
+/* Location: ./megapublik/config/production/database.php */

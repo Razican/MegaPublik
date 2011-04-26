@@ -53,4 +53,4 @@ $route['^eu$'] = $route['default_controller'];
 
 
 /* End of file routes.php */
-/* Location: ./application/config/routes.php */
+/* Location: ./megapublik/config/routes.php */

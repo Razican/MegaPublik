@@ -188,7 +188,7 @@ $config['log_threshold'] = 4;
 |--------------------------------------------------------------------------
 |
 | Leave this BLANK unless you would like to set something other than the default
-| application/logs/ folder. Use a full server path with trailing slash.
+| megapublik/logs/ folder. Use a full server path with trailing slash.
 |
 */
 $config['log_path'] = '';
@@ -359,4 +359,4 @@ $config['proxy_ips'] = '';
 
 
 /* End of file config.php */
-/* Location: ./application/config/config.php */
+/* Location: ./megapublik/config/development/config.php */

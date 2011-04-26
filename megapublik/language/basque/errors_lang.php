@@ -13,4 +13,4 @@ $lang['errors.9']		= 'Posta elektronikoa jada balioztuta dago.';
 $lang['errors.10']		= 'Kodea ez da baliozkoa.';
 
 /* End of file errors_lang.php */
-/* Location: ./application/language/basque/errors_lang.php */
+/* Location: ./megapublik/language/basque/errors_lang.php */

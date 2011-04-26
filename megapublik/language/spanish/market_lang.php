@@ -23,4 +23,4 @@ $lang['market.boat']		= 'Barcos';
 
 
 /* End of file market_lang.php */
-/* Location: ./application/language/spanish/market_lang.php */
+/* Location: ./megapublik/language/spanish/market_lang.php */

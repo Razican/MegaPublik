@@ -25,4 +25,4 @@ class MP_Loader extends CI_Loader {
 
 
 /* End of file MP_Loader.php */
-/* Location: ./application/core/MP_Loader.php */
+/* Location: ./megapublik/core/MP_Loader.php */

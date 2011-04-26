@@ -23,4 +23,4 @@ $lang['market.boat']		= 'Itsasontziak';
 
 
 /* End of file market_lang.php */
-/* Location: ./application/language/basque/market_lang.php */
+/* Location: ./megapublik/language/basque/market_lang.php */

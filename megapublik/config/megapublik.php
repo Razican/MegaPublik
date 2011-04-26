@@ -27,4 +27,4 @@ $config['timezone']			= 'UTC';
 
 
 /* End of file megapublik.php */
-/* Location: ./application/config/megapublik.php */
+/* Location: ./megapublik/config/megapublik.php */

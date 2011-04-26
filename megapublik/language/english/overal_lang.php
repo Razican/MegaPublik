@@ -34,4 +34,4 @@ $lang['overal.wrong']				= 'Wrong';
 
 
 /* End of file overal_lang.php */
-/* Location: ./application/language/english/overal_lang.php */
+/* Location: ./megapublik/language/english/overal_lang.php */

@@ -57,4 +57,4 @@ class MP_Session extends CI_Session {
 
 
 /* End of file MP_Session.php */
-/* Location: ./application/libraries/MP_Session.php */
+/* Location: ./megapublik/libraries/MP_Session.php */

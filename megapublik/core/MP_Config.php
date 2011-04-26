@@ -34,4 +34,4 @@ class MP_Config extends CI_Config {
 
 
 /* End of file MP_Config.php */
-/* Location: ./application/core/MP_Config.php */
+/* Location: ./megapublik/core/MP_Config.php */

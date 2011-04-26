@@ -138,4 +138,4 @@ class MP_Lang extends CI_Lang {
 
 
 /* End of file MP_Lang.php */
-/* Location: ./application/core/MP_Lang.php */
+/* Location: ./megapublik/core/MP_Lang.php */

@@ -6,4 +6,4 @@ $lang['login.remember']		= 'Gogoratu';
 $lang['login.submit']		= 'Sartu';
 
 /* End of file login_lang.php */
-/* Location: ./application/language/basque/login_lang.php */
+/* Location: ./megapublik/language/basque/login_lang.php */

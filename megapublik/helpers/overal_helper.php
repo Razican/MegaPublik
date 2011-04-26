@@ -139,4 +139,4 @@ function loading($alt, $size = 'big')
 
 
 /* End of file overal_helper.php */
-/* Location: ./application/helpers/overal_helper.php */
+/* Location: ./megapublik/helpers/overal_helper.php */

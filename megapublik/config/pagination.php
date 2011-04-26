@@ -24,4 +24,4 @@ $config['anchor_class']		= 'pagination';
 
 
 /* End of file pagination.php */
-/* Location: ./application/config/pagination.php */
+/* Location: ./megapublik/config/pagination.php */

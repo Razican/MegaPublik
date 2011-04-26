@@ -14,4 +14,4 @@
 
 
 /* End of file profiler.php */
-/* Location: ./application/config/profiler.php */
+/* Location: ./megapublik/config/profiler.php */

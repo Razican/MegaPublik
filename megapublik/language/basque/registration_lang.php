@@ -22,4 +22,4 @@ $lang['reg.too_user']		= 'Erabiltzailea existitzen da.';
 
 
 /* End of file registration_lang.php */
-/* Location: ./application/language/basque/registration_lang.php */
+/* Location: ./megapublik/language/basque/registration_lang.php */

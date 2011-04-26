@@ -100,4 +100,4 @@ Class Registration_m extends CI_Model
 
 
 /* End of file registration_m.php */
-/* Location: ./application/models/registration_m.php */
+/* Location: ./megapublik/models/registration_m.php */

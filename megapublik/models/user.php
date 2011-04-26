@@ -12,7 +12,7 @@ Class User extends CI_Model
 		else
 		{
 			$return			= NULL;
-			log_message('error', 'function data() in /application/models/user.php has received bad data for argument 1 ($id).');
+			log_message('error', 'function data() in /megapublik/models/user.php has received bad data for argument 1 ($id).');
 		}
 		if ($table === 'users')
 		{
@@ -71,4 +71,4 @@ Class User extends CI_Model
 
 
 /* End of file user.php */
-/* Location: ./application/models/user.php */
+/* Location: ./megapublik/models/user.php */
