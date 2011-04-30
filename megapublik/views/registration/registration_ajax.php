@@ -57,7 +57,11 @@ $(function(){
 	$('input').bind('blur keyup', function()
 	{
 		$('#form_result').html(loading);
-		$.post("<?php echo site_url('registration/request'); ?>", $(this).serialize(), function(data) {
+		var token	= $('input[name=MP_csrf]').val(),
+			name	= $(this).attr('name'),
+			value	= $(this).val();
+		$.post("<?php echo site_url('registration/request'); ?>", { 'MP_csrf': token, name: value }, function(data)
+		{
 			alert(data);
 			//$('#form_result').html(data);
 		});
