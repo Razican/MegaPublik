@@ -11,8 +11,12 @@
 
 class User
 {
-	public var username	= NULL;
-	//all variables left.
+	public var id;
+	public var username;
+	private var password;
+	public var avatar;
+	public var location;
+	//some variables left.
 
     public function data($item, $id = NULL)
     {
@@ -29,7 +33,13 @@ class User
 		//all data retrieving left.
     }
 }
-
+/**
+ * TO DO:
+ *
+ * -Functions for each controller for adding properties to the object.
+ * -Retrieve data from the database and change properties.
+ * ...
+ */
 
 /* End of file User.php */
 /* Location: ./megapublik/libraries/User.php */
