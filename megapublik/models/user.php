@@ -11,8 +11,8 @@ Class User extends CI_Model
 		}
 		else
 		{
-			$return			= NULL;
 			log_message('error', 'function data() in /application/models/user.php has received bad data for argument 1 ($id).');
+			redirect('logout');
 		}
 		if ($table === 'users')
 		{

@@ -43,35 +43,70 @@ $(function(){
 		return (score);
 	}
 
-	function is_form_valid ()
+	function validate_form()
 	{
-		//look whether the form is valid or not: Return FALSE or TRUE.
+		var compare_img	= '<?php echo $comp_img; ?>',
+			state		= $('#state').val();
+
+		if(	$('#user_result').html() 		=== compare_img	&&
+			$('#pass_result').html() 		=== compare_img	&&
+			$('#passconf_result').html()	=== compare_img	&&
+			$('#email_result').html()		=== compare_img	&&
+			state	!= '' && state)
+			{
+				$('#submit').removeAttr('disabled');
+			}
 	}
 	loading				= '<?php echo img($loading); ?>';
-	$('#state').attr('disabled', true);
+	if($('#country').val() === '')
+	{
+		$('#state').attr('disabled', true);
+	}
 	$('#submit').attr('disabled', true);
 
 	$('input').focus(function()
 	{
-		$('#submit').attr('disabled', true);
-		$('#form_result').html('');
+		if ($(this).attr('type') != 'submit')
+		{
+			$('#submit').attr('disabled', true);
+		}
 		$('#user_notes').html('');
 		$('#email_notes').html('');
 	});
 
 	$('input').bind('blur keyup', function()
 	{
-		$('#form_result').html(loading);
 		var token		= $('input[name=MP_csrf]').val(),
 			name		= $(this).attr('name'),
 			value		= $(this).val(),
 			correct_img	= '<?php echo img($correct); ?>',
-			wrong_img	= '<?php echo img($wrong); ?>',
-			compare_img	= '<?php echo img($comp_img); ?>';
+			wrong_img	= '<?php echo img($wrong); ?>';
 
 		switch(name)
 		{
+			case 'username':
+				$('#user_notes').html(loading);
+
+				$.post("<?php echo site_url('registration/request'); ?>", { MP_csrf: token, name: name, value: value }, function(data)
+				{
+					if (data != correct_img)
+					{
+						$('#user_notes').html(data);
+						$('#user_result').html(wrong_img);
+					}
+					else
+					{
+						$('#user_notes').html('');
+						$('#user_result').html(data);
+					}
+				});
+
+				validate_form();
+			break;
 			case 'password':
+				$('#pass_result').html(loading);
+				$('#passconf_result').html(loading);
+
 				var confirmation	= $('#pass_conf').val(),
 					username		= $('#username').val();
 
@@ -93,8 +128,13 @@ $(function(){
 				{
 					$('#passconf_result').html(wrong_img);
 				}
+
+				validate_form();
 			break;
 			case 'passconf':
+				$('#pass_result').html(loading);
+				$('#passconf_result').html(loading);
+
 				var password		= $('#password').val(),
 					username		= $('#username').val();
 
@@ -115,123 +155,64 @@ $(function(){
 				{
 					$('#passconf_result').html(wrong_img);
 				}
+
+				validate_form();
 			break;
 			case 'email':
-				//execute email validation
-			break;
-			/*default:
-				$.post("<?php echo site_url('registration/request'); ?>", { MP_csrf: token, name: name, value: value }, function(data)
+				$('#email_notes').html(loading);
+
+				var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+
+				if(pattern.test(value) && value != '')
 				{
-					alert(data);
-					//$('#form_result').html(data);
-				});
-			break;*/
+					$.post("<?php echo site_url('registration/request'); ?>", { MP_csrf: token, name: name, value: value }, function(data)
+					{
+						if (data != correct_img)
+						{
+							$('#email_notes').html(data);
+							$('#email_result').html(wrong_img);
+						}
+						else
+						{
+							$('#email_notes').html('');
+							$('#email_result').html(data);
+						}
+					});
+				}
+				else
+				{
+					$('#email_notes').html('');
+					$('#email_result').html(wrong_img);
+				}
+
+				validate_form();
+			break;
 		}
 	});
 
 	$('#country').change(function()
 	{
-		//Country detection for loading states.
-	});
+		//$('#state_selector').html(loading);
 
-// A Partir de aquí no cambia nada, se está reescribiendo... //
+		var token		= $('input[name=MP_csrf]').val(),
+			name		= 'country',
+			value		= $(this).val();
 
-/*
-
-	$('#username').focus(function() {
-		$('#user_result').html('');
-		$('#user_notes').html('');
-	});
-
-	$('#username').bind('blur keyup',function() {
-		if ($(this).val() != '')
+		if (value === '1' || value === '2')
 		{
-			$('#user_notes').html(loading_img).load(post_url + "/user/" + $(this).val(), function()
+			$.post("<?php echo site_url('registration/request'); ?>", { MP_csrf: token, name: name, value: value }, function(data)
 			{
-				if($('#user_notes').html() != '')
-				{
-					$('#user_result').html(wrong_img);
-				}
-				else
-				{
-					$('#user_result').html(correct_img);
-				}
+				$('#state').append(data);
 			});
+
+			$('#state').removeAttr('disabled');
 		}
-		else
-		{
-			$('#user_result').html(wrong_img);
-		}
+
+		validate_form();
 	});
 
-	$('#password').focus(function() {
-		$('#pass_result').html('');
+	$('#state').change(function()
+	{
+		validate_form();
 	});
-
-	$('#password').bind('blur keyup',function() {
-
-		var password		= $(this).val(),
-			pass_conf		= $('#pass_conf').val(),
-			username		= $('#username').val();
-
-		$('#percent').width(pass_strenght(password)+'%');
-
-		if (password.toLowerCase() == username.toLowerCase() || pass_strenght(password) == 0)
-		{
-			$('#pass_result').html(wrong_img);
-		}
-		else
-		{
-			$('#pass_result').html(correct_img);
-		}
-
-		if(password == pass_conf && password && pass_conf) {
-			$('#passconf_result').html(correct_img);
-		}
-	});
-
-	$('#pass_conf').bind('blur keyup',function() {
-
-		var password		= $('#password').val(),
-			pass_conf		= $(this).val();
-
-		if(password == pass_conf && password && pass_conf) {
-
-			$('#passconf_result').html(correct_img);
-
-		}
-		else
-		{
-			$('#passconf_result').html(wrong_img);
-		}
-	});
-
-	$('#email').focus(function() {
-		$('#email_result').html('');
-		$('#email_notes').html('');
-	});
-
-	$('#email').bind('blur keyup', function() {
-
-		var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
-		if(pattern.test($(this).val()) && $(this).val() != '')
-		{
-			alert($(this).val().replace('@', '~'));
-			$('#email_notes').html(loading_img).load(post_url + "/email/" + $(this).val().replace('@', '~'), function()
-			{
-				if($('#email_notes').html() != '')
-				{
-					$('#email_result').html(wrong_img);
-				}
-				else
-				{
-					$('#email_result').html(correct_img);
-				}
-			});
-		}
-		else
-		{
-		$('#email_result').html(wrong_img);
-		}
-	});*/
 });

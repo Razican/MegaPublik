@@ -2,10 +2,15 @@ body{background:url(../images/background.jpg) no-repeat top right;margin:0px;wid
 img{border-width:0}
 .footer{clear:both;background-color:aqua;opacity:0.75;text-align:center;padding:10px}
 h1{color:gray;text-decoration:underline;margin:20px}
-.log_reg{background-color:red;opacity:0.75;padding:10px}
+.log-reg{background-color:red;opacity:0.75;padding:10px;display:table;width:100%}
 .content{background-color:red;opacity:0.75;padding:10px;margin-left:170px}
 .logo{margin:10px;float:left}
-.login-input{width:30px}
+.login-input{width:30px;padding:5px}
+.reg-container{display:table-row}
+.reg-input{vertical-align:middle;width:450px;padding:10px;display:table-cell}
+.result{text-align:left;vertical-align:middle;display:table-cell}
+.notes{text-align:left;vertical-align:middle;display:table-cell;margin-left:10px}
+.result img{width:20px;height:20px}
 a{text-decoration:none;color:gray}
 .help{background-color:yellow;padding:10px;float:right;margin:110px 50px 0px 0px;height:25px}
 .panel{float:left;width:150px;background-color:blue;text-align:center;padding:10px}
