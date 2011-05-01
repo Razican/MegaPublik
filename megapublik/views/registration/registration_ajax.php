@@ -42,146 +42,177 @@ $(function(){
 
 		return (score);
 	}
-	loading			= '<?php echo img($loading); ?>';
-	$('#state').attr('disabled', true);
+
+	function validate_form()
+	{
+		var compare_img	= '<?php echo $comp_img; ?>',
+			state		= $('#state').val();
+
+		if(	$('#user_result').html() 		=== compare_img	&&
+			$('#pass_result').html() 		=== compare_img	&&
+			$('#passconf_result').html()	=== compare_img	&&
+			$('#email_result').html()		=== compare_img	&&
+			state	!= '' && state)
+			{
+				$('#submit').removeAttr('disabled');
+			}
+	}
+	loading				= '<?php echo img($loading); ?>';
+	if($('#country').val() === '')
+	{
+		$('#state').attr('disabled', true);
+	}
 	$('#submit').attr('disabled', true);
 
 	$('input').focus(function()
 	{
-		$('#submit').attr('disabled', true);
-		$('#form_result').html('');
+		if ($(this).attr('type') != 'submit')
+		{
+			$('#submit').attr('disabled', true);
+		}
 		$('#user_notes').html('');
 		$('#email_notes').html('');
 	});
 
 	$('input').bind('blur keyup', function()
 	{
-		$('#form_result').html(loading);
-		$.post("<?php echo site_url('registration/request'); ?>", $(this).serialize(), function(data) {
-			alert(data);
-			//$('#form_result').html(data);
-		});
-		/*switch(name)
+		var token		= $('input[name=MP_csrf]').val(),
+			name		= $(this).attr('name'),
+			value		= $(this).val(),
+			correct_img	= '<?php echo img($correct); ?>',
+			wrong_img	= '<?php echo img($wrong); ?>';
+
+		switch(name)
 		{
+			case 'username':
+				$('#user_notes').html(loading);
+
+				$.post("<?php echo site_url('registration/request'); ?>", { MP_csrf: token, name: name, value: value }, function(data)
+				{
+					if (data != correct_img)
+					{
+						$('#user_notes').html(data);
+						$('#user_result').html(wrong_img);
+					}
+					else
+					{
+						$('#user_notes').html('');
+						$('#user_result').html(data);
+					}
+				});
+
+				validate_form();
+			break;
 			case 'password':
-			alert('EHHH');
-				var password		= $(this).val(),
-					pass_conf		= $('#pass_conf').val(),
+				$('#pass_result').html(loading);
+				$('#passconf_result').html(loading);
 
-				$('#percent').width(pass_strenght(password)+'%');
+				var confirmation	= $('#pass_conf').val(),
+					username		= $('#username').val();
 
-				if(password != pass_conf OR ! password OR ! pass_conf) {
-					$('#form_result').html('');
+				$('#percent').width(pass_strenght(value)+'%');
+
+				if (value.toLowerCase() == username.toLowerCase() || pass_strenght(value) == 0)
+				{
+					$('#pass_result').html(wrong_img);
 				}
+				else
+				{
+					$('#pass_result').html(correct_img);
+				}
+
+				if(value === confirmation && password) {
+					$('#passconf_result').html(correct_img);
+				}
+				else
+				{
+					$('#passconf_result').html(wrong_img);
+				}
+
+				validate_form();
 			break;
 			case 'passconf':
-				execute code block 2
+				$('#pass_result').html(loading);
+				$('#passconf_result').html(loading);
+
+				var password		= $('#password').val(),
+					username		= $('#username').val();
+
+				if (password.toLowerCase() == username.toLowerCase() || pass_strenght(password) == 0)
+				{
+					$('#pass_result').html(wrong_img);
+				}
+				else
+				{
+					$('#pass_result').html(correct_img);
+				}
+
+				if(password === value && password)
+				{
+					$('#passconf_result').html(correct_img);
+				}
+				else
+				{
+					$('#passconf_result').html(wrong_img);
+				}
+
+				validate_form();
 			break;
 			case 'email':
-				execute code block 2
-			break;
-		}*/
-	});
+				$('#email_notes').html(loading);
 
+				var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
 
-// A Partir de aquí no cambia nada, se está reescribiendo... //
-
-/*
-
-	$('#username').focus(function() {
-		$('#user_result').html('');
-		$('#user_notes').html('');
-	});
-
-	$('#username').bind('blur keyup',function() {
-		if ($(this).val() != '')
-		{
-			$('#user_notes').html(loading_img).load(post_url + "/user/" + $(this).val(), function()
-			{
-				if($('#user_notes').html() != '')
+				if(pattern.test(value) && value != '')
 				{
-					$('#user_result').html(wrong_img);
+					$.post("<?php echo site_url('registration/request'); ?>", { MP_csrf: token, name: name, value: value }, function(data)
+					{
+						if (data != correct_img)
+						{
+							$('#email_notes').html(data);
+							$('#email_result').html(wrong_img);
+						}
+						else
+						{
+							$('#email_notes').html('');
+							$('#email_result').html(data);
+						}
+					});
 				}
 				else
 				{
-					$('#user_result').html(correct_img);
-				}
-			});
-		}
-		else
-		{
-			$('#user_result').html(wrong_img);
-		}
-	});
-
-	$('#password').focus(function() {
-		$('#pass_result').html('');
-	});
-
-	$('#password').bind('blur keyup',function() {
-
-		var password		= $(this).val(),
-			pass_conf		= $('#pass_conf').val(),
-			username		= $('#username').val();
-
-		$('#percent').width(pass_strenght(password)+'%');
-
-		if (password.toLowerCase() == username.toLowerCase() || pass_strenght(password) == 0)
-		{
-			$('#pass_result').html(wrong_img);
-		}
-		else
-		{
-			$('#pass_result').html(correct_img);
-		}
-
-		if(password == pass_conf && password && pass_conf) {
-			$('#passconf_result').html(correct_img);
-		}
-	});
-
-	$('#pass_conf').bind('blur keyup',function() {
-
-		var password		= $('#password').val(),
-			pass_conf		= $(this).val();
-
-		if(password == pass_conf && password && pass_conf) {
-
-			$('#passconf_result').html(correct_img);
-
-		}
-		else
-		{
-			$('#passconf_result').html(wrong_img);
-		}
-	});
-
-	$('#email').focus(function() {
-		$('#email_result').html('');
-		$('#email_notes').html('');
-	});
-
-	$('#email').bind('blur keyup', function() {
-
-		var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
-		if(pattern.test($(this).val()) && $(this).val() != '')
-		{
-			alert($(this).val().replace('@', '~'));
-			$('#email_notes').html(loading_img).load(post_url + "/email/" + $(this).val().replace('@', '~'), function()
-			{
-				if($('#email_notes').html() != '')
-				{
+					$('#email_notes').html('');
 					$('#email_result').html(wrong_img);
 				}
-				else
-				{
-					$('#email_result').html(correct_img);
-				}
-			});
+
+				validate_form();
+			break;
 		}
-		else
+	});
+
+	$('#country').change(function()
+	{
+		//$('#state_selector').html(loading);
+
+		var token		= $('input[name=MP_csrf]').val(),
+			name		= 'country',
+			value		= $(this).val();
+
+		if (value === '1' || value === '2')
 		{
-		$('#email_result').html(wrong_img);
+			$.post("<?php echo site_url('registration/request'); ?>", { MP_csrf: token, name: name, value: value }, function(data)
+			{
+				$('#state').append(data);
+			});
+
+			$('#state').removeAttr('disabled');
 		}
-	});*/
+
+		validate_form();
+	});
+
+	$('#state').change(function()
+	{
+		validate_form();
+	});
 });

@@ -102,7 +102,7 @@ class Registration extends CI_Controller {
 				'location'			=> $this->input->post('country'),
 				'validation_str'	=> $validation_str,
 				'birthday'			=> now(),
-				'citizenship'		=> $this->input->post('country'),
+				'citizenship'		=> $this->input->post('state'),
 				'money'				=> 'a:1:{s:2:"MP";i:50000;}'
 			);
 
@@ -169,32 +169,42 @@ class Registration extends CI_Controller {
 	{
 		if ($this->input->is_ajax_request())
 		{
-			//sleep($this->config->item('sleep'));
+			sleep($this->config->item('sleep'));
 
 			$this->lang->load('registration');
 			$this->load->model('registration_m');
 
 			$name	= $this->input->post('name');
-			log_message('debug', 'Name: "'.$name.'"');
+			$value	= $this->input->post('value');
 
 			switch ($name)
 			{
-				case 'states':
-					$data['states']			= $this->registration_m->states($value);
-					$this->load->view('registration/states', $data);
+				case 'country':
+					echo $this->registration_m->states($value);
 				break;
 				case 'username':
-					echo 'OK';
+					if ($this->registration_m->is_valid($value, 'user'))
+					{
+						echo img(reg_img('correct', lang('overal.correct')));
+					}
+					else
+					{
+						echo lang('reg.too_user');
+					}
+				break;
+				case 'email':
+					if ($this->registration_m->is_valid($value, 'email'))
+					{
+						echo img(reg_img('correct', lang('overal.correct')));
+					}
+					else
+					{
+						echo lang('reg.too_email');
+					}
 				break;
 				default:
-			/*	log_message('debug', str_replace('~', '@', $value));
-					$validated	= $this->registration_m->is_valid(str_replace('~', '@', $value), $type);
-					$data['validated']		= '';
-					if ($validated === FALSE)
-					{
-						$data['validated']	= lang('reg.too_'.$type);
-					}
-					$this->load->view('registration/result', $data);*/
+					log_message('error', 'User with IP '.$this->input->ip_address().' has tried to send invalid name ('.$name.') with JQuery');
+				break;
 			}
 		}
 		else

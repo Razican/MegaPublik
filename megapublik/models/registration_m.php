@@ -17,18 +17,23 @@ Class Registration_m extends CI_Model
 
 	public function states($country)
 	{
-		$query			= $this->db->get_where('countries', array('name' => $country));
+		$this->db->select('states');
+		$query			= $this->db->get_where('countries', array('id' => $country));
 		foreach ($query->result() as $country){}
 
-		$query			= $this->db->get_where('states', array('country_id' => $country->id));
-		$states		= '';
+		$states			= unserialize($country->states);
+		$config_states	= $this->config->item('states');
 
-		foreach ($query->result() as $state)
+		$select			= '';
+		foreach ($config_states as $id => $state)
 		{
-			$states	.= '<option value="'. $state->id .'">'. $state->name .'</option>';
+			if(in_array($id, $states))
+			{
+				$select	.= '<option value="'.$id.'">'.$state['name'].'</option>';
+			}
 		}
 
-		return $countries;
+		return $select;
 	}
 
 	public function is_valid($string, $type = 'code')
