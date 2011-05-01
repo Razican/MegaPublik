@@ -60,31 +60,34 @@ $(function(){
 		var token	= $('input[name=MP_csrf]').val(),
 			name	= $(this).attr('name'),
 			value	= $(this).val();
-		$.post("<?php echo site_url('registration/request'); ?>", { 'MP_csrf': token, name: value }, function(data)
-		{
-			alert(data);
-			//$('#form_result').html(data);
-		});
-		/*switch(name)
+
+		switch(name)
 		{
 			case 'password':
 			alert('EHHH');
 				var password		= $(this).val(),
-					pass_conf		= $('#pass_conf').val(),
+					pass_conf		= $('#pass_conf').val();
 
 				$('#percent').width(pass_strenght(password)+'%');
 
-				if(password != pass_conf OR ! password OR ! pass_conf) {
+			/*	if((password != pass_conf) OR ( ! password) OR ( ! pass_conf)) {
 					$('#form_result').html('');
-				}
+				}*/
 			break;
 			case 'passconf':
-				execute code block 2
+				//execute code block 2
 			break;
 			case 'email':
-				execute code block 2
+				//execute code block 2
 			break;
-		}*/
+			default:
+				$.post("<?php echo site_url('registration/request'); ?>", { 'MP_csrf': token, name: name, value: value }, function(data)
+				{
+					alert(data);
+					//$('#form_result').html(data);
+				});
+			break;
+		}
 	});
 
 
