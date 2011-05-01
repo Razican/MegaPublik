@@ -42,7 +42,12 @@ $(function(){
 
 		return (score);
 	}
-	loading			= '<?php echo img($loading); ?>';
+
+	function is_form_valid ()
+	{
+		//look whether the form is valid or not: Return FALSE or TRUE.
+	}
+	loading				= '<?php echo img($loading); ?>';
 	$('#state').attr('disabled', true);
 	$('#submit').attr('disabled', true);
 
@@ -57,39 +62,77 @@ $(function(){
 	$('input').bind('blur keyup', function()
 	{
 		$('#form_result').html(loading);
-		var token	= $('input[name=MP_csrf]').val(),
-			name	= $(this).attr('name'),
-			value	= $(this).val();
+		var token		= $('input[name=MP_csrf]').val(),
+			name		= $(this).attr('name'),
+			value		= $(this).val(),
+			correct_img	= '<?php echo img($correct); ?>',
+			wrong_img	= '<?php echo img($wrong); ?>',
+			compare_img	= '<?php echo img($comp_img); ?>';
 
 		switch(name)
 		{
 			case 'password':
-			alert('EHHH');
-				var password		= $(this).val(),
-					pass_conf		= $('#pass_conf').val();
+				var confirmation	= $('#pass_conf').val(),
+					username		= $('#username').val();
 
-				$('#percent').width(pass_strenght(password)+'%');
+				$('#percent').width(pass_strenght(value)+'%');
 
-			/*	if((password != pass_conf) OR ( ! password) OR ( ! pass_conf)) {
-					$('#form_result').html('');
-				}*/
+				if (value.toLowerCase() == username.toLowerCase() || pass_strenght(value) == 0)
+				{
+					$('#pass_result').html(wrong_img);
+				}
+				else
+				{
+					$('#pass_result').html(correct_img);
+				}
+
+				if(value === confirmation && password) {
+					$('#passconf_result').html(correct_img);
+				}
+				else
+				{
+					$('#passconf_result').html(wrong_img);
+				}
 			break;
 			case 'passconf':
-				//execute code block 2
+				var password		= $('#password').val(),
+					username		= $('#username').val();
+
+				if (password.toLowerCase() == username.toLowerCase() || pass_strenght(password) == 0)
+				{
+					$('#pass_result').html(wrong_img);
+				}
+				else
+				{
+					$('#pass_result').html(correct_img);
+				}
+
+				if(password === value && password)
+				{
+					$('#passconf_result').html(correct_img);
+				}
+				else
+				{
+					$('#passconf_result').html(wrong_img);
+				}
 			break;
 			case 'email':
-				//execute code block 2
+				//execute email validation
 			break;
-			default:
-				$.post("<?php echo site_url('registration/request'); ?>", { 'MP_csrf': token, name: name, value: value }, function(data)
+			/*default:
+				$.post("<?php echo site_url('registration/request'); ?>", { MP_csrf: token, name: name, value: value }, function(data)
 				{
 					alert(data);
 					//$('#form_result').html(data);
 				});
-			break;
+			break;*/
 		}
 	});
 
+	$('#country').change(function()
+	{
+		//Country detection for loading states.
+	});
 
 // A Partir de aquí no cambia nada, se está reescribiendo... //
 

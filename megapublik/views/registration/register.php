@@ -12,7 +12,7 @@
 			<?php echo lang('reg.state'); ?>: <div id="state_selector"><select id="state" name="state">
 				<option value=""><?php echo lang('reg.select_state'); ?></option>
 				</select></div>
-			<input id="submit" type="submit" value="<?php echo lang('reg.submit'); ?>" name="submit" />
+			<input id="submit" type="submit" value="<?php echo lang('reg.submit'); ?>" name="submit" /><div id="form_result"></div>
 		</form>
 	</div>
 <?php echo $footer; ?>

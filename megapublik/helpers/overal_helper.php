@@ -103,7 +103,8 @@ function reg_img($type, $alt, $slash = TRUE)
 	{
 		$img	= array(
 			'src'		=> $src,
-			'alt'		=> $alt
+			'alt'		=> $alt,
+			'style'		=> 'width: 20px; height: 20px;'
 		);
 
 	}
