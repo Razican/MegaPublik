@@ -18,26 +18,60 @@ class User
 	public var location;
 	//some variables left.
 
-    public function data($item, $id = NULL)
+    public function set_data($id = NULL)
     {
-		$CI =& get_instance();
+		$CI							=& get_instance();
 
-		$user_id	= $CI->session->userdata('user_id');
-		$id	= is_null($id) ? $user_id : $id;
+		$user_id					= $CI->session->userdata('user_id');
+		$id							= is_null($id) ? $user_id : $id;
 		if ( ! $id)
 		{
-			log_message('error', 'function data() in /megapublik/libraries/User.php has not received an id');
-			return $id;
+			log_message('error', 'function set_data() in /megapublik/libraries/User.php has not received an id');
+			return FALSE;
 		}
+		else
+		{
+			$query					= $this->db->get_where($table, array('id' => $id));
 
-		//all data retrieving left.
+			if ($query->num_rows() === 1)
+			{
+				foreach ($query->result() as $this){}
+
+				$this->money		=& unserialize($this->money);
+				$this->country		=& $this->current_country($this->location);
+				$states				= $this->config->item('states');
+				$this->timezone		=& $states[$this->location]['timezone'];
+			}
+			else
+			{
+				log_message('error', 'function set_data() in /megapublik/libraries/User.php has not received a valid id');
+				return FALSE;
+			}
+		}
     }
+
+    public function current_country($location)
+	{
+		$query = $this->db->get('countries');
+
+		foreach ($query->result() as $country)
+		{
+			$states = unserialize($country->states);
+			if (in_array($location, $states))
+			{
+				$country	= $country->id;
+				break;
+			}
+		}
+		return $country;
+	}
 }
 /**
  * TO DO:
  *
  * -Functions for each controller for adding properties to the object.
  * -Retrieve data from the database and change properties.
+ * -May be a function for more than one ID in the same page (e.g. profile viewing).
  * ...
  */
 
