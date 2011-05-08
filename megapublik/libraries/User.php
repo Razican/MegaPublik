@@ -11,15 +11,24 @@
 
 class User
 {
-    public function set_data($id = NULL)
-    {
+
+	/**
+	 * Load user data
+	 *
+	 * @access	public
+	 * @param	numeric
+	 * @param	bool
+	 * @return	bool
+	 */
+	public function load_data($id = NULL, $current = TRUE)
+	{
 		$CI							=& get_instance();
 
 		$user_id					= $CI->session->userdata('user_id');
 		$id							= is_null($id) ? $user_id : $id;
 		if ( ! $id)
 		{
-			log_message('error', 'function set_data() in /megapublik/libraries/User.php has not received an id');
+			log_message('error', 'function load_data() in /megapublik/libraries/User.php has not received an id.');
 			return FALSE;
 		}
 		else
@@ -28,11 +37,18 @@ class User
 
 			if ($query->num_rows() === 1)
 			{
-				foreach ($query->result_array() as $user)
+				foreach ($query->result() as $user)
 				{
 					foreach ($user as $key => $value)
 					{
-						$this->$key		= $value;
+						if ($current === TRUE)
+						{
+							$this->$key			= $value;
+						}
+						else
+						{
+							$this->other->$key	= $value;
+						}
 					}
 				}
 
@@ -43,12 +59,53 @@ class User
 			}
 			else
 			{
-				log_message('error', 'function set_data() in /megapublik/libraries/User.php has not received a valid id');
+				log_message('error', 'function load_data() in /megapublik/libraries/User.php has not received a valid id.');
 				return FALSE;
 			}
 		}
     }
 
+	/**
+	 * Set user item
+	 *
+	 * @access	public
+	 * @param	string
+	 * @param	mixed
+	 * @param	string
+	 * @return	bool
+	 */
+	public function set_item($key, $value, $currency = NULL)
+	{
+		$CI							=& get_instance();
+/*
+ * Not posible yet to change money, timezone, location or country.
+
+		if( ! is_null($currency)
+		{
+			$this->$key[$currency]	= $value;
+		}
+
+*/
+		$CI->db->where('id', $this->id);
+		if ($CI->db->update('users', array($key => $value)))
+		{
+			$this->$key					=	$value;
+			return TRUE;
+		}
+		else
+		{
+			log_message('error', 'function set_item() in /megapublik/libraries/User.php has failed to update data.');
+			return FALSE;
+		}
+    }
+
+	/**
+	 * Return current country
+	 *
+	 * @access	public
+	 * @param	integer
+	 * @return	object
+	 */
     public function current_country($location)
 	{
 		$CI							=& get_instance();
@@ -60,24 +117,62 @@ class User
 			$states = unserialize($country->states);
 			if (in_array($location, $states))
 			{
-				$country	= $country->id;
+				$country			= $country->id;
 				break;
 			}
 		}
 		return $country;
 	}
 
+	/**
+	 * Return user time
+	 *
+	 * @access	public
+	 * @return	integer
+	 */
 	public function time()
 	{
 		return now($this->timezone);
+	}
+
+	/**
+	 * Count online users
+	 *
+	 * @access	public
+	 * @return	integer
+	 */
+	public function online()
+	{
+		$CI					=& get_instance();
+		$query				= $CI->db->get_where('sessions', array('last_activity >' => time()-$CI->config->item('sess_time_to_update')));
+
+		return $query->num_rows();
+	}
+
+	/**
+	 * Does user have a company?
+	 *
+	 * @access	public
+	 * @param	integer
+	 * @return	bool
+	 */
+	public function has_company($id = NULL)
+	{
+		$CI					=& get_instance();
+
+		$id					= is_null($id) ? $this->id : $id;
+		$query				= $CI->db->get_where('companies', array('owner_id' => $id));
+
+		$has_company		= $query->num_rows() != 0 ? TRUE : FALSE;
+
+		return $has_company;
 	}
 }
 /**
  * TO DO:
  *
- * -Functions for each controller for adding properties to the object.
- * -Retrieve data from the database and change properties.
- * -May be a function for more than one ID in the same page (e.g. profile viewing).
+ * -Functions for controllers to be able to add properties to the object.
+ * 	and change user properties.
  * ...
  */
 

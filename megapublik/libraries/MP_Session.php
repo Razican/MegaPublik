@@ -14,6 +14,8 @@ class MP_Session extends CI_Session {
   function __construct()
   {
     parent::__construct();
+
+    $this->now = time();
   }
 
   	/**

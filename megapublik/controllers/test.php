@@ -13,8 +13,10 @@ class Test extends CI_Controller {
 
 		$this->load->library('user');
 
-		$this->user->set_data(1);
+		$this->user->load_data(1);
 
+		echo $this->user->online() .'<br />';
+		echo $this->user->has_company() .'<br />';
 		echo $this->user->username .'<br />';
 		echo $this->user->timezone .'<br />';
 		echo date('d/m/Y - H:i:s', $this->user->time()) .'<br />';
