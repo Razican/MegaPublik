@@ -15,7 +15,10 @@ class Test extends CI_Controller {
 
 		$this->user->set_data(1);
 
-		echo $this->user->username;
+		echo $this->user->username .'<br />';
+		echo $this->user->timezone .'<br />';
+		echo date('d/m/Y - H:i:s', $this->user->time()) .'<br />';
+		echo date('d/m/Y - H:i:s', time());
 
 	}
 }

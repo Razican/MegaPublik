@@ -66,6 +66,11 @@ class User
 		}
 		return $country;
 	}
+
+	public function time()
+	{
+		return now($this->timezone);
+	}
 }
 /**
  * TO DO:
