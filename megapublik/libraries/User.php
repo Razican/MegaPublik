@@ -11,13 +11,6 @@
 
 class User
 {
-	public var id;
-	public var username;
-	private var password;
-	public var avatar;
-	public var location;
-	//some variables left.
-
     public function set_data($id = NULL)
     {
 		$CI							=& get_instance();
@@ -31,16 +24,22 @@ class User
 		}
 		else
 		{
-			$query					= $this->db->get_where($table, array('id' => $id));
+			$query					= $CI->db->get_where('users', array('id' => $id));
 
 			if ($query->num_rows() === 1)
 			{
-				foreach ($query->result() as $this){}
+				foreach ($query->result_array() as $user)
+				{
+					foreach ($user as $key => $value)
+					{
+						$this->$key		= $value;
+					}
+				}
 
-				$this->money		=& unserialize($this->money);
-				$this->country		=& $this->current_country($this->location);
-				$states				= $this->config->item('states');
-				$this->timezone		=& $states[$this->location]['timezone'];
+				$this->money		= unserialize($this->money);
+				$this->country		= $this->current_country($this->location);
+				$states				= $CI->config->item('states');
+				$this->timezone		= $states[$this->location]['timezone'];
 			}
 			else
 			{
@@ -52,7 +51,9 @@ class User
 
     public function current_country($location)
 	{
-		$query = $this->db->get('countries');
+		$CI							=& get_instance();
+
+		$query = $CI->db->get('countries');
 
 		foreach ($query->result() as $country)
 		{
