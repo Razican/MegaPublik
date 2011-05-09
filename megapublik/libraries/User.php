@@ -28,7 +28,7 @@ class User
 		$id							= is_null($id) ? $user_id : $id;
 		if ( ! $id)
 		{
-			log_message('error', 'function load_data() in /megapublik/libraries/User.php has not received an id.');
+			log_message('error', 'Function load_data() in /megapublik/libraries/User.php has not received an id.');
 			return FALSE;
 		}
 		else
@@ -59,7 +59,7 @@ class User
 			}
 			else
 			{
-				log_message('error', 'function load_data() in /megapublik/libraries/User.php has not received a valid id.');
+				log_message('error', 'Function load_data() in /megapublik/libraries/User.php has not received a valid id.');
 				return FALSE;
 			}
 		}
@@ -94,7 +94,7 @@ class User
 		}
 		else
 		{
-			log_message('error', 'function set_item() in /megapublik/libraries/User.php has failed to update data.');
+			log_message('error', 'Function set_item() in /megapublik/libraries/User.php has failed to update data.');
 			return FALSE;
 		}
     }
@@ -173,6 +173,7 @@ class User
  *
  * -Functions for controllers to be able to add properties to the object.
  * 	and change user properties.
+ * -We have to fillter all the info.
  * ...
  */
 

@@ -12,22 +12,8 @@
 
 $hook['post_controller_constructor'][]	= array(
 							'class'		=> '',
-							'function'	=> 'timezone',
-							'filename'	=> 'Timezone.php',
-							'filepath'	=> 'hooks'
-						);
-
-$hook['post_controller_constructor'][]	= array(
-							'class'		=> '',
 							'function'	=> 'language',
 							'filename'	=> 'Language.php',
-							'filepath'	=> 'hooks'
-						);
-
-$hook['post_controller']				= array(
-							'class'		=> '',
-							'function'	=> 'timezone',
-							'filename'	=> 'Timezone.php',
 							'filepath'	=> 'hooks'
 						);
 
