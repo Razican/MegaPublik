@@ -54,21 +54,21 @@ $(function(){
 			$('#email_result').html()		=== compare_img	&&
 			state	!= '' && state)
 			{
-				$('#submit').removeAttr('disabled');
+				$('#submit').removeProp('disabled');
 			}
 	}
 	loading				= '<?php echo img($loading); ?>';
 	if($('#country').val() === '')
 	{
-		$('#state').attr('disabled', true);
+		$('#state').prop('disabled', true);
 	}
-	$('#submit').attr('disabled', true);
+	$('#submit').prop('disabled', true);
 
 	$('input').focus(function()
 	{
 		if ($(this).attr('type') != 'submit')
 		{
-			$('#submit').attr('disabled', true);
+			$('#submit').prop('disabled', true);
 		}
 		$('#user_notes').html('');
 		$('#email_notes').html('');
@@ -205,7 +205,7 @@ $(function(){
 				$('#state').append(data);
 			});
 
-			$('#state').removeAttr('disabled');
+			$('#state').removeProp('disabled');
 		}
 
 		validate_form();
