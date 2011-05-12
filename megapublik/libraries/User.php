@@ -28,7 +28,7 @@ class User
 		$id							= is_null($id) ? $user_id : $id;
 		if ( ! $id)
 		{
-			log_message('error', 'Function load_data() in /megapublik/libraries/User.php has not received an id.');
+			$this->logged_in		= FALSE;
 			return FALSE;
 		}
 		else
@@ -43,13 +43,26 @@ class User
 					{
 						if ($current === TRUE)
 						{
-							$this->$key			= $value;
+							$this->$key				= $value;
+							if ($CI->session->userdata('logged_in'))
+							{
+								$this->logged_in	= TRUE;
+							}
 						}
 						else
 						{
-							$this->other->$key	= $value;
+							$this->other->$key		= $value;
 						}
 					}
+				}
+
+				if ($this->experience == 0)
+				{
+					$this->level	= 1;
+				}
+				else
+				{
+					$this->level	=& floor(log($this->experience/$CI->config->item('first_level'),$CI->config->item('exp_multiplier'))+2);
 				}
 
 				$this->money		= unserialize($this->money);

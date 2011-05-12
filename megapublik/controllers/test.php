@@ -6,22 +6,29 @@ class Test extends CI_Controller {
 	{
 		if($this->uri->segment(3))
 		{
-			redirect('test');
+			redirect('/');
 		}
+
+		define('INGAME', TRUE);
 
 		$this->output->enable_profiler($this->config->item('debug'));
 
-		$this->load->library('user');
+		$panel['avatar']	= avatar($this->user, $this->lang->lang());
+		$panel['user']		=& $this->user;
+		$panel['exp_prcnt']	= exp_percent($this->user);
+		$panel['l18n']		= l18n($this->lang->lang());
+		$panel['currency']	= 'NO CURRENCY';
 
-		$this->user->load_data(1);
+		$head['help']		= 'HELP BAR';
+		$head['menu']		= $this->load->view('menu_ingame', '', TRUE);
+		$head['panel']		= $this->load->view('panel', $panel, TRUE);
 
-		echo $this->user->online() .'<br />';
-		echo $this->user->has_company() .'<br />';
-		echo $this->user->username .'<br />';
-		echo $this->user->timezone .'<br />';
-		echo date('d/m/Y - H:i:s', $this->user->time()) .'<br />';
-		echo date('d/m/Y - H:i:s', time());
+		$data['user']		= $this->user;
+		$data['head']		= $this->load->view('head', $head, TRUE);
+		$data['footer']		= 'ONLINE: '.$this->user->online();
+		//$data['country']	= $country;
 
+		$this->load->view('test', $data);
 	}
 }
 
