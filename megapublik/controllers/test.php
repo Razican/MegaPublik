@@ -6,7 +6,7 @@ class Test extends CI_Controller {
 	{
 		if($this->uri->segment(3))
 		{
-			redirect('/');
+			redirect('test');
 		}
 
 		define('INGAME', TRUE);

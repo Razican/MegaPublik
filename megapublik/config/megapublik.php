@@ -23,7 +23,7 @@ $config['exp_multiplier']	= 2;
 |
 */
 
-$config['version']			= 'Pre-Alpha 3 (v0.2.105 : pre-release)';
+$config['version']			= 'Pre-Alpha 3 (v0.2.106 : pre-release)';
 
 
 /* End of file megapublik.php */
