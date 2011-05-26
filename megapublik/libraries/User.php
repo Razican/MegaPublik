@@ -51,7 +51,7 @@ class User
 						}
 						else
 						{
-							$this->other->$key		= $value;
+							$this->$id->$key		= $value;
 						}
 					}
 				}
