@@ -97,6 +97,7 @@ class User
 				if(is_null($currency))
 				{
 					log_message('error', 'Function set_item() in /megapublik/libraries/User.php has failed to update data.');
+					return FALSE;
 					break;
 				}
 
@@ -199,6 +200,11 @@ class User
 		$has_company		= $query->num_rows() != 0 ? TRUE : FALSE;
 
 		return $has_company;
+	}
+
+	public function save_data()
+	{
+
 	}
 }
 /**

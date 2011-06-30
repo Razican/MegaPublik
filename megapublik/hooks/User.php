@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
- * User loading hook
+ * User hook
  *
  * @subpackage	Hooks
  * @author		Razican
@@ -15,6 +15,14 @@ function load_user()
 	$CI			=& get_instance();
 
 	$CI->user->load_data();
+}
+
+function save_user()
+{
+	log_message('debug', 'User saving initialised.');
+	$CI			=& get_instance();
+
+	$CI->user->save_data();
 }
 
 
