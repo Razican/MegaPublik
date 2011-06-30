@@ -11,6 +11,7 @@
 
 class User
 {
+	protected $data_changed	= FALSE;
 
 	/**
 	 * Load user data
@@ -90,25 +91,44 @@ class User
 	public function set_item($key, $value, $currency = NULL)
 	{
 		$CI							=& get_instance();
-/*
- * Not posible yet to change money, timezone, location or country.
+		switch($key)
+		{
+			case 'money':
+				if(is_null($currency))
+				{
+					log_message('error', 'Function set_item() in /megapublik/libraries/User.php has failed to update data.');
+					break;
+				}
 
-		if( ! is_null($currency)
-		{
-			$this->$key[$currency]	= $value;
-		}
+				$this->money[$currency]	= $value;
+				$this->data_changed		= TRUE;
 
-*/
-		$CI->db->where('id', $this->id);
-		if ($CI->db->update('users', array($key => $value)))
-		{
-			$this->$key					=	$value;
-			return TRUE;
-		}
-		else
-		{
-			log_message('error', 'Function set_item() in /megapublik/libraries/User.php has failed to update data.');
-			return FALSE;
+				return TRUE;
+			break;
+			case 'timezone':
+				log_message('error', 'Function set_item() in /megapublik/libraries/User.php has failed to update data.');
+				return FALSE;
+			break;
+			case 'level':
+				log_message('error', 'Function set_item() in /megapublik/libraries/User.php has failed to update data.');
+				return FALSE;
+			break;
+			case 'country':
+				log_message('error', 'Function set_item() in /megapublik/libraries/User.php has failed to update data.');
+				return FALSE;
+			break;
+			case 'location':
+				$states					= $CI->config->item('states');
+				$this->location			= $value;
+				$this->country			= $this->current_country($this->location);
+				$this->timezone			= $states[$this->location]['timezone'];
+				$this->data_changed		= TRUE;
+				return TRUE;
+			break;
+			default:
+				$this->$key					= $value;
+				$this->data_changed			= TRUE;
+				return TRUE;
 		}
     }
 
@@ -184,8 +204,7 @@ class User
 /**
  * TO DO:
  *
- * -Functions for controllers to be able to add properties to the object.
- * 	and change user properties.
+ * -Functions for controllers to save properties.
  * -We have to fillter all the info.
  * ...
  */
