@@ -1,5 +1,11 @@
 <div id="date"><?php echo lang('overal.day').': '.floor((time()-mktime(0, 0, 0, 11, 10, 2009))/86400).'<br />'.lang('overal.time').': '.date('H:i', time()); ?></div>
-<div id="avatar"><?php echo img($avatar); ?></div>
+<div id="avatar">
+	<?php
+		if ($user->avatar === 'default')
+			echo lang('overal.no_avatar');
+		echo avatar($user->avatar, $user->username);
+	?>
+</div>
 <div id="level"><?php echo $user->level; ?></div>
 <div id="experience"><div class="percent_box"><div class="box_percent"  style="width: <?php echo $exp_prcnt; ?>%;"></div></div></div>
 <div class="money">MP: <?php echo number_format(isset($user->money['MP']) ? $user->money['MP'] : 0, 2, $l18n->decimal, $l18n->thousand); ?></div>

@@ -32,6 +32,9 @@ $lang['overal.loading']				= 'Cargando';
 $lang['overal.correct']				= 'Correcto';
 $lang['overal.wrong']				= 'Incorrecto';
 
+//Avatar
+$lang['overal.no_avatar']			= 'Sin Avatar';
+
 
 /* End of file overal_lang.php */
 /* Location: ./megapublik/language/spanish/overal_lang.php */
