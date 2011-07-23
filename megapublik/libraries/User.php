@@ -67,6 +67,9 @@ class User
 				}
 
 				$this->money		= unserialize($this->money);
+
+				foreach($this->money as $currency => $money){ $this->money[$currency]	= $money/100; }
+
 				$this->country		= $this->current_country($this->location);
 				$states				= $CI->config->item('states');
 				$this->timezone		= $states[$this->location]['timezone'];
@@ -204,7 +207,36 @@ class User
 
 	public function save_data()
 	{
+		if ($this->data_changed)
+		{
+			$CI		=& get_instance();
 
+			foreach($this->money as $currency => $money){ $this->money[$currency] = $money*100; }
+
+			$update = array
+			(
+				'money'		=> serialize($this->money),
+				'username'	=> $this->username,
+				'password'	=> $this->password,
+				'email'		=> $this->email,
+			/*	'email'		=> $this->email,
+				'email'		=> $this->email,
+				'email'		=> $this->email,
+				'email'		=> $this->email,
+				'email'		=> $this->email,*/
+			);
+
+			$this->db->where('id', $this->id);
+			$this->db->update('users', $update);
+
+			/*foreach (get_object_vars($this) as $key	=> $value)
+			{
+				switch($key)
+				{
+					case 'mon
+				}
+			}*/
+		}
 	}
 }
 /**

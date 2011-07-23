@@ -13,7 +13,7 @@ class Test extends CI_Controller {
 
 		$this->output->enable_profiler($this->config->item('debug'));
 
-		$panel['avatar']	= avatar($this->user, $this->lang->lang());
+		$panel['avatar']	= avatar($this->user->avatar, $this->user->username);
 		$panel['user']		=& $this->user;
 		$panel['exp_prcnt']	= exp_percent($this->user);
 		$panel['l18n']		= l18n($this->lang->lang());
