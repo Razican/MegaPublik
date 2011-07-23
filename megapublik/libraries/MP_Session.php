@@ -11,12 +11,12 @@
 
 class MP_Session extends CI_Session {
 
-  function __construct()
-  {
-    parent::__construct();
+	function __construct()
+	{
+		parent::__construct();
 
-    $this->now = time();
-  }
+		$this->now = time();
+	}
 
   	/**
 	 * Write the session cookie
