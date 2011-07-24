@@ -11,7 +11,7 @@
 
 class User
 {
-	protected $data_changed	= FALSE;
+	protected $changed_id	= array();
 
 	/**
 	 * Load user data
@@ -57,22 +57,44 @@ class User
 					}
 				}
 
-				if ($this->experience == 0)
+				if ($current === TRUE)
 				{
-					$this->level	= 1;
+					if ($this->experience == 0)
+					{
+						$this->level	= 1;
+					}
+					else
+					{
+						$this->level	=& floor(log($this->experience/$CI->config->item('first_level'),$CI->config->item('exp_multiplier'))+2);
+					}
+
+					$this->money		= unserialize($this->money);
+
+					foreach($this->money as $currency => $money){ $this->money[$currency]	= $money/100; }
+
+					$this->country		= $this->current_country($this->location);
+					$states				= $CI->config->item('states');
+					$this->timezone		= $states[$this->location]['timezone'];
 				}
 				else
 				{
-					$this->level	=& floor(log($this->experience/$CI->config->item('first_level'),$CI->config->item('exp_multiplier'))+2);
+					if ($this->experience == 0)
+					{
+						$this->$id->level	= 1;
+					}
+					else
+					{
+						$this->$id->level	=& floor(log($this->experience/$CI->config->item('first_level'),$CI->config->item('exp_multiplier'))+2);
+					}
+
+					$this->$id->money		= unserialize($this->money);
+
+					foreach($this->$id->money as $currency => $money){ $this->$id->money[$currency]	= $money/100; }
+
+					$this->$id->country		= $this->current_country($this->location);
+					$states					= $CI->config->item('states');
+					$this->$id->timezone	= $states[$this->location]['timezone'];
 				}
-
-				$this->money		= unserialize($this->money);
-
-				foreach($this->money as $currency => $money){ $this->money[$currency]	= $money/100; }
-
-				$this->country		= $this->current_country($this->location);
-				$states				= $CI->config->item('states');
-				$this->timezone		= $states[$this->location]['timezone'];
 			}
 			else
 			{
@@ -85,30 +107,32 @@ class User
 	/**
 	 * Set user item
 	 *
+	 * Should only be used if more than one parameter will be changed
+	 * and only for current user, even if it works for other users, the
+	 * other user must be loaded using
+	 *
+	 * $this->user->load_data($id, FALSE);
+	 *
+	 * so it will consume a huge ammount of memory, which is unnecessary
+	 * when changing only a property or their money. In that last case
+	 * $this->user->add_money() and $this->user->withdraw_money() should
+	 * be used.
+	 *
 	 * @access	public
 	 * @param	string
 	 * @param	mixed
 	 * @param	string
+	 * @param	integer
 	 * @return	bool
 	 */
-	public function set_item($key, $value, $currency = NULL)
+	public function set_item($key, $value, $currency = NULL, $id = NULL)
 	{
-		$CI							=& get_instance();
+		$CI	=& get_instance();
+
+		$id	= is_null($id) ? $this->id : $id;
+
 		switch($key)
 		{
-			case 'money':
-				if(is_null($currency))
-				{
-					log_message('error', 'Function set_item() in /megapublik/libraries/User.php has failed to update data.');
-					return FALSE;
-					break;
-				}
-
-				$this->money[$currency]	= $value;
-				$this->data_changed		= TRUE;
-
-				return TRUE;
-			break;
 			case 'timezone':
 				log_message('error', 'Function set_item() in /megapublik/libraries/User.php has failed to update data.');
 				return FALSE;
@@ -121,17 +145,76 @@ class User
 				log_message('error', 'Function set_item() in /megapublik/libraries/User.php has failed to update data.');
 				return FALSE;
 			break;
+			case 'money':
+				if(is_null($currency))
+				{
+					log_message('error', 'Function set_item() in /megapublik/libraries/User.php has failed to update data.');
+					return FALSE;
+					break;
+				}
+
+				if($id === $this->id)
+				{
+					$this->money[$currency]	= $value;
+				}
+				else if(isset($this->$id))
+				{
+					$this->$id->money[$currency]	= $value;
+				}
+				else
+				{
+					log_message('error', 'Function set_item() in /megapublik/libraries/User.php has failed to update data.');
+					return FALSE;
+					break;
+				}
+
+				if( ! in_array($id, $this->changed_id))
+					$this->changed_id[]			= $id;
+
+				return TRUE;
+			break;
 			case 'location':
-				$states					= $CI->config->item('states');
-				$this->location			= $value;
-				$this->country			= $this->current_country($this->location);
-				$this->timezone			= $states[$this->location]['timezone'];
-				$this->data_changed		= TRUE;
+				if($id === $this->id)
+				{
+					$states					= $CI->config->item('states');
+					$this->location			= $value;
+					$this->country			= $this->current_country($this->location);
+					$this->timezone			= $states[$this->location]['timezone'];
+				}
+				else if(isset($this->$id))
+				{
+					$states					= $CI->config->item('states');
+					$this->$id->location	= $value;
+					$this->$id->country		= $this->current_country($this->$id->location);
+					$this->$id->timezone	= $states[$this->$id->location]['timezone'];
+				}
+				else
+				{
+					log_message('error', 'Function set_item() in /megapublik/libraries/User.php has failed to update data.');
+					return FALSE;
+					break;
+				}
+
+				if( ! in_array($id, $this->changed_id))
+					$this->changed_id[]			= $id;
+
 				return TRUE;
 			break;
 			default:
-				$this->$key					= $value;
-				$this->data_changed			= TRUE;
+				if($id === $this->id)
+					$this->$key					= $value;
+				else if(isset($this->$id))
+					$this->$id->$key			= $value;
+				else
+				{
+					log_message('error', 'Function set_item() in /megapublik/libraries/User.php has failed to update data.');
+					return FALSE;
+					break;
+				}
+
+				if( ! in_array($id, $this->changed_id))
+					$this->changed_id[]			= $id;
+
 				return TRUE;
 		}
     }
@@ -207,35 +290,49 @@ class User
 
 	public function save_data()
 	{
-		if ($this->data_changed)
+		if ( ! empty($this->changed_id))
 		{
 			$CI		=& get_instance();
 
-			foreach($this->money as $currency => $money){ $this->money[$currency] = $money*100; }
-
-			$update = array
-			(
-				'money'		=> serialize($this->money),
-				'username'	=> $this->username,
-				'password'	=> $this->password,
-				'email'		=> $this->email,
-			/*	'email'		=> $this->email,
-				'email'		=> $this->email,
-				'email'		=> $this->email,
-				'email'		=> $this->email,
-				'email'		=> $this->email,*/
-			);
-
-			$this->db->where('id', $this->id);
-			$this->db->update('users', $update);
-
-			/*foreach (get_object_vars($this) as $key	=> $value)
+			foreach ($this->changed_id as $id)
 			{
-				switch($key)
+				if($this->id === $id)
 				{
-					case 'mon
+					foreach($this->money as $currency => $money){ $this->money[$currency] = $money*100; }
+
+					$update = array
+					(
+						'money'		=> serialize($this->money),
+						'username'	=> $this->username,
+						'password'	=> $this->password,
+						'email'		=> $this->email,
+					/*	'email'		=> $this->email,
+						'email'		=> $this->email,
+						'email'		=> $this->email,
+						'email'		=> $this->email,
+						'email'		=> $this->email,*/
+					);
 				}
-			}*/
+				else
+				{
+					foreach($this->$id->money as $currency => $money){ $this->$id->money[$currency] = $money*100; }
+
+					$update = array
+					(
+						'money'		=> serialize($this->$id->money),
+						'username'	=> $this->$id->username,
+						'password'	=> $this->$id->password,
+						'email'		=> $this->$id->email,
+					/*	'email'		=> $this->$id->email,
+						'email'		=> $this->$id->email,
+						'email'		=> $this->$id->email,
+						'email'		=> $this->$id->email,
+						'email'		=> $this->$id->email,*/
+					);
+				}
+				$this->db->where('id', $id);
+				$this->db->update('users', $update);
+			}
 		}
 	}
 }
