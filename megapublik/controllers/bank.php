@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Banco extends Controller {
-function Banco()
+class Bank extends Controller {
+function Bank()
 {
 parent::Controller();
 $this->load->helper('date');
