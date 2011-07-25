@@ -10,6 +10,24 @@ function avatar($avatar, $username)
 	return img($avatar);
 }
 
+function percent($number, $place, $space)
+{
+	if($place === 'a')
+	{
+		$percent = $space ? $number.' %' : $number.'%';
+		return $percent;
+	}
+	else if($place === 'b')
+	{
+		$percent = $space ? '% '.$number : '%'.$number;
+		return $percent;
+	}
+	else
+	{
+		log_message('error', 'function percent() has received bad arguments.');
+	}
+}
+
 function exp_percent($user)
 {
 	global $CFG;
@@ -31,23 +49,34 @@ function exp_percent($user)
 
 function l18n($lang)
 {
-	if(($lang === 'es') OR ($lang === 'fr'))
+	switch($lang)
 	{
-		$l18n->decimal	= ',';
-		$l18n->thousand	= ' ';
-	}
-	else if($lang === 'eu')
-	{
-		$l18n->decimal	= ',';
-		$l18n->thousand	= '.';
-	}
-	else
-	{
-		$l18n->decimal	= '.';
-		$l18n->thousand	= ',';
+		case 'es':
+			$l18n->decimal		= ',';
+			$l18n->thousand		= ' ';
+			$l18n->percent		= 'a';
+			$l18n->percent_spc	= FALSE;
+		break;
+		case 'eu':
+			$l18n->decimal		= ',';
+			$l18n->thousand		= '.';
+			$l18n->percent		= 'b';
+			$l18n->percent_spc	= FALSE;
+		break;
+		case 'fr':
+			$l18n->decimal		= ',';
+			$l18n->thousand		= ' ';
+			$l18n->percent		= 'a';
+			$l18n->percent_spc	= TRUE;
+		break;
+		default:
+			$l18n->decimal		= '.';
+			$l18n->thousand		= ',';
+			$l18n->percent		= 'a';
+			$l18n->percent_spc	= FALSE;
 	}
 
-	return $l18n;
+ 	return $l18n;
 }
 
 function money($money, $currency)

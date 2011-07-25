@@ -7,6 +7,17 @@
  * @author		Razican
  * @category	Libraries
  * @link		http://www.razican.com/
+ *
+ * @todo Cosas por hacer:
+ *		-Functions for controllers to save properties.
+ *		-We have to fillter all the info.
+ *		-$this->user->ban()
+ *		-$this->user->fight()
+ *		-$this->user->register()
+ *		-$this->user->add_money()
+ *		-$this->user->withdraw_money()
+ *		-$this->user->add_medal()
+ *		-$this->user->validate()
  */
 
 class User
@@ -337,20 +348,7 @@ class User
 		}
 	}
 }
-/**
- * TO DO:
- *
- * -Functions for controllers to save properties.
- * -We have to fillter all the info.
- * -$this->user->ban()
- * -$this->user->fight()
- * -$this->user->register()
- * -$this->user->add_money()
- * -$this->user->withdraw_money()
- * -$this->user->add_medal()
- * -$this->user->validate()
- * ...
- */
+
 
 /* End of file User.php */
 /* Location: ./megapublik/libraries/User.php */
