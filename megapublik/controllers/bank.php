@@ -1,93 +1,104 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Bank extends Controller {
-function Bank()
-{
-parent::Controller();
-$this->load->helper('date');
-// $this->load->library('session');
+/**
+ * Bank Class
+ *
+ * @subpackage	Controllers
+ * @author		Raca
+ * @category	Controllers
+ * @link		http://www.racanofeller.com/
+ * @version		0.0.1
+ */
 
-// ZONA CONTROL COOKIE
+class Bank extends CI_Controller {
 
-}
-
-/*	******* AUTOR: RACA
-	******* ESTE SCRIPT ESTA SACADO DE WWW.RACANOFELLER.COM
-
-	******* VERSION 0.01   25-NOV-2010
-	******* OBSERVACIONES: PENDIENTE ADAPTAR EN SU TOTALIDAD
-*/
-
-function index()
-{
-	$usu=$this->session->userdata('username');
-	// leo tabla datos usuario
-	$this->db->where('id',$usu);
-	$this->db->select('id,nick,tipo,ciudad');
-	$consu=$this->db->getwhere('empresa');
-	$filu=$consu->row();
-//	$tipo=$filu->tipo;
-/*	if($tipo<>2) // pendiente borrar
+	public function index($page = NULL)
 	{
-		redirect('http://www.----');
-	} */
-	$datab['nif']=$filu->id;
-	$datab['nik']=$filu->nick;
-	$datab['city']=$filu->ciudad;
-
-	// leo tabla cuenta del banco
-	$this->db->where('id',$usu);
-	$this->db->select('ciudadano,caja,banco,fechaing');
-	$consu=$this->db->getwhere('saldos'); //cojo datos cta banco del usuario
-	$tupla=$consu->row();
-	$datab['cc']=$tupla->ciudadano/100; // el dinero se guarda en formato centimos
-	$datab['caj']=$tupla->caja/100; // para evitar redondeos de float en los calculos
-	$banco=$tupla->banco; // en la vista se /100 ( se pasa de cts a € )
-	$fechaing=$tupla->fechaing;
-	$interes=0;
-	if($banco>0)
-	{
-		$ahora=strtotime("now");	// coge la hora actual
-		$fechaing=$ahora-$fechaing; // tiempo desde el ingreso
-		$fechaing=$fechaing/86400; // 86400 = 1 dia
-		$fechaing=floor($fechaing);
-		if($fechaing>0)				// si hace menos de 1 dia no calcula interes
+		if($this->uri->segment(3))
 		{
-			$intbanco=5; // tipo de interes
-			$diario=(($banco*$intbanco)/100)/7; // interes semanal
-			$interes=$diario*$fechaing;
+			redirect('bank');
 		}
+
+		$this->load->library('pagination');
+		$this->load->library('bank_lib');
+
+		$this->bank_lib->load_banks();
+
+		$config['base_url']		= site_url("bank/");
+		$config['total_rows']	= $this->bank_lib->bank_amount;
+		$config['per_page']		= 20;
+		$config['uri_segment']	= 5;
+		$config['first_link']	= lang('overal.first');
+		$config['last_link']	= lang('overal.last');
+
+		$this->pagination->initialize($config);
+
+		$data['l18n']			= l18n($this->lang->lang());
+		$data['bank_list']		= $this->bank_lib->bank_list;
+		$data['pagination']		= $this->pagination->create_links();
+
+		$this->load->view('bank/list', $data);
+
+/*
+		// leo tabla cuenta del banco
+		$this->db->where('id',$usu);
+		$this->db->select('ciudadano,caja,banco,fechaing');
+		$consu=$this->db->getwhere('saldos'); //cojo datos cta banco del usuario
+		$tupla=$consu->row();
+		$datab['cc']=$tupla->ciudadano/100; // el dinero se guarda en formato centimos
+		$datab['caj']=$tupla->caja/100; // para evitar redondeos de float en los calculos
+		$banco=$tupla->banco; // en la vista se /100 ( se pasa de cts a € )
+		$fechaing=$tupla->fechaing;
+		$interes=0;
+		if($banco>0)
+		{
+			$ahora=strtotime("now");	// coge la hora actual
+			$fechaing=$ahora-$fechaing; // tiempo desde el ingreso
+			$fechaing=$fechaing/86400; // 86400 = 1 dia
+			$fechaing=floor($fechaing);
+			if($fechaing>0)				// si hace menos de 1 dia no calcula interes
+			{
+				$intbanco=5; // tipo de interes
+				$diario=(($banco*$intbanco)/100)/7; // interes semanal
+				$interes=$diario*$fechaing;
+			}
+		}
+		$interes=round($interes,2); // el interes se calcula para la vista
+		$datab['banc']=$banco/100;	// no se pasa al saldo de la cta hasta que que meta o quite dinero
+		$datab['inte']=$interes/100;
+
+	/* ZONA PARA VENTA Y PUESTA EN CIRCULACION DE ACCIONES DE BOLSA
+		 PENDIENTE DE ADAPTAR
+
+		$this->db->where('idnif',$usu);
+		$this->db->select('cartera1,cartera2,cartera3,cartera4,cartera5,cartera6');
+		$consu=$this->db->getwhere('acciones');
+		$tupla=$consu->row();
+		$datab['car1']=$tupla->cartera1;
+		$datab['car2']=$tupla->cartera2;
+		$datab['car3']=$tupla->cartera3;
+		$datab['car4']=$tupla->cartera4;
+		$datab['car5']=$tupla->cartera5;
+		$datab['car6']=$tupla->cartera6;
+		$this->db->where('indice','tiempo');
+		$this->db->select('c,d,e,f,g,h');
+		$consu=$this->db->getwhere('mp');
+		$tupla=$consu->row();
+		$datab['v1']=$tupla->c;
+		$datab['v2']=$tupla->d;
+		$datab['v3']=$tupla->e;
+		$datab['v4']=$tupla->f;
+		$datab['v5']=$tupla->g;
+		$datab['v6']=$tupla->h;
+	*/
+	//	$this->load->view('bancovista',$datab);
 	}
-	$interes=round($interes,2); // el interes se calcula para la vista
-	$datab['banc']=$banco/100;	// no se pasa al saldo de la cta hasta que que meta o quite dinero
-	$datab['inte']=$interes/100;
 
-/* ZONA PARA VENTA Y PUESTA EN CIRCULACION DE ACCIONES DE BOLSA
-	 PENDIENTE DE ADAPTAR
+	public function show($id = NULL)
+	{
 
-	$this->db->where('idnif',$usu);
-	$this->db->select('cartera1,cartera2,cartera3,cartera4,cartera5,cartera6');
-	$consu=$this->db->getwhere('acciones');
-	$tupla=$consu->row();
-	$datab['car1']=$tupla->cartera1;
-	$datab['car2']=$tupla->cartera2;
-	$datab['car3']=$tupla->cartera3;
-	$datab['car4']=$tupla->cartera4;
-	$datab['car5']=$tupla->cartera5;
-	$datab['car6']=$tupla->cartera6;
-	$this->db->where('indice','tiempo');
-	$this->db->select('c,d,e,f,g,h');
-	$consu=$this->db->getwhere('mp');
-	$tupla=$consu->row();
-	$datab['v1']=$tupla->c;
-	$datab['v2']=$tupla->d;
-	$datab['v3']=$tupla->e;
-	$datab['v4']=$tupla->f;
-	$datab['v5']=$tupla->g;
-	$datab['v6']=$tupla->h;
-*/
-	$this->load->view('bancovista',$datab);
-}
+	}
+
 function ingreso() // ingresos de dinero en la cuenta
 {
 	$usu=$this->session->userdata('username');
