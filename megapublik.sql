@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 24-07-2011 a las 23:01:41
+-- Tiempo de generación: 25-07-2011 a las 13:42:51
 -- Versión del servidor: 5.1.54
 -- Versión de PHP: 5.3.5-1ubuntu7.2
 
@@ -156,7 +156,7 @@ INSERT INTO `companies` (`id`, `name`, `owner_id`, `type`, `non_stock`, `stock`,
 --
 -- Estructura de tabla para la tabla `countries`
 --
--- Creación: 21-07-2011 a las 00:50:33
+-- Creación: 25-07-2011 a las 11:45:05
 --
 
 DROP TABLE IF EXISTS `countries`;
@@ -165,6 +165,7 @@ CREATE TABLE IF NOT EXISTS `countries` (
   `name` varchar(30) NOT NULL,
   `currency` char(3) NOT NULL,
   `states` text NOT NULL,
+  `congress` text NOT NULL,
   `president_id` int(11) unsigned NOT NULL,
   `food_income_tax` tinyint(3) unsigned NOT NULL DEFAULT '1',
   `food_import_tax` tinyint(3) unsigned NOT NULL DEFAULT '1',
@@ -205,9 +206,9 @@ CREATE TABLE IF NOT EXISTS `countries` (
 -- Volcar la base de datos para la tabla `countries`
 --
 
-INSERT INTO `countries` (`id`, `name`, `currency`, `states`, `president_id`, `food_income_tax`, `food_import_tax`, `food_vat_tax`, `gift_income_tax`, `gift_import_tax`, `gift_vat_tax`, `weapon_income_tax`, `weapon_import_tax`, `weapon_vat_tax`, `tickets_income_tax`, `tickets_import_tax`, `tickets_vat_tax`, `grain_income_tax`, `grain_import_tax`, `diamonds_income_tax`, `diamonds_import_tax`, `iron_income_tax`, `iron_import_tax`, `oil_income_tax`, `oil_import_tax`, `wood_income_tax`, `wood_import_tax`, `house_income_tax`, `house_import_tax`, `house_vat_tax`, `hospital_income_tax`, `hospital_import_tax`, `hospital_vat_tax`, `defense_system_income_tax`, `defense_system_import_tax`, `defense_system_vat_tax`, `money`) VALUES
-(1, 'España', 'ESP', 'a:19:{i:0;i:1;i:1;i:2;i:2;i:3;i:3;i:4;i:4;i:5;i:5;i:6;i:6;i:7;i:7;i:8;i:8;i:9;i:9;i:10;i:10;i:11;i:11;i:12;i:12;i:13;i:13;i:14;i:14;i:15;i:15;i:16;i:16;i:17;i:17;i:18;i:18;i:19;}', 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'a:1:{s:2:"MP";i:0;}'),
-(2, 'United Kingdom', 'GBP', 'a:12:{i:0;i:20;i:1;i:21;i:2;i:22;i:3;i:23;i:4;i:24;i:5;i:25;i:6;i:26;i:7;i:27;i:8;i:28;i:9;i:29;i:10;i:30;i:11;i:31;}', 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'a:1:{s:2:"MP";i:0;}');
+INSERT INTO `countries` (`id`, `name`, `currency`, `states`, `congress`, `president_id`, `food_income_tax`, `food_import_tax`, `food_vat_tax`, `gift_income_tax`, `gift_import_tax`, `gift_vat_tax`, `weapon_income_tax`, `weapon_import_tax`, `weapon_vat_tax`, `tickets_income_tax`, `tickets_import_tax`, `tickets_vat_tax`, `grain_income_tax`, `grain_import_tax`, `diamonds_income_tax`, `diamonds_import_tax`, `iron_income_tax`, `iron_import_tax`, `oil_income_tax`, `oil_import_tax`, `wood_income_tax`, `wood_import_tax`, `house_income_tax`, `house_import_tax`, `house_vat_tax`, `hospital_income_tax`, `hospital_import_tax`, `hospital_vat_tax`, `defense_system_income_tax`, `defense_system_import_tax`, `defense_system_vat_tax`, `money`) VALUES
+(1, 'España', 'ESP', 'a:19:{i:0;i:1;i:1;i:2;i:2;i:3;i:3;i:4;i:4;i:5;i:5;i:6;i:6;i:7;i:7;i:8;i:8;i:9;i:9;i:10;i:10;i:11;i:11;i:12;i:12;i:13;i:13;i:14;i:14;i:15;i:15;i:16;i:16;i:17;i:17;i:18;i:18;i:19;}', '', 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'a:1:{s:2:"MP";i:0;}'),
+(2, 'United Kingdom', 'GBP', 'a:12:{i:0;i:20;i:1;i:21;i:2;i:22;i:3;i:23;i:4;i:24;i:5;i:25;i:6;i:26;i:7;i:27;i:8;i:28;i:9;i:29;i:10;i:30;i:11;i:31;}', '', 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'a:1:{s:2:"MP";i:0;}');
 
 -- --------------------------------------------------------
 
@@ -543,7 +544,7 @@ CREATE TABLE IF NOT EXISTS `suscriptions` (
 --
 -- Estructura de tabla para la tabla `users`
 --
--- Creación: 24-07-2011 a las 23:01:29
+-- Creación: 25-07-2011 a las 12:01:04
 --
 
 DROP TABLE IF EXISTS `users`;
@@ -561,7 +562,6 @@ CREATE TABLE IF NOT EXISTS `users` (
   `validation_str` char(15) NOT NULL,
   `hard_worker` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `worked_days` tinyint(2) unsigned NOT NULL DEFAULT '0',
-  `congress_member` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `country_president` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `media_mogul` smallint(3) unsigned NOT NULL DEFAULT '0',
   `battle_hero` tinyint(3) unsigned NOT NULL DEFAULT '0',
@@ -569,10 +569,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `super_soldier` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `society_builder` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `invited_people` int(11) unsigned NOT NULL DEFAULT '0',
-  `company_id` int(11) unsigned DEFAULT NULL,
-  `company_internal_level` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `party_id` int(11) unsigned DEFAULT NULL,
-  `party_internal_level` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `house_id` int(11) unsigned DEFAULT NULL,
   `banned` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `fights` bigint(20) unsigned NOT NULL DEFAULT '0',
@@ -588,9 +585,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `strength` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `birthday` int(11) unsigned NOT NULL,
   `forfeit_points` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `congress_nr` tinyint(2) unsigned NOT NULL DEFAULT '0',
   `citizenship` int(11) unsigned NOT NULL,
-  `salary_amount` bigint(20) unsigned NOT NULL DEFAULT '0',
   `money` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
