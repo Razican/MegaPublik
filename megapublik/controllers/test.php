@@ -25,7 +25,7 @@ class Test extends CI_Controller {
 
 		$data['user']		= $this->user;
 		$data['head']		= $this->load->view('head', $head, TRUE);
-		$data['footer']		= 'ONLINE: '.$this->user->online();
+		$data['footer']		= $this->load->view('footer', '', TRUE);
 		//$data['country']	= $country;
 
 		$this->load->view('test', $data);
