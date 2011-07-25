@@ -17,6 +17,20 @@ $hook['post_controller_constructor'][]	= array(
 							'filepath'	=> 'hooks'
 						);
 
+$hook['post_controller_constructor'][]	= array(
+							'class'		=> '',
+							'function'	=> 'load_user',
+							'filename'	=> 'User.php',
+							'filepath'	=> 'hooks'
+						);
+
+$hook['post_controller']				= array(
+							'class'		=> '',
+							'function'	=> 'save_user',
+							'filename'	=> 'User.php',
+							'filepath'	=> 'hooks'
+						);
+
 
 /* End of file hooks.php */
 /* Location: ./megapublik/config/hooks.php */

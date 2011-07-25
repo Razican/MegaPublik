@@ -15,15 +15,15 @@ $config['exp_multiplier']	= 2;
 
 /*
 |--------------------------------------------------------------------------
-| Default Timezone
+| Game Version
 |--------------------------------------------------------------------------
 |
-| This is the default timezone for CLI requests or non-user requests.
-| it can be used any php supported timezones. Ussually will be 'UTC'.
+| This is the default version of the game. It will appearin the admin pages
+| and will be used mainly for tracking.
 |
 */
 
-$config['timezone']			= 'UTC';
+$config['version']			= 'Pre-Alpha 3 (pre-release)';
 
 
 /* End of file megapublik.php */

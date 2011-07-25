@@ -1,4 +1,5 @@
-<?php echo doctype(); ?>
+<?php	header ('Content-type: application/xhtml+xml; charset=utf-8');
+		echo doctype('xhtml+RDFa11'); ?>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->lang->lang(); ?>">
 <head>
 	<title><?php echo lang('overal.title'); ?></title>
@@ -12,11 +13,11 @@
 	<meta name="keywords" content="juego online, online game, estrategia, strategy, simulacion, simulation, megapublik, gratis, free, economia, economy, politica, politics, vida real, real life" />
 	<!-- <link rel="canonical" href="<?php echo base_url(); ?>" /> -->
 	<?php if (defined('AJAX')) : ?>
-	<script charset="utf-8" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+	<script charset="utf-8" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 	<script type="text/javascript" charset="utf-8">
 	<!--
 		if(typeof jQuery==='undefined'){
-			document.write(unescape('<scri'+'pt src="<?php echo base_url(); ?>javascript/jquery-1.6.min.js" type="text/javascript" charset="utf-8"></scri'+'pt>'));
+			document.write(unescape('<scri'+'pt src="<?php echo base_url(); ?>javascript/jquery-1.6.1.min.js" type="text/javascript" charset="utf-8"></scri'+'pt>'));
 		}
 	//-->
 	</script>
@@ -43,7 +44,7 @@
 	<?php if(empty($email)) : ?><div class="menu">
 		<?php echo $menu; ?>
 	</div><?php endif; ?>
-	<?php if (defined('INGAME')) : ?><div class="panel">
-		<?php echo $panel; ?>
-	</div><?php endif; ?>
+		<?php if (defined('INGAME')) : ?><div class="panel">
+			<?php echo $panel; ?>
+		</div><?php endif; ?>
 </div>

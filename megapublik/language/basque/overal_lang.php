@@ -32,6 +32,9 @@ $lang['overal.loading']				= 'Kargatzen';
 $lang['overal.correct']				= 'Zuzena';
 $lang['overal.wrong']				= 'Okerra';
 
+//Avatar
+$lang['overal.no_avatar']			= 'Avatar Gabe';
+
 
 /* End of file overal_lang.php */
 /* Location: ./megapublik/language/basque/overal_lang.php */

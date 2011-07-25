@@ -1,13 +1,13 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-function avatar($user, $lang)
+function avatar($avatar, $username)
 {
 	$avatar		= array(
-		'src' => 'images/avatars/'.$user->avatar.'_'.$lang.'.png',
-		'alt' => 'Avatar - '.$user->username,
-		'title' => 'Avatar - '.$user->username
+		'src' => 'images/avatars/'.$avatar.'.png',
+		'alt' => 'Avatar - '.$username,
+		'title' => 'Avatar - '.$username
 	);
-	return $avatar;
+	return img($avatar);
 }
 
 function exp_percent($user)
