@@ -1,4 +1,4 @@
-		<div class="footer">
+	<div class="footer">
 	<?php if(empty($email)) : ?><div class="online_users"><?php echo lang('overal.total_users').': '.$this->user->online(); ?></div><?php endif; ?>
 			<div class="copyright">
 				<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.<?php echo $this->lang->lang(); ?>"><img alt="<?php echo lang('overal.license_alt'); ?>" src="<?php echo site_url("images/license.png"); ?>" /></a><br />

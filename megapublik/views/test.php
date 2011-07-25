@@ -1,9 +1,8 @@
-<?php
-
-echo serialize(array('MP' => 50000, 'ESP' => 50000)).'<br />';
-
-echo var_dump(unserialize(serialize(array(2.34)))).'<br />';
-
-echo serialize(array(234)).'<br />';
-
-echo time();
+<?php echo $head; ?>
+	<div class="content">
+	Wellcome <?php echo $user->username; ?>!<?php echo br(); ?>
+		Data:<?php echo br(3); ?>
+		Location: <?php echo $user->country; ?><?php echo br(); ?>
+		Time: <?php echo date('d/m/Y - H:i:s', $user->time()); ?>
+	</div>
+<?php echo $footer; ?>

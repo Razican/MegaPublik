@@ -44,7 +44,7 @@
 	<?php if(empty($email)) : ?><div class="menu">
 		<?php echo $menu; ?>
 	</div><?php endif; ?>
-	<?php if (defined('INGAME')) : ?><div class="panel">
-		<?php echo $panel; ?>
-	</div><?php endif; ?>
+		<?php if (defined('INGAME')) : ?><div class="panel">
+			<?php echo $panel; ?>
+		</div><?php endif; ?>
 </div>

@@ -308,8 +308,8 @@ class User
 
 		if( ! in_array($this->id, $this->changed_id))
 		{
-			$update = array('last_IP', $CI->input->ip_address());
-			$this->db->update('users', $update, array('id' => $id));
+			$update = array('last_IP' => $CI->input->ip_address());
+			$CI->db->update('users', $update, array('id' => $this->id));
 		}
 
 		if( ! empty($this->changed_id))
@@ -332,7 +332,7 @@ class User
 					foreach($this->changeable as $key){ $this->update[$key] = $this->$id->$key; }
 				}
 
-				$this->db->update('users', $this->update, array('id' => $id));
+				$CI->db->update('users', $this->update, array('id' => $id));
 			}
 		}
 	}
