@@ -1,0 +1,19 @@
+Cron Bolsa - cada 30 mins - procesar órdenes:
+30 8-19 * * * /usr/bin/php /var/www/megapublik/index.php stock process_orders  >> /var/www/megapublik/megapublik/logs/cron
+0 9-19 * * * /usr/bin/php /var/www/megapublik/index.php stock process_orders  >> /var/www/megapublik/megapublik/logs/cron
+
+O si solo es de lunes a viernes:
+30 8-19 * * 1-5 /usr/bin/php /var/www/megapublik/index.php stock process_orders  >> /var/www/megapublik/megapublik/logs/cron
+0 9-19 * * 1-5 /usr/bin/php /var/www/megapublik/index.php stock process_orders  >> /var/www/megapublik/megapublik/logs/cron
+
+Cron de apertura:
+0 8 * * * /usr/bin/php /var/www/megapublik/index.php stock open_stock  >> /var/www/megapublik/megapublik/logs/cron
+
+O si solo es de lunes a viernes:
+0 8 * * 1-5 /usr/bin/php /var/www/megapublik/index.php stock open_stock  >> /var/www/megapublik/megapublik/logs/cron
+
+Cron de cierre:
+0 20 * * * /usr/bin/php /var/www/megapublik/index.php stock close_stock  >> /var/www/megapublik/megapublik/logs/cron
+
+O si solo es de lunes a viernes:
+0 20 * * 1-5 /usr/bin/php /var/www/megapublik/index.php stock close_stock  >> /var/www/megapublik/megapublik/logs/cron

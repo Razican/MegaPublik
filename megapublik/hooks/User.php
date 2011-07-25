@@ -11,18 +11,24 @@
 
 function load_user()
 {
-	log_message('debug', 'User loading initialised.');
 	$CI			=& get_instance();
+	if( ! $CI->input->is_cli_request())
+	{
+		log_message('debug', 'User loading initialised.');
 
-	$CI->user->load_data();
+		$CI->user->load_data();
+	}
 }
 
 function save_user()
 {
-	log_message('debug', 'User saving initialised.');
 	$CI			=& get_instance();
+	if( !  $CI->input->is_cli_request())
+	{
+		log_message('debug', 'User saving initialised.');
 
-	$CI->user->save_data();
+		$CI->user->save_data();
+	}
 }
 
 
