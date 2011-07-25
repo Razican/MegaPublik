@@ -194,19 +194,19 @@ a
 	margin: 5px;
 }
 
-.market_table
+.table
 {
 	width: 100%;
 	display: table;
 }
 
-.market_row
+.row
 {
 	width: 100%;
 	display: table-row;
 }
 
-.market_cell
+.cell
 {
 	display: table-cell;
 }

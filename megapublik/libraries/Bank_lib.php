@@ -17,7 +17,7 @@ class Bank_lib
 								1 => array('avatar' => 'default', 'name' => 'Banco de pruebas', 'cred_int' => 8.23, 'inv_int' => 2.4, 'clients' => 2340)
 							);
 
-		$this->bank_count	= count($this->bank_list);
+		$this->bank_amount	= count($this->bank_list);
 		return TRUE;
 	}
 }
