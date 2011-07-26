@@ -13,6 +13,8 @@ class Test extends CI_Controller {
 
 		$this->output->enable_profiler($this->config->item('debug'));
 
+		$this->user->reduce_money(2.46, 'MP');
+
 		$panel['avatar']	= avatar($this->user->avatar, $this->user->username);
 		$panel['user']		=& $this->user;
 		$panel['exp_prcnt']	= exp_percent($this->user);
