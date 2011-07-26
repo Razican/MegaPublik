@@ -1,5 +1,5 @@
 <?php echo $head; ?>
-	<div class="log-reg">
+	<div class="outgame-content">
 		<?php echo form_open('registration/register'); ?>
 			<div class="reg-container"><div class="reg-input"><label><?php echo lang('reg.username'); ?></label>: <input id="username" type="text" name="username" /></div><div id="user_result" class="result"></div><div id="user_notes" class="notes"></div></div>
 			<div class="reg-container"><div class="reg-input"><label><?php echo lang('reg.password'); ?></label>: <input id="password" type="password" name="password" /></div><div id="pass_result" class="result"></div></div>

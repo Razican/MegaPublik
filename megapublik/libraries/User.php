@@ -306,7 +306,7 @@ class User
 	{
 		$CI		=& get_instance();
 
-		if( ! in_array($this->id, $this->changed_id))
+		if(isset($this->id) && ( ! in_array($this->id, $this->changed_id)))
 		{
 			$update = array('last_IP' => $CI->input->ip_address());
 			$CI->db->update('users', $update, array('id' => $this->id));

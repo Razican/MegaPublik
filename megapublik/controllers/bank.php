@@ -14,6 +14,24 @@ class Bank extends CI_Controller {
 
 	public function index($page = NULL)
 	{
+		$this->output->enable_profiler($this->config->item('debug'));
+
+		if($this->user->logged_in)
+		{
+			define ('INGAME', TRUE);
+			$this->lang->load('ingame');
+
+			$panel['avatar']		= avatar($this->user->avatar, $this->user->username);
+			$panel['user']			=& $this->user;
+			$panel['exp_prcnt']		= exp_percent($this->user);
+			$panel['l18n']			=& l18n($this->lang->lang());
+			$panel['currency']		= 'CURRENCY';
+
+			$head['panel']			= $this->load->view('panel', $panel, TRUE);
+			$head['menu']			= $this->load->view('menu_ingame', '', TRUE);
+			$head['help']			= lang('ingame.help');
+		}
+
 		if($this->uri->segment(3))
 		{
 			redirect('bank');
@@ -33,7 +51,12 @@ class Bank extends CI_Controller {
 
 		$this->pagination->initialize($config);
 
-		$data['l18n']			= l18n($this->lang->lang());
+		$head['menu']			= isset($head['menu']) ? $head['menu'] : $this->load->view('menu_outgame', '', TRUE);
+
+		$data['user']			=& $this->user;
+		$data['head']			= $this->load->view('head', $head, TRUE);
+		$data['footer']			= $this->load->view('footer', '', TRUE);
+		$data['l18n']			=& l18n($this->lang->lang());
 		$data['bank_list']		= $this->bank_lib->bank_list;
 		$data['pagination']		= $this->pagination->create_links();
 

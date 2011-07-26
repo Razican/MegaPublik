@@ -1,5 +1,5 @@
 <?php echo $head; ?>
-	<div class="log-reg">
+	<div class="outgame-content">
 		<?php echo $message; ?>
 	</div>
 <?php echo $footer; ?>
