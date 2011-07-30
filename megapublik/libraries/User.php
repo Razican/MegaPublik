@@ -36,8 +36,7 @@ class User
 								'manufacturing',
 								'land',
 								'construction',
-								'strench',
-								'money'
+								'strench'
 							);
 
 	/**
@@ -165,34 +164,6 @@ class User
 		{
 			switch($key)
 			{
-				case 'money':
-					if(is_null($currency))
-					{
-						log_message('error', 'Function set_item() in /megapublik/libraries/User.php has failed to update data.');
-						return FALSE;
-						break;
-					}
-
-					if($id === $this->id)
-					{
-						$this->money[$currency]	= $value;
-					}
-					else if(isset($this->$id))
-					{
-						$this->$id->money[$currency]	= $value;
-					}
-					else
-					{
-						log_message('error', 'Function set_item() in /megapublik/libraries/User.php has failed to update data.');
-						return FALSE;
-						break;
-					}
-
-					if( ! in_array($id, $this->changed_id))
-						$this->changed_id[]			= $id;
-
-					return TRUE;
-				break;
 				case 'location':
 					if($id === $this->id)
 					{
@@ -472,12 +443,6 @@ class User
 
 			return TRUE;
 		}
-
-		/*$query				= $CI->db->get_where('companies', array('owner_id' => $id));
-
-		$has_company		= $query->num_rows() != 0 ? TRUE : FALSE;
-
-		return $has_company;*/
 	}
 }
 
