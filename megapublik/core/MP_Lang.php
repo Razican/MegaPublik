@@ -5,8 +5,10 @@
  *
  * @subpackage	Libraries
  * @author		Jérôme Jaglale
+ * @author		Razican
  * @category	Language
  * @link		http://maestric.com/en/doc/php/codeigniter_i18n
+ * @link		http://www.razican.com/
  */
 
 class MP_Lang extends CI_Lang {

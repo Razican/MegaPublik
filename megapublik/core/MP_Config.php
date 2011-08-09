@@ -5,8 +5,10 @@
  *
  * @subpackage	Libraries
  * @author		Jérôme Jaglale
+ * @author		Razican
  * @category	Libraries
  * @link		http://maestric.com/en/doc/php/codeigniter_i18n
+ * @link		http://www.razican.com/
  */
 
 class MP_Config extends CI_Config {
