@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
- * MP_Profiler Class
+ * MP_Output Class
  *
  * @subpackage	Libraries
  * @author		Razican
@@ -160,4 +160,4 @@ class MP_Output extends CI_Output {
 
 
 /* End of file MP_Output.php */
-/* Location: ./megapublik/libraries/MP_Output.php */
+/* Location: ./megapublik/core/MP_Output.php */
