@@ -1,0 +1,12 @@
+*redcar*
+*geany*
+*error_log*
+.DS_Store
+
+megapublik/cache/*
+!megapublik/cache/index.html
+!megapublik/cache/.htaccess
+
+megapublik/logs/*
+!megapublik/logs/index.html
+!megapublik/logs/.htaccess
