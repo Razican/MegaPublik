@@ -1,8 +1,0 @@
-syntax: glob
-*redcar*
-.DS_Store
-*geany*
-
-syntax: regexp
-megapublik/cache/(?!index\.html|\.htaccess)
-megapublik/logs/(?!index\.html)
