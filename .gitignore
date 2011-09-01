@@ -3,10 +3,10 @@
 *error_log*
 .DS_Store
 
-space-settler/cache/*
-!space-settler/cache/index.html
-!space-settler/cache/.htaccess
+megaapublik/cache/*
+!megapublik/cache/index.html
+!megapublik/cache/.htaccess
 
-space-settler/logs/*
-!space-settler/logs/index.html
-!space-settler/logs/.htaccess
+megapublik/logs/*
+!megapublik/logs/index.html
+!megapublik/logs/.htaccess
