@@ -2,6 +2,8 @@
 *geany*
 *error_log*
 .DS_Store
+.settings/*
+.project
 
 megapublik/cache/*
 !megapublik/cache/index.html
