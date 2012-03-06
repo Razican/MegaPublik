@@ -1,11 +1,11 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /*
 | -------------------------------------------------------------------
 | USER AGENT TYPES
 | -------------------------------------------------------------------
-| This file contains four arrays of user agent data. It is used by the
+| This file contains four arrays of user agent data.  It is used by the
 | User Agent Class to help identify browser, platform, robot, and
-| mobile device data. The array keys are used to identify the device
+| mobile device data.  The array keys are used to identify the device
 | and the array values are used to set the actual name of the item.
 |
 */
@@ -175,4 +175,4 @@ $robots = array(
 				);
 
 /* End of file user_agents.php */
-/* Location: ./megapublik/config/user_agents.php */
+/* Location: ./application/config/user_agents.php */
