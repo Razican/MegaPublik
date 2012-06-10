@@ -20,8 +20,8 @@
 
 class User
 {
-	protected $changed_id	= array();
-	protected $changeable	= array(
+	private $changed_id	= array();
+	private $changeable	= array(
 								'username',
 								'password',
 								'email',
@@ -298,7 +298,7 @@ class User
 	public function online()
 	{
 		$CI					=& get_instance();
-		$query				= $CI->db->get_where('sessions', array('last_activity >' => time()-$CI->config->item('sess_time_to_update')));
+		$query				= $CI->db->get_where('sessions', array('last_activity >' => now()-$CI->config->item('sess_time_to_update')));
 
 		return $query->num_rows();
 	}
