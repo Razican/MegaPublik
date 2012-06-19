@@ -11,7 +11,7 @@ class Stock extends CI_Controller {
 	{
 		if($this->input->is_cli_request())
 		{
-			echo 'Todas las órdenes anteriores a las '.date('H:i', time()-1800).' han sido procesadas el '.date(DATE_RFC822, time()).'.'.PHP_EOL;
+			echo 'Todas las órdenes anteriores a las '.date('H:i', now()-1800).' han sido procesadas el '.date(DATE_RFC822, time()).'.'.PHP_EOL;
 		}
 		else
 		{
@@ -24,7 +24,7 @@ class Stock extends CI_Controller {
 	{
 		if($this->input->is_cli_request())
 		{
-			echo 'Se ha abierto la bolsa el '.date(DATE_RFC822, time()).'.'.PHP_EOL;
+			echo 'Se ha abierto la bolsa el '.date(DATE_RFC822, now()).'.'.PHP_EOL;
 		}
 		else
 		{
@@ -37,7 +37,7 @@ class Stock extends CI_Controller {
 	{
 		if($this->input->is_cli_request())
 		{
-			echo 'Se ha cerrado la bolsa el '.date(DATE_RFC822, time()).'.'.PHP_EOL;
+			echo 'Se ha cerrado la bolsa el '.date(DATE_RFC822, now()).'.'.PHP_EOL;
 		}
 		else
 		{
