@@ -35,7 +35,7 @@ class Market extends CI_Controller {
 			$head['panel']		= $this->load->view('panel', $panel, TRUE);
 			$head['help']		= lang('ingame.help');
 			$head['menu']		= $this->load->view('menu_ingame', '', TRUE);
-			$head['script']		= $this->load->view('market/market_ajax', $script, TRUE);
+			$head['script']		= $this->load->script('market', $script);
 
 			$data['head']		= $this->load->view('head', $head, TRUE);
 			$data['footer']		= $this->load->view('footer', '', TRUE);

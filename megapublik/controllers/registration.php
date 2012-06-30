@@ -26,7 +26,7 @@ class Registration extends CI_Controller {
 		$script['comp_img']	= reg_img('correct', lang('overal.correct'), FALSE);
 		$script['loading']	= reg_img('loading', lang('overal.loading'));
 
-		$head['script']		= $this->load->view('registration/registration_ajax', $script, TRUE);
+		$head['script']		= $this->load->script('registration', $script);
 		$head['menu']		= $this->load->view('menu_outgame', '', TRUE);
 
 		$data['countries']	= $this->registration_m->countries();
@@ -216,5 +216,5 @@ class Registration extends CI_Controller {
 }
 
 
-/* End of file register.php */
-/* Location: ./megapublik/controllers/register.php */
+/* End of file  registration.php */
+/* Location: ./megapublik/controllers/registration.php */

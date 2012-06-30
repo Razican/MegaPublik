@@ -76,7 +76,7 @@ $(function(){
 
 	$('input').bind('blur keyup', function()
 	{
-		var token		= $('input[name=<?php echo $this->config->item('csrf_token_name'); ?>]').val(),
+		var token		= $('input[name=<?php echo config_item('csrf_token_name'); ?>]').val(),
 			name		= $(this).attr('name'),
 			value		= $(this).val(),
 			correct_img	= '<?php echo img($correct); ?>',
@@ -87,7 +87,7 @@ $(function(){
 			case 'username':
 				$('#user_notes').html(loading);
 
-				$.post("<?php echo site_url('registration/request'); ?>", { <?php echo $this->config->item('csrf_token_name'); ?>: token, name: name, value: value }, function(data)
+				$.post("<?php echo site_url('registration/request'); ?>", { <?php echo config_item('csrf_token_name'); ?>: token, name: name, value: value }, function(data)
 				{
 					if (data != correct_img)
 					{
@@ -165,7 +165,7 @@ $(function(){
 
 				if(pattern.test(value) && value != '')
 				{
-					$.post("<?php echo site_url('registration/request'); ?>", { <?php echo $this->config->item('csrf_token_name'); ?>: token, name: name, value: value }, function(data)
+					$.post("<?php echo site_url('registration/request'); ?>", { <?php echo config_item('csrf_token_name'); ?>: token, name: name, value: value }, function(data)
 					{
 						if (data != correct_img)
 						{
@@ -194,13 +194,13 @@ $(function(){
 	{
 		//$('#state_selector').html(loading);
 
-		var token		= $('input[name=<?php echo $this->config->item('csrf_token_name'); ?>]').val(),
+		var token		= $('input[name=<?php echo config_item('csrf_token_name'); ?>]').val(),
 			name		= 'country',
 			value		= $(this).val();
 
 		if (value === '1' || value === '2')
 		{
-			$.post("<?php echo site_url('registration/request'); ?>", { <?php echo $this->config->item('csrf_token_name'); ?>: token, name: name, value: value }, function(data)
+			$.post("<?php echo site_url('registration/request'); ?>", { <?php echo config_item('csrf_token_name'); ?>: token, name: name, value: value }, function(data)
 			{
 				$('#state').append(data);
 			});
