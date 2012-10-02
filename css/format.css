@@ -1,5 +1,5 @@
-body{background:url("../images/background.jpg") no-repeat top right;margin:0px;width:100%;}
-img{border-width:0;}
+body{background:url("../images/background.jpg") no-repeat top right;margin:0;}
+nav.language{float:right;background-color:blue;padding:0.25em;}nav.language a{margin:0.1em;}
 .footer{clear:both;background-color:aqua;opacity:0.75;text-align:center;padding:10px;}
 h1{color:gray;text-decoration:underline;margin:20px;}
 .log-reg{background-color:red;opacity:0.75;padding:10px;display:table;width:100%;}

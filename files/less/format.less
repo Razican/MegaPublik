@@ -1,13 +1,25 @@
+@body_bg:				url("../images/background.jpg") no-repeat top right;
+
+
 body
 {
-	background: url("../images/background.jpg") no-repeat top right;
-	margin: 0px;
-	width: 100%;
+	background:				@body_bg;
+	margin:					0;
 }
 
-img
+nav
 {
-	border-width:0;
+	&.language
+	{
+		float:				right;
+		background-color:	blue;
+		padding:			0.25em;
+
+		a
+		{
+			margin:			0.1em;
+		}
+	}
 }
 
 .footer
