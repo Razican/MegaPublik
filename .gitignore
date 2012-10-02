@@ -4,6 +4,8 @@
 .DS_Store
 .settings/*
 .project
+*.sublime-*
+node_modules
 
 megapublik/cache/*
 !megapublik/cache/index.html
