@@ -29,7 +29,7 @@ $config['smtp_host']	= 'ssl://smtp.googlemail.com';
 | The username for the SMTP host for sending email.
 |
 */
-$config['smtp_user']	= 'admin@megapublik.com';
+$config['smtp_user']	= '';
 
 /*
 |--------------------------------------------------------------------------
@@ -40,7 +40,7 @@ $config['smtp_user']	= 'admin@megapublik.com';
 | leave it blank: '';
 |
 */
-$config['smtp_pass']	= 'verysecretpass';
+$config['smtp_pass']	= '';
 
 /*
 |--------------------------------------------------------------------------

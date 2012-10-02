@@ -1,5 +1,4 @@
-<?php	header ('Content-type: application/xhtml+xml; charset=utf-8');
-		echo doctype('xhtml+RDFa11'); ?>
+<?php	echo doctype('html5'); ?>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->lang->lang(); ?>">
 <head>
 	<title><?php echo lang('overal.title'); ?></title>

@@ -11,7 +11,7 @@
 */
 $config['num_links']		= 2;
 
-$config['full_tag_open']	= '<div id="pagination">';
+$config['full_tag_open']	= '<nav class="pagination">';
 $config['full_tag_close']	= '</div>';
 
 $config['next_link']		= '&gt;';
@@ -19,8 +19,6 @@ $config['prev_link']		= '&lt;';
 
 $config['cur_tag_open']		= '<b>';
 $config['cur_tag_close']	= '</b>';
-
-$config['anchor_class']		= 'pagination';
 
 
 /* End of file pagination.php */

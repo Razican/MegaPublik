@@ -1,4 +1,29 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+/**
+ * CodeIgniter
+ *
+ * An open source application development framework for PHP 5.2.4 or newer
+ *
+ * NOTICE OF LICENSE
+ *
+ * Licensed under the Academic Free License version 3.0
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0) that is
+ * bundled with this package in the files license_afl.txt / license_afl.rst.
+ * It is also available through the world wide web at this URL:
+ * http://opensource.org/licenses/AFL-3.0
+ * If you did not receive a copy of the license and are unable to obtain it
+ * through the world wide web, please send an email to
+ * licensing@ellislab.com so we can send you a copy immediately.
+ *
+ * @package		CodeIgniter
+ * @author		EllisLab Dev Team
+ * @copyright	Copyright (c) 2008 - 2012, EllisLab, Inc. (http://ellislab.com/)
+ * @license		http://opensource.org/licenses/AFL-3.0 Academic Free License (AFL 3.0)
+ * @link		http://codeigniter.com
+ * @since		Version 1.0
+ * @filesource
+ */
 
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +59,7 @@ $config['index_page'] = '';
 |--------------------------------------------------------------------------
 |
 | This item determines which server global should be used to retrieve the
-| URI string. The default setting of 'AUTO' works for most servers.
+| URI string.  The default setting of 'AUTO' works for most servers.
 | If your links do not seem to work, try one of the other delicious flavors:
 |
 | 'AUTO'			Default - auto detects
@@ -79,6 +104,8 @@ $config['language']	= 'spanish';
 | This determines which character set is used by default in various methods
 | that require a character set to be provided.
 |
+| See http://php.net/htmlspecialchars for a list of supported charsets.
+|
 */
 $config['charset'] = 'UTF-8';
 
@@ -88,7 +115,7 @@ $config['charset'] = 'UTF-8';
 |--------------------------------------------------------------------------
 |
 | If you would like to use the 'hooks' feature you must enable it by
-| setting this variable to TRUE (boolean). See the user guide for details.
+| setting this variable to TRUE (boolean).  See the user guide for details.
 |
 */
 $config['enable_hooks'] = TRUE;
@@ -100,7 +127,7 @@ $config['enable_hooks'] = TRUE;
 |--------------------------------------------------------------------------
 |
 | This item allows you to set the filename/classname prefix when extending
-| native libraries. For more information please see the user guide:
+| native libraries.  For more information please see the user guide:
 |
 | http://codeigniter.com/user_guide/general/core_classes.html
 | http://codeigniter.com/user_guide/general/creating_libraries.html
@@ -115,11 +142,11 @@ $config['subclass_prefix'] = 'MP_';
 |--------------------------------------------------------------------------
 |
 | This lets you specify with a regular expression which characters are permitted
-| within your URLs. When someone tries to submit a URL with disallowed
+| within your URLs.  When someone tries to submit a URL with disallowed
 | characters they will get a warning message.
 |
 | As a security measure you are STRONGLY encouraged to restrict URLs to
-| as few characters as possible. By default only these are allowed: a-z 0-9~%.:_-
+| as few characters as possible.  By default only these are allowed: a-z 0-9~%.:_-
 |
 | Leave blank to allow all characters -- but only if you are insane.
 |
@@ -137,7 +164,7 @@ $config['permitted_uri_chars'] = 'a-z 0-9~%.:_\-';
 | By default CodeIgniter uses search-engine friendly segment based URLs:
 | example.com/who/what/where/
 |
-| By default CodeIgniter enables access to the $_GET array. If for some
+| By default CodeIgniter enables access to the $_GET array.  If for some
 | reason you would like to disable it, set 'allow_get_array' to FALSE.
 |
 | You can optionally enable standard query string based URLs:
@@ -176,6 +203,10 @@ $config['directory_trigger']	= 'd'; // experimental not currently in use
 |	3 = Informational Messages
 |	4 = All Messages
 |
+| You can also pass in a array with threshold levels to show individual error types
+|
+| 	array(2) = Debug Messages, without Error Messages
+|
 | For a live site you'll usually only enable Errors (1) to be logged otherwise
 | your log files will fill up very fast.
 |
@@ -188,7 +219,7 @@ $config['log_threshold'] = 4;
 |--------------------------------------------------------------------------
 |
 | Leave this BLANK unless you would like to set something other than the default
-| megapublik/logs/ folder. Use a full server path with trailing slash.
+| application/logs/ folder. Use a full server path with trailing slash.
 |
 */
 $config['log_path'] = '';
@@ -210,7 +241,7 @@ $config['log_date_format'] = 'd-m-Y H:i:s';
 |--------------------------------------------------------------------------
 |
 | Leave this BLANK unless you would like to set something other than the default
-| system/cache/ folder. Use a full server path with trailing slash.
+| system/cache/ folder.  Use a full server path with trailing slash.
 |
 */
 $config['cache_path'] = '';
@@ -221,21 +252,27 @@ $config['cache_path'] = '';
 |--------------------------------------------------------------------------
 |
 | If you use the Encryption class or the Session class you
-| MUST set an encryption key. See the user guide for info.
+| MUST set an encryption key.  See the user guide for info.
+|
+| http://codeigniter.com/user_guide/libraries/encryption.html
+| http://codeigniter.com/user_guide/libraries/sessions.html
 |
 */
-$config['encryption_key'] = 'bdc45mXM8jFIBW8Y6w0qJatGUBfPsEXi';
+$config['encryption_key'] = '7XTG60JBj0X56uw1M9kb2jPS1Jn9yE6g';
 
 /*
 |--------------------------------------------------------------------------
 | Session Variables
 |--------------------------------------------------------------------------
 |
+| 'sess_driver'				= the driver to load: cookie (Classic), native (PHP sessions),
+|	or your custom driver name
+| 'sess_valid_drivers'		= additional valid drivers which may be loaded
 | 'sess_cookie_name'		= the name you want for the cookie
 | 'sess_expiration'			= the number of SECONDS you want the session to last.
-| by default sessions last 7200 seconds (two hours). Set to zero for no expiration.
+|   by default sessions last 7200 seconds (two hours).  Set to zero for no expiration.
 | 'sess_expire_on_close'	= Whether to cause the session to expire automatically
-| when the browser window is closed
+|   when the browser window is closed
 | 'sess_encrypt_cookie'		= Whether to encrypt the cookie
 | 'sess_use_database'		= Whether to save the session data to a database
 | 'sess_table_name'			= The name of the session database table
@@ -244,13 +281,15 @@ $config['encryption_key'] = 'bdc45mXM8jFIBW8Y6w0qJatGUBfPsEXi';
 | 'sess_time_to_update'		= how many seconds between CI refreshing Session Information
 |
 */
-$config['sess_cookie_name']		= 'MP_session';
+$config['sess_driver']			= 'cookie';
+$config['sess_valid_drivers']	= array();
+$config['sess_cookie_name']		= 'mp_session';
 $config['sess_expiration']		= 604800; //60*60*24*7
 $config['sess_expire_on_close']	= FALSE;
 $config['sess_encrypt_cookie']	= TRUE;
 $config['sess_use_database']	= TRUE;
 $config['sess_table_name']		= 'sessions';
-$config['sess_match_ip']		= TRUE;
+$config['sess_match_ip']		= FALSE;
 $config['sess_match_useragent']	= TRUE;
 $config['sess_time_to_update']	= 900; //60*15
 
@@ -261,14 +300,16 @@ $config['sess_time_to_update']	= 900; //60*15
 |
 | 'cookie_prefix' = Set a prefix if you need to avoid collisions
 | 'cookie_domain' = Set to .your-domain.com for site-wide cookies
-| 'cookie_path' = Typically will be a forward slash
-| 'cookie_secure' = Cookies will only be set if a secure HTTPS connection exists.
+| 'cookie_path'   =  Typically will be a forward slash
+| 'cookie_secure' =  Cookies will only be set if a secure HTTPS connection exists.
+| 'cookie_httponly' = Cookie will only be accessible via HTTP(S) (no javascript)
 |
 */
-$config['cookie_prefix']	= "";
-$config['cookie_domain']	= "127.0.0.1";
-$config['cookie_path']		= "/megapublik";
+$config['cookie_prefix']	= '';
+$config['cookie_domain']	= '127.0.0.1';
+$config['cookie_path']		= '/megapublik';
 $config['cookie_secure']	= FALSE;
+$config['cookie_httponly'] 	= FALSE;
 
 /*
 |--------------------------------------------------------------------------
@@ -292,43 +333,59 @@ $config['global_xss_filtering'] = TRUE;
 | 'csrf_token_name' = The token name
 | 'csrf_cookie_name' = The cookie name
 | 'csrf_expire' = The number in seconds the token should expire.
+| 'csrf_regenerate' = Regenerate token on every submission
+| 'csrf_exclude_uris' = Array of URIs which ignore CSRF checks
 */
-$config['csrf_protection']	= TRUE;
-$config['csrf_token_name']	= 'MP_csrf';
-$config['csrf_cookie_name']	= 'MP_csrf';
-$config['csrf_expire']		= 7200; //60*60*2
+$config['csrf_protection']		= TRUE;
+$config['csrf_token_name']		= 'MP_csrf_token';
+$config['csrf_cookie_name']		= 'MP_csrf_cookie';
+$config['csrf_expire']			= 7200; //60*60*2
+$config['csrf_regenerate']		= TRUE;
+$config['csrf_exclude_uris']	= array();
 
 /*
 |--------------------------------------------------------------------------
 | Output Compression
 |--------------------------------------------------------------------------
 |
-| Enables Gzip output compression for faster page loads. When enabled,
+| Enables Gzip output compression for faster page loads.  When enabled,
 | the output class will test whether your server supports Gzip.
 | Even if it does, however, not all browsers support compression
 | so enable only if you are reasonably sure your visitors can handle it.
 |
-| VERY IMPORTANT: If you are getting a blank page when compression is enabled it
+| VERY IMPORTANT:  If you are getting a blank page when compression is enabled it
 | means you are prematurely outputting something to your browser. It could
-| even be a line of whitespace at the end of one of your scripts. For
+| even be a line of whitespace at the end of one of your scripts.  For
 | compression to work, nothing can be sent before the output buffer is called
-| by the output class. Do not 'echo' any values with compression enabled.
+| by the output class.  Do not 'echo' any values with compression enabled.
 |
 */
 $config['compress_output'] = FALSE;
 
 /*
 |--------------------------------------------------------------------------
+| Minify
+|--------------------------------------------------------------------------
+|
+| Removes extra characters (usually unnecessary spaces) from your
+| output for faster page load speeds.  Makes your outputted HTML source
+| code less readable.
+|
+*/
+$config['minify_output'] = TRUE;
+
+/*
+|--------------------------------------------------------------------------
 | Master Time Reference
 |--------------------------------------------------------------------------
 |
-| Options are 'local' or 'gmt'. This pref tells the system whether to use
-| your server's local time as the master 'now' reference, or convert it to
-| GMT. See the 'date helper' page of the user guide for information
-| regarding date handling.
+| Options are 'local' or any PHP supported timezone. This preference tells
+| the system whether to use your server's local time as the master 'now'
+| reference, or convert it to the configured one timezone. See the 'date
+| helper' page of the user guide for information regarding date handling.
 |
 */
-$config['timezone'] = 'UTC';
+$config['time_reference'] = 'UTC';
 
 
 /*
@@ -338,7 +395,7 @@ $config['timezone'] = 'UTC';
 |
 | If your PHP installation does not have short tag support enabled CI
 | can rewrite the tags on-the-fly, enabling you to utilize that syntax
-| in your view files. Options are TRUE or FALSE (boolean)
+| in your view files.  Options are TRUE or FALSE (boolean)
 |
 */
 $config['rewrite_short_tags'] = FALSE;
@@ -356,6 +413,7 @@ $config['rewrite_short_tags'] = FALSE;
 |
 */
 $config['proxy_ips'] = '';
+
 
 
 /* End of file config.php */
