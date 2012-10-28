@@ -32,7 +32,7 @@ Class Login_m extends CI_Model
 
 		if($query->num_rows() > 0)
 		{
-			foreach ($query->result() as $user){}
+			foreach ($query->result() as $user);
 			return $user;
 		}
 	}

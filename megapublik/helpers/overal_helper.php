@@ -28,7 +28,7 @@ function percent($number, $place, $space)
 	}
 }
 
-function exp_percent($user)
+function exp_percent(&$user)
 {
 	global $CFG;
 	if ($user->level == 1)
@@ -169,6 +169,19 @@ function loading($alt, $size = 'big')
 function load_script($script)
 {
 	return '<script charset="UTF-8" type="text/javascript" src="'.site_url('js/'.$script.'.min.js').'"></script>';
+}
+
+/**
+ * Count online users
+ *
+ * @return	integer
+ */
+function online_users()
+{
+	$CI		=& get_instance();
+	$query	= $CI->db->get_where('sessions', array('last_activity >' => now()-$CI->config->item('sess_time_to_update')));
+
+	return $query->num_rows();
 }
 
 

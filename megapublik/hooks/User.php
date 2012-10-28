@@ -11,10 +11,13 @@
 
 function load_user()
 {
-	log_message('debug', 'User loading initialised.');
-	$CI			=& get_instance();
-
-	//$CI->user->load_data();
+	$CI	=& get_instance();
+	if ($CI->session->userdata('logged_in'))
+	{
+		log_message('debug', 'User loading initialised.');
+		$CI->load->entity('user');
+		$CI->user = new User();
+	}
 }
 
 function save_user()

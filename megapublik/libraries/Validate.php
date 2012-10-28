@@ -28,7 +28,7 @@ class Validate
 	{
 		$CI =& get_instance();
 
-		$CI->db->where(array('username' => $username));
+		$CI->db->where(array('username' => strtolower($username)));
 		$query = $CI->db->get('users');
 
 		return $query->num_rows() === 0;
@@ -76,7 +76,14 @@ class Validate
 
 	public function ip_address($ip)
 	{
-		//TODO multiaccounting
+		$CI =& get_instance();
+
+		$CI->db->where('last_IP', $CI->input->ip_address());
+		$CI->db->or_where('reg_IP', $CI->input->ip_address());
+
+		$query = $CI->db->get('users');
+
+		return $query->num_rows() === 0;
 	}
 
 	public function username($username)
@@ -87,6 +94,32 @@ class Validate
 	public function email($email)
 	{
 		return $this->_validate_email($email);
+	}
+
+	public function validation_str($string)
+	{
+		$CI =& get_instance();
+
+		$query	= $CI->db->get_where('users', array('validation_str' => $string));
+
+		if ($query->num_rows() === 0)
+		{
+			return FALSE;
+		}
+		else
+		{
+			foreach($query->result() as $user);
+			if ($user->validated == 0)
+			{
+				$CI->db->where('id', $user->id);
+				$CI->db->update('users', array('validated' => '1'));
+				return TRUE;
+			}
+			else
+			{
+				return FALSE;
+			}
+		}
 	}
 }
 

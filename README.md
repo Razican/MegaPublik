@@ -6,7 +6,7 @@ Cosas por hacer
 * Media queries para mejorar la representación en pantallas pequeñas.
 * Poner en el desplegable de lenguaje también las banderas de los países.
 * Calculadora de seguridad de contraseña en el registro.
-* Adaptación al hook de carga del usuario.
+* Nuevo sistema de "remember me".
 
 Páginas de Error
 ================

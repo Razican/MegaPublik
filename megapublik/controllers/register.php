@@ -48,16 +48,6 @@ class Register extends CI_Controller {
 		$this->load->helper('email');
 		$this->load->library('validate');
 
-		$data = array(
-						'username'	=> $this->input->post('username'),
-						'password'	=> $this->input->post('password'),
-						'passconf'	=> $this->input->post('passconf'),
-						'email'		=> $this->input->post('email'),
-						'country'	=> $this->input->post('country'),
-						'state'		=> $this->input->post('state')
-					);
-		$validation = $this->validate->register($data);
-
 		if (( ! $this->input->post('username'))	OR
 			( ! $this->input->post('password'))	OR
 			( ! $this->input->post('passconf'))	OR
@@ -105,7 +95,8 @@ class Register extends CI_Controller {
 	 		}
 
 			$user_data = array(
-				'username'			=> $this->input->post('username'),
+				'username'			=> strtolower($this->input->post('username')),
+				'name'				=> $this->input->post('username'),
 				'password'			=> sha1($this->input->post('password')),
 				'email'				=> $this->input->post('email'),
 				'reg_IP'			=> $this->input->ip_address(),
@@ -136,9 +127,9 @@ class Register extends CI_Controller {
 
 			if ( ! $this->email->send())
 			{
-				$this->validate($validation_str);
+				$this->validate($validation_str, TRUE);
 				log_message('error', 'Email could not be sended');
-				$data['message']	= br(1).str_replace('%password%', $password, lang('reg.send_error'));
+				$data['message']	= br(1).str_replace('%password%', $this->input->post('password'), lang('reg.send_error'));
 			}
 			else
 			{
@@ -153,7 +144,7 @@ class Register extends CI_Controller {
 		}
 	}
 
-	public function validate($validation_str = '')
+	public function validate($validation_str = '', $register = FALSE)
 	{
 		$this->output->enable_profiler($this->config->item('debug'));
 
@@ -164,7 +155,7 @@ class Register extends CI_Controller {
 
 		$this->load->library('validate');
 
-		if($this->validate->val_str($validation_str))
+		if($this->validate->validation_str($validation_str))
 		{
 			$this->lang->load('register');
 
@@ -173,7 +164,7 @@ class Register extends CI_Controller {
 			$data['head']		= $this->load->view('head', $head, TRUE);
 			$data['footer']		= $this->load->view('footer', '', TRUE);
 
-			$this->load->view('registration/validate', $data);
+			if ( ! $register) $this->load->view('registration/validation', $data);
 		}
 		else
 		{
