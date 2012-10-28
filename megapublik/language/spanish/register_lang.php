@@ -19,6 +19,7 @@ $lang['reg.here']			= 'aquí';
 $lang['reg.strenght']		= 'Fortaleza de la contraseña: (Usa una contraseña de al menos seis caracteres, con números y letras, distinta al nombre de usuario)';
 $lang['reg.too_email']		= 'Ya hay otro usuario usando ese email.';
 $lang['reg.too_user']		= 'El usuario ya existe.';
+$lang['reg.send_error']		= 'Ha ocurrido un error al enviar el email, esta es tu contraseña: %password%';
 
 
 /* End of file registration_lang.php */

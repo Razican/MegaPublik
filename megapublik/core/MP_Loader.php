@@ -21,6 +21,11 @@ class MP_Loader extends CI_Loader {
 		return $this->_ci_load(array('_ci_view' => $skin.$view, '_ci_vars' => $this->_ci_object_to_array($vars), '_ci_return' => $return));
 
 	}
+
+	function entity($entity)
+	{
+		return include_once(APPPATH.'entities/'.ucfirst($entity).'.php');
+	}
 }
 
 

@@ -46,46 +46,57 @@ class Register extends CI_Controller {
 		}
 
 		$this->load->helper('email');
-		$this->load->model('registration_m');
+		$this->load->library('validate');
+
+		$data = array(
+						'username'	=> $this->input->post('username'),
+						'password'	=> $this->input->post('password'),
+						'passconf'	=> $this->input->post('passconf'),
+						'email'		=> $this->input->post('email'),
+						'country'	=> $this->input->post('country'),
+						'state'		=> $this->input->post('state')
+					);
+		$validation = $this->validate->register($data);
 
 		if (( ! $this->input->post('username'))	OR
 			( ! $this->input->post('password'))	OR
 			( ! $this->input->post('passconf'))	OR
 			( ! $this->input->post('email'))	OR
-			( ! $this->input->post('country'))	)
+			( ! $this->input->post('country'))	OR
+			( ! $this->input->post('state')))
 		{
-			log_message('error', 'User with IP '.$this->input->ip_address().' has tried to hack JQuery at the registration.');
+			log_message('info', 'User with IP '.$this->input->ip_address().' has tried to hack JQuery at the registration.');
 			redirect('error/number/6');
 		}
-		else if ($this->input->post('password') != $this->input->post('passconf'))
+		elseif ($this->input->post('password') !== $this->input->post('passconf'))
 		{
-			log_message('error', 'User with IP '.$this->input->ip_address().' has tried to hack JQuery at the registration.');
+			log_message('info', 'User with IP '.$this->input->ip_address().' has tried to hack JQuery at the registration.');
 			redirect('error/number/7');
 		}
-		else if ( ! valid_email($this->input->post('email')))
+		elseif ( ! valid_email($this->input->post('email')))
 		{
-			log_message('error', 'User with IP '.$this->input->ip_address().' has tried to hack JQuery at the registration.');
+			log_message('info', 'User with IP '.$this->input->ip_address().' has tried to hack JQuery at the registration.');
 			redirect('error/number/8');
 		}
-		else if ( ! $this->registration_m->is_valid($this->input->ip_address(), 'ip'))
+		elseif ( ! $this->validate->ip_address($this->input->ip_address()))
 		{
-			//log_message('error', 'User with IP '.$this->input->ip_address().' has tried to create multiple accounts.');
+			log_message('info', 'User with IP '.$this->input->ip_address().' has tried to create multiple accounts.');
 			redirect('error/number/5');
 		}
-		else if ($this->registration_m->is_valid($this->input->post('username'), 'user') === FALSE)
+		elseif ( ! $this->validate->username($this->input->post('username')))
 		{
-			//log_message('error', 'User with IP '.$this->input->ip_address().' has tried to hack JQuery at the registration.');
+			log_message('info', 'User with IP '.$this->input->ip_address().' has tried to hack JQuery at the registration.');
 			redirect('error/number/3');
 		}
-		else if ($this->registration_m->is_valid($this->input->post('email'), 'email') === FALSE)
+		elseif ( ! $this->validate->email($this->input->post('email')))
 		{
-			//log_message('error', 'User with IP '.$this->input->ip_address().' has tried to hack JQuery at the registration.');
+			log_message('info', 'User with IP '.$this->input->ip_address().' has tried to hack JQuery at the registration.');
 			redirect('error/number/4');
 		}
 		else
 		{
 	 		$this->load->helper('string');
-	 		for ($i = 1; $i != 0;)
+	 		for ($i = 1; $i !== 0;)
 	 		{
 	 			$validation_str	= random_string('alnum', 15);
 	 			$query			= $this->db->get_where('users', array('validation_str' => $validation_str));
@@ -108,31 +119,36 @@ class Register extends CI_Controller {
 
 			$this->db->insert('users', $user_data);
 
-			$this->lang->load('registration');
+			$this->lang->load('register');
 			$this->load->library('email');
 
 			$pattern			= array('%username%', '%password%', '%link%', '%url%');
 			$replacement		= array($this->input->post('username'), $this->input->post('password'), anchor('registration/validate/'. $validation_str, lang('reg.here')), site_url('registration/validate/'. $validation_str));
 
-			$head['email']		= TRUE;
-			$footer['email']	= TRUE;
-
 			$data['message']	= preg_replace($pattern, $replacement, lang('reg.message'));
-			$data['head']		= $this->load->view('head', $head, TRUE);
-			$data['footer']		= $this->load->view('footer', $footer, TRUE);
-			$this->email->from('noreply@megapublik.com', 'MegaPublik')
+			$data['head']		= $this->load->view('head', array('email' => TRUE), TRUE);
+			$data['footer']		= $this->load->view('footer', array('email' => TRUE), TRUE);
+			$this->email->from('noreply@razican.com', 'MegaPublik')
 						->to($this->input->post('email'))
 						->subject('Registro en MegaPublik')
 						->message($this->load->view('mail', $data, TRUE))
-						->set_alt_message(preg_replace($pattern, $replacement, lang('reg.alt_message')))
-						->send();
+						->set_alt_message(preg_replace($pattern, $replacement, lang('reg.alt_message')));
 
-			$head['email']		= FALSE;
+			if ( ! $this->email->send())
+			{
+				$this->validate($validation_str);
+				log_message('error', 'Email could not be sended');
+				$data['message']	= br(1).str_replace('%password%', $password, lang('reg.send_error'));
+			}
+			else
+			{
+				$data['message']	= '';
+			}
 
-			$head['menu']		= $this->load->view('menu_outgame', '', TRUE);
+			$head['menu']			= $this->load->view('menu_outgame', '', TRUE);
 
-			$data['head']		= $this->load->view('head', $head, TRUE);
-			$data['footer']		= $this->load->view('footer', '', TRUE);
+			$data['head']			= $this->load->view('head', $head, TRUE);
+			$data['footer']			= $this->load->view('footer', '', TRUE);
 			$this->load->view('registration/registration', $data);
 		}
 	}
@@ -146,22 +162,22 @@ class Register extends CI_Controller {
 			redirect('error/number/10');
 		}
 
-		$this->load->model('registration_m');
+		$this->load->library('validate');
 
-		if($this->registration_m->is_valid($validation_str) === TRUE)
+		if($this->validate->val_str($validation_str))
 		{
-			$this->lang->load('registration');
+			$this->lang->load('register');
 
 			$head['menu']		= $this->load->view('menu_outgame', '', TRUE);
 
 			$data['head']		= $this->load->view('head', $head, TRUE);
 			$data['footer']		= $this->load->view('footer', '', TRUE);
 
-			$this->load->view('registration/validation', $data);
+			$this->load->view('registration/validate', $data);
 		}
 		else
 		{
-			redirect($this->registration_m->is_valid($validation_str));
+			redirect('errors/9');
 		}
 	}
 
@@ -196,7 +212,7 @@ class Register extends CI_Controller {
 		}
 		else
 		{
-			log_message('error', 'User with IP '.$this->input->ip_address().' has tried to enter /registration/request without doing an AJAX request.');
+			log_message('info', 'User with IP '.$this->input->ip_address().' has tried to enter /registration/request without doing an AJAX request.');
 			redirect('registration');
 		}
 	}

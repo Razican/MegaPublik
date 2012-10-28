@@ -17,7 +17,7 @@ class Validate
 
 		$validation['username']		= $this->_validate_username($data['username']);
 		$validation['password']		= $this->_validate_password($data['password'], $data['username']);
-		$validation['passconf']	= $data['passconf'] === $data['password'];
+		$validation['passconf']		= $data['passconf'] === $data['password'];
 		$validation['email']		= $this->_validate_email($data['email']);
 		$this->_validate_state($data['state'], $data['country'], $validation);
 
@@ -72,6 +72,21 @@ class Validate
 		{
 			$validation['country'] = $validation['state'] = FALSE;
 		}
+	}
+
+	public function ip_address($ip)
+	{
+		//TODO multiaccounting
+	}
+
+	public function username($username)
+	{
+		return $this->_validate_username($username);
+	}
+
+	public function email($email)
+	{
+		return $this->_validate_email($email);
 	}
 }
 

@@ -2,7 +2,7 @@
 
 class Profile extends CI_Controller {
 
-	public function _remap($id	= NULL)
+	public function user($id = NULL)
 	{
 		if (is_null($id))
 		{
@@ -12,17 +12,16 @@ class Profile extends CI_Controller {
 			}
 			else
 			{
-				log_message('error', 'Not received an user id in the profile viewer.');
 				redirect('/');
 			}
 		}
 
-		if($this->session->userdata('logged_in'))
-		{
-			$this->user->load_data();
-		}
+	//	if($this->session->userdata('logged_in'))
+	//	{
+	//		$this->user->load_data();
+	//	}
 
-		$this->user->load_data($id, FALSE);
+	//	$this->user->load_data($id, FALSE);
 
 		//Now we have to send all to the output.
 	}

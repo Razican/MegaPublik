@@ -10,7 +10,7 @@ class Logout extends CI_Controller {
 		}
 		else
 		{
-			log_message('error', 'User with IP '.$this->input->ip_address().' has tried to enter /logout without loggin in.');
+			log_message('info', 'User with IP '.$this->input->ip_address().' has tried to enter /logout without loggin in.');
 		}
 		redirect('/');
 	}

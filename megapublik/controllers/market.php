@@ -45,7 +45,7 @@ class Market extends CI_Controller {
 		}
 		else
 		{
-			log_message('error', 'User with IP '.$this->input->ip_address().' has tried to enter /market without loggin in.');
+			log_message('info', 'User with IP '.$this->input->ip_address().' has tried to enter /market without loggin in.');
 			redirect('/');
 		}
 	}
@@ -97,7 +97,7 @@ class Market extends CI_Controller {
 		}
 		else
 		{
-			log_message('error', 'User with IP '.$this->input->ip_address().' has tried to enter /market/request without doing an AJAX request.');
+			log_message('info', 'User with IP '.$this->input->ip_address().' has tried to enter /market/request without doing an AJAX request.');
 			redirect('market');
 		}
 	}
@@ -111,7 +111,7 @@ class Market extends CI_Controller {
 			$this->lang->load('market');
 
 			$amount	= $this->input->post('amount');
-			if ($amount <1)
+			if ($amount < 1)
 			{
 				echo '<span class="error">'.lang('market.no_amount').'.</span>';
 			}
@@ -144,7 +144,7 @@ class Market extends CI_Controller {
 		}
 		else
 		{
-			log_message('error', 'User with IP '.$this->input->ip_address().' has tried to enter /market/buy without doing an AJAX request.');
+			log_message('info', 'User with IP '.$this->input->ip_address().' has tried to enter /market/buy without doing an AJAX request.');
 			redirect('market');
 		}
 	}

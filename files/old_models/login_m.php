@@ -13,14 +13,14 @@ Class Login_m extends CI_Model
 		$this->db->or_where('last_IP', $ip_address);
 		$query	= $this->db->get('users');
 
-		if ($query->num_rows() > 3)
+		if ($query->num_rows() > 1) //está mal, se debe comprobar si el usuario que está accediendo es el mismo
  		{
 			$usernames		= NULL;
 			foreach($query->result() as $user)
 			{
 				$usernames	.= ' | '.$user->username.' | ';
 			}
-			log_message('error', 'User with IP '.$ip_address.' is doing multi-accounting. Usernames: '.$usernames.'');
+			log_message('info', 'User with IP '.$ip_address.' is doing multi-accounting. Usernames: '.$usernames.'');
 		}
 
 		return $user;
