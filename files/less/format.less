@@ -1,70 +1,157 @@
-@body_bg:				url("../images/background.jpg") no-repeat top right;
+@body_bg:						url("../images/background.jpg") no-repeat top right;
+@logo_big:						url("../images/logo.png");
+@logo_small:					url("../images/logo_s.png");
+@correct:						url("../images/tick.png");
+@incorrect:						url("../images/cross.png");
 
+@charset						"UTF-8";
 
 body
 {
-	background:				@body_bg;
-	margin:					0;
+	background:					@body_bg;
+	margin:						0;
+}
+
+h2
+{
+	color:						gray;
+	text-decoration:			underline;
+	margin:						20px;
+}
+
+a
+{
+	text-decoration:			none;
+	color:						#FFFFFF;
+}
+
+footer
+{
+	clear:						both;
+	background-color:			aqua;
+	text-align:					center;
+	padding:					0.1em;
 }
 
 nav
 {
-	&.language
+	@media (min-width:500px)
 	{
-		float:				right;
-		background-color:	blue;
-		padding:			0.25em;
+		&.lang-select
+		{
+			display:			none;
+		}
+
+		&.language
+		{
+			display:			block;
+			float:				right;
+			background-color:	blue;
+			padding:			0.25em;
+
+			a
+			{
+				margin:			0.1em;
+			}
+		}
+	}
+
+	@media (max-width:499px)
+	{
+		&.language
+		{
+			display:			none;
+		}
+
+		&.lang-select
+		{
+			display:			block;
+			text-align:			center;
+			margin:				0.1em;
+		}
+	}
+
+	&.menu
+	{
+		clear:					both;
+		background-color:		green;
+		padding:				0.5em;
 
 		a
 		{
-			margin:			0.1em;
+			padding:			0.5em;
+			color:				#FFFFFF;
+			font-weight:		bold;
 		}
 	}
 }
 
-.footer
+figure
 {
-	clear: both;
-	background-color: aqua;
-	opacity: 0.75;
-	text-align: center;
-	padding: 10px;
+	@media (min-width:500px)
+	{
+		&.logo
+		{
+			margin:				1em;
+			float:				left;
+			background-image:	@logo_big;
+			height:				130px;
+			width:				340px;
+		}
+	}
+
+	@media (max-width:499px)
+	{
+		&.logo
+		{
+			margin:				auto;
+			background-image:	@logo_small;
+			height:				50px;
+			width:				100px;
+		}
+	}
+
+	&.result
+	{
+		width:					30px;
+		height:					30px;
+		margin:					0px;
+
+		&.correct
+		{
+			background-image:	@correct;
+		}
+
+		&.incorrect
+		{
+			background-image:	@incorrect;
+		}
+	}
 }
 
-h1
+.outgame.input
 {
-	color: gray;
-	text-decoration: underline;
-	margin: 20px;
+	background-color:			#FF0000;
+	padding:					0.25em;
+
+	.field
+	{
+		display:				block;
+
+		*
+		{
+			display:			inline-block;
+		}
+	}
 }
 
-.log-reg
-{
-	background-color: red;
-	opacity: 0.75;
-	padding: 10px;
-	display: table;
-	width: 100%;
-}
-
+// WITHOUT CHANGES
 .content
 {
 	background-color: red;
 	opacity: 0.75;
 	padding: 10px;
 	margin-left: 170px;
-}
-
-.logo
-{
-	margin: 10px;
-	float: left;
-}
-
-.login-input
-{
-	width: 30px;
-	padding: 5px;
 }
 
 .reg-container
@@ -80,31 +167,12 @@ h1
 	display: table-cell;
 }
 
-.result
-{
-	text-align: left;
-	vertical-align: middle;
-	display: table-cell;
-}
-
 .notes
 {
 	text-align: left;
 	vertical-align: middle;
 	display: table-cell;
 	margin-left: 10px;
-}
-
-.result img
-{
-	width: 20px;
-	height: 20px;
-}
-
-a
-{
-	text-decoration: none;
-	color: gray;
 }
 
 .help
@@ -126,17 +194,6 @@ a
 	width: 150px;
 	background-color: blue;
 	text-align: center;
-	padding: 10px;
-}
-
-.menu {
-	clear: both;
-	background-color: green;
-	padding: 10px;
-}
-
-.menu a
-{
 	padding: 10px;
 }
 

@@ -166,6 +166,11 @@ function loading($alt, $size = 'big')
 	return $img;
 }
 
+function load_script($script)
+{
+	return '<script charset="UTF-8" type="text/javascript" src="'.site_url('js/'.$script.'.min.js').'"></script>';
+}
+
 
 /* End of file overal_helper.php */
 /* Location: ./megapublik/helpers/overal_helper.php */

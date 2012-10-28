@@ -8,7 +8,7 @@ class Login extends CI_Controller {
 
 		if (( ! $this->input->post('username')) OR (!$this->input->post('password')))
 		{
-			redirect('error/6');
+			redirect('error/number/6');
 		}
 		else
 		{
@@ -23,7 +23,7 @@ class Login extends CI_Controller {
 			{
 				if ($user->password	!= sha1($this->input->post('password')))
 				{
-					redirect('error/2');
+					redirect('error/number/2');
 				}
 				else
 				{
@@ -48,7 +48,7 @@ class Login extends CI_Controller {
 			}
 			else
 			{
-				redirect('error/1');
+				redirect('error/number/1');
 			}
 		}
 	}

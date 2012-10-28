@@ -43,7 +43,7 @@ class User
 	 * Load user data
 	 *
 	 * @access	public
-	 * @param	numeric
+	 * @param	int
 	 * @param	bool
 	 * @return	bool
 	 */
@@ -94,7 +94,10 @@ class User
 
 					$this->money		= unserialize($this->money);
 
-					foreach($this->money as $currency => $money){ $this->money[$currency]	= $money/100; }
+					foreach ($this->money as $currency => $money)
+					{
+						$this->money[$currency]	= $money/100;
+					}
 
 					$this->country		= $this->current_country($this->location);
 					$states				= $CI->config->item('states');
@@ -113,7 +116,10 @@ class User
 
 					$this->$id->money		= unserialize($this->money);
 
-					foreach($this->$id->money as $currency => $money){ $this->$id->money[$currency]	= $money/100; }
+					foreach ($this->$id->money as $currency => $money)
+					{
+						$this->$id->money[$currency]	= $money/100;
+					}
 
 					$this->$id->country		= $this->current_country($this->location);
 					$states					= $CI->config->item('states');

@@ -39,7 +39,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://127.0.0.1/megapublik/';
+$config['base_url']	= 'http://www.example.com/megapublik/';
 
 /*
 |--------------------------------------------------------------------------
@@ -306,7 +306,7 @@ $config['sess_time_to_update']	= 900; //60*15
 |
 */
 $config['cookie_prefix']	= '';
-$config['cookie_domain']	= '127.0.0.1';
+$config['cookie_domain']	= 'www.example.com';
 $config['cookie_path']		= '/megapublik';
 $config['cookie_secure']	= FALSE;
 $config['cookie_httponly'] 	= FALSE;
@@ -341,7 +341,7 @@ $config['csrf_token_name']		= 'MP_csrf_token';
 $config['csrf_cookie_name']		= 'MP_csrf_cookie';
 $config['csrf_expire']			= 7200; //60*60*2
 $config['csrf_regenerate']		= TRUE;
-$config['csrf_exclude_uris']	= array();
+$config['csrf_exclude_uris']	= array('register/request');
 
 /*
 |--------------------------------------------------------------------------

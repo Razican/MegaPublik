@@ -1,12 +1,12 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Registration extends CI_Controller {
+class Register extends CI_Controller {
 
 	public function index()
 	{
 		if($this->uri->segment(3))
 		{
-			redirect('registration');
+			redirect('register');
 		}
 
 		$this->output->enable_profiler($this->config->item('debug'));
@@ -18,25 +18,25 @@ class Registration extends CI_Controller {
 
 		define ('AJAX', TRUE);
 
-		$this->lang->load('registration');
-		$this->load->model('registration_m');
+		$this->lang->load('register');
+		$this->load->library('geography');
 
-		$script['correct']	= reg_img('correct', lang('overal.correct'));
-		$script['wrong']	= reg_img('wrong', lang('overal.wrong'));
-		$script['comp_img']	= reg_img('correct', lang('overal.correct'), FALSE);
-		$script['loading']	= reg_img('loading', lang('overal.loading'));
-
-		$head['script']		= $this->load->script('registration', $script);
+		$head['script']		= load_script('register');
 		$head['menu']		= $this->load->view('menu_outgame', '', TRUE);
 
-		$data['countries']	= $this->registration_m->countries();
+		$data['countries']	= '';
+		foreach ($this->geography->get_countries(array('name')) as $id => $country)
+		{
+			$data['countries']	.= '<option value="'.$id.'">'.$country->name.'</option>';
+		}
+
 		$data['head']		= $this->load->view('head', $head, TRUE);
 		$data['footer']		= $this->load->view('footer', '', TRUE);
 
 		$this->load->view('registration/register', $data);
 	}
 
-	public function register()
+	public function signup()
 	{
 		$this->output->enable_profiler($this->config->item('debug'));
 
@@ -55,32 +55,32 @@ class Registration extends CI_Controller {
 			( ! $this->input->post('country'))	)
 		{
 			log_message('error', 'User with IP '.$this->input->ip_address().' has tried to hack JQuery at the registration.');
-			redirect('error/6');
+			redirect('error/number/6');
 		}
 		else if ($this->input->post('password') != $this->input->post('passconf'))
 		{
 			log_message('error', 'User with IP '.$this->input->ip_address().' has tried to hack JQuery at the registration.');
-			redirect('error/7');
+			redirect('error/number/7');
 		}
 		else if ( ! valid_email($this->input->post('email')))
 		{
 			log_message('error', 'User with IP '.$this->input->ip_address().' has tried to hack JQuery at the registration.');
-			redirect('error/8');
+			redirect('error/number/8');
 		}
 		else if ( ! $this->registration_m->is_valid($this->input->ip_address(), 'ip'))
 		{
 			//log_message('error', 'User with IP '.$this->input->ip_address().' has tried to create multiple accounts.');
-			redirect('error/5');
+			redirect('error/number/5');
 		}
 		else if ($this->registration_m->is_valid($this->input->post('username'), 'user') === FALSE)
 		{
 			//log_message('error', 'User with IP '.$this->input->ip_address().' has tried to hack JQuery at the registration.');
-			redirect('error/3');
+			redirect('error/number/3');
 		}
 		else if ($this->registration_m->is_valid($this->input->post('email'), 'email') === FALSE)
 		{
 			//log_message('error', 'User with IP '.$this->input->ip_address().' has tried to hack JQuery at the registration.');
-			redirect('error/4');
+			redirect('error/number/4');
 		}
 		else
 		{
@@ -143,7 +143,7 @@ class Registration extends CI_Controller {
 
 		if (strlen($validation_str) != 15)
 		{
-			redirect('error/10');
+			redirect('error/number/10');
 		}
 
 		$this->load->model('registration_m');
@@ -171,40 +171,27 @@ class Registration extends CI_Controller {
 		{
 			sleep($this->config->item('sleep'));
 
-			$this->lang->load('registration');
-			$this->load->model('registration_m');
+			$this->load->library(array('validate', 'geography'));
 
-			$name	= $this->input->post('name');
-			$value	= $this->input->post('value');
-
-			switch ($name)
+			$get_states = $this->input->post('get_states');
+			if ( ! empty($get_states))
 			{
-				case 'country':
-					echo $this->registration_m->states($value);
-				break;
-				case 'username':
-					if ($this->registration_m->is_valid($value, 'user'))
-					{
-						echo img(reg_img('correct', lang('overal.correct')));
-					}
-					else
-					{
-						echo lang('reg.too_user');
-					}
-				break;
-				case 'email':
-					if ($this->registration_m->is_valid($value, 'email'))
-					{
-						echo img(reg_img('correct', lang('overal.correct')));
-					}
-					else
-					{
-						echo lang('reg.too_email');
-					}
-				break;
-				default:
-					log_message('error', 'User with IP '.$this->input->ip_address().' has tried to send invalid name ('.$name.') with JQuery');
-				break;
+				$states = $this->geography->get_states($this->input->post('get_states'));
+				log_message('debug', 'STATES: '.print_r($states, TRUE));
+				echo json_encode($states);
+			}
+			else
+			{
+				$data = array(
+							'username'	=> $this->input->post('username'),
+							'password'	=> $this->input->post('password'),
+							'passconf'	=> $this->input->post('passconf'),
+							'email'		=> $this->input->post('email'),
+							'country'	=> $this->input->post('country'),
+							'state'		=> $this->input->post('state')
+						);
+
+				echo json_encode($this->validate->register($data));
 			}
 		}
 		else
@@ -217,4 +204,4 @@ class Registration extends CI_Controller {
 
 
 /* End of file  registration.php */
-/* Location: ./megapublik/controllers/registration.php */
+/* Location: ./megapublik/controllers/register.php */

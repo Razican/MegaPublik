@@ -20,10 +20,7 @@ class MP_Config extends CI_Config {
 
 	function site_url($uri = '')
 	{
-		if (is_array($uri))
-		{
-			$uri = implode('/', $uri);
-		}
+		$uri	= $uri = $this->_uri_string($uri);
 
 		if (class_exists('CI_Controller'))
 		{

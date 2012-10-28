@@ -13,7 +13,7 @@ $lang['overal.license']				= 'Reconocimiento-NoComercial-SinObraDerivada 3.0 Unp
 //Menu
 $lang['overal.menu.market']			= 'Mercado';
 $lang['overal.menu.index']			= 'Inicio';
-$lang['overal.menu.registration']	= 'Regístrate';
+$lang['overal.menu.register']		= 'Regístrate';
 $lang['overal.menu.logout']			= 'Salir';
 
 //Panel

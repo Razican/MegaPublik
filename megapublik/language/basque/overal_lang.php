@@ -13,7 +13,7 @@ $lang['overal.license']				= 'Aitortu-EzKomertziala-LanEratorririkGabe 3.0 Unpor
 //Menu
 $lang['overal.menu.market']			= 'Merkatua';
 $lang['overal.menu.index']			= 'Hasiera';
-$lang['overal.menu.registration']	= 'Erregistratu';
+$lang['overal.menu.register']		= 'Erregistratu';
 $lang['overal.menu.logout']			= 'Irten';
 
 //Panel

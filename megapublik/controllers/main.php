@@ -20,7 +20,7 @@ class Main extends CI_Controller {
 			$user				= $this->user->data($this->session->userdata('user_id'));
 			$country			= $this->user->data($user->country, 'countries');
 
-			date_default_timezone_set($user->timezone);
+			$this->config->set_item('time_reference', $user->timezone);
 
 			$panel['avatar']	= avatar($user, $this->lang->lang());
 			$panel['user']		= $user;

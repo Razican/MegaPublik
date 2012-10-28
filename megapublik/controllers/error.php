@@ -2,7 +2,12 @@
 
 class Error extends CI_Controller {
 
-	public function _remap($error = 0)
+	public function index()
+	{
+		redirect('/');
+	}
+
+	public function number($error = 0)
 	{
 		if (($error <= 0) OR ( ! is_numeric($error)) OR ($error > 10))
 		{

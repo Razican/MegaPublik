@@ -25,6 +25,18 @@ $config['exp_multiplier']	= 2;
 
 $config['version']			= 'Pre-Alpha 3 (pre-release)';
 
+/*
+|--------------------------------------------------------------------------
+| Security
+|--------------------------------------------------------------------------
+|
+| Here we define the security measures needed for the users:
+| 'pass_len' -> minimum number of characters a password must have
+|
+*/
+
+$config['pass_len']			= 6;
+
 
 /* End of file megapublik.php */
 /* Location: ./megapublik/config/megapublik.php */

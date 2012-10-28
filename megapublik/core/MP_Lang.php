@@ -23,13 +23,13 @@ class MP_Lang extends CI_Lang {
 |
 */
 
-	var $languages = array(
-		'es' => 'spanish',
-		'en' => 'english',
-		'eu' => 'basque'
-	);
+	protected $languages = array(
+					'es' => 'spanish',
+					'en' => 'english',
+					'eu' => 'basque'
+				);
 
-	var $special = array ();
+	protected $special = array ();
 
 	function __construct()
 	{
@@ -125,11 +125,9 @@ class MP_Lang extends CI_Lang {
 
 	function localized($uri)
 	{
-		if($this->has_language($uri)
-		|| $this->is_special($uri)
-		|| preg_match('/(.+)\.[a-zA-Z0-9]{2,4}$/', $uri))
-		{}
-		else
+		if( ! $this->has_language($uri)
+			&& ! $this->is_special($uri)
+			&& ! preg_match('/(.+)\.[a-zA-Z0-9]{2,4}$/', $uri))
 		{
 			$uri = $this->lang() . '/' . $uri;
 		}

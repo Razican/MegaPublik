@@ -8,7 +8,7 @@ Class User extends CI_Model
 
 		if ($query->num_rows() === 1)
 		{
-			foreach ($query->result() as $return){}
+			foreach ($query->result() as $return);
 		}
 		else
 		{

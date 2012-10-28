@@ -45,7 +45,7 @@ Class Registration_m extends CI_Model
 
 				if ($query->num_rows() === 0)
  				{
-					return 'error/10';
+					return 'error/number/10';
  				}
 				else
 				{
@@ -57,7 +57,7 @@ Class Registration_m extends CI_Model
 					}
 					else
 					{
-						return 'error/9';
+						return 'error/number/9';
 					}
 				}
 			break;

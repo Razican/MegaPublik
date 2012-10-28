@@ -27,6 +27,7 @@ Options -indexes
 	AddOutputFilterByType DEFLATE text/html
 	AddOutputFilterByType DEFLATE text/xml
 	AddOutputFilterByType DEFLATE text/css
+	AddOutputFilterByType DEFLATE text/javascript
 	AddOutputFilterByType DEFLATE application/javascript
 	AddOutputFilterByType DEFLATE application/x-javascript
 	AddOutputFilterByType DEFLATE application/xml

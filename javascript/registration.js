@@ -45,6 +45,15 @@ $(function(){
 
 	function validate_form()
 	{
+		/*
+		$.post("test.php", { "func": "getNameAndTime" }, //Poner los datos del formulario
+			function(data)
+			{
+				console.log(data.name);
+				console.log(data.time);
+			}, "json");*/
+
+
 		var compare_img	= '<?php echo $comp_img; ?>',
 			state		= $('#state').val();
 
@@ -57,7 +66,12 @@ $(function(){
 				$('#submit').removeProp('disabled');
 			}
 	}
-	loading				= '<?php echo img($loading); ?>';
+
+
+
+
+
+	loading				= '<?php echo img($loading); ?>';
 	if($('#country').val() === '')
 	{
 		$('#state').prop('disabled', true);

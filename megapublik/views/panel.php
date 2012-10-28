@@ -1,4 +1,4 @@
-<div id="date"><?php echo lang('overal.day').': '.floor((time()-mktime(0, 0, 0, 11, 10, 2009))/86400).'<br />'.lang('overal.time').': '.date('H:i', $user->time()); ?></div>
+<div id="date"><?php echo lang('overal.day').': '.floor((now()-mktime(0, 0, 0, 11, 10, 2009))/86400).'<br>'.lang('overal.time').': '.date('H:i', now()); ?></div>
 <div id="avatar">
 	<?php
 		if ($user->avatar === 'default')

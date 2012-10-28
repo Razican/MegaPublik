@@ -1,11 +1,20 @@
 <?php echo $head; ?>
-	<div class="log-reg">
+	<section class="outgame input">
 		<?php echo form_open('login'); ?>
-			<h1>Login:</h1>
-			<div class="login-input"><label><?php echo lang('login.username'); ?></label>: <input type="text" name="username" /></div>
-			<div class="login-input"><label><?php echo lang('login.password'); ?></label>: <input type="password" name="password" /></div>
-			<div class="login-input"><label><?php echo lang('login.remember'); ?></label>: <input type="checkbox" name="remember" /></div>
-			<div class="login-input"><input type="submit" value="<?php echo lang('login.submit'); ?>" name="submit" /></div>
+			<h2>Login:</h2>
+			<div class="field">
+				<label for="username"><?php echo lang('login.username'); ?></label>:
+				<input type="text" name="username" id="username">
+			</div>
+			<div class="field">
+				<label for="password"><?php echo lang('login.password'); ?></label>:
+				<input type="password" name="password" id="password">
+			</div>
+			<div class="field">
+				<label for="remember"><?php echo lang('login.remember'); ?></label>:
+				<input type="checkbox" name="remember" id="remember">
+			</div>
+			<div class="field"><input type="submit" value="<?php echo lang('login.submit'); ?>" name="submit"></div>
 		</form>
-	</div>
+	</section>
 <?php echo $footer; ?>

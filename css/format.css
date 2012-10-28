@@ -1,21 +1,18 @@
+@charset "UTF-8";
 body{background:url("../images/background.jpg") no-repeat top right;margin:0;}
-nav.language{float:right;background-color:blue;padding:0.25em;}nav.language a{margin:0.1em;}
-.footer{clear:both;background-color:aqua;opacity:0.75;text-align:center;padding:10px;}
-h1{color:gray;text-decoration:underline;margin:20px;}
-.log-reg{background-color:red;opacity:0.75;padding:10px;display:table;width:100%;}
+h2{color:gray;text-decoration:underline;margin:20px;}
+a{text-decoration:none;color:#FFFFFF;}
+footer{clear:both;background-color:aqua;text-align:center;padding:0.1em;}
+@media (min-width:500px){nav.lang-select{display:none;} nav.language{display:block;float:right;background-color:blue;padding:0.25em;}nav.language a{margin:0.1em;}}@media (max-width:499px){nav.language{display:none;} nav.lang-select{display:block;text-align:center;margin:0.1em;}}nav.menu{clear:both;background-color:green;padding:0.5em;}nav.menu a{padding:0.5em;color:#FFFFFF;font-weight:bold;}
+@media (min-width:500px){figure.logo{margin:1em;float:left;background-image:url("../images/logo.png");height:130px;width:340px;}}@media (max-width:499px){figure.logo{margin:auto;background-image:url("../images/logo_s.png");height:50px;width:100px;}}figure.result{width:30px;height:30px;margin:0px;}figure.result.correct{background-image:url("../images/tick.png");}
+figure.result.incorrect{background-image:url("../images/cross.png");}
+.outgame.input{background-color:#FF0000;padding:0.25em;}.outgame.input .field{display:block;}.outgame.input .field *{display:inline-block;}
 .content{background-color:red;opacity:0.75;padding:10px;margin-left:170px;}
-.logo{margin:10px;float:left;}
-.login-input{width:30px;padding:5px;}
 .reg-container{display:table-row;}
 .reg-input{vertical-align:middle;width:450px;padding:10px;display:table-cell;}
-.result{text-align:left;vertical-align:middle;display:table-cell;}
 .notes{text-align:left;vertical-align:middle;display:table-cell;margin-left:10px;}
-.result img{width:20px;height:20px;}
-a{text-decoration:none;color:gray;}
 .help{background-color:yellow;padding:10px;float:right;margin:110px 50px 0px 0px;height:25px;}
 .panel{float:left;width:150px;background-color:blue;text-align:center;padding:10px;}
-.menu{clear:both;background-color:green;padding:10px;}
-.menu a{padding:10px;}
 .menu_logout{float:right;}
 .loading{text-align:center;}
 .percent_box{width:100px;border:1px solid black;background:white;height:10px;display:block;margin-left:25px;}
