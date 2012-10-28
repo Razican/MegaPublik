@@ -30,16 +30,15 @@ function percent($number, $place, $space)
 
 function exp_percent(&$user)
 {
-	global $CFG;
 	if ($user->level == 1)
 	{
-		$percentage		= round($user->experience*100/$CFG->item('first_level'), 2);
+		$percentage		= round($user->experience*100/config_item('first_level'), 2);
 	}
 	else
 	{
 
-		$level_min_exp	= $CFG->item('first_level')*pow($CFG->item('exp_multiplier'),($user->level-2));
-		$next_min_exp	= $CFG->item('first_level')*pow($CFG->item('exp_multiplier'),($user->level-1));
+		$level_min_exp	= config_item('first_level')*pow(config_item('exp_multiplier'),($user->level-2));
+		$next_min_exp	= config_item('first_level')*pow(config_item('exp_multiplier'),($user->level-1));
 		$exp_level		= $user->experience-$level_min_exp;
 		$percentage		= round($exp_level*100/($next_min_exp-$level_min_exp), 2);
 	}
@@ -49,6 +48,7 @@ function exp_percent(&$user)
 
 function l18n($lang)
 {
+	$l18n	= new stdClass;
 	switch($lang)
 	{
 		case 'es':

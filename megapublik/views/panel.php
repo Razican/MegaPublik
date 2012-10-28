@@ -1,4 +1,4 @@
-<div id="date"><?php echo lang('overal.day').': '.floor((now()-mktime(0, 0, 0, 11, 10, 2009))/86400).'<br>'.lang('overal.time').': '.date('H:i', now()); ?></div>
+<div id="date"><?php echo lang('overal.day').': '.floor((now($user->timezone)-config_item('start_time'))/86400).'<br>'.lang('overal.time').': '.date('H:i', now($user->timezone)); ?></div>
 <div id="avatar">
 	<?php
 		if ($user->avatar === 'default')

@@ -38,13 +38,7 @@ class User {
 			}
 			else
 			{
-				foreach ($query->result() as $user);
-				foreach ($user as $key => $value)
-				{
-					$this->$key	= $value;
-				}
-
-				$this->money	= unserialize($this->money);
+				$this->_load($query);
 				$this->is_set	= TRUE;
 			}
 
@@ -58,13 +52,7 @@ class User {
 
 			if ($query->num_rows() === 1)
 			{
-				foreach ($query->result() as $user);
-				foreach ($user as $key => $value)
-				{
-					$this->$key	= $value;
-				}
-
-				$this->money	= unserialize($this->money);
+				$this->_load($query);
 				$this->is_set	= TRUE;
 			}
 			else
@@ -77,5 +65,40 @@ class User {
 	public function is_set()
 	{
 		return $this->is_set;
+	}
+
+	private function _load($query)
+	{
+		foreach ($query->result() as $user);
+		foreach ($user as $key => $value)
+		{
+			$this->$key	= $value;
+		}
+
+		$this->money	= unserialize($this->money);
+
+		$this->country	= $this->_get_country($user->location);
+		$this->state	= config_item('states')[$user->location];
+		$this->timezone	= $this->state['timezone'];
+
+		$this->level	= $this->experience == 0 ? 1 : floor(log($this->experience/config_item('first_level'), config_item('exp_multiplier'))+2);
+	}
+
+	private function _get_country($location)
+	{
+		$CI		=& get_instance();
+		$query	= $CI->db->get('countries');
+
+		foreach ($query->result() as $country)
+		{
+			$states = unserialize($country->states);
+			if (in_array($location, $states))
+			{
+				$country	= $country->id;
+				break;
+			}
+		}
+
+		return $country;
 	}
 }

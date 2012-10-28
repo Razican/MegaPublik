@@ -17,14 +17,13 @@ class Main extends CI_Controller {
 
 			$this->lang->load('ingame');
 
-			$user				= $this->user->data($this->session->userdata('user_id'));
-			$country			= $this->user->data($user->country, 'countries');
+			$this->load->entity('country');
+			$country			= new Country($user->country);
 
-			$this->config->set_item('time_reference', $user->timezone);
+			$this->config->set_item('time_reference', $this->user->timezone);
 
-			$panel['avatar']	= avatar($user, $this->lang->lang());
-			$panel['user']		= $user;
-			$panel['exp_prcnt']	= exp_percent($user);
+			$panel['user']		= $this->user;
+			$panel['exp_prcnt']	= exp_percent($this->user);
 			$panel['l18n']		= l18n($this->lang->lang());
 			$panel['currency']	= $country->currency;
 
