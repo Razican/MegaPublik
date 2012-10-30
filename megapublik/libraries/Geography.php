@@ -9,8 +9,8 @@
  * @link		http://www.razican.com/
  */
 
-class Geography
-{
+class Geography {
+
 	public function get_countries($columns = NULL)
 	{
 		$CI		=& get_instance();

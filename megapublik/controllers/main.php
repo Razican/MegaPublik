@@ -18,7 +18,7 @@ class Main extends CI_Controller {
 			$this->lang->load('ingame');
 
 			$this->load->entity('country');
-			$country			= new Country($user->country);
+			$country			= new Country($this->user->country);
 
 			$this->config->set_item('time_reference', $this->user->timezone);
 
@@ -31,7 +31,7 @@ class Main extends CI_Controller {
 			$head['menu']		= $this->load->view('menu_ingame', '', TRUE);
 			$head['panel']		= $this->load->view('panel', $panel, TRUE);
 
-			$data['user']		= $user;
+			$data['user']		= $this->user;
 			$data['head']		= $this->load->view('head', $head, TRUE);
 			$data['footer']		= $this->load->view('footer', '', TRUE);
 			$data['country']	= $country;

@@ -23,9 +23,9 @@ function load_user()
 function save_user()
 {
 	log_message('debug', 'User saving initialised.');
-	//$CI			=& get_instance();
+	$CI			=& get_instance();
 
-	//$CI->user->save_data();
+	$CI->user->save();
 }
 
 

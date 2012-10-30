@@ -179,9 +179,15 @@ function load_script($script)
 function online_users()
 {
 	$CI		=& get_instance();
-	$query	= $CI->db->get_where('sessions', array('last_activity >' => now()-$CI->config->item('sess_time_to_update')));
+	$CI->load->library('server');
 
-	return $query->num_rows();
+	return $CI->server->online_users();
+}
+
+function current_day()
+{
+	$CI =& get_instance();
+	return floor((now($CI->user->timezone)-config_item('start_time'))/86400);
 }
 
 

@@ -42,7 +42,11 @@ class User {
 				$this->is_set	= TRUE;
 			}
 
-			if ($this->current) $this->last_IP = $CI->input->ip_address();
+			if ($this->current)
+			{
+				$this->last_IP		= $CI->input->ip_address();
+				$this->last_online	= now();
+			}
 		}
 		else
 		{
@@ -65,6 +69,30 @@ class User {
 	public function is_set()
 	{
 		return $this->is_set;
+	}
+
+	public function save()
+	{
+		$CI	=& get_instance();
+
+		$this->money	= serialize($this->money);
+		unset($this->country);
+		unset($this->state);
+		unset($this->timezone);
+		unset($this->level);
+
+		$CI->db->where('id', $this->id);
+		return $CI->db->update('users', $this);
+	}
+
+	public function add_money($ammount, $currency = 'MP')
+	{
+		return $this->_change_money($ammount, $currency);
+	}
+
+	public function deduct_money($ammount, $currency = 'MP')
+	{
+		return $this->_change_money($ammount*-1, $currency);
 	}
 
 	private function _load($query)
@@ -101,4 +129,28 @@ class User {
 
 		return $country;
 	}
+
+	private function _change_money($ammount, $currency = 'MP')
+	{
+		$ammount	= round($ammount*100)/100;
+
+		if (isset($this->money[$currency]) && ($this->money[$currency] + $ammount >= 0))
+		{
+			$this->money[$currency] += $ammount;
+		}
+		elseif ($ammount >= 0)
+		{
+			$this->money[$currency]	= $ammount;
+		}
+		else
+		{
+			return FALSE;
+		}
+
+		return TRUE;
+	}
 }
+
+
+/* End of file User.php */
+/* Location: ./megapublik/entities/User.php */

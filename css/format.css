@@ -13,7 +13,7 @@ figure.result.incorrect{background-image:url("../images/cross.png");}
 .panel{float:left;width:150px;background-color:blue;text-align:center;padding:10px;}
 .menu_logout{float:right;}
 .loading{text-align:center;}
-.percent_box{width:100px;border:1px solid black;background:white;height:10px;display:block;margin-left:25px;}
+.percent_box{width:100px;border:1px solid black;background:white;height:10px;display:block;margin-left:25px;font-size:60%;}.percent_box span{position:relative;top:-11px;}
 .box_percent{height:100%;display:block;overflow:visible;font-size:60%;}
 #experience .percent_box{height:5px;}
 #experience .box_percent{background:green;}

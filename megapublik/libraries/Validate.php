@@ -9,8 +9,8 @@
  * @link		http://www.razican.com/
  */
 
-class Validate
-{
+class Validate {
+
 	public function register($data)
 	{
 		$validation = array();
