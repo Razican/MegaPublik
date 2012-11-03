@@ -22,6 +22,7 @@ $lang['overal.time']				= 'Hora';
 $lang['overal.panel.wellness']		= 'Salud';
 $lang['overal.panel.happiness']		= 'Felicidad';
 $lang['overal.panel.productivity']	= 'Productividad';
+$lang['overal.level']				= 'Nivel';
 
 //pagination
 $lang['overal.first']				= 'Primera';

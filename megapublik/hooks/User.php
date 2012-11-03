@@ -20,14 +20,6 @@ function load_user()
 	}
 }
 
-function save_user()
-{
-	log_message('debug', 'User saving initialised.');
-	$CI			=& get_instance();
-
-	$CI->user->save();
-}
-
 
 /* End of file User.php */
 /* Location: ./megapublik/hooks/User.php */

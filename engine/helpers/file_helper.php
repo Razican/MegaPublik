@@ -1,4 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 /**
  * CodeIgniter
  *
@@ -24,6 +24,7 @@
  * @since		Version 1.0
  * @filesource
  */
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * CodeIgniter File Helpers
@@ -44,12 +45,10 @@ if ( ! function_exists('read_file'))
 	 *
 	 * Opens the file specfied in the path and returns it as a string.
 	 *
-	 * This function is DEPRECATED and should be removed in
-	 * CodeIgniter 3.1+. Use file_get_contents() instead.
-	 *
-	 * @deprecated
-	 * @param	string	path to file
-	 * @return	string
+	 * @todo	Remove in version 3.1+.
+	 * @deprecated	3.0.0	It is now just an alias for PHP's native file_get_contents().
+	 * @param	string	$file	Path to file
+	 * @return	string	File contents
 	 */
 	function read_file($file)
 	{
@@ -109,7 +108,7 @@ if ( ! function_exists('delete_files'))
 	function delete_files($path, $del_dir = FALSE, $level = 0, $htdocs = FALSE)
 	{
 		// Trim the trailing slash
-		$path = rtrim($path, DIRECTORY_SEPARATOR);
+		$path = rtrim($path, '/\\');
 
 		if ( ! $current_dir = @opendir($path))
 		{

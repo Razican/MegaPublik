@@ -1,4 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
 /**
  * CodeIgniter
  *
@@ -24,6 +24,7 @@
  * @since		Version 1.0
  * @filesource
  */
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * Form Validation Class
@@ -133,12 +134,6 @@ class CI_Form_validation {
 
 		// Automatically load the form helper
 		$this->CI->load->helper('form');
-
-		// Set the character encoding in MB.
-		if (MB_ENABLED === TRUE)
-		{
-			mb_internal_encoding($this->CI->config->item('charset'));
-		}
 
 		log_message('debug', 'Form Validation Class Initialized');
 	}
@@ -963,15 +958,29 @@ class CI_Form_validation {
 	/**
 	 * Match one field to another
 	 *
-	 * @param	string
-	 * @param	string	field
+	 * @param	string	$str	string to compare against
+	 * @param	string	$field
 	 * @return	bool
 	 */
 	public function matches($str, $field)
 	{
-		$validation_array = empty($this->validation_data) ? $_POST : $this->validation_data;
+		return isset($this->_field_data[$field], $this->_field_data[$field]['postdata'])
+			? ($str === $this->_field_data[$field]['postdata'])
+			: FALSE;
+	}
 
-		return isset($validation_array[$field]) ? ($str === $validation_array[$field]) : FALSE;
+	// --------------------------------------------------------------------
+
+	/**
+	 * Differs from another field
+	 *
+	 * @param	string
+	 * @param	string	field
+	 * @return	bool
+	 */
+	public function differs($str, $field)
+	{
+		return ! (isset($this->_field_data[$field]) && $this->_field_data[$field]['postdata'] === $str);
 	}
 
 	// --------------------------------------------------------------------
@@ -1315,6 +1324,11 @@ class CI_Form_validation {
 	 */
 	public function prep_for_form($data = '')
 	{
+		if ($this->_safe_form_data === FALSE OR empty($data))
+		{
+			return $data;
+		}
+
 		if (is_array($data))
 		{
 			foreach ($data as $key => $val)
@@ -1322,11 +1336,6 @@ class CI_Form_validation {
 				$data[$key] = $this->prep_for_form($val);
 			}
 
-			return $data;
-		}
-
-		if ($this->_safe_form_data === FALSE OR $data === '')
-		{
 			return $data;
 		}
 

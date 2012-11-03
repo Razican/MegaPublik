@@ -77,5 +77,6 @@ $route['^es$'] = $route['default_controller'];
 $route['^en$'] = $route['default_controller'];
 $route['^eu$'] = $route['default_controller'];
 
+
 /* End of file routes.php */
 /* Location: ./megapublik/config/routes.php */

@@ -12,6 +12,7 @@ class User {
 
 	private $current;
 	private $is_set;
+	private $updated;
 
 	public function __construct($id = NULL)
 	{
@@ -28,12 +29,14 @@ class User {
 
 		if (is_numeric($id))
 		{
-			$CI->db->where('id', $id);
-			$query	= $CI->db->get('users');
+			$CI->db->select('users.*, countries.currency, countries.name AS country_name', FALSE);
+			$CI->db->from('users, countries');
+			$CI->db->where(array('users.id' => $id, 'countries.id' => 'users.country'), NULL, FALSE);
+			$query	= $CI->db->get();
 
 			if ($query->num_rows() === 0)
 			{
-				log_message('error', 'The user ID '.$id.'does not exist.');
+				log_message('error', 'The user ID '.$id.' does not exist.');
 				die();
 			}
 			else
@@ -44,8 +47,12 @@ class User {
 
 			if ($this->current)
 			{
-				$this->last_IP		= $CI->input->ip_address();
-				$this->last_online	= now();
+				if ($this->last_IP !== $CI->input->ip_address() OR $this->last_online < now()-config_item('sess_time_to_update')/5)
+				{
+					$this->last_IP		= $CI->input->ip_address();
+					$this->last_online	= now();
+					$this->_update();
+				}
 			}
 		}
 		else
@@ -71,18 +78,18 @@ class User {
 		return $this->is_set;
 	}
 
-	public function save()
+	public function _update()
 	{
 		$CI	=& get_instance();
 
-		$this->money	= serialize($this->money);
-		unset($this->country);
-		unset($this->state);
-		unset($this->timezone);
-		unset($this->level);
+		$data = array(
+			'last_IP'		=> $this->last_IP,
+			'last_online'	=> $this->last_online
+			);
 
 		$CI->db->where('id', $this->id);
-		return $CI->db->update('users', $this);
+
+		return $CI->db->update('users', $data);
 	}
 
 	public function add_money($ammount, $currency = 'MP')
@@ -92,42 +99,37 @@ class User {
 
 	public function deduct_money($ammount, $currency = 'MP')
 	{
-		return $this->_change_money($ammount*-1, $currency);
+		return $this->_change_money($ammount*(-1), $currency);
+	}
+
+	public function has_company()
+	{
+		if ( ! isset($this->has_company))
+		{
+			$CI =& get_instance();
+			$CI->db->where(array('owner_id' => $this->id));
+			$CI->db->from('companies');
+
+			$this->has_company = $CI->db->count_all_results() > 0;
+		}
+
+		return $this->has_company;
 	}
 
 	private function _load($query)
 	{
+		$CI =& get_instance();
 		foreach ($query->result() as $user);
 		foreach ($user as $key => $value)
 		{
-			$this->$key	= $value;
+			$this->$key		= $value;
 		}
 
-		$this->money	= unserialize($this->money);
-
-		$this->country	= $this->_get_country($user->location);
-		$this->state	= config_item('states')[$user->location];
-		$this->timezone	= $this->state['timezone'];
-
-		$this->level	= $this->experience == 0 ? 1 : floor(log($this->experience/config_item('first_level'), config_item('exp_multiplier'))+2);
-	}
-
-	private function _get_country($location)
-	{
-		$CI		=& get_instance();
-		$query	= $CI->db->get('countries');
-
-		foreach ($query->result() as $country)
-		{
-			$states = unserialize($country->states);
-			if (in_array($location, $states))
-			{
-				$country	= $country->id;
-				break;
-			}
-		}
-
-		return $country;
+		$this->money		= unserialize($this->money);
+		$this->state		= config_item('states')[$user->location];
+		$this->timezone		= $this->state['timezone'];
+		$this->validated	= (bool) $this->validated;
+		$this->level		= $this->experience == 0 ? 1 : floor(log($this->experience/config_item('first_level'), config_item('exp_multiplier'))+2);
 	}
 
 	private function _change_money($ammount, $currency = 'MP')

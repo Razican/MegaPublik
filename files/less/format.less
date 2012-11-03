@@ -16,7 +16,7 @@ h2
 {
 	color:						gray;
 	text-decoration:			underline;
-	margin:						20px;
+	margin:						0.8em;
 }
 
 a
@@ -82,6 +82,12 @@ nav
 			padding:			0.5em;
 			color:				#FFFFFF;
 			font-weight:		bold;
+
+			&.logout
+			{
+				float:			right;
+				padding:		0;
+			}
 		}
 	}
 }
@@ -115,7 +121,7 @@ figure
 	{
 		width:					30px;
 		height:					30px;
-		margin:					0px;
+		margin:					0;
 
 		&.correct
 		{
@@ -146,15 +152,49 @@ figure
 	}
 }
 
-// WITHOUT CHANGES
-.content
+.help
 {
-	background-color: red;
-	opacity: 0.75;
-	padding: 10px;
-	margin-left: 170px;
+	background-color:			yellow;
+	padding:					1em;
+	float:						right;
+	margin:						5em 2em 0 0;
+	height:						1.2em;
 }
 
+.content
+{
+	background-color:			fadeout(red, 25%);
+	padding:					1em;
+	margin-left:				170px;
+}
+
+.panel
+{
+	float:						left;
+	width:						150px;
+	background-color:			blue;
+	text-align:					center;
+	padding:					10px;
+
+	figure.avatar
+	{
+		margin:					auto;
+		padding:				1em;
+	}
+
+	time
+	{
+
+	}
+
+	meter
+	{
+		height:					0.75em;
+		width:					8em;
+	}
+}
+
+// WITHOUT CHANGES
 .notes
 {
 	text-align: left;
@@ -163,99 +203,14 @@ figure
 	margin-left: 10px;
 }
 
-.help
-{
-	background-color: yellow;
-	padding: 10px;
-	float: right;
-	margin: 110px 50px 0px 0px;
-	height: 25px;
-}
-
-#avatar
-{
-
-}
-
-.panel {
-	float: left;
-	width: 150px;
-	background-color: blue;
-	text-align: center;
-	padding: 10px;
-}
-
-.menu_logout
-{
-	float: right;
-}
-
 .loading
 {
 	text-align: center;
 }
 
-.percent_box
-{
-	width: 100px;
-	border: 1px solid black;
-	background: white;
-	height: 10px;
-	display: block;
-	margin-left: 25px;
-	font-size:60%;
-
-	span
-	{
-		position:	relative;
-		top:		-11px;
-	}
-}
-
-.box_percent
-{
-	height: 100%;
-	display: block;
-	overflow: visible;
-	font-size:60%
-}
-
-#experience .percent_box
-{
-	height: 5px;
-}
-
-#experience .box_percent
-{
-	background: green;
-}
-
 #selector
 {
 	text-align: center;
-}
-
-#pass_strenght .percent_box
-{
-	height: 5px;
-}
-
-#pass_strenght .box_percent
-{
-	background: green;
-}
-
-#lang_bar
-{
-	background-color: blue;
-	padding: 10px;
-	float: right;
-	/*margin: 110px 50px 0px 0px;*/
-}
-
-#lang_bar a
-{
-	margin: 5px;
 }
 
 .market_table

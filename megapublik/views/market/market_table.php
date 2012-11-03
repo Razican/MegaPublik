@@ -30,8 +30,8 @@
 		<div class="market_row">
 			<div class="market_cell"><?php $company	= $user->data($product->company_id, 'companies');
 						echo $company->name; ?></div>
-			<div class="market_cell"><?php echo number_format($product->price, 2, $l18n->decimal, $l18n->thousand).' '.$product->currency; ?></div>
-			<div class="market_cell"><?php echo number_format($product->amount, 0, $l18n->decimal, $l18n->thousand); ?></div>
+			<div class="market_cell"><?php echo number_format($product->price, 2, $l18n['decimal'], $l18n['thousand']).' '.$product->currency; ?></div>
+			<div class="market_cell"><?php echo number_format($product->amount, 0, $l18n['decimal'], $l18n['thousand']); ?></div>
 			<div class="market_cell"><?php echo form_open('market/buy/'.$product->id, array('id' => $product->id)).
 												form_input(array('name' => 'amount', 'maxlenght' => '5', 'value' => '0', 'style' => 'width: 50px')).
 												form_input(array('name' => 'submit', 'type' => 'submit', 'value' => lang('market.buy'), 'style' => 'width: 75px')).

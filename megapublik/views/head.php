@@ -43,13 +43,19 @@
 		</select>
 	</nav>
 
-	<?php if (defined('INGAME')) : ?><section class="help">
+	<?php if (defined('INGAME')) : ?>
+	<section class="help">
 		<?php echo $help; ?>
-	</section><?php endif; ?>
-	<?php if(empty($email)) : ?><nav class="menu">
+	</section>
+	<?php endif; ?>
+	<?php if(empty($email)) : ?>
+	<nav class="menu">
 		<?php echo $menu; ?>
-	</nav><?php endif; ?>
-	<?php if (defined('INGAME')) : ?><section class="panel">
+	</nav>
+	<?php endif; ?>
+	<?php if (defined('INGAME')) : ?>
+	<section class="panel">
 		<?php echo $panel; ?>
-	</section><?php endif; ?>
+	</section>
+	<?php endif; ?>
 </header>

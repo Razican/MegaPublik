@@ -17,15 +17,10 @@ class Main extends CI_Controller {
 
 			$this->lang->load('ingame');
 
-			$this->load->entity('country');
-			$country			= new Country($this->user->country);
-
-			$this->config->set_item('time_reference', $this->user->timezone);
-
 			$panel['user']		= $this->user;
-			$panel['exp_prcnt']	= exp_percent($this->user);
+			$panel['exp']		= experience($this->user->level);
 			$panel['l18n']		= l18n($this->lang->lang());
-			$panel['currency']	= $country->currency;
+			$panel['currency']	= $this->user->currency;
 
 			$head['help']		= lang('ingame.help');
 			$head['menu']		= $this->load->view('menu_ingame', '', TRUE);
@@ -34,7 +29,6 @@ class Main extends CI_Controller {
 			$data['user']		= $this->user;
 			$data['head']		= $this->load->view('head', $head, TRUE);
 			$data['footer']		= $this->load->view('footer', '', TRUE);
-			$data['country']	= $country;
 
 			$this->load->view('ingame', $data);
 		}

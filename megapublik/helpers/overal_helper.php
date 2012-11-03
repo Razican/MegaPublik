@@ -28,55 +28,31 @@ function percent($number, $place, $space)
 	}
 }
 
-function exp_percent(&$user)
+function experience($level)
 {
-	if ($user->level == 1)
+	$array = array();
+
+	if ($level != 1)
 	{
-		$percentage		= round($user->experience*100/config_item('first_level'), 2);
+		$array['min'] = config_item('first_level')*pow(config_item('exp_multiplier'), $level-2);
+		$array['max'] = config_item('first_level')*pow(config_item('exp_multiplier'), $level-1)-1;
 	}
 	else
 	{
-
-		$level_min_exp	= config_item('first_level')*pow(config_item('exp_multiplier'),($user->level-2));
-		$next_min_exp	= config_item('first_level')*pow(config_item('exp_multiplier'),($user->level-1));
-		$exp_level		= $user->experience-$level_min_exp;
-		$percentage		= round($exp_level*100/($next_min_exp-$level_min_exp), 2);
+		$array['min'] = 0;
+		$array['max'] = config_item('first_level')-1;
 	}
 
-	return $percentage;
+	return $array;
 }
 
 function l18n($lang)
 {
-	$l18n	= new stdClass;
-	switch($lang)
-	{
-		case 'es':
-			$l18n->decimal		= ',';
-			$l18n->thousand		= ' ';
-			$l18n->percent		= 'a';
-			$l18n->percent_spc	= FALSE;
-		break;
-		case 'eu':
-			$l18n->decimal		= ',';
-			$l18n->thousand		= '.';
-			$l18n->percent		= 'b';
-			$l18n->percent_spc	= FALSE;
-		break;
-		case 'fr':
-			$l18n->decimal		= ',';
-			$l18n->thousand		= ' ';
-			$l18n->percent		= 'a';
-			$l18n->percent_spc	= TRUE;
-		break;
-		default:
-			$l18n->decimal		= '.';
-			$l18n->thousand		= ',';
-			$l18n->percent		= 'a';
-			$l18n->percent_spc	= FALSE;
-	}
+	$CI =& get_instance();
+	require_once(APPPATH.'language/'.$CI->config->item('language').'/config.php');
+	if( ! isset($lang_cfg)) show_error('ERROR! language not configured correctly!');
 
- 	return $l18n;
+ 	return $lang_cfg;
 }
 
 function money($money, $currency)
@@ -106,42 +82,6 @@ function color($percentage)
 	}
 
 	return $color;
-}
-
-function reg_img($type, $alt, $slash = TRUE)
-{
-	if($type === 'correct')
-	{
-		$src		=	'images/tick.png';
-
-	}
-	else if($type === 'wrong')
-	{
-		$src		=	'images/cross.png';
-	}
-	else if($type === 'loading')
-	{
-		$src		=	'images/mini_loading.gif';
-	}
-	else
-	{
-		log_message('error', 'function reg_img() has received bad arguments.');
-	}
-
-	if ($slash)
-	{
-		$img	= array(
-			'src'		=> $src,
-			'alt'		=> $alt
-		);
-
-	}
-	else
-	{
-		$img	= '<img src="'.site_url($src).'" alt="'.$alt.'">';
-	}
-
-	return $img;
 }
 
 function loading($alt, $size = 'big')

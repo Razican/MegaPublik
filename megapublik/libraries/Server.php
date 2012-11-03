@@ -16,8 +16,8 @@ class Server {
 		$CI		=& get_instance();
 
 		$CI->db->where('last_online >', now() - config_item('sess_time_to_update'));
-		$query	= $CI->db->get('users');
+		$CI->db->from('users');
 
-		return $query->num_rows();
+		return $CI->db->count_all_results();
 	}
 }
