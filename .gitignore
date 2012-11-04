@@ -6,6 +6,7 @@
 .project
 *.sublime-*
 node_modules
+*.~lock.*
 
 megapublik/cache/*
 !megapublik/cache/index.html
