@@ -57,7 +57,7 @@ que ayude a los desarrolladores.
 
 ## Código ##
 
-En MegaPublik, ya contamos con ciertos códigos propios, a parte de los que trae CodeIgniter. Los propios
+En MegaPublik, ya contamos con cierto códigos propios, a parte de lo que trae CodeIgniter. Los propios
 de CodeIgniter se deberán consultar en su guía de usuario,
 [aquí](https://github.com/EllisLab/CodeIgniter/tree/develop/user_guide_src/source "Guía de usuario de CodeIgniter"),
 mientras no haya sido lanzada la versión estable de CodeIgniter 3. En cuanto a MegaPublik, esta guía contará
@@ -116,3 +116,47 @@ $countries2 = $this->geography->get_countries(array('id', 'name', 'currency'));
 Este método devolverá un array indexado por ID de los estados pertenecientes al país con la ID enviada en el
 parámetro. Se devolverá un array como el de *$config['states']* pero con solo los estados del país. Se
 mantendrán las ID intactas.
+
+#### Librería Server ####
+
+Esta librería se encarga de gestionar tareas relacionadas con el servidor. Se carga automáticamente y no es
+necesario cargarlo en los controladores. Disponemos de un método:
+
+##### $this->server->online_users() #####
+
+Esta función devolverá un entero indicando la cantidad de usuarios en línea.
+
+#### Librería Validate ####
+
+Esta librería se encarga de la validación de los datos de los usuarios. En estos momentos se usa únicamente
+en el registro, pero probablemente se use en prácticamente todos los lugares en los que se necesite incluir
+una validación de algún dato introducido por el usuario. Debe ser cargada antes de poder usarla:
+
+```php
+$this->load->library('validate');
+```
+
+##### $this->validate->register($data) #####
+
+Este método seencargará de validar el array *$data* cómo si proveniera de un registro. Para cada valor del
+array, que debe estar indexado correctamente, devolverá TRUE si es correcto o FALSE si no lo es. *$data*
+debe ser un array con la siguiente forma:
+
+```php
+$data = array(
+	'username'	=> 'nombre de usuario',
+	'password'	=> 'contraseña del usuario',
+	'passconf'	=> 'confirmación de contraseña',
+	'email'		=> 'correo electrónico',
+	'country'	=> 'ID del país del usuario',
+	'state'		=> 'Provincia o estado del usuario'
+);
+```
+
+Cualquier dato extra que se incluya en el array no será procesado. El valor devuelto será un array con
+los mismos índices y con un booleano para cada uno indicando si está correcto o no.
+
+##### $this->validate->ip_address($ip) #####
+
+Este método devolverá un booleano indicando si la IP en cuestión supondría un duplicado en el caso de
+registrarse como un nuevo usuario. Devolverá TRUE si no es una IP duplicada, y FALSE si lo es.

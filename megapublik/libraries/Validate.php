@@ -24,6 +24,54 @@ class Validate {
 		return $validation;
 	}
 
+	public function ip_address($ip)
+	{
+		$CI =& get_instance();
+
+		$CI->db->where('last_IP', $CI->input->ip_address());
+		$CI->db->or_where('reg_IP', $CI->input->ip_address());
+
+		$query = $CI->db->get('users');
+
+		return $query->num_rows() === 0;
+	}
+
+	public function username($username)
+	{
+		return $this->_validate_username($username);
+	}
+
+	public function email($email)
+	{
+		return $this->_validate_email($email);
+	}
+
+	public function validation_str($string)
+	{
+		$CI =& get_instance();
+
+		$query	= $CI->db->get_where('users', array('validation_str' => $string));
+
+		if ($query->num_rows() === 0)
+		{
+			return FALSE;
+		}
+		else
+		{
+			foreach($query->result() as $user);
+			if ($user->validated == 0)
+			{
+				$CI->db->where('id', $user->id);
+				$CI->db->update('users', array('validated' => '1'));
+				return TRUE;
+			}
+			else
+			{
+				return FALSE;
+			}
+		}
+	}
+
 	private function _validate_username($username)
 	{
 		$CI =& get_instance();
@@ -71,54 +119,6 @@ class Validate {
 		else
 		{
 			$validation['country'] = $validation['state'] = FALSE;
-		}
-	}
-
-	public function ip_address($ip)
-	{
-		$CI =& get_instance();
-
-		$CI->db->where('last_IP', $CI->input->ip_address());
-		$CI->db->or_where('reg_IP', $CI->input->ip_address());
-
-		$query = $CI->db->get('users');
-
-		return $query->num_rows() === 0;
-	}
-
-	public function username($username)
-	{
-		return $this->_validate_username($username);
-	}
-
-	public function email($email)
-	{
-		return $this->_validate_email($email);
-	}
-
-	public function validation_str($string)
-	{
-		$CI =& get_instance();
-
-		$query	= $CI->db->get_where('users', array('validation_str' => $string));
-
-		if ($query->num_rows() === 0)
-		{
-			return FALSE;
-		}
-		else
-		{
-			foreach($query->result() as $user);
-			if ($user->validated == 0)
-			{
-				$CI->db->where('id', $user->id);
-				$CI->db->update('users', array('validated' => '1'));
-				return TRUE;
-			}
-			else
-			{
-				return FALSE;
-			}
 		}
 	}
 }

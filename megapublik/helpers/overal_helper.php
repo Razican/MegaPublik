@@ -119,8 +119,6 @@ function load_script($script)
 function online_users()
 {
 	$CI		=& get_instance();
-	$CI->load->library('server');
-
 	return $CI->server->online_users();
 }
 

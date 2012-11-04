@@ -156,7 +156,7 @@ class Register extends CI_Controller {
 
 		$this->load->library('validate');
 
-		if($this->validate->validation_str($validation_str))
+		if($this->validate->validation_str($validation_str) && ( ! $register))
 		{
 			$this->lang->load('register');
 
@@ -165,9 +165,9 @@ class Register extends CI_Controller {
 			$data['head']		= $this->load->view('head', $head, TRUE);
 			$data['footer']		= $this->load->view('footer', '', TRUE);
 
-			if ( ! $register) $this->load->view('registration/validation', $data);
+			$this->load->view('registration/validation', $data);
 		}
-		else
+		elseif ( ! $register)
 		{
 			redirect('errors/9');
 		}
