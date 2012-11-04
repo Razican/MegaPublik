@@ -7,6 +7,7 @@
 *.sublime-*
 node_modules
 *.~lock.*
+Cakefile
 
 megapublik/cache/*
 !megapublik/cache/index.html
