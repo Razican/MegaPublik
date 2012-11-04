@@ -36,7 +36,9 @@ class Geography {
 		$CI		=& get_instance();
 
 		$CI->db->select('states');
-		$query			= $CI->db->get_where('countries', array('id' => $country_id));
+		$CI->db->where('id', $country_id);
+		$query			= $CI->db->get('countries');
+
 		foreach ($query->result() as $country);
 
 		$states			= unserialize($country->states);
