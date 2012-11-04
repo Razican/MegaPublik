@@ -1,4 +1,4 @@
-![MegaPublik Logo](https://raw.github.com/Razican/MegaPublik/develop/images/logo.png "MegaPublik Developer's Guide")
+![MegaPublik Logo](https://raw.github.com/Razican/MegaPublik/develop/images/logo.png "Guía de desarrollo de MegaPublik")
 
 Guía de Desarrollo de MegaPublik
 ================================
@@ -34,3 +34,24 @@ control de incidencias, usaremos el tracker incluído en GitHub. Como es lógico
 y diseñadores de MegaPublik deberán estar registrados en GitHub, y deberán tener Git correctamente configurado
 para poder ser considerados parte de MegaPublik Developers Team (MDT). Para información más detallada sobre este
 tema, consultar las secciones correspondientes de la guía.
+
+MegaPublik está bajo una licencia Creative Commons BY-SA:
+[![Licencia](https://raw.github.com/Razican/MegaPublik/develop/images/license.png "CC-BY-SA")](http://creativecommons.org/licenses/by-sa/3.0/deed.es)
+Esta licencia deberá incluirse en todas las páginas tanto internas como externas de MegaPublik.
+
+Principios básicos de codificación:
+------------------------------------
+
+MegaPublik se basará en un modelo VC con librerías. Se ha decidido dejar de lado los modelos por una clara
+falta de utilidad frente a las librerías de CodeIgniter. También se usarán entidades para representar
+elementos del juego, como usuarios, países, etc. Además, se cumplirán las siguientes normas:
+
+*	No se harán gestiones de la base de datos desde ningún controlador o vista.
+*	Las funciones deberán ser agrupadas en librerías o entidades, excepto en casos en los que sea más
+	conveniente usar un ayudante (helper), como en el caso del helper general.
+
+MegaPublik pretende ser un poyecto internacional, por lo que se exige que todas las variables, clases,
+entidades, funciones, métodos y documentación estén escritas en inglés. En el caso de la documentación,
+se usará phpDoc para documentar el código internamente, en inglés, pero en el caso de la documentación
+externa, como esta guía de desarrollo, se podrá usar, a parte del inglés el español o cualquier otro idioma
+que ayude a los desarrolladores.

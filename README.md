@@ -1,3 +1,8 @@
+Guía de desarrollo:
+===================
+Para el correcto funcionamiento del equipo de desarrollo (MegaPublik Developer's Team, MDT) se ha creado una guía de desarrollo que se puede consultar
+[aquí](https://github.com/Razican/MegaPublik/blob/develop/guia_desarrollo.md "Guía de desarrollo de MegaPublik").
+
 Cosas por hacer
 ===============
 
