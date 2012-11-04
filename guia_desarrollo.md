@@ -1,0 +1,1 @@
+![MegaPublik Logo](images/logo.png "MegaPublik Developer's Guide")
