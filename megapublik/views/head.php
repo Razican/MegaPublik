@@ -12,11 +12,11 @@
 	<meta name="description" content="<?php echo lang('overal.description'); ?>">
 	<meta name="keywords" content="juego online, online game, estrategia, strategy, simulacion, simulation, megapublik, gratis, free, economia, economy, politica, politics, vida real, real life">
 	<?php if (defined('AJAX')) : ?>
-	<script charset="UTF-8" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+	<script charset="UTF-8" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 	<script type="text/javascript">
 	<!--
 		if(typeof jQuery==='undefined'){
-			document.write(unescape('<scri'+'pt src="<?php echo site_url('js/jquery-1.8.2.min.js'); ?>" type="text/javascript"></scri'+'pt>'));
+			document.write(unescape('<scri'+'pt src="<?php echo site_url('js/jquery-1.8.3.min.js'); ?>" type="text/javascript"></scri'+'pt>'));
 		}
 	//-->
 	</script>
